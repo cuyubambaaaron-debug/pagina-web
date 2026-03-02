@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de IA - Good Call Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .page-header {
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(0,87,158,0.95), rgba(0,130,200,0.9)), 
+                        url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2000') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover {
+            color: white;
+        }
+        .icon-graduation {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .courses-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, #f8f9fa, white);
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .course-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,87,158,0.15);
+            border-color: #00579e;
+        }
+        .course-header {
+            position: relative;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #00579e;
+        }
+        .course-level {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .course-content {
+            padding: 2rem;
+        }
+        .course-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .course-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .course-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .meta-item i {
+            color: #00579e;
+        }
+        .course-modules {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+        }
+        .modules-title {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .modules-list {
+            list-style: none;
+            padding: 0;
+        }
+        .modules-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .modules-list li i {
+            color: #00579e;
+            font-size: 0.85rem;
+        }
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+        .course-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #00579e;
+        }
+        .course-price span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #666;
+        }
+        .btn-enroll {
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            color: white;
+            border: none;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-enroll:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,87,158,0.3);
+        }
+        
+        .benefits-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+        }
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f0f8ff, white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: #00579e;
+        }
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #1a1a1a;
+        }
+        .benefit-description {
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        .btn-cta {
+            background: white;
+            color: #00579e;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div>
+            <div class="icon-graduation">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Cursos de IA</h1>
+            <p>Programas de formación especializados para dominar las herramientas y modelos de IA más avanzados del mercado actual</p>
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <span>/</span>
+                <span>Cursos de IA</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title">Programas de Formación</h2>
+            <p class="section-subtitle">
+                Desde fundamentos hasta aplicaciones avanzadas, tenemos el curso perfecto para ti
+            </p>
+
+            <div class="courses-grid">
+                <!-- Curso 1: Fundamentos de IA -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=800');">
+                        <div class="course-badge"><i class="fas fa-star"></i> Más Popular</div>
+                        <div class="course-level">Principiante</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Fundamentos de Inteligencia Artificial</h3>
+                        <p class="course-description">
+                            Aprende los conceptos básicos de IA, Machine Learning y Deep Learning desde cero. Ideal para principiantes que quieren entrar al mundo de la IA.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>8 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>40 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> Introducción a la IA y ML</li>
+                                <li><i class="fas fa-check-circle"></i> Python para IA</li>
+                                <li><i class="fas fa-check-circle"></i> Algoritmos de Machine Learning</li>
+                                <li><i class="fas fa-check-circle"></i> Redes Neuronales básicas</li>
+                                <li><i class="fas fa-check-circle"></i> Proyecto final práctico</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$599<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 2: IA Generativa -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800');">
+                        <div class="course-badge" style="background: linear-gradient(135deg, #ffa502, #ff6348); color: white;"><i class="fas fa-fire"></i> Nuevo</div>
+                        <div class="course-level">Intermedio</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">IA Generativa Avanzada</h3>
+                        <p class="course-description">
+                            Domina GPT-4, DALL-E, Midjourney y otras herramientas de IA generativa. Crea contenido, imágenes y aplicaciones innovadoras.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>50 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado Pro</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> Prompt Engineering avanzado</li>
+                                <li><i class="fas fa-check-circle"></i> Fine-tuning de modelos</li>
+                                <li><i class="fas fa-check-circle"></i> Generación de imágenes con IA</li>
+                                <li><i class="fas fa-check-circle"></i> APIs de OpenAI y Claude</li>
+                                <li><i class="fas fa-check-circle"></i> Desarrollo de aplicaciones IA</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$999<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 3: Deep Learning -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1527474305487-b87b222841cc?q=80&w=800');">
+                        <div class="course-level">Avanzado</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Deep Learning Profesional</h3>
+                        <p class="course-description">
+                            Conviértete en experto en Deep Learning. Redes neuronales complejas, Computer Vision, NLP y despliegue de modelos en producción.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>12 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>60 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado Expert</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> Arquitecturas de redes profundas</li>
+                                <li><i class="fas fa-check-circle"></i> CNN para Computer Vision</li>
+                                <li><i class="fas fa-check-circle"></i> RNN, LSTM y Transformers</li>
+                                <li><i class="fas fa-check-circle"></i> Transfer Learning</li>
+                                <li><i class="fas fa-check-circle"></i> MLOps y deployment</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$1,499<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 4: IA para Negocios -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800');">
+                        <div class="course-badge" style="background: #2ecc71; color: white;"><i class="fas fa-briefcase"></i> Empresarial</div>
+                        <div class="course-level">Todos los niveles</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">IA Aplicada a Negocios</h3>
+                        <p class="course-description">
+                            Estrategias prácticas para implementar IA en tu empresa. Casos de uso reales, ROI y transformación digital con inteligencia artificial.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>6 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>30 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado Business</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> Estrategia de IA empresarial</li>
+                                <li><i class="fas fa-check-circle"></i> Automatización de procesos</li>
+                                <li><i class="fas fa-check-circle"></i> Analytics predictivo</li>
+                                <li><i class="fas fa-check-circle"></i> Chatbots y asistentes virtuales</li>
+                                <li><i class="fas fa-check-circle"></i> Ética y gobernanza de IA</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$799<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 5: Computer Vision -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=800');">
+                        <div class="course-level">Avanzado</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Computer Vision Especializado</h3>
+                        <p class="course-description">
+                            Especialízate en visión por computadora. Detección de objetos, segmentación, reconocimiento facial y aplicaciones prácticas.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>55 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado Expert</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> OpenCV y procesamiento de imágenes</li>
+                                <li><i class="fas fa-check-circle"></i> YOLO y detección de objetos</li>
+                                <li><i class="fas fa-check-circle"></i> Segmentación semántica</li>
+                                <li><i class="fas fa-check-circle"></i> GANs para generación de imágenes</li>
+                                <li><i class="fas fa-check-circle"></i> Aplicaciones en industria</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$1,299<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curso 6: NLP Avanzado -->
+                <div class="course-card">
+                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800');">
+                        <div class="course-level">Avanzado</div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">NLP y Procesamiento de Lenguaje</h3>
+                        <p class="course-description">
+                            Domina el procesamiento de lenguaje natural. Transformers, BERT, análisis de sentimientos y aplicaciones conversacionales.
+                        </p>
+                        <div class="course-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10 semanas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-video"></i>
+                                <span>55 horas</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Certificado Expert</span>
+                            </div>
+                        </div>
+                        <div class="course-modules">
+                            <div class="modules-title">Lo que aprenderás:</div>
+                            <ul class="modules-list">
+                                <li><i class="fas fa-check-circle"></i> Arquitecturas Transformer</li>
+                                <li><i class="fas fa-check-circle"></i> BERT, GPT y modelos avanzados</li>
+                                <li><i class="fas fa-check-circle"></i> Análisis de sentimientos</li>
+                                <li><i class="fas fa-check-circle"></i> Chatbots inteligentes</li>
+                                <li><i class="fas fa-check-circle"></i> Traducción automática</li>
+                            </ul>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">$1,299<span></span></div>
+                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
+                                Inscribirse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir nuestros cursos?</h2>
+            <p class="section-subtitle">
+                Formación de calidad con enfoque práctico y actualizado
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="benefit-title">Instructores Expertos</h3>
+                    <p class="benefit-description">
+                        Profesionales con experiencia real en IA trabajando en empresas líderes del sector tecnológico.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="benefit-title">Proyectos Prácticos</h3>
+                    <p class="benefit-description">
+                        Aprende haciendo con proyectos reales que podrás incluir en tu portafolio profesional.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="benefit-title">Comunidad Activa</h3>
+                    <p class="benefit-description">
+                        Únete a una red de estudiantes y profesionales apasionados por la inteligencia artificial.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="benefit-title">Acceso de por Vida</h3>
+                    <p class="benefit-description">
+                        Contenido actualizado constantemente y acceso permanente a todo el material del curso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para transformar tu carrera?</h2>
+            <p class="cta-description">
+                Agenda una asesoría gratuita y descubre cuál es el curso perfecto para ti
+            </p>
+            <button class="btn-cta" onclick="window.location.href='index.html#contacto'">
+                <i class="fas fa-phone"></i> Agendar Asesoría Gratuita
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; padding: 3rem 0 1rem;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 Good Call Travel. Todos los derechos reservados.</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Inicio</a>
+                <a href="index.html#servicios" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Servicios</a>
+                <a href="index.html#contacto" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
