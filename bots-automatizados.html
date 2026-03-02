@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bots Automatizados Inteligentes - Good Call Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .page-header {
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(0,87,158,0.95), rgba(0,130,200,0.9)), 
+                        url('https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2000') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover {
+            color: white;
+        }
+        .icon-robot {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .features-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, #f8f9fa, white);
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,87,158,0.15);
+            border-color: #00579e;
+        }
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .feature-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .feature-list li i {
+            color: #00579e;
+            font-size: 0.9rem;
+        }
+        
+        .platforms-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .platform-card {
+            background: linear-gradient(135deg, #f8f9fa, white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+        }
+        .platform-card:hover {
+            transform: scale(1.05);
+            border-color: #00579e;
+            box-shadow: 0 10px 30px rgba(0,87,158,0.1);
+        }
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00579e;
+        }
+        .platform-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .pricing-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #f8f9fa);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card.featured {
+            border: 3px solid #00579e;
+            transform: scale(1.05);
+        }
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ffa502, #ff6348);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,87,158,0.2);
+        }
+        .pricing-plan {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #00579e;
+            margin-bottom: 0.5rem;
+        }
+        .pricing-price span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+        }
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        .pricing-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #555;
+        }
+        .pricing-features li i {
+            color: #00579e;
+        }
+        .btn-pricing {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-pricing:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,87,158,0.3);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        .btn-cta {
+            background: white;
+            color: #00579e;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div>
+            <div class="icon-robot">
+                <i class="fas fa-robot"></i>
+            </div>
+            <h1>Bots Automatizados Inteligentes</h1>
+            <p>Agentes conversacionales con IA que aprenden, responden y actúan de forma autónoma en tus plataformas digitales 24/7</p>
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <span>/</span>
+                <span>Bots Automatizados</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">¿Qué hace nuestros bots especiales?</h2>
+            <p class="section-subtitle">
+                Tecnología de inteligencia artificial de última generación que revoluciona la forma en que interactúas con tus clientes
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Aprendizaje Continuo</h3>
+                    <p class="feature-description">
+                        Nuestros bots aprenden de cada interacción, mejorando constantemente sus respuestas y adaptándose a las necesidades de tu negocio.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Machine Learning avanzado</li>
+                        <li><i class="fas fa-check-circle"></i> Análisis de sentimientos</li>
+                        <li><i class="fas fa-check-circle"></i> Mejora automática</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="feature-title">Conversaciones Naturales</h3>
+                    <p class="feature-description">
+                        Interacciones fluidas y humanas que comprenden el contexto, intenciones y emociones de cada cliente.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Procesamiento de lenguaje natural</li>
+                        <li><i class="fas fa-check-circle"></i> Multiidioma</li>
+                        <li><i class="fas fa-check-circle"></i> Personalización contextual</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="feature-title">Acciones Automatizadas</h3>
+                    <p class="feature-description">
+                        No solo responden, actúan. Agenda citas, procesa pedidos, gestiona reservas y ejecuta tareas complejas.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Integración con sistemas</li>
+                        <li><i class="fas fa-check-circle"></i> Automatización de workflows</li>
+                        <li><i class="fas fa-check-circle"></i> APIs y webhooks</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Analytics en Tiempo Real</h3>
+                    <p class="feature-description">
+                        Dashboards completos con métricas detalladas de rendimiento, satisfacción y oportunidades de mejora.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Reportes personalizados</li>
+                        <li><i class="fas fa-check-circle"></i> KPIs y métricas</li>
+                        <li><i class="fas fa-check-circle"></i> Insights accionables</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Seguridad Garantizada</h3>
+                    <p class="feature-description">
+                        Protección de datos de nivel empresarial con encriptación end-to-end y cumplimiento de normativas.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Encriptación SSL/TLS</li>
+                        <li><i class="fas fa-check-circle"></i> GDPR compliant</li>
+                        <li><i class="fas fa-check-circle"></i> Backup automático</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Disponibilidad 24/7</h3>
+                    <p class="feature-description">
+                        Atención ininterrumpida para tus clientes, sin importar la hora, día o zona horaria.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Respuesta instantánea</li>
+                        <li><i class="fas fa-check-circle"></i> Sin tiempos de espera</li>
+                        <li><i class="fas fa-check-circle"></i> Escalamiento a humanos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section">
+        <div class="container">
+            <h2 class="section-title">Plataformas Compatibles</h2>
+            <p class="section-subtitle">
+                Implementa tu bot en cualquier canal donde estén tus clientes
+            </p>
+
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="platform-name">WhatsApp Business</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </div>
+                    <div class="platform-name">Facebook Messenger</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="platform-name">Instagram Direct</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="platform-name">Telegram</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="platform-name">Sitio Web</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-slack"></i>
+                    </div>
+                    <div class="platform-name">Slack</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="platform-name">Discord</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fas fa-sms"></i>
+                    </div>
+                    <div class="platform-name">SMS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Planes y Precios</h2>
+            <p class="section-subtitle">
+                Elige el plan que mejor se adapte a las necesidades de tu negocio
+            </p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-plan">Básico</div>
+                    <div class="pricing-price">$299<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1,000 conversaciones/mes</li>
+                        <li><i class="fas fa-check"></i> 1 plataforma</li>
+                        <li><i class="fas fa-check"></i> Respuestas básicas</li>
+                        <li><i class="fas fa-check"></i> Analytics básico</li>
+                        <li><i class="fas fa-check"></i> Soporte por email</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="window.location.href='index.html#cotizador'">
+                        Comenzar Ahora
+                    </button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Más Popular</div>
+                    <div class="pricing-plan">Profesional</div>
+                    <div class="pricing-price">$799<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10,000 conversaciones/mes</li>
+                        <li><i class="fas fa-check"></i> 3 plataformas</li>
+                        <li><i class="fas fa-check"></i> IA avanzada</li>
+                        <li><i class="fas fa-check"></i> Analytics completo</li>
+                        <li><i class="fas fa-check"></i> Integraciones API</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="window.location.href='index.html#cotizador'">
+                        Comenzar Ahora
+                    </button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-plan">Enterprise</div>
+                    <div class="pricing-price">Custom</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Conversaciones ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Plataformas ilimitadas</li>
+                        <li><i class="fas fa-check"></i> IA personalizada</li>
+                        <li><i class="fas fa-check"></i> Analytics enterprise</li>
+                        <li><i class="fas fa-check"></i> Integraciones custom</li>
+                        <li><i class="fas fa-check"></i> Account manager dedicado</li>
+                        <li><i class="fas fa-check"></i> SLA garantizado</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="window.location.href='index.html#cotizador'">
+                        Contactar Ventas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para revolucionar tu atención al cliente?</h2>
+            <p class="cta-description">
+                Agenda una demo gratuita y descubre cómo nuestros bots pueden transformar tu negocio
+            </p>
+            <button class="btn-cta" onclick="window.location.href='index.html#contacto'">
+                <i class="fas fa-calendar-alt"></i> Agendar Demo Gratuita
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; padding: 3rem 0 1rem;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 Good Call Travel. Todos los derechos reservados.</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Inicio</a>
+                <a href="index.html#servicios" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Servicios</a>
+                <a href="index.html#contacto" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
