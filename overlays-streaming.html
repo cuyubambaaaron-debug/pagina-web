@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlays para En Vivos - Good Call Travel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .page-header {
+            height: 70vh;
+            background: linear-gradient(135deg, rgba(0,87,158,0.95), rgba(0,130,200,0.9)), 
+                        url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2000') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .page-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .breadcrumb {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .breadcrumb a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .breadcrumb a:hover {
+            color: white;
+        }
+        .icon-broadcast {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .features-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, #f8f9fa, white);
+        }
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,87,158,0.15);
+            border-color: #00579e;
+        }
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .feature-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .feature-list li i {
+            color: #00579e;
+            font-size: 0.9rem;
+        }
+        
+        .gallery-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 45px rgba(0,87,158,0.2);
+        }
+        .gallery-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem;
+            color: white;
+        }
+        .gallery-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .gallery-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .packages-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, #f8f9fa);
+        }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .package-card.featured {
+            border: 3px solid #00579e;
+            transform: scale(1.05);
+        }
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ffa502, #ff6348);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,87,158,0.2);
+        }
+        .package-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+        .package-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #00579e;
+            margin-bottom: 0.5rem;
+        }
+        .package-price span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+        }
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        .package-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #555;
+        }
+        .package-features li i {
+            color: #00579e;
+        }
+        .btn-package {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-package:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,87,158,0.3);
+        }
+        
+        .platforms-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .platform-card {
+            background: linear-gradient(135deg, #f8f9fa, white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+        }
+        .platform-card:hover {
+            transform: scale(1.05);
+            border-color: #00579e;
+            box-shadow: 0 10px 30px rgba(0,87,158,0.1);
+        }
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #00579e;
+        }
+        .platform-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #00579e, #0082c8);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        .btn-cta {
+            background: white;
+            color: #00579e;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div>
+            <div class="icon-broadcast">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <h1>Overlays para En Vivos</h1>
+            <p>Superposiciones visuales inteligentes para streams en tiempo real: datos dinámicos, alertas personalizadas y diseño profesional</p>
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+                <span>/</span>
+                <span>Overlays Streaming</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Funcionalidades Avanzadas</h2>
+            <p class="section-subtitle">
+                Overlays inteligentes que transforman tus transmisiones en vivo en experiencias profesionales
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Datos en Tiempo Real</h3>
+                    <p class="feature-description">
+                        Visualiza estadísticas, métricas y datos actualizados al instante durante tu transmisión.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Contador de espectadores</li>
+                        <li><i class="fas fa-check-circle"></i> Estadísticas de juego</li>
+                        <li><i class="fas fa-check-circle"></i> Métricas personalizadas</li>
+                        <li><i class="fas fa-check-circle"></i> APIs de terceros</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="feature-title">Alertas Personalizadas</h3>
+                    <p class="feature-description">
+                        Notificaciones animadas para suscripciones, donaciones, follows y eventos especiales.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Alertas de suscriptores</li>
+                        <li><i class="fas fa-check-circle"></i> Donaciones destacadas</li>
+                        <li><i class="fas fa-check-circle"></i> Nuevos seguidores</li>
+                        <li><i class="fas fa-check-circle"></i> Animaciones custom</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="feature-title">Diseño Profesional</h3>
+                    <p class="feature-description">
+                        Gráficos de alta calidad totalmente personalizables con tu marca y estilo único.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Diseños únicos</li>
+                        <li><i class="fas fa-check-circle"></i> Branding personalizado</li>
+                        <li><i class="fas fa-check-circle"></i> Múltiples temas</li>
+                        <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="feature-title">Chat Integrado</h3>
+                    <p class="feature-description">
+                        Muestra mensajes del chat en pantalla con moderación automática y filtros inteligentes.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Chat en overlay</li>
+                        <li><i class="fas fa-check-circle"></i> Moderación IA</li>
+                        <li><i class="fas fa-check-circle"></i> Destacar mensajes</li>
+                        <li><i class="fas fa-check-circle"></i> Emotes animados</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="feature-title">Gamificación</h3>
+                    <p class="feature-description">
+                        Elementos interactivos que aumentan el engagement de tu audiencia.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Metas y objetivos</li>
+                        <li><i class="fas fa-check-circle"></i> Leaderboards</li>
+                        <li><i class="fas fa-check-circle"></i> Desafíos en vivo</li>
+                        <li><i class="fas fa-check-circle"></i> Recompensas visuales</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="feature-title">Inteligencia Artificial</h3>
+                    <p class="feature-description">
+                        Overlays que se adaptan automáticamente al contenido de tu stream.
+                    </p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Reconocimiento de escenas</li>
+                        <li><i class="fas fa-check-circle"></i> Ajuste automático</li>
+                        <li><i class="fas fa-check-circle"></i> Sugerencias inteligentes</li>
+                        <li><i class="fas fa-check-circle"></i> Optimización visual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Ejemplos de Overlays</h2>
+            <p class="section-subtitle">
+                Diseños profesionales para diferentes tipos de contenido
+            </p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Gaming Overlay</div>
+                        <div class="gallery-description">Estadísticas de juego, KDA, inventario en tiempo real</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Music Stream</div>
+                        <div class="gallery-description">Información de canciones, letras, requests</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Talk Show</div>
+                        <div class="gallery-description">Lower thirds, chat destacado, redes sociales</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Creative Stream</div>
+                        <div class="gallery-description">Panel de herramientas, capas, progreso del proyecto</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1614292253389-bd2c1f89cd0e?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Esports Tournament</div>
+                        <div class="gallery-description">Scoreboard, timer, información de equipos</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=800');"></div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Educational Content</div>
+                        <div class="gallery-description">Notas, diagramas, preguntas interactivas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="platforms-section">
+        <div class="container">
+            <h2 class="section-title">Plataformas Compatibles</h2>
+            <p class="section-subtitle">
+                Funciona en todas las principales plataformas de streaming
+            </p>
+
+            <div class="platforms-grid">
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-twitch"></i>
+                    </div>
+                    <div class="platform-name">Twitch</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="platform-name">YouTube</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="platform-name">Facebook Gaming</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="platform-name">TikTok Live</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="platform-name">Discord</div>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="platform-name">OBS Studio</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages-section">
+        <div class="container">
+            <h2 class="section-title">Paquetes de Overlays</h2>
+            <p class="section-subtitle">
+                Elige el paquete que mejor se adapte a tu contenido
+            </p>
+
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-name">Básico</div>
+                    <div class="package-price">$149<span></span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> 3 overlays personalizados</li>
+                        <li><i class="fas fa-check"></i> Alertas básicas</li>
+                        <li><i class="fas fa-check"></i> 1 tema de color</li>
+                        <li><i class="fas fa-check"></i> Soporte por email</li>
+                        <li><i class="fas fa-check"></i> 1 revisión</li>
+                    </ul>
+                    <button class="btn-package" onclick="window.location.href='index.html#cotizador'">
+                        Adquirir Paquete
+                    </button>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">Recomendado</div>
+                    <div class="package-name">Profesional</div>
+                    <div class="package-price">$399<span></span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> 10 overlays personalizados</li>
+                        <li><i class="fas fa-check"></i> Alertas avanzadas animadas</li>
+                        <li><i class="fas fa-check"></i> 3 temas de color</li>
+                        <li><i class="fas fa-check"></i> Chat integrado</li>
+                        <li><i class="fas fa-check"></i> Widgets interactivos</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                        <li><i class="fas fa-check"></i> 3 revisiones</li>
+                    </ul>
+                    <button class="btn-package" onclick="window.location.href='index.html#cotizador'">
+                        Adquirir Paquete
+                    </button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-name">Premium</div>
+                    <div class="package-price">$799<span></span></div>
+                    <ul class="package-features">
+                        <li><i class="fas fa-check"></i> Overlays ilimitados</li>
+                        <li><i class="fas fa-check"></i> Animaciones custom 3D</li>
+                        <li><i class="fas fa-check"></i> Temas ilimitados</li>
+                        <li><i class="fas fa-check"></i> Integraciones IA</li>
+                        <li><i class="fas fa-check"></i> Dashboard personalizado</li>
+                        <li><i class="fas fa-check"></i> Manager dedicado</li>
+                        <li><i class="fas fa-check"></i> Revisiones ilimitadas</li>
+                        <li><i class="fas fa-check"></i> Actualizaciones mensuales</li>
+                    </ul>
+                    <button class="btn-package" onclick="window.location.href='index.html#cotizador'">
+                        Adquirir Paquete
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">¿Listo para llevar tus streams al siguiente nivel?</h2>
+            <p class="cta-description">
+                Solicita una demo personalizada y descubre cómo nuestros overlays pueden transformar tu contenido
+            </p>
+            <button class="btn-cta" onclick="window.location.href='index.html#contacto'">
+                <i class="fas fa-play-circle"></i> Solicitar Demo
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; padding: 3rem 0 1rem;">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 Good Call Travel. Todos los derechos reservados.</p>
+            <div style="margin-top: 1rem;">
+                <a href="index.html" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Inicio</a>
+                <a href="index.html#servicios" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Servicios</a>
+                <a href="index.html#contacto" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
