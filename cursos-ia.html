@@ -1,672 +1,293 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos de IA - Good Call Travel</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        .page-header {
-            height: 70vh;
-            background: linear-gradient(135deg, rgba(0,87,158,0.95), rgba(0,130,200,0.9)), 
-                        url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2000') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        .page-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-        }
-        .page-header p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-        .breadcrumb {
-            display: flex;
-            gap: 0.5rem;
-            justify-content: center;
-            align-items: center;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-        }
-        .breadcrumb a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .breadcrumb a:hover {
-            color: white;
-        }
-        .icon-graduation {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .courses-section {
-            padding: 5rem 0;
-            background: linear-gradient(to bottom, #f8f9fa, white);
-        }
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-        .course-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s;
-            border: 2px solid transparent;
-        }
-        .course-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,87,158,0.15);
-            border-color: #00579e;
-        }
-        .course-header {
-            position: relative;
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-        }
-        .course-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.95);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: #00579e;
-        }
-        .course-level {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: linear-gradient(135deg, #00579e, #0082c8);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-        .course-content {
-            padding: 2rem;
-        }
-        .course-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-        .course-description {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-        .course-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #666;
-            font-size: 0.95rem;
-        }
-        .meta-item i {
-            color: #00579e;
-        }
-        .course-modules {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-        }
-        .modules-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-        .modules-list {
-            list-style: none;
-            padding: 0;
-        }
-        .modules-list li {
-            padding: 0.5rem 0;
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-        .modules-list li i {
-            color: #00579e;
-            font-size: 0.85rem;
-        }
-        .course-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 2px solid #f0f0f0;
-        }
-        .course-price {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #00579e;
-        }
-        .course-price span {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #666;
-        }
-        .btn-enroll {
-            background: linear-gradient(135deg, #00579e, #0082c8);
-            color: white;
-            border: none;
-            padding: 0.9rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-enroll:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,87,158,0.3);
-        }
-        
-        .benefits-section {
-            padding: 5rem 0;
-            background: white;
-        }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .benefit-card {
-            text-align: center;
-            padding: 2rem;
-        }
-        .benefit-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #f0f8ff, white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-            color: #00579e;
-        }
-        .benefit-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            color: #1a1a1a;
-        }
-        .benefit-description {
-            color: #666;
-            line-height: 1.7;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, #00579e, #0082c8);
-            padding: 5rem 0;
-            text-align: center;
-            color: white;
-        }
-        .cta-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-        .cta-description {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-        .btn-cta {
-            background: white;
-            color: #00579e;
-            padding: 1.2rem 2.5rem;
-            border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .btn-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos de IA — PsychesAi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root { --a:#a259ff; --b:#4f8ef7; --bg:#07070f; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:#fff; overflow-x:hidden; }
+
+  .topnav { position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(162,89,255,0.1); }
+  .topnav-logo { font-size:1.3rem;font-weight:900;color:#fff;text-decoration:none; }
+  .topnav-logo span { color:var(--a); }
+  .topnav-back { display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.85rem;font-weight:600;transition:color 0.2s; }
+  .topnav-back:hover { color:#fff; }
+
+  .hero { min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;position:relative;overflow:hidden; }
+  .hero-bg { position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 60% 40%,rgba(162,89,255,0.18),transparent),radial-gradient(ellipse 50% 40% at 10% 80%,rgba(79,142,247,0.1),transparent); }
+  .hero-grid { position:absolute;inset:0;z-index:0;opacity:0.04;background-image:linear-gradient(rgba(162,89,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(162,89,255,1) 1px,transparent 1px);background-size:60px 60px; }
+  .hero-inner { position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+  .hero-badge { display:inline-flex;align-items:center;gap:8px;background:rgba(162,89,255,0.12);border:1px solid rgba(162,89,255,0.3);color:var(--a);font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:24px; }
+  .hero-badge-dot { width:6px;height:6px;border-radius:50%;background:var(--a);animation:dotPulse 2s ease-in-out infinite; }
+  @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.5);}}
+  .hero-title { font-size:clamp(2.4rem,5vw,4rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;margin-bottom:24px; }
+  .hero-title em { font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .hero-sub { font-size:1.1rem;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:40px;max-width:520px; }
+  .hero-cta { display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 8px 30px rgba(162,89,255,0.4);transition:transform 0.2s,box-shadow 0.3s; }
+  .hero-cta:hover { transform:translateY(-2px);box-shadow:0 14px 40px rgba(162,89,255,0.6); }
+
+  /* Curriculum card */
+  .curriculum-card { background:rgba(255,255,255,0.04);border:1px solid rgba(162,89,255,0.2);border-radius:24px;overflow:hidden;backdrop-filter:blur(20px);box-shadow:0 24px 80px rgba(162,89,255,0.15); }
+  .cc-hdr { background:linear-gradient(135deg,rgba(162,89,255,0.2),rgba(79,142,247,0.1));padding:20px 24px;border-bottom:1px solid rgba(162,89,255,0.15); }
+  .cc-hdr-title { font-weight:800;font-size:1rem;color:#fff;margin-bottom:4px; }
+  .cc-hdr-sub { font-size:0.75rem;color:rgba(255,255,255,0.45); }
+  .cc-body { padding:8px 0; }
+  .cc-class { display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s; }
+  .cc-class:last-child { border-bottom:none; }
+  .cc-class:hover { background:rgba(162,89,255,0.07); }
+  .cc-num { width:28px;height:28px;border-radius:8px;background:rgba(162,89,255,0.2);border:1px solid rgba(162,89,255,0.3);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:800;color:var(--a);flex-shrink:0; }
+  .cc-info { flex:1; }
+  .cc-class-title { font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:2px; }
+  .cc-class-meta { font-size:0.72rem;color:rgba(255,255,255,0.4); }
+  .cc-icon { font-size:1rem; flex-shrink:0; }
+  .cc-footer { padding:16px 24px;background:rgba(162,89,255,0.08);border-top:1px solid rgba(162,89,255,0.15);display:flex;gap:16px; }
+  .cc-stat { text-align:center;flex:1; }
+  .cc-stat-n { font-size:1.4rem;font-weight:900;color:var(--a); }
+  .cc-stat-l { font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:2px; }
+
+  .section { padding:100px 40px; }
+  .section-inner { max-width:1200px;margin:0 auto; }
+  .section-badge { display:inline-flex;align-items:center;gap:8px;background:rgba(162,89,255,0.1);border:1px solid rgba(162,89,255,0.25);color:var(--a);font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:16px; }
+  .section-title { font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.12;letter-spacing:-0.02em;margin-bottom:14px; }
+  .section-title em { font-style:normal;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+  .section-sub { color:rgba(255,255,255,0.45);font-size:1rem;line-height:1.7;max-width:560px; }
+  .section-hdr { margin-bottom:64px; }
+
+  .integrations-bg { background:rgba(255,255,255,0.02); }
+
+  /* Tools grid */
+  .tools-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px; }
+  .tool-card { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px 16px;text-align:center;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s; }
+  .tool-card:hover { transform:translateY(-6px);border-color:rgba(162,89,255,0.35);box-shadow:0 12px 36px rgba(162,89,255,0.12); }
+  .tool-icon { font-size:2rem;margin-bottom:10px; }
+  .tool-name { font-size:0.82rem;font-weight:700;color:#fff;margin-bottom:4px; }
+  .tool-cat { font-size:0.7rem;color:rgba(255,255,255,0.35); }
+
+  /* Class cards */
+  .classes-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px; }
+  .class-card { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:20px;overflow:hidden;transition:transform 0.3s,border-color 0.3s,box-shadow 0.3s; }
+  .class-card:hover { transform:translateY(-6px);border-color:rgba(162,89,255,0.3);box-shadow:0 16px 48px rgba(162,89,255,0.12); }
+  .class-card-hdr { padding:28px 28px 20px;border-bottom:1px solid rgba(255,255,255,0.05); }
+  .class-num-badge { display:inline-flex;align-items:center;gap:6px;background:rgba(162,89,255,0.15);border:1px solid rgba(162,89,255,0.25);color:var(--a);font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:12px; }
+  .class-title { font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.3; }
+  .class-desc { font-size:0.83rem;color:rgba(255,255,255,0.5);line-height:1.6; }
+  .class-card-body { padding:20px 28px; }
+  .class-topics { display:flex;flex-direction:column;gap:8px; }
+  .class-topic { display:flex;align-items:center;gap:10px;font-size:0.8rem;color:rgba(255,255,255,0.6); }
+  .class-topic::before { content:'▸';color:var(--a);font-size:0.65rem;flex-shrink:0; }
+
+  /* Benefits */
+  .benefits-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px; }
+  .benefit-card { padding:32px 28px;border-radius:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);text-align:center;transition:transform 0.3s,border-color 0.3s; }
+  .benefit-card:hover { transform:translateY(-6px);border-color:rgba(162,89,255,0.25); }
+  .benefit-ico { width:64px;height:64px;border-radius:50%;background:rgba(162,89,255,0.12);border:1px solid rgba(162,89,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 18px; }
+  .benefit-title { font-size:1rem;font-weight:800;color:#fff;margin-bottom:8px; }
+  .benefit-desc { font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.6; }
+
+  /* Stats */
+  .stats-row { display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(162,89,255,0.1);border-radius:20px;overflow:hidden;border:1px solid rgba(162,89,255,0.15); }
+  .stat-box { padding:40px 24px;text-align:center;background:rgba(7,7,15,0.9); }
+  .stat-n { font-size:2.8rem;font-weight:900;background:linear-gradient(135deg,var(--a),var(--b));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.02em; }
+  .stat-l { font-size:0.8rem;color:rgba(255,255,255,0.4);margin-top:6px; }
+
+  /* CTA */
+  .cta-final { margin:0 40px 80px;border-radius:28px;padding:80px 60px;background:linear-gradient(135deg,rgba(162,89,255,0.15),rgba(79,142,247,0.08));border:1px solid rgba(162,89,255,0.25);text-align:center;position:relative;overflow:hidden; }
+  .cta-final::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(162,89,255,0.2),transparent); }
+  .cta-final-title { font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px;position:relative; }
+  .cta-final-sub { color:rgba(255,255,255,0.5);font-size:1rem;margin-bottom:36px;position:relative; }
+  .cta-final-btns { display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative; }
+
+  .page-footer { padding:40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px; }
+  .pf-logo { font-size:1.2rem;font-weight:900;color:#fff;text-decoration:none; }
+  .pf-logo span { color:var(--a); }
+  .pf-copy { font-size:0.78rem;color:rgba(255,255,255,0.3); }
+  .pf-back { font-size:0.82rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s; }
+  .pf-back:hover { color:#fff; }
+
+  .particles-layer { position:absolute;inset:0;pointer-events:none;overflow:hidden; }
+  .px { position:absolute;border-radius:50%;animation:pxFloat linear infinite;opacity:0; }
+  @keyframes pxFloat{0%{transform:translateY(110%);opacity:0;}8%{opacity:0.6;}92%{opacity:0.3;}100%{transform:translateY(-80px);opacity:0;}}
+  .reveal { opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(.22,1,.36,1),transform 0.7s cubic-bezier(.22,1,.36,1); }
+  .reveal.vis { opacity:1;transform:none; }
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:40px;}
+    .stats-row{grid-template-columns:repeat(2,1fr);}
+    .topnav{padding:14px 20px;}
+    .section{padding:60px 20px;}
+    .cta-final{margin:0 20px 60px;padding:50px 30px;}
+  }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="page-header">
-        <div>
-            <div class="icon-graduation">
-                <i class="fas fa-graduation-cap"></i>
-            </div>
-            <h1>Cursos de IA</h1>
-            <p>Programas de formación especializados para dominar las herramientas y modelos de IA más avanzados del mercado actual</p>
-            <div class="breadcrumb">
-                <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-                <span>/</span>
-                <span>Cursos de IA</span>
-            </div>
-        </div>
-    </header>
 
-    <!-- Courses Section -->
-    <section class="courses-section">
-        <div class="container">
-            <h2 class="section-title">Programas de Formación</h2>
-            <p class="section-subtitle">
-                Desde fundamentos hasta aplicaciones avanzadas, tenemos el curso perfecto para ti
-            </p>
+<nav class="topnav">
+  <a class="topnav-logo" href="index.html">Psyches<span>Ai</span></a>
+  <a class="topnav-back" href="index.html">← Volver al inicio</a>
+</nav>
 
-            <div class="courses-grid">
-                <!-- Curso 1: Fundamentos de IA -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1555255707-c07966088b7b?q=80&w=800');">
-                        <div class="course-badge"><i class="fas fa-star"></i> Más Popular</div>
-                        <div class="course-level">Principiante</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Fundamentos de Inteligencia Artificial</h3>
-                        <p class="course-description">
-                            Aprende los conceptos básicos de IA, Machine Learning y Deep Learning desde cero. Ideal para principiantes que quieren entrar al mundo de la IA.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>8 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>40 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> Introducción a la IA y ML</li>
-                                <li><i class="fas fa-check-circle"></i> Python para IA</li>
-                                <li><i class="fas fa-check-circle"></i> Algoritmos de Machine Learning</li>
-                                <li><i class="fas fa-check-circle"></i> Redes Neuronales básicas</li>
-                                <li><i class="fas fa-check-circle"></i> Proyecto final práctico</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$599<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particles-layer" id="heroParticles"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge reveal"><div class="hero-badge-dot"></div>12 clases · Formación intensiva</div>
+      <h1 class="hero-title reveal" style="transition-delay:.1s">
+        Domina la IA<br><em>de cero a experto</em>
+      </h1>
+      <p class="hero-sub reveal" style="transition-delay:.2s">
+        12 clases prácticas donde aprendes a usar IA para video, texto, automatización, negocios y mucho más. Sin experiencia previa necesaria.
+      </p>
+      <a class="hero-cta reveal" style="transition-delay:.3s" href="https://wa.me/51910006578?text=Quiero%20info%20sobre%20los%20cursos%20de%20IA" target="_blank">🎓 Quiero inscribirme</a>
+    </div>
+    <!-- Curriculum card -->
+    <div class="curriculum-card reveal" style="transition-delay:.4s">
+      <div class="cc-hdr">
+        <div class="cc-hdr-title">📚 Programa completo — 12 clases</div>
+        <div class="cc-hdr-sub">Acceso de por vida · Certificado verificable</div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-class"><div class="cc-num">01</div><div class="cc-info"><div class="cc-class-title">Introducción a la IA moderna</div><div class="cc-class-meta">Fundamentos · 90 min</div></div><div class="cc-icon">🧠</div></div>
+        <div class="cc-class"><div class="cc-num">02</div><div class="cc-info"><div class="cc-class-title">Prompt Engineering avanzado</div><div class="cc-class-meta">ChatGPT, Claude, Gemini · 90 min</div></div><div class="cc-icon">✍️</div></div>
+        <div class="cc-class"><div class="cc-num">03</div><div class="cc-info"><div class="cc-class-title">IA para crear videos</div><div class="cc-class-meta">Sora, Runway, Kling · 2h</div></div><div class="cc-icon">🎬</div></div>
+        <div class="cc-class"><div class="cc-num">04</div><div class="cc-info"><div class="cc-class-title">Generación de imágenes pro</div><div class="cc-class-meta">Midjourney, DALL-E, Flux · 2h</div></div><div class="cc-icon">🎨</div></div>
+        <div class="cc-class"><div class="cc-num">05</div><div class="cc-info"><div class="cc-class-title">Automatización con IA</div><div class="cc-class-meta">Make, Zapier, n8n · 2h</div></div><div class="cc-icon">⚡</div></div>
+        <div class="cc-class"><div class="cc-num">06</div><div class="cc-info"><div class="cc-class-title">IA para negocios y ventas</div><div class="cc-class-meta">CRM, leads, WhatsApp · 90 min</div></div><div class="cc-icon">💼</div></div>
+        <div class="cc-class"><div class="cc-num">07</div><div class="cc-info"><div class="cc-class-title">Creación de contenido con IA</div><div class="cc-class-meta">RRSS, blogs, guiones · 2h</div></div><div class="cc-icon">📱</div></div>
+        <div class="cc-class"><div class="cc-num">08</div><div class="cc-info"><div class="cc-class-title">Audio e IA: voz y música</div><div class="cc-class-meta">ElevenLabs, Suno, Udio · 90 min</div></div><div class="cc-icon">🎵</div></div>
+        <div class="cc-class"><div class="cc-num">09</div><div class="cc-info"><div class="cc-class-title">Bots y asistentes virtuales</div><div class="cc-class-meta">Sin código, desde cero · 2h</div></div><div class="cc-icon">🤖</div></div>
+        <div class="cc-class"><div class="cc-num">10</div><div class="cc-info"><div class="cc-class-title">IA para análisis de datos</div><div class="cc-class-meta">Excel, Sheets, Python · 2h</div></div><div class="cc-icon">📊</div></div>
+        <div class="cc-class"><div class="cc-num">11</div><div class="cc-info"><div class="cc-class-title">Ética, límites y futuro de la IA</div><div class="cc-class-meta">Tendencias 2025 · 90 min</div></div><div class="cc-icon">🔮</div></div>
+        <div class="cc-class"><div class="cc-num">12</div><div class="cc-info"><div class="cc-class-title">Proyecto final + mentoría</div><div class="cc-class-meta">Tu proyecto real · 3h</div></div><div class="cc-icon">🏆</div></div>
+      </div>
+      <div class="cc-footer">
+        <div class="cc-stat"><div class="cc-stat-n">12</div><div class="cc-stat-l">Clases</div></div>
+        <div class="cc-stat"><div class="cc-stat-n">+22h</div><div class="cc-stat-l">Contenido</div></div>
+        <div class="cc-stat"><div class="cc-stat-n">∞</div><div class="cc-stat-l">Acceso</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <!-- Curso 2: IA Generativa -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800');">
-                        <div class="course-badge" style="background: linear-gradient(135deg, #ffa502, #ff6348); color: white;"><i class="fas fa-fire"></i> Nuevo</div>
-                        <div class="course-level">Intermedio</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">IA Generativa Avanzada</h3>
-                        <p class="course-description">
-                            Domina GPT-4, DALL-E, Midjourney y otras herramientas de IA generativa. Crea contenido, imágenes y aplicaciones innovadoras.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>10 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>50 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado Pro</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> Prompt Engineering avanzado</li>
-                                <li><i class="fas fa-check-circle"></i> Fine-tuning de modelos</li>
-                                <li><i class="fas fa-check-circle"></i> Generación de imágenes con IA</li>
-                                <li><i class="fas fa-check-circle"></i> APIs de OpenAI y Claude</li>
-                                <li><i class="fas fa-check-circle"></i> Desarrollo de aplicaciones IA</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$999<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- STATS -->
+<section class="section" style="padding-top:0">
+  <div class="section-inner">
+    <div class="stats-row reveal">
+      <div class="stat-box"><div class="stat-n">12</div><div class="stat-l">Clases en vivo</div></div>
+      <div class="stat-box"><div class="stat-n">+22h</div><div class="stat-l">Contenido total</div></div>
+      <div class="stat-box"><div class="stat-n">2K+</div><div class="stat-l">Alumnos activos</div></div>
+      <div class="stat-box"><div class="stat-n">∞</div><div class="stat-l">Acceso de por vida</div></div>
+    </div>
+  </div>
+</section>
 
-                <!-- Curso 3: Deep Learning -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1527474305487-b87b222841cc?q=80&w=800');">
-                        <div class="course-level">Avanzado</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Deep Learning Profesional</h3>
-                        <p class="course-description">
-                            Conviértete en experto en Deep Learning. Redes neuronales complejas, Computer Vision, NLP y despliegue de modelos en producción.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>12 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>60 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado Expert</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> Arquitecturas de redes profundas</li>
-                                <li><i class="fas fa-check-circle"></i> CNN para Computer Vision</li>
-                                <li><i class="fas fa-check-circle"></i> RNN, LSTM y Transformers</li>
-                                <li><i class="fas fa-check-circle"></i> Transfer Learning</li>
-                                <li><i class="fas fa-check-circle"></i> MLOps y deployment</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$1,499<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- HERRAMIENTAS -->
+<section class="section integrations-bg">
+  <div class="section-inner">
+    <div class="section-hdr reveal">
+      <div class="section-badge">🛠️ Herramientas</div>
+      <h2 class="section-title">+30 herramientas de IA<br><em>que dominarás</em></h2>
+      <p class="section-sub">Desde las más populares hasta las más potentes. Todas las que el mercado laboral exige hoy.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card reveal"><div class="tool-icon">🤖</div><div class="tool-name">ChatGPT</div><div class="tool-cat">Texto & código</div></div>
+      <div class="tool-card reveal" style="transition-delay:.04s"><div class="tool-icon">🧠</div><div class="tool-name">Claude</div><div class="tool-cat">Análisis & escritura</div></div>
+      <div class="tool-card reveal" style="transition-delay:.08s"><div class="tool-icon">🎨</div><div class="tool-name">Midjourney</div><div class="tool-cat">Imágenes</div></div>
+      <div class="tool-card reveal" style="transition-delay:.12s"><div class="tool-icon">🎬</div><div class="tool-name">Runway</div><div class="tool-cat">Video IA</div></div>
+      <div class="tool-card reveal" style="transition-delay:.16s"><div class="tool-icon">🎵</div><div class="tool-name">Suno</div><div class="tool-cat">Música IA</div></div>
+      <div class="tool-card reveal" style="transition-delay:.20s"><div class="tool-icon">🎙️</div><div class="tool-name">ElevenLabs</div><div class="tool-cat">Voz sintética</div></div>
+      <div class="tool-card reveal" style="transition-delay:.24s"><div class="tool-icon">⚡</div><div class="tool-name">Make</div><div class="tool-cat">Automatización</div></div>
+      <div class="tool-card reveal" style="transition-delay:.28s"><div class="tool-icon">🔗</div><div class="tool-name">Zapier</div><div class="tool-cat">Integraciones</div></div>
+      <div class="tool-card reveal" style="transition-delay:.32s"><div class="tool-icon">🌊</div><div class="tool-name">Flux</div><div class="tool-cat">Imágenes pro</div></div>
+      <div class="tool-card reveal" style="transition-delay:.36s"><div class="tool-icon">🎯</div><div class="tool-name">Kling</div><div class="tool-cat">Video generativo</div></div>
+      <div class="tool-card reveal" style="transition-delay:.40s"><div class="tool-icon">📊</div><div class="tool-name">Perplexity</div><div class="tool-cat">Investigación IA</div></div>
+      <div class="tool-card reveal" style="transition-delay:.44s"><div class="tool-icon">🔮</div><div class="tool-name">Gemini</div><div class="tool-cat">Google AI</div></div>
+    </div>
+  </div>
+</section>
 
-                <!-- Curso 4: IA para Negocios -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800');">
-                        <div class="course-badge" style="background: #2ecc71; color: white;"><i class="fas fa-briefcase"></i> Empresarial</div>
-                        <div class="course-level">Todos los niveles</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">IA Aplicada a Negocios</h3>
-                        <p class="course-description">
-                            Estrategias prácticas para implementar IA en tu empresa. Casos de uso reales, ROI y transformación digital con inteligencia artificial.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>6 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>30 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado Business</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> Estrategia de IA empresarial</li>
-                                <li><i class="fas fa-check-circle"></i> Automatización de procesos</li>
-                                <li><i class="fas fa-check-circle"></i> Analytics predictivo</li>
-                                <li><i class="fas fa-check-circle"></i> Chatbots y asistentes virtuales</li>
-                                <li><i class="fas fa-check-circle"></i> Ética y gobernanza de IA</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$799<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- CLASES DETALLE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-hdr reveal">
+      <div class="section-badge">📖 Programa</div>
+      <h2 class="section-title">Lo que aprendes<br><em>clase a clase</em></h2>
+      <p class="section-sub">Cada clase es práctica, con ejemplos reales y proyectos aplicables desde el día uno.</p>
+    </div>
+    <div class="classes-grid">
+      <div class="class-card reveal">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 03</div><div class="class-title">IA para crear videos increíbles</div><div class="class-desc">Aprende a generar videos profesionales con texto, imágenes y voz usando las herramientas más avanzadas del mercado.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Genera videos desde texto con Sora y Runway</div><div class="class-topic">Anima imágenes fijas con Kling y Pika</div><div class="class-topic">Crea avatares que hablan con HeyGen</div><div class="class-topic">Edición asistida por IA con Descript</div></div></div>
+      </div>
+      <div class="class-card reveal" style="transition-delay:.08s">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 05</div><div class="class-title">Automatización sin código con IA</div><div class="class-desc">Conecta apps, automatiza tareas repetitivas y crea flujos de trabajo inteligentes sin escribir una sola línea de código.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Make, Zapier y n8n desde cero</div><div class="class-topic">Automatiza WhatsApp, email y CRM</div><div class="class-topic">Crea workflows con IA integrada</div><div class="class-topic">Casos reales de negocios peruanos</div></div></div>
+      </div>
+      <div class="class-card reveal" style="transition-delay:.16s">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 07</div><div class="class-title">Contenido para RRSS con IA</div><div class="class-desc">Genera un mes de contenido en horas. Captions, guiones de Reels, thumbnails y estrategia de publicación automatizada.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Estrategia de contenido con IA</div><div class="class-topic">Guiones virales para TikTok y Reels</div><div class="class-topic">Thumbnails con Midjourney y Canva IA</div><div class="class-topic">Calendario editorial automático</div></div></div>
+      </div>
+      <div class="class-card reveal" style="transition-delay:.24s">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 09</div><div class="class-title">Crea tu propio bot con IA</div><div class="class-desc">Construye un bot inteligente para tu negocio sin código. Aprende a entrenarlo, conectarlo y desplegarlo en WhatsApp.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Plataformas de bots sin código</div><div class="class-topic">Entrena la IA con tu información</div><div class="class-topic">Conecta a WhatsApp Business</div><div class="class-topic">Integra con Calendar y Sheets</div></div></div>
+      </div>
+      <div class="class-card reveal" style="transition-delay:.32s">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 08</div><div class="class-title">Audio e IA: voz y música</div><div class="class-desc">Clona voces, genera música original y crea audios profesionales para tus proyectos con inteligencia artificial.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Clona tu voz con ElevenLabs</div><div class="class-topic">Genera música original con Suno</div><div class="class-topic">Dobla videos a cualquier idioma</div><div class="class-topic">Podcasts generados por IA</div></div></div>
+      </div>
+      <div class="class-card reveal" style="transition-delay:.40s">
+        <div class="class-card-hdr"><div class="class-num-badge">Clase 12</div><div class="class-title">Proyecto final + mentoría</div><div class="class-desc">Aplica todo lo aprendido en un proyecto real para tu negocio o portafolio, con retroalimentación directa del instructor.</div></div>
+        <div class="class-card-body"><div class="class-topics"><div class="class-topic">Presentación de proyecto real</div><div class="class-topic">Feedback personalizado del instructor</div><div class="class-topic">Certificado verificable LinkedIn</div><div class="class-topic">Acceso a comunidad exclusiva</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <!-- Curso 5: Computer Vision -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?q=80&w=800');">
-                        <div class="course-level">Avanzado</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Computer Vision Especializado</h3>
-                        <p class="course-description">
-                            Especialízate en visión por computadora. Detección de objetos, segmentación, reconocimiento facial y aplicaciones prácticas.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>10 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>55 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado Expert</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> OpenCV y procesamiento de imágenes</li>
-                                <li><i class="fas fa-check-circle"></i> YOLO y detección de objetos</li>
-                                <li><i class="fas fa-check-circle"></i> Segmentación semántica</li>
-                                <li><i class="fas fa-check-circle"></i> GANs para generación de imágenes</li>
-                                <li><i class="fas fa-check-circle"></i> Aplicaciones en industria</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$1,299<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
+<!-- BENEFICIOS -->
+<section class="section integrations-bg">
+  <div class="section-inner">
+    <div class="section-hdr reveal" style="text-align:center;align-items:center;display:flex;flex-direction:column">
+      <div class="section-badge">⭐ Beneficios</div>
+      <h2 class="section-title" style="text-align:center">¿Por qué elegir<br><em>nuestros cursos?</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal"><div class="benefit-ico">🏆</div><div class="benefit-title">Certificado verificable</div><div class="benefit-desc">Al terminar recibes un certificado digital que puedes compartir en LinkedIn y tu portafolio profesional.</div></div>
+      <div class="benefit-card reveal" style="transition-delay:.08s"><div class="benefit-ico">🎥</div><div class="benefit-title">Clases en vivo + grabadas</div><div class="benefit-desc">Asiste en vivo o ve las grabaciones cuando quieras. Acceso permanente a todo el contenido.</div></div>
+      <div class="benefit-card reveal" style="transition-delay:.16s"><div class="benefit-ico">🛠️</div><div class="benefit-title">100% práctico</div><div class="benefit-desc">Cada clase termina con un ejercicio aplicable. Aprendes haciendo, no solo viendo.</div></div>
+      <div class="benefit-card reveal" style="transition-delay:.24s"><div class="benefit-ico">👥</div><div class="benefit-title">Comunidad activa</div><div class="benefit-desc">Grupo exclusivo con más de 2,000 alumnos para compartir proyectos, dudas y oportunidades.</div></div>
+      <div class="benefit-card reveal" style="transition-delay:.32s"><div class="benefit-ico">🔄</div><div class="benefit-title">Contenido actualizado</div><div class="benefit-desc">La IA cambia rápido. Actualizamos el contenido constantemente para que siempre estés al día.</div></div>
+      <div class="benefit-card reveal" style="transition-delay:.40s"><div class="benefit-ico">🤝</div><div class="benefit-title">Mentoría incluida</div><div class="benefit-desc">Sesión de mentoría grupal semanal para resolver dudas y revisar tus proyectos con el instructor.</div></div>
+    </div>
+  </div>
+</section>
 
-                <!-- Curso 6: NLP Avanzado -->
-                <div class="course-card">
-                    <div class="course-header" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800');">
-                        <div class="course-level">Avanzado</div>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">NLP y Procesamiento de Lenguaje</h3>
-                        <p class="course-description">
-                            Domina el procesamiento de lenguaje natural. Transformers, BERT, análisis de sentimientos y aplicaciones conversacionales.
-                        </p>
-                        <div class="course-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>10 semanas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-video"></i>
-                                <span>55 horas</span>
-                            </div>
-                            <div class="meta-item">
-                                <i class="fas fa-certificate"></i>
-                                <span>Certificado Expert</span>
-                            </div>
-                        </div>
-                        <div class="course-modules">
-                            <div class="modules-title">Lo que aprenderás:</div>
-                            <ul class="modules-list">
-                                <li><i class="fas fa-check-circle"></i> Arquitecturas Transformer</li>
-                                <li><i class="fas fa-check-circle"></i> BERT, GPT y modelos avanzados</li>
-                                <li><i class="fas fa-check-circle"></i> Análisis de sentimientos</li>
-                                <li><i class="fas fa-check-circle"></i> Chatbots inteligentes</li>
-                                <li><i class="fas fa-check-circle"></i> Traducción automática</li>
-                            </ul>
-                        </div>
-                        <div class="course-footer">
-                            <div class="course-price">$1,299<span></span></div>
-                            <button class="btn-enroll" onclick="window.location.href='index.html#cotizador'">
-                                Inscribirse
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CTA FINAL -->
+<div class="cta-final reveal">
+  <h2 class="cta-final-title">Empieza hoy.<br><em>La IA no espera.</em></h2>
+  <p class="cta-final-sub">Inscríbete ahora y accede al programa completo de 12 clases.</p>
+  <div class="cta-final-btns">
+    <a class="hero-cta" href="https://wa.me/51910006578?text=Quiero%20inscribirme%20al%20curso%20de%20IA" target="_blank">🎓 Inscribirme ahora</a>
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:14px;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);text-decoration:none;font-weight:600;font-size:1rem;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.4)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.7)'">← Ver todos los planes</a>
+  </div>
+</div>
 
-    <!-- Benefits Section -->
-    <section class="benefits-section">
-        <div class="container">
-            <h2 class="section-title">¿Por qué elegir nuestros cursos?</h2>
-            <p class="section-subtitle">
-                Formación de calidad con enfoque práctico y actualizado
-            </p>
+<footer class="page-footer">
+  <a class="pf-logo" href="index.html">Psyches<span>Ai</span></a>
+  <span class="pf-copy">© 2025 PsychesAi · Lima, Perú</span>
+  <a class="pf-back" href="index.html">← Inicio</a>
+</footer>
 
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3 class="benefit-title">Instructores Expertos</h3>
-                    <p class="benefit-description">
-                        Profesionales con experiencia real en IA trabajando en empresas líderes del sector tecnológico.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="benefit-title">Proyectos Prácticos</h3>
-                    <p class="benefit-description">
-                        Aprende haciendo con proyectos reales que podrás incluir en tu portafolio profesional.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="benefit-title">Comunidad Activa</h3>
-                    <p class="benefit-description">
-                        Únete a una red de estudiantes y profesionales apasionados por la inteligencia artificial.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <h3 class="benefit-title">Acceso de por Vida</h3>
-                    <p class="benefit-description">
-                        Contenido actualizado constantemente y acceso permanente a todo el material del curso.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">¿Listo para transformar tu carrera?</h2>
-            <p class="cta-description">
-                Agenda una asesoría gratuita y descubre cuál es el curso perfecto para ti
-            </p>
-            <button class="btn-cta" onclick="window.location.href='index.html#contacto'">
-                <i class="fas fa-phone"></i> Agendar Asesoría Gratuita
-            </button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="background: #1a1a1a; color: white; padding: 3rem 0 1rem;">
-        <div class="container" style="text-align: center;">
-            <p>&copy; 2026 Good Call Travel. Todos los derechos reservados.</p>
-            <div style="margin-top: 1rem;">
-                <a href="index.html" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Inicio</a>
-                <a href="index.html#servicios" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Servicios</a>
-                <a href="index.html#contacto" style="color: #0082c8; margin: 0 1rem; text-decoration: none;">Contacto</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    </script>
+<script>
+const pc=document.getElementById('heroParticles');
+const cols=['#a259ff','#4f8ef7','#a259ff55'];
+for(let i=0;i<24;i++){const p=document.createElement('div');p.className='px';const s=Math.random()*3+1.5;p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%3]};box-shadow:0 0 ${s*3}px ${cols[i%3]};animation-duration:${10+Math.random()*14}s;animation-delay:-${Math.random()*24}s;`;pc.appendChild(p);}
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*60);obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('vis'),i*80)),200);
+</script>
 </body>
 </html>
