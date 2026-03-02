@@ -6,8 +6,179 @@
   <title>PsychesAi – Inteligencia Artificial para Empresas</title>
   <meta name="description" content="Automatización con bots, cursos especializados y overlays para streaming. Soluciones de IA para empresas que quieren liderar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+  /* ══ EPIC PRICING OVERRIDE ══ */
+  #planes {
+    position: relative;
+    overflow: hidden;
+    background: #07070f !important;
+    padding: 100px 0 120px;
+  }
+  .planes-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.15;
+    pointer-events: none;
+    animation: pBlob 14s ease-in-out infinite alternate;
+  }
+  .planes-blob-1 { width:700px;height:700px;background:#4f8ef7;top:-200px;left:-150px;animation-delay:0s; }
+  .planes-blob-2 { width:550px;height:550px;background:#a259ff;bottom:-150px;right:-100px;animation-delay:-5s; }
+  .planes-blob-3 { width:400px;height:400px;background:#00ff88;top:35%;left:40%;animation-delay:-9s; }
+  @keyframes pBlob {
+    0%   { transform:translate(0,0) scale(1); }
+    50%  { transform:translate(50px,-70px) scale(1.15); }
+    100% { transform:translate(-40px,50px) scale(0.92); }
+  }
+  .planes-particles { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0; }
+  .pp { position:absolute;border-radius:50%;animation:ppFloat linear infinite;opacity:0; }
+  @keyframes ppFloat {
+    0%  { transform:translateY(110%);opacity:0; }
+    8%  { opacity:0.7; }
+    92% { opacity:0.4; }
+    100%{ transform:translateY(-120px);opacity:0; }
+  }
+  #planes .inner { position:relative;z-index:2; }
+  #planes .sec-hdr .eyebrow {
+    background:rgba(79,142,247,0.15);
+    border:1px solid rgba(79,142,247,0.3);
+    color:#4f8ef7;
+    display:inline-block;
+    padding:5px 16px;
+    border-radius:100px;
+    font-size:0.7rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  #planes .sec-hdr h2.sec-h2 {
+    color:#fff;
+    font-size:clamp(2rem,4.5vw,3.4rem);
+    font-family:'Inter',sans-serif;
+    font-weight:900;
+    letter-spacing:-0.02em;
+    line-height:1.1;
+    margin-bottom:14px;
+  }
+  #planes .sec-hdr h2.sec-h2 em {
+    font-style:normal;
+    background:linear-gradient(90deg,#4f8ef7,#a259ff,#00ff88);
+    background-size:200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    animation:gradShiftP 4s linear infinite;
+  }
+  @keyframes gradShiftP { 0%{background-position:0%} 100%{background-position:200%} }
+  #planes .sec-hdr .sec-p { color:rgba(255,255,255,0.45); }
+
+  .planes-grid-new {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:28px;
+    align-items:start;
+    margin-top:64px;
+  }
+  .pcard {
+    position:relative;
+    border-radius:24px;
+    padding:42px 36px 46px;
+    cursor:pointer;
+    overflow:hidden;
+    will-change:transform;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    transition:transform 0.5s cubic-bezier(.22,1,.36,1),box-shadow 0.3s ease;
+  }
+  .pcard::before {
+    content:'';position:absolute;inset:0;border-radius:24px;opacity:0;
+    transition:opacity 0.3s;
+    background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.065),transparent 40%);
+    pointer-events:none;z-index:1;
+  }
+  .pcard:hover::before { opacity:1; }
+  .pcard::after {
+    content:'';position:absolute;inset:-1px;border-radius:25px;
+    background:linear-gradient(135deg,var(--pa),var(--pb));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    opacity:0;transition:opacity 0.4s;pointer-events:none;
+  }
+  .pcard:hover::after { opacity:1; }
+  .pcard-starter { --pa:#4f8ef7;--pb:#00d4ff; }
+  .pcard-pro     { --pa:#a259ff;--pb:#4f8ef7;background:rgba(162,89,255,0.07);border-color:rgba(162,89,255,0.22);transform:scale(1.04); }
+  .pcard-elite   { --pa:#ffb347;--pb:#ff6b35; }
+
+  .pc-popular {
+    position:absolute;top:20px;right:20px;
+    background:linear-gradient(135deg,#a259ff,#4f8ef7);
+    color:#fff;font-size:0.62rem;font-weight:800;
+    letter-spacing:0.12em;text-transform:uppercase;
+    padding:5px 13px;border-radius:100px;
+    box-shadow:0 0 18px rgba(162,89,255,0.55);
+    animation:pcBadge 2.5s ease-in-out infinite;z-index:2;
+  }
+  @keyframes pcBadge {
+    0%,100%{ box-shadow:0 0 14px rgba(162,89,255,0.5); }
+    50%    { box-shadow:0 0 28px rgba(162,89,255,0.9),0 0 48px rgba(79,142,247,0.4); }
+  }
+  .pc-num {
+    width:54px;height:54px;border-radius:15px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;font-weight:900;flex-shrink:0;position:relative;z-index:2;
+  }
+  .pcard-starter .pc-num { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.45); }
+  .pcard-pro     .pc-num { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.45); }
+  .pcard-elite   .pc-num { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.45); }
+
+  .pc-eyebrow { font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:3px;position:relative;z-index:2; }
+  .pcard-starter .pc-eyebrow { color:#4f8ef7; }
+  .pcard-pro     .pc-eyebrow { color:#a259ff; }
+  .pcard-elite   .pc-eyebrow { color:#ffb347; }
+  .pc-title { font-size:1.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:28px;font-family:'Inter',sans-serif;position:relative;z-index:2; }
+  .pc-hdr { display:flex;align-items:center;gap:16px;margin-bottom:10px; }
+  .pc-price-block { display:flex;align-items:flex-end;gap:4px;margin-bottom:6px;position:relative;z-index:2; }
+  .pc-sym { font-size:1.3rem;font-weight:700;color:rgba(255,255,255,0.65);margin-bottom:8px;font-family:'Inter',sans-serif; }
+  .pc-num-price { font-size:4rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.04em;font-family:'Inter',sans-serif; }
+  .pc-period { font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:6px;position:relative;z-index:2; }
+  .pc-note   { font-size:0.76rem;color:rgba(255,255,255,0.32);margin-bottom:30px;position:relative;z-index:2; }
+  .pc-divider { height:1px;background:rgba(255,255,255,0.07);margin-bottom:26px;position:relative;z-index:2; }
+  .pc-feats { list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:34px;position:relative;z-index:2; }
+  .pc-feats li { display:flex;align-items:flex-start;gap:11px;font-size:0.88rem;color:rgba(255,255,255,0.72);line-height:1.45; }
+  .pc-feat-ico { width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:0.65rem;font-weight:800; }
+  .pcard-starter .pc-feat-ico { background:rgba(79,142,247,0.2);color:#4f8ef7; }
+  .pcard-pro     .pc-feat-ico { background:rgba(162,89,255,0.2);color:#a259ff; }
+  .pcard-elite   .pc-feat-ico { background:rgba(255,179,71,0.2);color:#ffb347; }
+  .pc-cta {
+    width:100%;padding:16px;border-radius:14px;border:none;
+    font-family:'Inter',sans-serif;font-size:0.94rem;font-weight:700;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    position:relative;overflow:hidden;z-index:2;
+    transition:transform 0.2s ease,box-shadow 0.3s ease;text-decoration:none;
+  }
+  .pc-cta svg { width:18px;height:18px;flex-shrink:0; }
+  .pc-cta::before { content:'';position:absolute;inset:0;background:rgba(255,255,255,0.13);transform:translateX(-100%);transition:transform 0.45s ease; }
+  .pc-cta:hover::before { transform:translateX(100%); }
+  .pc-cta:hover { transform:translateY(-2px); }
+  .pcard-starter .pc-cta { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.35); }
+  .pcard-starter .pc-cta:hover { box-shadow:0 14px 40px rgba(79,142,247,0.55); }
+  .pcard-pro     .pc-cta { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.4); }
+  .pcard-pro     .pc-cta:hover { box-shadow:0 14px 40px rgba(162,89,255,0.65); }
+  .pcard-elite   .pc-cta { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.35); }
+  .pcard-elite   .pc-cta:hover { box-shadow:0 14px 40px rgba(255,107,53,0.55); }
+  .pc-guarantee {
+    text-align:center;margin-top:52px;color:rgba(255,255,255,0.3);
+    font-size:0.8rem;display:flex;align-items:center;justify-content:center;
+    gap:10px;position:relative;z-index:2;flex-wrap:wrap;
+  }
+  .pc-guarantee span { display:flex;align-items:center;gap:6px; }
+  @media(max-width:720px){ .pcard-pro{ transform:none; } }
+  </style>
 </head>
 <body>
 
@@ -16,16 +187,16 @@
   <div class="nav-inner">
     <a class="nav-logo" onclick="goto('hero')">Psyches<span>Ai</span></a>
     <ul class="nav-links">
-      <li><a href="#servicios"  onclick="goto('servicios');return false;">Servicios</a></li>
-      <li><a href="#proceso"    onclick="goto('proceso');return false;">Proceso</a></li>
-      <li><a href="#cursos"     onclick="goto('cursos');return false;">Cursos</a></li>
-      <li><a href="#casos"      onclick="goto('casos');return false;">Casos</a></li>
-      <li><a href="#faq"        onclick="goto('faq');return false;">FAQ</a></li>
-      <li><a href="#planes"     onclick="goto('planes');return false;">Planes</a></li>
+      <li><a href="#servicios" onclick="goto('servicios');return false;">Servicios</a></li>
+      <li><a href="#proceso"   onclick="goto('proceso');return false;">Proceso</a></li>
+      <li><a href="#cursos"    onclick="goto('cursos');return false;">Cursos</a></li>
+      <li><a href="#casos"     onclick="goto('casos');return false;">Casos</a></li>
+      <li><a href="#faq"       onclick="goto('faq');return false;">FAQ</a></li>
+      <li><a href="#planes"    onclick="goto('planes');return false;">Planes</a></li>
     </ul>
     <div class="nav-actions">
       <a class="btn-outline-sm" href="#contacto" onclick="goto('contacto');return false;">Hablar con nosotros</a>
-      <a class="btn-filled-sm" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo →</a>
+      <a class="btn-filled-sm"  href="#contacto" onclick="goto('contacto');return false;">Solicitar demo →</a>
     </div>
     <button class="hamburger" id="ham" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -48,33 +219,17 @@
   <div class="hero-bg-grid"></div>
   <div class="hero-blob b1"></div>
   <div class="hero-blob b2"></div>
-
   <div class="hero-content">
-    <div class="hero-badge reveal">
-      <span class="badge-dot"></span>
-      Inteligencia Artificial · Lima, Perú
-    </div>
-
-    <h1 class="reveal" style="animation-delay:.1s">
-      Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em>
-    </h1>
-    <p class="hero-sub reveal" style="animation-delay:.2s">
-      Bots inteligentes, cursos especializados y overlays en tiempo real.<br>
-      Tecnología de vanguardia para empresas que quieren crecer.
-    </p>
-
+    <div class="hero-badge reveal"><span class="badge-dot"></span>Inteligencia Artificial · Lima, Perú</div>
+    <h1 class="reveal" style="animation-delay:.1s">Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em></h1>
+    <p class="hero-sub reveal" style="animation-delay:.2s">Bots inteligentes, cursos especializados y overlays en tiempo real.<br>Tecnología de vanguardia para empresas que quieren crecer.</p>
     <div class="hero-ctas reveal" style="animation-delay:.3s">
       <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo gratuita</a>
-      <a class="btn-ghost" href="#servicios" onclick="goto('servicios');return false;">Ver servicios ↓</a>
+      <a class="btn-ghost"   href="#servicios" onclick="goto('servicios');return false;">Ver servicios ↓</a>
     </div>
-
     <div class="hero-proof reveal" style="animation-delay:.4s">
       <div class="sp-avatars">
-        <span class="av a1">MR</span>
-        <span class="av a2">JL</span>
-        <span class="av a3">AP</span>
-        <span class="av a4">KV</span>
-        <span class="av a5">+</span>
+        <span class="av a1">MR</span><span class="av a2">JL</span><span class="av a3">AP</span><span class="av a4">KV</span><span class="av a5">+</span>
       </div>
       <div class="sp-text">
         <span class="sp-stars">★★★★★</span>
@@ -82,8 +237,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Dashboard mockup -->
   <div class="hero-mockup reveal" style="animation-delay:.5s">
     <div class="mockup-bar">
       <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
@@ -103,28 +256,13 @@
       </div>
       <div class="mockup-main">
         <div class="mockup-header-row">
-          <div>
-            <div class="mockup-title">Dashboard</div>
-            <div class="mockup-date">Febrero 2025</div>
-          </div>
+          <div><div class="mockup-title">Dashboard</div><div class="mockup-date">Febrero 2025</div></div>
           <div class="mockup-badge-live"><span class="live-dot"></span> 3 bots activos</div>
         </div>
         <div class="mockup-cards">
-          <div class="mc blue">
-            <div class="mc-label">Conversaciones hoy</div>
-            <div class="mc-val">1,284</div>
-            <div class="mc-delta">↑ 12%</div>
-          </div>
-          <div class="mc purple">
-            <div class="mc-label">Tasa de resolución</div>
-            <div class="mc-val">94.2%</div>
-            <div class="mc-delta">↑ 3%</div>
-          </div>
-          <div class="mc teal">
-            <div class="mc-label">Tiempo respuesta</div>
-            <div class="mc-val">0.8s</div>
-            <div class="mc-delta">↓ 0.2s</div>
-          </div>
+          <div class="mc blue"><div class="mc-label">Conversaciones hoy</div><div class="mc-val">1,284</div><div class="mc-delta">↑ 12%</div></div>
+          <div class="mc purple"><div class="mc-label">Tasa de resolución</div><div class="mc-val">94.2%</div><div class="mc-delta">↑ 3%</div></div>
+          <div class="mc teal"><div class="mc-label">Tiempo respuesta</div><div class="mc-val">0.8s</div><div class="mc-delta">↓ 0.2s</div></div>
         </div>
         <div class="mockup-chart">
           <div class="chart-label">Actividad — últimos 7 días</div>
@@ -161,7 +299,7 @@
 </div>
 
 
-<!-- SERVICIOS — justo después del hero -->
+<!-- SERVICIOS -->
 <section id="servicios">
   <div class="inner">
     <div class="sec-hdr center reveal">
@@ -169,7 +307,6 @@
       <h2 class="sec-h2">Todo lo que necesitas <em>en un solo lugar</em></h2>
       <p class="sec-p">Automatización, formación y herramientas visuales. Diseñadas para empresas que quieren resultados, no promesas.</p>
     </div>
-
     <div class="svc-grid">
       <div class="svc-card big reveal">
         <div class="svc-num">01</div>
@@ -259,32 +396,27 @@
       <h2 class="sec-h2">De la idea a la <em>producción</em></h2>
       <p class="sec-p">Metodología probada en más de 500 proyectos para llevar tu visión de IA al mundo real.</p>
     </div>
-
     <div class="proceso-grid">
       <div class="p-card reveal">
-        <div class="p-num">01</div>
-        <div class="p-ico">🔍</div>
+        <div class="p-num">01</div><div class="p-ico">🔍</div>
         <h4>Análisis & Diagnóstico</h4>
         <p>Estudiamos tu negocio, identificamos oportunidades y diseñamos la estrategia de IA más adecuada para tus metas.</p>
       </div>
       <div class="p-arr reveal">→</div>
       <div class="p-card reveal" style="transition-delay:.1s">
-        <div class="p-num">02</div>
-        <div class="p-ico">🏗️</div>
+        <div class="p-num">02</div><div class="p-ico">🏗️</div>
         <h4>Diseño de Arquitectura</h4>
         <p>Creamos el plano técnico: modelos, infraestructura cloud y flujos de datos optimizados para tu escenario.</p>
       </div>
       <div class="p-arr reveal">→</div>
       <div class="p-card reveal" style="transition-delay:.2s">
-        <div class="p-num">03</div>
-        <div class="p-ico">⚙️</div>
+        <div class="p-num">03</div><div class="p-ico">⚙️</div>
         <h4>Desarrollo & Pruebas</h4>
         <p>Implementación ágil con sprints cortos y pruebas continuas. Ajustes en tiempo real basados en tu feedback.</p>
       </div>
       <div class="p-arr reveal">→</div>
       <div class="p-card reveal" style="transition-delay:.3s">
-        <div class="p-num">04</div>
-        <div class="p-ico">🚀</div>
+        <div class="p-num">04</div><div class="p-ico">🚀</div>
         <h4>Deploy & Monitoreo</h4>
         <p>Lanzamiento a producción con monitoreo 24/7, optimización continua y soporte técnico permanente incluido.</p>
       </div>
@@ -310,15 +442,11 @@
         </ul>
         <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Quiero un bot para mi empresa</a>
       </div>
-
       <div class="fs-visual reveal" style="transition-delay:.15s">
         <div class="chat-demo">
           <div class="cd-hdr">
             <div class="cd-av">🤖</div>
-            <div>
-              <div class="cd-name">Asistente PsychesAi</div>
-              <div class="cd-status"><span class="live-dot"></span> En línea</div>
-            </div>
+            <div><div class="cd-name">Asistente PsychesAi</div><div class="cd-status"><span class="live-dot"></span> En línea</div></div>
           </div>
           <div class="cd-body">
             <div class="msg bot"><span>¡Hola! 👋 Soy el asistente virtual de tu empresa. ¿En qué puedo ayudarte hoy?</span></div>
@@ -347,17 +475,14 @@
         <div class="eyebrow reveal">Formación</div>
         <h2 class="sec-h2 reveal">Cursos de IA<br>que <em>transforman</em></h2>
         <p class="sec-p reveal">Desde fundamentos hasta implementación avanzada. Aprende a construir, integrar y escalar sistemas de IA con instructores expertos.</p>
-
         <div class="curso-list reveal" style="transition-delay:.1s">
           <div class="ci"><div class="ci-n">01</div><div class="ci-info"><div class="ci-t">Fundamentos de IA</div><div class="ci-m">8 semanas · Principiante</div></div><div class="ci-arr">→</div></div>
           <div class="ci"><div class="ci-n">02</div><div class="ci-info"><div class="ci-t">Automatización con Bots</div><div class="ci-m">10 semanas · Intermedio</div></div><div class="ci-arr">→</div></div>
           <div class="ci"><div class="ci-n">03</div><div class="ci-info"><div class="ci-t">IA para Creadores de Contenido</div><div class="ci-m">6 semanas · Todos los niveles</div></div><div class="ci-arr">→</div></div>
           <div class="ci"><div class="ci-n">04</div><div class="ci-info"><div class="ci-t">Integración Empresarial con IA</div><div class="ci-m">12 semanas · Avanzado</div></div><div class="ci-arr">→</div></div>
         </div>
-
         <a class="btn-primary reveal" style="transition-delay:.2s;margin-top:2.5rem;display:inline-flex" href="#contacto" onclick="goto('contacto');return false;">Ver todos los cursos →</a>
       </div>
-
       <div class="c-right reveal" style="transition-delay:.2s">
         <div class="cert-card">
           <div class="cc-top">
@@ -388,7 +513,6 @@
       <h2 class="sec-h2">Proyectos que <em>hablan</em> por sí solos</h2>
       <p class="sec-p">Empresas de distintas industrias ya lideran gracias a nuestra tecnología.</p>
     </div>
-
     <div class="casos-grid">
       <div class="caso reveal">
         <div class="caso-tag">E-commerce</div>
@@ -413,46 +537,6 @@
         <div class="caso-stat">98.5%</div>
         <div class="caso-title">Precisión en predicciones</div>
         <p>Plataforma educativa implementó sistema de recomendación con ML para personalizar el aprendizaje.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- TESTIMONIOS -->
-<section id="testimonios" class="bg-dark">
-  <div class="inner">
-    <div class="sec-hdr center reveal">
-      <div class="eyebrow light">Testimonios</div>
-      <h2 class="sec-h2 white">Lo que dicen <em>nuestros clientes</em></h2>
-    </div>
-
-    <div class="testi-grid">
-      <div class="testi reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Implementamos el bot de PsychesAi en nuestro e-commerce y en el primer mes ya veíamos resultados concretos. La atención al cliente mejoró radicalmente y el equipo humano pudo enfocarse en tareas de mayor valor."</p>
-        <div class="testi-who">
-          <div class="tav">MR</div>
-          <div><div class="t-name">Miguel Rodríguez</div><div class="t-role">CEO · NovaTech Solutions</div></div>
-        </div>
-      </div>
-
-      <div class="testi testi-hi reveal" style="transition-delay:.1s">
-        <div class="testi-stars">★★★★★</div>
-        <p>"El curso de automatización con bots fue exactamente lo que necesitaba. Contenido actualizado, instructores disponibles y proyectos reales que puedes usar en tu trabajo desde el día uno."</p>
-        <div class="testi-who">
-          <div class="tav teal">JL</div>
-          <div><div class="t-name">Jessica Larios</div><div class="t-role">Product Manager · DataCore</div></div>
-        </div>
-      </div>
-
-      <div class="testi reveal" style="transition-delay:.2s">
-        <div class="testi-stars">★★★★★</div>
-        <p>"Los overlays para mi canal cambiaron todo. Las alertas dinámicas y los analytics en tiempo real me dan una ventaja enorme frente a otros creadores. Súper recomendado."</p>
-        <div class="testi-who">
-          <div class="tav purple">AP</div>
-          <div><div class="t-name">Andrés Peña</div><div class="t-role">Streamer · 280K seguidores</div></div>
-        </div>
       </div>
     </div>
   </div>
@@ -496,85 +580,96 @@
 </section>
 
 
-<!-- PLANES / PRECIOS -->
-<section id="planes" class="bg-alt">
+<!-- PLANES — EPIC -->
+<section id="planes">
+  <div class="planes-blob planes-blob-1"></div>
+  <div class="planes-blob planes-blob-2"></div>
+  <div class="planes-blob planes-blob-3"></div>
+  <div class="planes-particles" id="planesParticles"></div>
   <div class="inner">
     <div class="sec-hdr center reveal">
-      <div class="eyebrow">Planes y Precios</div>
-      <h2 class="sec-h2">Nunca vuelvas a perder un<br>cliente de <em>WhatsApp</em></h2>
-      <p class="sec-p">Tu negocio respondiendo clientes 24/7. Elige el plan que mejor se adapta a tus metas.</p>
+      <div class="eyebrow">💡 Elige tu poder</div>
+      <h2 class="sec-h2">Planes que <em>transforman</em><br>tu negocio</h2>
+      <p class="sec-p">Sin contratos. Sin sorpresas. Solo resultados desde el primer día.</p>
     </div>
+    <div class="planes-grid-new">
 
-    <div class="planes-grid">
-
-      <!-- PLAN 3 -->
-      <div class="plan-card reveal">
-        <div class="plan-medal bronze">
-          <span class="medal-num">3</span>
+      <!-- STARTER -->
+      <div class="pcard pcard-starter reveal">
+        <div class="pc-hdr">
+          <div class="pc-num">3</div>
+          <div><div class="pc-eyebrow">Plan Presencia</div><div class="pc-title">Inteligente</div></div>
         </div>
-        <div class="plan-name">Plan Presencia<br>Inteligente</div>
-        <div class="plan-price">$199</div>
-        <ul class="plan-feats">
-          <li>Responde automáticamente los mensajes de WhatsApp</li>
-          <li>Atiende clientes las 24 horas</li>
-          <li>Guarda los datos de las personas interesadas</li>
-          <li>Envía información de tu negocio sin que tú intervengas</li>
+        <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">199</span></div>
+        <div class="pc-period">pago único</div>
+        <div class="pc-note">Todo lo que necesitas para arrancar</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-feats">
+          <li><span class="pc-feat-ico">✦</span>Responde automáticamente los mensajes de WhatsApp</li>
+          <li><span class="pc-feat-ico">✦</span>Atiende clientes las 24 horas, sin que tú intervengas</li>
+          <li><span class="pc-feat-ico">✦</span>Guarda los datos de personas interesadas</li>
+          <li><span class="pc-feat-ico">✦</span>Envía info de tu negocio en piloto automático</li>
         </ul>
-        <a class="plan-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Presencia%20Inteligente" target="_blank">
+        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Presencia%20Inteligente" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quiero este plan
+          🚀 Quiero este plan
         </a>
       </div>
 
-      <!-- PLAN 2 — DESTACADO -->
-      <div class="plan-card plan-featured reveal" style="transition-delay:.1s">
-        <div class="plan-badge-top">Más elegido</div>
-        <div class="plan-medal silver">
-          <span class="medal-num">2</span>
+      <!-- PRO -->
+      <div class="pcard pcard-pro reveal" style="transition-delay:.12s">
+        <div class="pc-popular">⭐ Más elegido</div>
+        <div class="pc-hdr">
+          <div class="pc-num">2</div>
+          <div><div class="pc-eyebrow">Plan Negocio</div><div class="pc-title">Digital</div></div>
         </div>
-        <div class="plan-name">Plan Negocio<br>Digital</div>
-        <div class="plan-price">$300</div>
-        <ul class="plan-feats">
-          <li>Incluye Plan Presencia Inteligente</li>
-          <li>Página web profesional para tu empresa</li>
-          <li>Botón directo a tu WhatsApp en la web</li>
-          <li>Tu negocio mejor posicionado en Google Maps</li>
+        <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">300</span></div>
+        <div class="pc-period">pago único</div>
+        <div class="pc-note">El salto que necesita tu negocio</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-feats">
+          <li><span class="pc-feat-ico">✦</span>Incluye Plan Presencia Inteligente completo</li>
+          <li><span class="pc-feat-ico">✦</span>Página web profesional para tu empresa</li>
+          <li><span class="pc-feat-ico">✦</span>Botón directo a tu WhatsApp en la web</li>
+          <li><span class="pc-feat-ico">✦</span>Tu negocio mejor posicionado en Google Maps</li>
         </ul>
-        <a class="plan-cta plan-cta-featured" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Negocio%20Digital" target="_blank">
+        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Negocio%20Digital" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quiero este plan
+          ⚡ Quiero este plan
         </a>
       </div>
 
-      <!-- PLAN 1 -->
-      <div class="plan-card plan-gold reveal" style="transition-delay:.2s">
-        <div class="plan-medal gold">
-          <span class="medal-num">1</span>
+      <!-- ELITE -->
+      <div class="pcard pcard-elite reveal" style="transition-delay:.24s">
+        <div class="pc-hdr">
+          <div class="pc-num">1</div>
+          <div><div class="pc-eyebrow">Plan Automatización</div><div class="pc-title">Total</div></div>
         </div>
-        <div class="plan-name">Plan Automatización<br>Total</div>
-        <div class="plan-price">$500</div>
-        <ul class="plan-feats">
-          <li>Incluye Plan Presencia Inteligente</li>
-          <li>Incluye Plan Negocio Digital</li>
-          <li>Publicaciones automáticas en Facebook e Instagram</li>
-          <li>Contenido automatizado para TikTok y Reels</li>
-          <li>Sistema completo para atraer nuevos clientes</li>
+        <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">500</span></div>
+        <div class="pc-period">pago único</div>
+        <div class="pc-note">La solución todo en uno más potente</div>
+        <div class="pc-divider"></div>
+        <ul class="pc-feats">
+          <li><span class="pc-feat-ico">✦</span>Incluye Plan Presencia Inteligente + Negocio Digital</li>
+          <li><span class="pc-feat-ico">✦</span>Publicaciones automáticas en Facebook e Instagram</li>
+          <li><span class="pc-feat-ico">✦</span>Contenido automatizado para TikTok y Reels</li>
+          <li><span class="pc-feat-ico">✦</span>Sistema completo para atraer nuevos clientes</li>
         </ul>
-        <a class="plan-cta plan-cta-gold" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank">
+        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quiero este plan
+          👑 Quiero este plan
         </a>
       </div>
 
     </div>
-
-    <!-- Bottom tagline -->
-    <div class="planes-footer reveal">
-      <p>Tu negocio <strong>trabajando en internet</strong> incluso cuando estás cerrado.</p>
-      <a class="planes-wsp-btn" href="https://wa.me/51910006578" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp: +51 910 006 578
-      </a>
+    <div class="pc-guarantee reveal">
+      <span>🔒 Sin contratos</span>
+      <span style="color:rgba(255,255,255,0.15)">·</span>
+      <span>⚡ Soporte incluido</span>
+      <span style="color:rgba(255,255,255,0.15)">·</span>
+      <span>✅ Resultados garantizados</span>
+      <span style="color:rgba(255,255,255,0.15)">·</span>
+      <span>💬 <a href="https://wa.me/51910006578" target="_blank" style="color:rgba(255,255,255,0.4);text-decoration:none;">+51 910 006 578</a></span>
     </div>
   </div>
 </section>
@@ -611,7 +706,6 @@
           <div class="co-item"><div class="co-ico">🕐</div><div><div class="co-k">Horario</div><span>Lun – Vie, 9:00 – 18:00</span></div></div>
         </div>
       </div>
-
       <div class="co-right reveal" style="transition-delay:.15s">
         <form id="contactForm" class="cf">
           <div class="cf-row">
@@ -669,7 +763,7 @@
       </div>
       <div class="ft-links">
         <div class="ftl-col"><div class="ftl-h">Servicios</div><a onclick="goto('servicios')">Bots Inteligentes</a><a onclick="goto('cursos')">Cursos de IA</a><a onclick="goto('servicios')">Overlays</a><a onclick="goto('servicios')">Consultoría</a></div>
-        <div class="ftl-col"><div class="ftl-h">Empresa</div><a onclick="goto('casos')">Casos de éxito</a><a onclick="goto('testimonios')">Testimonios</a><a onclick="goto('proceso')">Proceso</a><a onclick="goto('faq')">FAQ</a></div>
+        <div class="ftl-col"><div class="ftl-h">Empresa</div><a onclick="goto('casos')">Casos de éxito</a><a onclick="goto('proceso')">Proceso</a><a onclick="goto('faq')">FAQ</a></div>
         <div class="ftl-col"><div class="ftl-h">Contacto</div><a href="mailto:hola@psychesai.com">hola@psychesai.com</a><a href="https://wa.me/51910006578" target="_blank">WhatsApp</a><a onclick="goto('contacto')">Solicitar demo</a></div>
       </div>
     </div>
@@ -696,28 +790,53 @@
     </div>
     <div class="wsp-bubble-body">
       <div class="wsp-msg-wrap">
-        <div class="wsp-msg">
-          ¡Hola! 👋 ¿En qué podemos ayudarte hoy?<br>Escríbenos y te respondemos al instante.
-        </div>
+        <div class="wsp-msg">¡Hola! 👋 ¿En qué podemos ayudarte hoy?<br>Escríbenos y te respondemos al instante.</div>
         <div class="wsp-msg-time">hace un momento</div>
       </div>
     </div>
-    <a class="wsp-bubble-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios" target="_blank">
-      Iniciar conversación →
-    </a>
+    <a class="wsp-bubble-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios" target="_blank">Iniciar conversación →</a>
   </div>
-
-<button class="wsp-btn" id="wspBtn" onclick="toggleBubble()" aria-label="WhatsApp">
-  <svg class="ico-wsp" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-    <line x1="18" y1="6" x2="6" y2="18"/>
-    <line x1="6" y1="6" x2="18" y2="18"/>
-  </svg>
-</button>
+  <button class="wsp-btn" id="wspBtn" onclick="toggleBubble()" aria-label="WhatsApp">
+    <svg class="ico-wsp" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <span class="wsp-notif">1</span>
+  </button>
 </div>
 
 <script src="main.js"></script>
+<script>
+(function(){
+  // Partículas
+  const c = document.getElementById('planesParticles');
+  if(!c) return;
+  const cols = ['#4f8ef7','#a259ff','#00ff88','#ffb347','#ff6b35'];
+  for(let i=0;i<32;i++){
+    const p = document.createElement('div');
+    p.className = 'pp';
+    const s = Math.random()*4+2;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%5]};box-shadow:0 0 ${s*3}px ${cols[i%5]};animation-duration:${9+Math.random()*13}s;animation-delay:-${Math.random()*22}s;`;
+    c.appendChild(p);
+  }
+  // 3D Tilt + Flashlight
+  document.querySelectorAll('.pcard').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=e.clientX-r.left, y=e.clientY-r.top;
+      const rx=((y-r.height/2)/(r.height/2))*-7;
+      const ry=((x-r.width/2)/(r.width/2))*7;
+      const pro=card.classList.contains('pcard-pro');
+      card.style.transform=`${pro?'scale(1.04) ':''}perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+      card.style.setProperty('--mx',`${(x/r.width)*100}%`);
+      card.style.setProperty('--my',`${(y/r.height)*100}%`);
+    });
+    card.addEventListener('mouseleave',()=>{
+      const pro=card.classList.contains('pcard-pro');
+      card.style.transition='transform 0.55s cubic-bezier(.22,1,.36,1)';
+      card.style.transform=pro?'scale(1.04)':'';
+      setTimeout(()=>card.style.transition='',560);
+    });
+  });
+})();
+</script>
 </body>
 </html>
