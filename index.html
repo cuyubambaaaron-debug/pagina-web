@@ -9,175 +9,175 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-  /* ══ EPIC PRICING OVERRIDE ══ */
-  #planes {
+  /* ══ HERO INLINE PLANS ══ */
+  .hero-plans-inline {
+    margin-top: 52px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 860px;
+  }
+  .hpi-card {
     position: relative;
+    border-radius: 18px;
+    padding: 28px 24px 30px;
+    cursor: pointer;
     overflow: hidden;
-    background: #07070f !important;
-    padding: 100px 0 120px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease;
+    text-decoration: none;
+    display: block;
   }
-  .planes-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.15;
-    pointer-events: none;
-    animation: pBlob 14s ease-in-out infinite alternate;
+  .hpi-card::before {
+    content:'';position:absolute;inset:0;border-radius:18px;
+    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.06),transparent 40%);
+    opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:1;
   }
-  .planes-blob-1 { width:700px;height:700px;background:#4f8ef7;top:-200px;left:-150px;animation-delay:0s; }
-  .planes-blob-2 { width:550px;height:550px;background:#a259ff;bottom:-150px;right:-100px;animation-delay:-5s; }
-  .planes-blob-3 { width:400px;height:400px;background:#00ff88;top:35%;left:40%;animation-delay:-9s; }
-  @keyframes pBlob {
-    0%   { transform:translate(0,0) scale(1); }
-    50%  { transform:translate(50px,-70px) scale(1.15); }
-    100% { transform:translate(-40px,50px) scale(0.92); }
-  }
-  .planes-particles { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0; }
-  .pp { position:absolute;border-radius:50%;animation:ppFloat linear infinite;opacity:0; }
-  @keyframes ppFloat {
-    0%  { transform:translateY(110%);opacity:0; }
-    8%  { opacity:0.7; }
-    92% { opacity:0.4; }
-    100%{ transform:translateY(-120px);opacity:0; }
-  }
-  #planes .inner { position:relative;z-index:2; }
-  #planes .sec-hdr .eyebrow {
-    background:rgba(79,142,247,0.15);
-    border:1px solid rgba(79,142,247,0.3);
-    color:#4f8ef7;
-    display:inline-block;
-    padding:5px 16px;
-    border-radius:100px;
-    font-size:0.7rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    font-weight:700;
-    margin-bottom:16px;
-  }
-  #planes .sec-hdr h2.sec-h2 {
-    color:#fff;
-    font-size:clamp(2rem,4.5vw,3.4rem);
-    font-family:'Inter',sans-serif;
-    font-weight:900;
-    letter-spacing:-0.02em;
-    line-height:1.1;
-    margin-bottom:14px;
-  }
-  #planes .sec-hdr h2.sec-h2 em {
-    font-style:normal;
-    background:linear-gradient(90deg,#4f8ef7,#a259ff,#00ff88);
-    background-size:200%;
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    animation:gradShiftP 4s linear infinite;
-  }
-  @keyframes gradShiftP { 0%{background-position:0%} 100%{background-position:200%} }
-  #planes .sec-hdr .sec-p { color:rgba(255,255,255,0.45); }
-
-  .planes-grid-new {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:28px;
-    align-items:start;
-    margin-top:64px;
-  }
-  .pcard {
-    position:relative;
-    border-radius:24px;
-    padding:42px 36px 46px;
-    cursor:pointer;
-    overflow:hidden;
-    will-change:transform;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    transition:transform 0.5s cubic-bezier(.22,1,.36,1),box-shadow 0.3s ease;
-  }
-  .pcard::before {
-    content:'';position:absolute;inset:0;border-radius:24px;opacity:0;
-    transition:opacity 0.3s;
-    background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.065),transparent 40%);
-    pointer-events:none;z-index:1;
-  }
-  .pcard:hover::before { opacity:1; }
-  .pcard::after {
-    content:'';position:absolute;inset:-1px;border-radius:25px;
-    background:linear-gradient(135deg,var(--pa),var(--pb));
+  .hpi-card:hover::before { opacity:1; }
+  .hpi-card::after {
+    content:'';position:absolute;inset:-1px;border-radius:19px;
+    background:linear-gradient(135deg,var(--ca),var(--cb));
     -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
     -webkit-mask-composite:xor;mask-composite:exclude;
     opacity:0;transition:opacity 0.4s;pointer-events:none;
   }
-  .pcard:hover::after { opacity:1; }
-  .pcard-starter { --pa:#4f8ef7;--pb:#00d4ff; }
-  .pcard-pro     { --pa:#a259ff;--pb:#4f8ef7;background:rgba(162,89,255,0.07);border-color:rgba(162,89,255,0.22);transform:scale(1.04); }
-  .pcard-elite   { --pa:#ffb347;--pb:#ff6b35; }
+  .hpi-card:hover::after { opacity:1; }
+  .hpi-card:hover { transform: translateY(-6px); }
 
-  .pc-popular {
-    position:absolute;top:20px;right:20px;
+  .hpi-starter { --ca:#4f8ef7;--cb:#00d4ff; }
+  .hpi-pro     { --ca:#a259ff;--cb:#4f8ef7; background:rgba(162,89,255,0.08); border-color:rgba(162,89,255,0.25); transform:scale(1.04); }
+  .hpi-pro:hover { transform:scale(1.04) translateY(-6px); }
+  .hpi-elite   { --ca:#ffb347;--cb:#ff6b35; }
+
+  .hpi-popular {
+    position:absolute;top:12px;right:12px;
     background:linear-gradient(135deg,#a259ff,#4f8ef7);
-    color:#fff;font-size:0.62rem;font-weight:800;
+    color:#fff;font-size:0.55rem;font-weight:800;
     letter-spacing:0.12em;text-transform:uppercase;
-    padding:5px 13px;border-radius:100px;
-    box-shadow:0 0 18px rgba(162,89,255,0.55);
-    animation:pcBadge 2.5s ease-in-out infinite;z-index:2;
+    padding:4px 10px;border-radius:100px;
+    box-shadow:0 0 14px rgba(162,89,255,0.6);
+    animation:hpiBadge 2.5s ease-in-out infinite;z-index:2;
   }
-  @keyframes pcBadge {
-    0%,100%{ box-shadow:0 0 14px rgba(162,89,255,0.5); }
-    50%    { box-shadow:0 0 28px rgba(162,89,255,0.9),0 0 48px rgba(79,142,247,0.4); }
+  @keyframes hpiBadge {
+    0%,100%{box-shadow:0 0 12px rgba(162,89,255,0.5);}
+    50%{box-shadow:0 0 24px rgba(162,89,255,0.9),0 0 40px rgba(79,142,247,0.4);}
   }
-  .pc-num {
-    width:54px;height:54px;border-radius:15px;
+  .hpi-num {
+    width:42px;height:42px;border-radius:12px;
     display:flex;align-items:center;justify-content:center;
-    font-size:1.5rem;font-weight:900;flex-shrink:0;position:relative;z-index:2;
+    font-size:1.2rem;font-weight:900;margin-bottom:14px;
+    position:relative;z-index:2;flex-shrink:0;
   }
-  .pcard-starter .pc-num { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.45); }
-  .pcard-pro     .pc-num { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.45); }
-  .pcard-elite   .pc-num { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.45); }
+  .hpi-starter .hpi-num { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 6px 20px rgba(79,142,247,0.4); }
+  .hpi-pro     .hpi-num { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 6px 20px rgba(162,89,255,0.4); }
+  .hpi-elite   .hpi-num { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 6px 20px rgba(255,179,71,0.4); }
 
-  .pc-eyebrow { font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:3px;position:relative;z-index:2; }
-  .pcard-starter .pc-eyebrow { color:#4f8ef7; }
-  .pcard-pro     .pc-eyebrow { color:#a259ff; }
-  .pcard-elite   .pc-eyebrow { color:#ffb347; }
-  .pc-title { font-size:1.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:28px;font-family:'Inter',sans-serif;position:relative;z-index:2; }
-  .pc-hdr { display:flex;align-items:center;gap:16px;margin-bottom:10px; }
-  .pc-price-block { display:flex;align-items:flex-end;gap:4px;margin-bottom:6px;position:relative;z-index:2; }
-  .pc-sym { font-size:1.3rem;font-weight:700;color:rgba(255,255,255,0.65);margin-bottom:8px;font-family:'Inter',sans-serif; }
-  .pc-num-price { font-size:4rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.04em;font-family:'Inter',sans-serif; }
-  .pc-period { font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:6px;position:relative;z-index:2; }
-  .pc-note   { font-size:0.76rem;color:rgba(255,255,255,0.32);margin-bottom:30px;position:relative;z-index:2; }
-  .pc-divider { height:1px;background:rgba(255,255,255,0.07);margin-bottom:26px;position:relative;z-index:2; }
-  .pc-feats { list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:34px;position:relative;z-index:2; }
-  .pc-feats li { display:flex;align-items:flex-start;gap:11px;font-size:0.88rem;color:rgba(255,255,255,0.72);line-height:1.45; }
-  .pc-feat-ico { width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:0.65rem;font-weight:800; }
-  .pcard-starter .pc-feat-ico { background:rgba(79,142,247,0.2);color:#4f8ef7; }
-  .pcard-pro     .pc-feat-ico { background:rgba(162,89,255,0.2);color:#a259ff; }
-  .pcard-elite   .pc-feat-ico { background:rgba(255,179,71,0.2);color:#ffb347; }
-  .pc-cta {
-    width:100%;padding:16px;border-radius:14px;border:none;
-    font-family:'Inter',sans-serif;font-size:0.94rem;font-weight:700;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;gap:10px;
+  .hpi-label { font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:2px;position:relative;z-index:2; }
+  .hpi-starter .hpi-label { color:#4f8ef7; }
+  .hpi-pro     .hpi-label { color:#a259ff; }
+  .hpi-elite   .hpi-label { color:#ffb347; }
+
+  .hpi-name { font-size:1rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:16px;font-family:'Inter',sans-serif;position:relative;z-index:2; }
+
+  .hpi-price-row { display:flex;align-items:flex-end;gap:3px;margin-bottom:14px;position:relative;z-index:2; }
+  .hpi-sym  { font-size:1rem;font-weight:700;color:rgba(255,255,255,0.6);margin-bottom:4px;font-family:'Inter',sans-serif; }
+  .hpi-price{ font-size:2.4rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.03em;font-family:'Inter',sans-serif; }
+
+  .hpi-divider { height:1px;background:rgba(255,255,255,0.07);margin-bottom:14px;position:relative;z-index:2; }
+
+  .hpi-feats { list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;position:relative;z-index:2; }
+  .hpi-feats li { display:flex;align-items:flex-start;gap:8px;font-size:0.78rem;color:rgba(255,255,255,0.65);line-height:1.4; }
+  .hpi-feat-dot { width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:0.55rem;font-weight:900; }
+  .hpi-starter .hpi-feat-dot { background:rgba(79,142,247,0.2);color:#4f8ef7; }
+  .hpi-pro     .hpi-feat-dot { background:rgba(162,89,255,0.2);color:#a259ff; }
+  .hpi-elite   .hpi-feat-dot { background:rgba(255,179,71,0.2);color:#ffb347; }
+
+  .hpi-btn {
+    width:100%;padding:13px;border-radius:11px;border:none;
+    font-family:'Inter',sans-serif;font-size:0.82rem;font-weight:700;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;
     position:relative;overflow:hidden;z-index:2;
-    transition:transform 0.2s ease,box-shadow 0.3s ease;text-decoration:none;
+    transition:transform 0.2s,box-shadow 0.3s;
   }
-  .pc-cta svg { width:18px;height:18px;flex-shrink:0; }
-  .pc-cta::before { content:'';position:absolute;inset:0;background:rgba(255,255,255,0.13);transform:translateX(-100%);transition:transform 0.45s ease; }
-  .pc-cta:hover::before { transform:translateX(100%); }
-  .pc-cta:hover { transform:translateY(-2px); }
-  .pcard-starter .pc-cta { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.35); }
-  .pcard-starter .pc-cta:hover { box-shadow:0 14px 40px rgba(79,142,247,0.55); }
-  .pcard-pro     .pc-cta { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.4); }
-  .pcard-pro     .pc-cta:hover { box-shadow:0 14px 40px rgba(162,89,255,0.65); }
-  .pcard-elite   .pc-cta { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.35); }
-  .pcard-elite   .pc-cta:hover { box-shadow:0 14px 40px rgba(255,107,53,0.55); }
-  .pc-guarantee {
-    text-align:center;margin-top:52px;color:rgba(255,255,255,0.3);
-    font-size:0.8rem;display:flex;align-items:center;justify-content:center;
-    gap:10px;position:relative;z-index:2;flex-wrap:wrap;
-  }
-  .pc-guarantee span { display:flex;align-items:center;gap:6px; }
-  @media(max-width:720px){ .pcard-pro{ transform:none; } }
+  .hpi-btn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.13);transform:translateX(-100%);transition:transform 0.4s ease;}
+  .hpi-btn:hover::before{transform:translateX(100%);}
+  .hpi-starter .hpi-btn { background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 6px 20px rgba(79,142,247,0.35); }
+  .hpi-pro     .hpi-btn { background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 6px 20px rgba(162,89,255,0.4); }
+  .hpi-elite   .hpi-btn { background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 6px 20px rgba(255,179,71,0.35); }
+
+  /* Particles inside hero */
+  .hero-plan-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+  .hpp{position:absolute;border-radius:50%;animation:hppFloat linear infinite;opacity:0;}
+  @keyframes hppFloat{0%{transform:translateY(110%);opacity:0;}8%{opacity:0.6;}92%{opacity:0.3;}100%{transform:translateY(-100px);opacity:0;}}
+
+  /* ══ EPIC PRICING SECTION (bottom) ══ */
+  #planes{position:relative;overflow:hidden;background:#07070f !important;padding:100px 0 120px;}
+  .planes-blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.15;pointer-events:none;animation:pBlob 14s ease-in-out infinite alternate;}
+  .planes-blob-1{width:700px;height:700px;background:#4f8ef7;top:-200px;left:-150px;animation-delay:0s;}
+  .planes-blob-2{width:550px;height:550px;background:#a259ff;bottom:-150px;right:-100px;animation-delay:-5s;}
+  .planes-blob-3{width:400px;height:400px;background:#00ff88;top:35%;left:40%;animation-delay:-9s;}
+  @keyframes pBlob{0%{transform:translate(0,0) scale(1);}50%{transform:translate(50px,-70px) scale(1.15);}100%{transform:translate(-40px,50px) scale(0.92);}}
+  .planes-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+  .pp{position:absolute;border-radius:50%;animation:ppFloat linear infinite;opacity:0;}
+  @keyframes ppFloat{0%{transform:translateY(110%);opacity:0;}8%{opacity:0.7;}92%{opacity:0.4;}100%{transform:translateY(-120px);opacity:0;}}
+  #planes .inner{position:relative;z-index:2;}
+  #planes .sec-hdr .eyebrow{background:rgba(79,142,247,0.15);border:1px solid rgba(79,142,247,0.3);color:#4f8ef7;display:inline-block;padding:5px 16px;border-radius:100px;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;margin-bottom:16px;}
+  #planes .sec-hdr h2.sec-h2{color:#fff;font-size:clamp(2rem,4.5vw,3.4rem);font-family:'Inter',sans-serif;font-weight:900;letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;}
+  #planes .sec-hdr h2.sec-h2 em{font-style:normal;background:linear-gradient(90deg,#4f8ef7,#a259ff,#00ff88);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShiftP 4s linear infinite;}
+  @keyframes gradShiftP{0%{background-position:0%}100%{background-position:200%}}
+  #planes .sec-hdr .sec-p{color:rgba(255,255,255,0.45);}
+  .planes-grid-new{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;align-items:start;margin-top:64px;}
+  .pcard{position:relative;border-radius:24px;padding:42px 36px 46px;cursor:pointer;overflow:hidden;will-change:transform;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);transition:transform 0.5s cubic-bezier(.22,1,.36,1),box-shadow 0.3s ease;}
+  .pcard::before{content:'';position:absolute;inset:0;border-radius:24px;opacity:0;transition:opacity 0.3s;background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,0.065),transparent 40%);pointer-events:none;z-index:1;}
+  .pcard:hover::before{opacity:1;}
+  .pcard::after{content:'';position:absolute;inset:-1px;border-radius:25px;background:linear-gradient(135deg,var(--pa),var(--pb));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.4s;pointer-events:none;}
+  .pcard:hover::after{opacity:1;}
+  .pcard-starter{--pa:#4f8ef7;--pb:#00d4ff;}
+  .pcard-pro{--pa:#a259ff;--pb:#4f8ef7;background:rgba(162,89,255,0.07);border-color:rgba(162,89,255,0.22);transform:scale(1.04);}
+  .pcard-elite{--pa:#ffb347;--pb:#ff6b35;}
+  .pc-popular{position:absolute;top:20px;right:20px;background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;box-shadow:0 0 18px rgba(162,89,255,0.55);animation:pcBadge 2.5s ease-in-out infinite;z-index:2;}
+  @keyframes pcBadge{0%,100%{box-shadow:0 0 14px rgba(162,89,255,0.5);}50%{box-shadow:0 0 28px rgba(162,89,255,0.9),0 0 48px rgba(79,142,247,0.4);}}
+  .pc-num{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;flex-shrink:0;position:relative;z-index:2;}
+  .pcard-starter .pc-num{background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.45);}
+  .pcard-pro     .pc-num{background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.45);}
+  .pcard-elite   .pc-num{background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.45);}
+  .pc-eyebrow{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:3px;position:relative;z-index:2;}
+  .pcard-starter .pc-eyebrow{color:#4f8ef7;}
+  .pcard-pro     .pc-eyebrow{color:#a259ff;}
+  .pcard-elite   .pc-eyebrow{color:#ffb347;}
+  .pc-title{font-size:1.4rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:28px;font-family:'Inter',sans-serif;position:relative;z-index:2;}
+  .pc-hdr{display:flex;align-items:center;gap:16px;margin-bottom:10px;}
+  .pc-price-block{display:flex;align-items:flex-end;gap:4px;margin-bottom:6px;position:relative;z-index:2;}
+  .pc-sym{font-size:1.3rem;font-weight:700;color:rgba(255,255,255,0.65);margin-bottom:8px;font-family:'Inter',sans-serif;}
+  .pc-num-price{font-size:4rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-0.04em;font-family:'Inter',sans-serif;}
+  .pc-period{font-size:0.82rem;color:rgba(255,255,255,0.38);margin-bottom:6px;position:relative;z-index:2;}
+  .pc-note{font-size:0.76rem;color:rgba(255,255,255,0.32);margin-bottom:30px;position:relative;z-index:2;}
+  .pc-divider{height:1px;background:rgba(255,255,255,0.07);margin-bottom:26px;position:relative;z-index:2;}
+  .pc-feats{list-style:none;display:flex;flex-direction:column;gap:13px;margin-bottom:34px;position:relative;z-index:2;}
+  .pc-feats li{display:flex;align-items:flex-start;gap:11px;font-size:0.88rem;color:rgba(255,255,255,0.72);line-height:1.45;}
+  .pc-feat-ico{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:0.65rem;font-weight:800;}
+  .pcard-starter .pc-feat-ico{background:rgba(79,142,247,0.2);color:#4f8ef7;}
+  .pcard-pro     .pc-feat-ico{background:rgba(162,89,255,0.2);color:#a259ff;}
+  .pcard-elite   .pc-feat-ico{background:rgba(255,179,71,0.2);color:#ffb347;}
+  .pc-cta{width:100%;padding:16px;border-radius:14px;border:none;font-family:'Inter',sans-serif;font-size:0.94rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;overflow:hidden;z-index:2;transition:transform 0.2s ease,box-shadow 0.3s ease;text-decoration:none;}
+  .pc-cta svg{width:18px;height:18px;flex-shrink:0;}
+  .pc-cta::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,0.13);transform:translateX(-100%);transition:transform 0.45s ease;}
+  .pc-cta:hover::before{transform:translateX(100%);}
+  .pc-cta:hover{transform:translateY(-2px);}
+  .pcard-starter .pc-cta{background:linear-gradient(135deg,#4f8ef7,#00d4ff);color:#fff;box-shadow:0 8px 26px rgba(79,142,247,0.35);}
+  .pcard-starter .pc-cta:hover{box-shadow:0 14px 40px rgba(79,142,247,0.55);}
+  .pcard-pro     .pc-cta{background:linear-gradient(135deg,#a259ff,#4f8ef7);color:#fff;box-shadow:0 8px 26px rgba(162,89,255,0.4);}
+  .pcard-pro     .pc-cta:hover{box-shadow:0 14px 40px rgba(162,89,255,0.65);}
+  .pcard-elite   .pc-cta{background:linear-gradient(135deg,#ffb347,#ff6b35);color:#fff;box-shadow:0 8px 26px rgba(255,179,71,0.35);}
+  .pcard-elite   .pc-cta:hover{box-shadow:0 14px 40px rgba(255,107,53,0.55);}
+  .pc-guarantee{text-align:center;margin-top:52px;color:rgba(255,255,255,0.3);font-size:0.8rem;display:flex;align-items:center;justify-content:center;gap:10px;position:relative;z-index:2;flex-wrap:wrap;}
+  .pc-guarantee span{display:flex;align-items:center;gap:6px;}
+  @media(max-width:860px){.hero-plans-inline{grid-template-columns:1fr;}.hpi-pro{transform:none;}}
+  @media(max-width:720px){.pcard-pro{transform:none;}}
   </style>
 </head>
 <body>
@@ -219,15 +219,76 @@
   <div class="hero-bg-grid"></div>
   <div class="hero-blob b1"></div>
   <div class="hero-blob b2"></div>
+  <div class="hero-plan-particles" id="heroPlanParticles"></div>
+
   <div class="hero-content">
     <div class="hero-badge reveal"><span class="badge-dot"></span>Inteligencia Artificial · Lima, Perú</div>
-    <h1 class="reveal" style="animation-delay:.1s">Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em></h1>
-    <p class="hero-sub reveal" style="animation-delay:.2s">Bots inteligentes, cursos especializados y overlays en tiempo real.<br>Tecnología de vanguardia para empresas que quieren crecer.</p>
+
+    <h1 class="reveal" style="animation-delay:.1s">
+      Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em>
+    </h1>
+    <p class="hero-sub reveal" style="animation-delay:.2s">
+      Bots inteligentes, cursos especializados y overlays en tiempo real.<br>
+      Tecnología de vanguardia para empresas que quieren crecer.
+    </p>
+
     <div class="hero-ctas reveal" style="animation-delay:.3s">
-      <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo gratuita</a>
-      <a class="btn-ghost"   href="#servicios" onclick="goto('servicios');return false;">Ver servicios ↓</a>
+      <a class="btn-ghost" href="#servicios" onclick="goto('servicios');return false;">Ver servicios ↓</a>
     </div>
-    <div class="hero-proof reveal" style="animation-delay:.4s">
+
+    <!-- ══ PLANES INLINE EN EL HERO ══ -->
+    <div class="hero-plans-inline reveal" style="animation-delay:.4s">
+
+      <!-- STARTER -->
+      <a class="hpi-card hpi-starter" href="bots-automatizados.html">
+        <div class="hpi-num">3</div>
+        <div class="hpi-label">Plan Presencia</div>
+        <div class="hpi-name">Inteligente</div>
+        <div class="hpi-price-row"><span class="hpi-sym">$</span><span class="hpi-price">199</span></div>
+        <div class="hpi-divider"></div>
+        <ul class="hpi-feats">
+          <li><span class="hpi-feat-dot">✦</span>Bot WhatsApp 24/7</li>
+          <li><span class="hpi-feat-dot">✦</span>Captura datos automático</li>
+          <li><span class="hpi-feat-dot">✦</span>Respuestas sin intervención</li>
+        </ul>
+        <div class="hpi-btn">🚀 Ver detalles →</div>
+      </a>
+
+      <!-- PRO -->
+      <a class="hpi-card hpi-pro" href="bots-automatizados.html">
+        <div class="hpi-popular">⭐ Más elegido</div>
+        <div class="hpi-num">2</div>
+        <div class="hpi-label">Plan Negocio</div>
+        <div class="hpi-name">Digital</div>
+        <div class="hpi-price-row"><span class="hpi-sym">$</span><span class="hpi-price">300</span></div>
+        <div class="hpi-divider"></div>
+        <ul class="hpi-feats">
+          <li><span class="hpi-feat-dot">✦</span>Todo el Plan Presencia</li>
+          <li><span class="hpi-feat-dot">✦</span>Web profesional</li>
+          <li><span class="hpi-feat-dot">✦</span>Posicionamiento Google Maps</li>
+        </ul>
+        <div class="hpi-btn">⚡ Ver detalles →</div>
+      </a>
+
+      <!-- ELITE -->
+      <a class="hpi-card hpi-elite" href="bots-automatizados.html">
+        <div class="hpi-num">1</div>
+        <div class="hpi-label">Plan Automatización</div>
+        <div class="hpi-name">Total</div>
+        <div class="hpi-price-row"><span class="hpi-sym">$</span><span class="hpi-price">500</span></div>
+        <div class="hpi-divider"></div>
+        <ul class="hpi-feats">
+          <li><span class="hpi-feat-dot">✦</span>Todo incluido</li>
+          <li><span class="hpi-feat-dot">✦</span>Redes sociales automáticas</li>
+          <li><span class="hpi-feat-dot">✦</span>TikTok, Reels, Facebook</li>
+        </ul>
+        <div class="hpi-btn">👑 Ver detalles →</div>
+      </a>
+
+    </div>
+    <!-- FIN PLANES INLINE -->
+
+    <div class="hero-proof reveal" style="animation-delay:.55s">
       <div class="sp-avatars">
         <span class="av a1">MR</span><span class="av a2">JL</span><span class="av a3">AP</span><span class="av a4">KV</span><span class="av a5">+</span>
       </div>
@@ -237,7 +298,9 @@
       </div>
     </div>
   </div>
-  <div class="hero-mockup reveal" style="animation-delay:.5s">
+
+  <!-- Dashboard mockup -->
+  <div class="hero-mockup reveal" style="animation-delay:.6s">
     <div class="mockup-bar">
       <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
       <span class="mockup-url">app.psychesai.com/dashboard</span>
@@ -319,7 +382,7 @@
           <li>Aprendizaje y mejora continua</li>
           <li>Panel de control en tiempo real</li>
         </ul>
-        <a class="svc-lnk" href="#contacto" onclick="goto('contacto');return false;">Más información <span>→</span></a>
+        <a class="svc-lnk" href="bots-automatizados.html">Más información <span>→</span></a>
       </div>
       <div class="svc-card reveal" style="transition-delay:.08s">
         <div class="svc-num">02</div>
@@ -331,7 +394,7 @@
           <li>Certificación verificable</li>
           <li>Proyectos reales desde día uno</li>
         </ul>
-        <a class="svc-lnk" href="#cursos" onclick="goto('cursos');return false;">Ver cursos <span>→</span></a>
+        <a class="svc-lnk" href="cursos-ia.html">Ver cursos <span>→</span></a>
       </div>
       <div class="svc-card reveal" style="transition-delay:.16s">
         <div class="svc-num">03</div>
@@ -343,7 +406,7 @@
           <li>Alertas con IA generativa</li>
           <li>Sin código, plug-and-play</li>
         </ul>
-        <a class="svc-lnk" href="#contacto" onclick="goto('contacto');return false;">Explorar <span>→</span></a>
+        <a class="svc-lnk" href="overlays-streaming.html">Explorar <span>→</span></a>
       </div>
       <div class="svc-card reveal" style="transition-delay:.24s">
         <div class="svc-num">04</div>
@@ -397,29 +460,13 @@
       <p class="sec-p">Metodología probada en más de 500 proyectos para llevar tu visión de IA al mundo real.</p>
     </div>
     <div class="proceso-grid">
-      <div class="p-card reveal">
-        <div class="p-num">01</div><div class="p-ico">🔍</div>
-        <h4>Análisis & Diagnóstico</h4>
-        <p>Estudiamos tu negocio, identificamos oportunidades y diseñamos la estrategia de IA más adecuada para tus metas.</p>
-      </div>
+      <div class="p-card reveal"><div class="p-num">01</div><div class="p-ico">🔍</div><h4>Análisis & Diagnóstico</h4><p>Estudiamos tu negocio, identificamos oportunidades y diseñamos la estrategia de IA más adecuada para tus metas.</p></div>
       <div class="p-arr reveal">→</div>
-      <div class="p-card reveal" style="transition-delay:.1s">
-        <div class="p-num">02</div><div class="p-ico">🏗️</div>
-        <h4>Diseño de Arquitectura</h4>
-        <p>Creamos el plano técnico: modelos, infraestructura cloud y flujos de datos optimizados para tu escenario.</p>
-      </div>
+      <div class="p-card reveal" style="transition-delay:.1s"><div class="p-num">02</div><div class="p-ico">🏗️</div><h4>Diseño de Arquitectura</h4><p>Creamos el plano técnico: modelos, infraestructura cloud y flujos de datos optimizados para tu escenario.</p></div>
       <div class="p-arr reveal">→</div>
-      <div class="p-card reveal" style="transition-delay:.2s">
-        <div class="p-num">03</div><div class="p-ico">⚙️</div>
-        <h4>Desarrollo & Pruebas</h4>
-        <p>Implementación ágil con sprints cortos y pruebas continuas. Ajustes en tiempo real basados en tu feedback.</p>
-      </div>
+      <div class="p-card reveal" style="transition-delay:.2s"><div class="p-num">03</div><div class="p-ico">⚙️</div><h4>Desarrollo & Pruebas</h4><p>Implementación ágil con sprints cortos y pruebas continuas. Ajustes en tiempo real basados en tu feedback.</p></div>
       <div class="p-arr reveal">→</div>
-      <div class="p-card reveal" style="transition-delay:.3s">
-        <div class="p-num">04</div><div class="p-ico">🚀</div>
-        <h4>Deploy & Monitoreo</h4>
-        <p>Lanzamiento a producción con monitoreo 24/7, optimización continua y soporte técnico permanente incluido.</p>
-      </div>
+      <div class="p-card reveal" style="transition-delay:.3s"><div class="p-num">04</div><div class="p-ico">🚀</div><h4>Deploy & Monitoreo</h4><p>Lanzamiento a producción con monitoreo 24/7, optimización continua y soporte técnico permanente incluido.</p></div>
     </div>
   </div>
 </section>
@@ -440,7 +487,7 @@
           <li><span class="ck">✓</span> Analytics y métricas detalladas</li>
           <li><span class="ck">✓</span> Personalización completa de tono y marca</li>
         </ul>
-        <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Quiero un bot para mi empresa</a>
+        <a class="btn-primary" href="bots-automatizados.html">Quiero un bot para mi empresa</a>
       </div>
       <div class="fs-visual reveal" style="transition-delay:.15s">
         <div class="chat-demo">
@@ -481,7 +528,7 @@
           <div class="ci"><div class="ci-n">03</div><div class="ci-info"><div class="ci-t">IA para Creadores de Contenido</div><div class="ci-m">6 semanas · Todos los niveles</div></div><div class="ci-arr">→</div></div>
           <div class="ci"><div class="ci-n">04</div><div class="ci-info"><div class="ci-t">Integración Empresarial con IA</div><div class="ci-m">12 semanas · Avanzado</div></div><div class="ci-arr">→</div></div>
         </div>
-        <a class="btn-primary reveal" style="transition-delay:.2s;margin-top:2.5rem;display:inline-flex" href="#contacto" onclick="goto('contacto');return false;">Ver todos los cursos →</a>
+        <a class="btn-primary reveal" style="transition-delay:.2s;margin-top:2.5rem;display:inline-flex" href="cursos-ia.html">Ver todos los cursos →</a>
       </div>
       <div class="c-right reveal" style="transition-delay:.2s">
         <div class="cert-card">
@@ -514,30 +561,10 @@
       <p class="sec-p">Empresas de distintas industrias ya lideran gracias a nuestra tecnología.</p>
     </div>
     <div class="casos-grid">
-      <div class="caso reveal">
-        <div class="caso-tag">E-commerce</div>
-        <div class="caso-stat">+320%</div>
-        <div class="caso-title">Incremento en conversiones</div>
-        <p>E-commerce peruano implementó un bot de IA para atención y ventas automáticas 24/7.</p>
-      </div>
-      <div class="caso reveal" style="transition-delay:.08s">
-        <div class="caso-tag">Logística</div>
-        <div class="caso-stat">−65%</div>
-        <div class="caso-title">Reducción de costos operativos</div>
-        <p>Empresa de logística automatizó por completo el proceso de atención y seguimiento de pedidos.</p>
-      </div>
-      <div class="caso reveal" style="transition-delay:.16s">
-        <div class="caso-tag">Streaming</div>
-        <div class="caso-stat">+150K</div>
-        <div class="caso-title">Nuevos seguidores en 6 meses</div>
-        <p>Streamer profesional transformó su canal con overlays inteligentes y contenido dinámico con IA.</p>
-      </div>
-      <div class="caso reveal" style="transition-delay:.24s">
-        <div class="caso-tag">EdTech</div>
-        <div class="caso-stat">98.5%</div>
-        <div class="caso-title">Precisión en predicciones</div>
-        <p>Plataforma educativa implementó sistema de recomendación con ML para personalizar el aprendizaje.</p>
-      </div>
+      <div class="caso reveal"><div class="caso-tag">E-commerce</div><div class="caso-stat">+320%</div><div class="caso-title">Incremento en conversiones</div><p>E-commerce peruano implementó un bot de IA para atención y ventas automáticas 24/7.</p></div>
+      <div class="caso reveal" style="transition-delay:.08s"><div class="caso-tag">Logística</div><div class="caso-stat">−65%</div><div class="caso-title">Reducción de costos operativos</div><p>Empresa de logística automatizó por completo el proceso de atención y seguimiento de pedidos.</p></div>
+      <div class="caso reveal" style="transition-delay:.16s"><div class="caso-tag">Streaming</div><div class="caso-stat">+150K</div><div class="caso-title">Nuevos seguidores en 6 meses</div><p>Streamer profesional transformó su canal con overlays inteligentes y contenido dinámico con IA.</p></div>
+      <div class="caso reveal" style="transition-delay:.24s"><div class="caso-tag">EdTech</div><div class="caso-stat">98.5%</div><div class="caso-title">Precisión en predicciones</div><p>Plataforma educativa implementó sistema de recomendación con ML para personalizar el aprendizaje.</p></div>
     </div>
   </div>
 </section>
@@ -554,26 +581,11 @@
         <a class="btn-outline" href="#contacto" onclick="goto('contacto');return false;">Hacer una pregunta</a>
       </div>
       <div class="faq-right reveal" style="transition-delay:.1s">
-        <div class="faq-item">
-          <div class="faq-q"><span>¿Cuánto tiempo toma implementar un bot de IA?</span><span class="faq-ico">+</span></div>
-          <div class="faq-a">Un bot básico puede estar listo en 2–3 semanas. Proyectos con integraciones personalizadas toman 6–8 semanas. En nuestra consulta gratuita te damos un cronograma exacto.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>¿Necesito conocimientos técnicos para los overlays?</span><span class="faq-ico">+</span></div>
-          <div class="faq-a">No. Son plug-and-play con interfaz visual completa para personalización sin escribir código. En 30 minutos ya tienes todo listo.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>¿Los cursos incluyen certificación?</span><span class="faq-ico">+</span></div>
-          <div class="faq-a">Sí. Al completar cada módulo recibes un certificado verificable digitalmente que puedes compartir en LinkedIn y tu portafolio.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>¿Ofrecen soporte post-implementación?</span><span class="faq-ico">+</span></div>
-          <div class="faq-a">Todos nuestros proyectos incluyen 3 meses de soporte técnico gratuito, actualizaciones y monitoreo. También ofrecemos planes de mantenimiento extendido.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q"><span>¿Trabajan con startups o solo empresas grandes?</span><span class="faq-ico">+</span></div>
-          <div class="faq-a">Con todos. Tenemos planes escalables desde startups hasta corporaciones, adaptados a cada presupuesto y necesidad específica.</div>
-        </div>
+        <div class="faq-item"><div class="faq-q"><span>¿Cuánto tiempo toma implementar un bot de IA?</span><span class="faq-ico">+</span></div><div class="faq-a">Un bot básico puede estar listo en 2–3 semanas. Proyectos con integraciones personalizadas toman 6–8 semanas. En nuestra consulta gratuita te damos un cronograma exacto.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>¿Necesito conocimientos técnicos para los overlays?</span><span class="faq-ico">+</span></div><div class="faq-a">No. Son plug-and-play con interfaz visual completa para personalización sin escribir código. En 30 minutos ya tienes todo listo.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>¿Los cursos incluyen certificación?</span><span class="faq-ico">+</span></div><div class="faq-a">Sí. Al completar cada módulo recibes un certificado verificable digitalmente que puedes compartir en LinkedIn y tu portafolio.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>¿Ofrecen soporte post-implementación?</span><span class="faq-ico">+</span></div><div class="faq-a">Todos nuestros proyectos incluyen 3 meses de soporte técnico gratuito, actualizaciones y monitoreo. También ofrecemos planes de mantenimiento extendido.</div></div>
+        <div class="faq-item"><div class="faq-q"><span>¿Trabajan con startups o solo empresas grandes?</span><span class="faq-ico">+</span></div><div class="faq-a">Con todos. Tenemos planes escalables desde startups hasta corporaciones, adaptados a cada presupuesto y necesidad específica.</div></div>
       </div>
     </div>
   </div>
@@ -594,12 +606,8 @@
     </div>
     <div class="planes-grid-new">
 
-      <!-- STARTER -->
       <div class="pcard pcard-starter reveal">
-        <div class="pc-hdr">
-          <div class="pc-num">3</div>
-          <div><div class="pc-eyebrow">Plan Presencia</div><div class="pc-title">Inteligente</div></div>
-        </div>
+        <div class="pc-hdr"><div class="pc-num">3</div><div><div class="pc-eyebrow">Plan Presencia</div><div class="pc-title">Inteligente</div></div></div>
         <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">199</span></div>
         <div class="pc-period">pago único</div>
         <div class="pc-note">Todo lo que necesitas para arrancar</div>
@@ -610,19 +618,15 @@
           <li><span class="pc-feat-ico">✦</span>Guarda los datos de personas interesadas</li>
           <li><span class="pc-feat-ico">✦</span>Envía info de tu negocio en piloto automático</li>
         </ul>
-        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Presencia%20Inteligente" target="_blank">
+        <a class="pc-cta" href="bots-automatizados.html">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          🚀 Quiero este plan
+          🚀 Ver plan completo
         </a>
       </div>
 
-      <!-- PRO -->
       <div class="pcard pcard-pro reveal" style="transition-delay:.12s">
         <div class="pc-popular">⭐ Más elegido</div>
-        <div class="pc-hdr">
-          <div class="pc-num">2</div>
-          <div><div class="pc-eyebrow">Plan Negocio</div><div class="pc-title">Digital</div></div>
-        </div>
+        <div class="pc-hdr"><div class="pc-num">2</div><div><div class="pc-eyebrow">Plan Negocio</div><div class="pc-title">Digital</div></div></div>
         <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">300</span></div>
         <div class="pc-period">pago único</div>
         <div class="pc-note">El salto que necesita tu negocio</div>
@@ -633,31 +637,27 @@
           <li><span class="pc-feat-ico">✦</span>Botón directo a tu WhatsApp en la web</li>
           <li><span class="pc-feat-ico">✦</span>Tu negocio mejor posicionado en Google Maps</li>
         </ul>
-        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Negocio%20Digital" target="_blank">
+        <a class="pc-cta" href="bots-automatizados.html">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          ⚡ Quiero este plan
+          ⚡ Ver plan completo
         </a>
       </div>
 
-      <!-- ELITE -->
       <div class="pcard pcard-elite reveal" style="transition-delay:.24s">
-        <div class="pc-hdr">
-          <div class="pc-num">1</div>
-          <div><div class="pc-eyebrow">Plan Automatización</div><div class="pc-title">Total</div></div>
-        </div>
+        <div class="pc-hdr"><div class="pc-num">1</div><div><div class="pc-eyebrow">Plan Automatización</div><div class="pc-title">Total</div></div></div>
         <div class="pc-price-block"><span class="pc-sym">$</span><span class="pc-num-price">500</span></div>
         <div class="pc-period">pago único</div>
         <div class="pc-note">La solución todo en uno más potente</div>
         <div class="pc-divider"></div>
         <ul class="pc-feats">
-          <li><span class="pc-feat-ico">✦</span>Incluye Plan Presencia Inteligente + Negocio Digital</li>
+          <li><span class="pc-feat-ico">✦</span>Incluye Plan Presencia + Negocio Digital</li>
           <li><span class="pc-feat-ico">✦</span>Publicaciones automáticas en Facebook e Instagram</li>
           <li><span class="pc-feat-ico">✦</span>Contenido automatizado para TikTok y Reels</li>
           <li><span class="pc-feat-ico">✦</span>Sistema completo para atraer nuevos clientes</li>
         </ul>
-        <a class="pc-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank">
+        <a class="pc-cta" href="bots-automatizados.html">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          👑 Quiero este plan
+          👑 Ver plan completo
         </a>
       </div>
 
@@ -684,7 +684,7 @@
     <h2>Transforma tu empresa con<br><em>Inteligencia Artificial</em> hoy</h2>
     <p>Primera consulta totalmente gratuita. Sin compromisos.</p>
     <div class="cta-btns">
-      <a class="btn-white" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo gratuita →</a>
+      <a class="btn-white" href="#contacto" onclick="goto('contacto');return false;">Hablar con nosotros →</a>
       <a class="btn-ghost-wh" href="https://wa.me/51910006578" target="_blank">💬 WhatsApp directo</a>
     </div>
   </div>
@@ -762,7 +762,7 @@
         </div>
       </div>
       <div class="ft-links">
-        <div class="ftl-col"><div class="ftl-h">Servicios</div><a onclick="goto('servicios')">Bots Inteligentes</a><a onclick="goto('cursos')">Cursos de IA</a><a onclick="goto('servicios')">Overlays</a><a onclick="goto('servicios')">Consultoría</a></div>
+        <div class="ftl-col"><div class="ftl-h">Servicios</div><a href="bots-automatizados.html">Bots Inteligentes</a><a href="cursos-ia.html">Cursos de IA</a><a href="overlays-streaming.html">Overlays</a><a href="#contacto" onclick="goto('contacto')">Consultoría</a></div>
         <div class="ftl-col"><div class="ftl-h">Empresa</div><a onclick="goto('casos')">Casos de éxito</a><a onclick="goto('proceso')">Proceso</a><a onclick="goto('faq')">FAQ</a></div>
         <div class="ftl-col"><div class="ftl-h">Contacto</div><a href="mailto:hola@psychesai.com">hola@psychesai.com</a><a href="https://wa.me/51910006578" target="_blank">WhatsApp</a><a onclick="goto('contacto')">Solicitar demo</a></div>
       </div>
@@ -780,13 +780,8 @@
   <div class="wsp-bubble" id="wspBubble">
     <div class="wsp-bubble-close" onclick="closeBubble()">✕</div>
     <div class="wsp-bubble-hdr">
-      <div class="wsp-av">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </div>
-      <div>
-        <div class="wsp-name">PsychesAi</div>
-        <div class="wsp-online"><span class="wsp-dot"></span>En línea ahora</div>
-      </div>
+      <div class="wsp-av"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+      <div><div class="wsp-name">PsychesAi</div><div class="wsp-online"><span class="wsp-dot"></span>En línea ahora</div></div>
     </div>
     <div class="wsp-bubble-body">
       <div class="wsp-msg-wrap">
@@ -806,22 +801,52 @@
 <script src="main.js"></script>
 <script>
 (function(){
-  // Partículas
-  const c = document.getElementById('planesParticles');
-  if(!c) return;
-  const cols = ['#4f8ef7','#a259ff','#00ff88','#ffb347','#ff6b35'];
-  for(let i=0;i<32;i++){
-    const p = document.createElement('div');
-    p.className = 'pp';
-    const s = Math.random()*4+2;
-    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%5]};box-shadow:0 0 ${s*3}px ${cols[i%5]};animation-duration:${9+Math.random()*13}s;animation-delay:-${Math.random()*22}s;`;
-    c.appendChild(p);
+  // Partículas hero
+  const hc = document.getElementById('heroPlanParticles');
+  if(hc){
+    const cols=['#4f8ef7','#a259ff','#00ff88','#ffb347'];
+    for(let i=0;i<20;i++){
+      const p=document.createElement('div');p.className='hpp';
+      const s=Math.random()*3+1.5;
+      p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%4]};box-shadow:0 0 ${s*3}px ${cols[i%4]};animation-duration:${10+Math.random()*14}s;animation-delay:-${Math.random()*24}s;`;
+      hc.appendChild(p);
+    }
   }
-  // 3D Tilt + Flashlight
+  // Partículas planes
+  const pc=document.getElementById('planesParticles');
+  if(pc){
+    const cols=['#4f8ef7','#a259ff','#00ff88','#ffb347','#ff6b35'];
+    for(let i=0;i<32;i++){
+      const p=document.createElement('div');p.className='pp';
+      const s=Math.random()*4+2;
+      p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%5]};box-shadow:0 0 ${s*3}px ${cols[i%5]};animation-duration:${9+Math.random()*13}s;animation-delay:-${Math.random()*22}s;`;
+      pc.appendChild(p);
+    }
+  }
+  // 3D Tilt hero cards
+  document.querySelectorAll('.hpi-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=e.clientX-r.left,y=e.clientY-r.top;
+      const rx=((y-r.height/2)/(r.height/2))*-6;
+      const ry=((x-r.width/2)/(r.width/2))*6;
+      const pro=card.classList.contains('hpi-pro');
+      card.style.transform=`${pro?'scale(1.04) ':''}perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+      card.style.setProperty('--mx',`${(x/r.width)*100}%`);
+      card.style.setProperty('--my',`${(y/r.height)*100}%`);
+    });
+    card.addEventListener('mouseleave',()=>{
+      const pro=card.classList.contains('hpi-pro');
+      card.style.transition='transform 0.5s cubic-bezier(.22,1,.36,1)';
+      card.style.transform=pro?'scale(1.04)':'';
+      setTimeout(()=>card.style.transition='',510);
+    });
+  });
+  // 3D Tilt planes cards
   document.querySelectorAll('.pcard').forEach(card=>{
     card.addEventListener('mousemove',e=>{
       const r=card.getBoundingClientRect();
-      const x=e.clientX-r.left, y=e.clientY-r.top;
+      const x=e.clientX-r.left,y=e.clientY-r.top;
       const rx=((y-r.height/2)/(r.height/2))*-7;
       const ry=((x-r.width/2)/(r.width/2))*7;
       const pro=card.classList.contains('pcard-pro');
