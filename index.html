@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PsychesAi – Inteligencia Artificial para Empresas</title>
+  <meta name="description" content="Automatización con bots, cursos especializados y overlays para streaming. Soluciones de IA para empresas que quieren liderar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" onclick="goto('hero')">Psyches<span>Ai</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios"  onclick="goto('servicios');return false;">Servicios</a></li>
+      <li><a href="#proceso"    onclick="goto('proceso');return false;">Proceso</a></li>
+      <li><a href="#cursos"     onclick="goto('cursos');return false;">Cursos</a></li>
+      <li><a href="#casos"      onclick="goto('casos');return false;">Casos</a></li>
+      <li><a href="#faq"        onclick="goto('faq');return false;">FAQ</a></li>
+      <li><a href="#planes"     onclick="goto('planes');return false;">Planes</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a class="btn-outline-sm" href="#contacto" onclick="goto('contacto');return false;">Hablar con nosotros</a>
+      <a class="btn-filled-sm" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo →</a>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-drawer" id="drawer">
+  <a onclick="goto('servicios');closeDrawer();">Servicios</a>
+  <a onclick="goto('proceso');closeDrawer();">Proceso</a>
+  <a onclick="goto('cursos');closeDrawer();">Cursos</a>
+  <a onclick="goto('casos');closeDrawer();">Casos</a>
+  <a onclick="goto('faq');closeDrawer();">FAQ</a>
+  <a onclick="goto('contacto');closeDrawer();" class="cta">Solicitar demo →</a>
+</div>
+
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <span class="badge-dot"></span>
+      Inteligencia Artificial · Lima, Perú
+    </div>
+
+    <h1 class="reveal" style="animation-delay:.1s">
+      Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em>
+    </h1>
+    <p class="hero-sub reveal" style="animation-delay:.2s">
+      Bots inteligentes, cursos especializados y overlays en tiempo real.<br>
+      Tecnología de vanguardia para empresas que quieren crecer.
+    </p>
+
+    <div class="hero-ctas reveal" style="animation-delay:.3s">
+      <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo gratuita</a>
+      <a class="btn-ghost" href="#servicios" onclick="goto('servicios');return false;">Ver servicios ↓</a>
+    </div>
+
+    <div class="hero-proof reveal" style="animation-delay:.4s">
+      <div class="sp-avatars">
+        <span class="av a1">MR</span>
+        <span class="av a2">JL</span>
+        <span class="av a3">AP</span>
+        <span class="av a4">KV</span>
+        <span class="av a5">+</span>
+      </div>
+      <div class="sp-text">
+        <span class="sp-stars">★★★★★</span>
+        <span>+500 empresas confían en nosotros</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard mockup -->
+  <div class="hero-mockup reveal" style="animation-delay:.5s">
+    <div class="mockup-bar">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="mockup-url">app.psychesai.com/dashboard</span>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-sidebar">
+        <div class="sb-logo">Ps<span>Ai</span></div>
+        <div class="sb-nav">
+          <div class="sb-item active">⊞ Dashboard</div>
+          <div class="sb-item">🤖 Mis Bots</div>
+          <div class="sb-item">📊 Analytics</div>
+          <div class="sb-item">🎓 Cursos</div>
+          <div class="sb-item">📡 Overlays</div>
+          <div class="sb-item">⚙️ Config</div>
+        </div>
+      </div>
+      <div class="mockup-main">
+        <div class="mockup-header-row">
+          <div>
+            <div class="mockup-title">Dashboard</div>
+            <div class="mockup-date">Febrero 2025</div>
+          </div>
+          <div class="mockup-badge-live"><span class="live-dot"></span> 3 bots activos</div>
+        </div>
+        <div class="mockup-cards">
+          <div class="mc blue">
+            <div class="mc-label">Conversaciones hoy</div>
+            <div class="mc-val">1,284</div>
+            <div class="mc-delta">↑ 12%</div>
+          </div>
+          <div class="mc purple">
+            <div class="mc-label">Tasa de resolución</div>
+            <div class="mc-val">94.2%</div>
+            <div class="mc-delta">↑ 3%</div>
+          </div>
+          <div class="mc teal">
+            <div class="mc-label">Tiempo respuesta</div>
+            <div class="mc-val">0.8s</div>
+            <div class="mc-delta">↓ 0.2s</div>
+          </div>
+        </div>
+        <div class="mockup-chart">
+          <div class="chart-label">Actividad — últimos 7 días</div>
+          <div class="chart-bars">
+            <div class="bar" style="--h:45%"><span>L</span></div>
+            <div class="bar" style="--h:62%"><span>M</span></div>
+            <div class="bar" style="--h:50%"><span>X</span></div>
+            <div class="bar" style="--h:80%"><span>J</span></div>
+            <div class="bar" style="--h:68%"><span>V</span></div>
+            <div class="bar" style="--h:38%"><span>S</span></div>
+            <div class="bar hi" style="--h:91%"><span>D</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <span class="trust-label">Empresas que ya confían en PsychesAi</span>
+    <div class="trust-logos">
+      <span>NovaTech</span><span class="sep">·</span>
+      <span>DataCore</span><span class="sep">·</span>
+      <span>GrowtHub</span><span class="sep">·</span>
+      <span>Nexlio</span><span class="sep">·</span>
+      <span>VisionAI</span><span class="sep">·</span>
+      <span>StreamPro</span><span class="sep">·</span>
+      <span>Marketix</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- SERVICIOS — justo después del hero -->
+<section id="servicios">
+  <div class="inner">
+    <div class="sec-hdr center reveal">
+      <div class="eyebrow">Servicios</div>
+      <h2 class="sec-h2">Todo lo que necesitas <em>en un solo lugar</em></h2>
+      <p class="sec-p">Automatización, formación y herramientas visuales. Diseñadas para empresas que quieren resultados, no promesas.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc-card big reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-icon blue" style="font-size:1.4rem;font-weight:800;color:#3AA8D8">{ }</div>
+        <h3>Bots Automatizados Inteligentes</h3>
+        <p>Agentes conversacionales con IA que aprenden, responden y actúan de forma autónoma en tus plataformas digitales, las 24 horas del día sin descanso.</p>
+        <ul class="svc-feats">
+          <li>Atención al cliente 24/7</li>
+          <li>Integración con WhatsApp, web, Slack</li>
+          <li>Aprendizaje y mejora continua</li>
+          <li>Panel de control en tiempo real</li>
+        </ul>
+        <a class="svc-lnk" href="#contacto" onclick="goto('contacto');return false;">Más información <span>→</span></a>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.08s">
+        <div class="svc-num">02</div>
+        <div class="svc-icon yellow" style="font-size:1.4rem;font-weight:800;color:#F59E0B">∞</div>
+        <h3>Cursos de IA</h3>
+        <p>Programas especializados para dominar las herramientas y modelos de IA más avanzados del mercado.</p>
+        <ul class="svc-feats">
+          <li>Desde fundamentos hasta avanzado</li>
+          <li>Certificación verificable</li>
+          <li>Proyectos reales desde día uno</li>
+        </ul>
+        <a class="svc-lnk" href="#cursos" onclick="goto('cursos');return false;">Ver cursos <span>→</span></a>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.16s">
+        <div class="svc-num">03</div>
+        <div class="svc-icon teal" style="font-size:1.4rem;font-weight:800;color:#0D9488">◎</div>
+        <h3>Overlays para Streams</h3>
+        <p>Superposiciones visuales inteligentes para transmisiones en vivo con datos dinámicos y alertas personalizadas.</p>
+        <ul class="svc-feats">
+          <li>Compatible con Twitch y YouTube</li>
+          <li>Alertas con IA generativa</li>
+          <li>Sin código, plug-and-play</li>
+        </ul>
+        <a class="svc-lnk" href="#contacto" onclick="goto('contacto');return false;">Explorar <span>→</span></a>
+      </div>
+      <div class="svc-card reveal" style="transition-delay:.24s">
+        <div class="svc-num">04</div>
+        <div class="svc-icon purple" style="font-size:1.4rem;font-weight:800;color:#7C3AED">⬡</div>
+        <h3>Consultoría Empresarial</h3>
+        <p>Implementamos los modelos más recientes para dar a tu empresa ventaja competitiva real en el ecosistema digital.</p>
+        <ul class="svc-feats">
+          <li>Diagnóstico de procesos actuales</li>
+          <li>Plan de implementación a medida</li>
+          <li>Seguimiento y optimización continua</li>
+        </ul>
+        <a class="svc-lnk" href="#contacto" onclick="goto('contacto');return false;">Solicitar consulta <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-row"><div class="stat-n" data-target="500">0</div><div class="stat-sign">+</div></div>
+      <div class="stat-lbl">Clientes atendidos</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item reveal" style="transition-delay:.1s">
+      <div class="stat-row"><div class="stat-n">24/7</div></div>
+      <div class="stat-lbl">Soporte y monitoreo</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item reveal" style="transition-delay:.2s">
+      <div class="stat-row"><div class="stat-n" data-target="98">0</div><div class="stat-sign">%</div></div>
+      <div class="stat-lbl">Satisfacción del cliente</div>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item reveal" style="transition-delay:.3s">
+      <div class="stat-row"><div class="stat-n" data-target="50">0</div><div class="stat-sign">+</div></div>
+      <div class="stat-lbl">Cursos disponibles</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PROCESO -->
+<section id="proceso" class="bg-alt">
+  <div class="inner">
+    <div class="sec-hdr center reveal">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2 class="sec-h2">De la idea a la <em>producción</em></h2>
+      <p class="sec-p">Metodología probada en más de 500 proyectos para llevar tu visión de IA al mundo real.</p>
+    </div>
+
+    <div class="proceso-grid">
+      <div class="p-card reveal">
+        <div class="p-num">01</div>
+        <div class="p-ico">🔍</div>
+        <h4>Análisis & Diagnóstico</h4>
+        <p>Estudiamos tu negocio, identificamos oportunidades y diseñamos la estrategia de IA más adecuada para tus metas.</p>
+      </div>
+      <div class="p-arr reveal">→</div>
+      <div class="p-card reveal" style="transition-delay:.1s">
+        <div class="p-num">02</div>
+        <div class="p-ico">🏗️</div>
+        <h4>Diseño de Arquitectura</h4>
+        <p>Creamos el plano técnico: modelos, infraestructura cloud y flujos de datos optimizados para tu escenario.</p>
+      </div>
+      <div class="p-arr reveal">→</div>
+      <div class="p-card reveal" style="transition-delay:.2s">
+        <div class="p-num">03</div>
+        <div class="p-ico">⚙️</div>
+        <h4>Desarrollo & Pruebas</h4>
+        <p>Implementación ágil con sprints cortos y pruebas continuas. Ajustes en tiempo real basados en tu feedback.</p>
+      </div>
+      <div class="p-arr reveal">→</div>
+      <div class="p-card reveal" style="transition-delay:.3s">
+        <div class="p-num">04</div>
+        <div class="p-ico">🚀</div>
+        <h4>Deploy & Monitoreo</h4>
+        <p>Lanzamiento a producción con monitoreo 24/7, optimización continua y soporte técnico permanente incluido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FEATURE SPLIT: BOTS -->
+<section class="feat-split">
+  <div class="inner">
+    <div class="fs-layout">
+      <div class="fs-txt reveal">
+        <div class="eyebrow">Bots Inteligentes</div>
+        <h2 class="sec-h2">Tu soporte, disponible<br><em>siempre</em></h2>
+        <p>Nuestros bots no son respuestas automáticas. Son agentes con IA que comprenden el contexto, aprenden de cada conversación y resuelven problemas reales sin intervención humana.</p>
+        <ul class="fs-list">
+          <li><span class="ck">✓</span> GPT-4o + Claude AI en el núcleo</li>
+          <li><span class="ck">✓</span> Integración con tu CRM y sistemas</li>
+          <li><span class="ck">✓</span> Escalado humano inteligente</li>
+          <li><span class="ck">✓</span> Analytics y métricas detalladas</li>
+          <li><span class="ck">✓</span> Personalización completa de tono y marca</li>
+        </ul>
+        <a class="btn-primary" href="#contacto" onclick="goto('contacto');return false;">Quiero un bot para mi empresa</a>
+      </div>
+
+      <div class="fs-visual reveal" style="transition-delay:.15s">
+        <div class="chat-demo">
+          <div class="cd-hdr">
+            <div class="cd-av">🤖</div>
+            <div>
+              <div class="cd-name">Asistente PsychesAi</div>
+              <div class="cd-status"><span class="live-dot"></span> En línea</div>
+            </div>
+          </div>
+          <div class="cd-body">
+            <div class="msg bot"><span>¡Hola! 👋 Soy el asistente virtual de tu empresa. ¿En qué puedo ayudarte hoy?</span></div>
+            <div class="msg usr"><span>Necesito información sobre sus planes de precios</span></div>
+            <div class="msg bot"><span>¡Claro! Tenemos 3 planes adaptados a tu empresa. ¿Cuántos usuarios mensuales esperas atender?</span></div>
+            <div class="msg usr"><span>Alrededor de 2,000 al mes</span></div>
+            <div class="msg bot"><span>Perfecto. Para ese volumen te recomendaría nuestro <strong>Plan Pro</strong>. Incluye respuestas ilimitadas, analytics y soporte 24/7. ¿Quieres hablar con un asesor?</span></div>
+            <div class="typing"><span></span><span></span><span></span></div>
+          </div>
+          <div class="cd-ftr">
+            <div class="cd-input">Escribe tu mensaje...</div>
+            <div class="cd-send">→</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CURSOS -->
+<section id="cursos" class="bg-alt">
+  <div class="inner">
+    <div class="cursos-layout">
+      <div class="c-left">
+        <div class="eyebrow reveal">Formación</div>
+        <h2 class="sec-h2 reveal">Cursos de IA<br>que <em>transforman</em></h2>
+        <p class="sec-p reveal">Desde fundamentos hasta implementación avanzada. Aprende a construir, integrar y escalar sistemas de IA con instructores expertos.</p>
+
+        <div class="curso-list reveal" style="transition-delay:.1s">
+          <div class="ci"><div class="ci-n">01</div><div class="ci-info"><div class="ci-t">Fundamentos de IA</div><div class="ci-m">8 semanas · Principiante</div></div><div class="ci-arr">→</div></div>
+          <div class="ci"><div class="ci-n">02</div><div class="ci-info"><div class="ci-t">Automatización con Bots</div><div class="ci-m">10 semanas · Intermedio</div></div><div class="ci-arr">→</div></div>
+          <div class="ci"><div class="ci-n">03</div><div class="ci-info"><div class="ci-t">IA para Creadores de Contenido</div><div class="ci-m">6 semanas · Todos los niveles</div></div><div class="ci-arr">→</div></div>
+          <div class="ci"><div class="ci-n">04</div><div class="ci-info"><div class="ci-t">Integración Empresarial con IA</div><div class="ci-m">12 semanas · Avanzado</div></div><div class="ci-arr">→</div></div>
+        </div>
+
+        <a class="btn-primary reveal" style="transition-delay:.2s;margin-top:2.5rem;display:inline-flex" href="#contacto" onclick="goto('contacto');return false;">Ver todos los cursos →</a>
+      </div>
+
+      <div class="c-right reveal" style="transition-delay:.2s">
+        <div class="cert-card">
+          <div class="cc-top">
+            <div class="cc-icon">🏆</div>
+            <div class="cc-title">Certificado verificable</div>
+            <div class="cc-sub">Al completar cada módulo obtienes un certificado digital que puedes compartir en LinkedIn y tu portafolio profesional.</div>
+          </div>
+          <div class="cc-div"></div>
+          <div class="cc-feats">
+            <div class="ccf"><span>✓</span> Acceso de por vida al contenido</div>
+            <div class="ccf"><span>✓</span> Comunidad activa de 2,000+ alumnos</div>
+            <div class="ccf"><span>✓</span> Soporte de mentores expertos</div>
+            <div class="ccf"><span>✓</span> Proyectos reales desde el día 1</div>
+            <div class="ccf"><span>✓</span> Contenido siempre actualizado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CASOS -->
+<section id="casos">
+  <div class="inner">
+    <div class="sec-hdr center reveal">
+      <div class="eyebrow">Resultados reales</div>
+      <h2 class="sec-h2">Proyectos que <em>hablan</em> por sí solos</h2>
+      <p class="sec-p">Empresas de distintas industrias ya lideran gracias a nuestra tecnología.</p>
+    </div>
+
+    <div class="casos-grid">
+      <div class="caso reveal">
+        <div class="caso-tag">E-commerce</div>
+        <div class="caso-stat">+320%</div>
+        <div class="caso-title">Incremento en conversiones</div>
+        <p>E-commerce peruano implementó un bot de IA para atención y ventas automáticas 24/7.</p>
+      </div>
+      <div class="caso reveal" style="transition-delay:.08s">
+        <div class="caso-tag">Logística</div>
+        <div class="caso-stat">−65%</div>
+        <div class="caso-title">Reducción de costos operativos</div>
+        <p>Empresa de logística automatizó por completo el proceso de atención y seguimiento de pedidos.</p>
+      </div>
+      <div class="caso reveal" style="transition-delay:.16s">
+        <div class="caso-tag">Streaming</div>
+        <div class="caso-stat">+150K</div>
+        <div class="caso-title">Nuevos seguidores en 6 meses</div>
+        <p>Streamer profesional transformó su canal con overlays inteligentes y contenido dinámico con IA.</p>
+      </div>
+      <div class="caso reveal" style="transition-delay:.24s">
+        <div class="caso-tag">EdTech</div>
+        <div class="caso-stat">98.5%</div>
+        <div class="caso-title">Precisión en predicciones</div>
+        <p>Plataforma educativa implementó sistema de recomendación con ML para personalizar el aprendizaje.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIOS -->
+<section id="testimonios" class="bg-dark">
+  <div class="inner">
+    <div class="sec-hdr center reveal">
+      <div class="eyebrow light">Testimonios</div>
+      <h2 class="sec-h2 white">Lo que dicen <em>nuestros clientes</em></h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Implementamos el bot de PsychesAi en nuestro e-commerce y en el primer mes ya veíamos resultados concretos. La atención al cliente mejoró radicalmente y el equipo humano pudo enfocarse en tareas de mayor valor."</p>
+        <div class="testi-who">
+          <div class="tav">MR</div>
+          <div><div class="t-name">Miguel Rodríguez</div><div class="t-role">CEO · NovaTech Solutions</div></div>
+        </div>
+      </div>
+
+      <div class="testi testi-hi reveal" style="transition-delay:.1s">
+        <div class="testi-stars">★★★★★</div>
+        <p>"El curso de automatización con bots fue exactamente lo que necesitaba. Contenido actualizado, instructores disponibles y proyectos reales que puedes usar en tu trabajo desde el día uno."</p>
+        <div class="testi-who">
+          <div class="tav teal">JL</div>
+          <div><div class="t-name">Jessica Larios</div><div class="t-role">Product Manager · DataCore</div></div>
+        </div>
+      </div>
+
+      <div class="testi reveal" style="transition-delay:.2s">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Los overlays para mi canal cambiaron todo. Las alertas dinámicas y los analytics en tiempo real me dan una ventaja enorme frente a otros creadores. Súper recomendado."</p>
+        <div class="testi-who">
+          <div class="tav purple">AP</div>
+          <div><div class="t-name">Andrés Peña</div><div class="t-role">Streamer · 280K seguidores</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="inner">
+    <div class="faq-layout">
+      <div class="faq-left reveal">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="sec-h2">Preguntas <em>frecuentes</em></h2>
+        <p class="sec-p">¿Tienes dudas? Aquí respondemos las más comunes. Si no encuentras tu respuesta, escríbenos directamente.</p>
+        <a class="btn-outline" href="#contacto" onclick="goto('contacto');return false;">Hacer una pregunta</a>
+      </div>
+      <div class="faq-right reveal" style="transition-delay:.1s">
+        <div class="faq-item">
+          <div class="faq-q"><span>¿Cuánto tiempo toma implementar un bot de IA?</span><span class="faq-ico">+</span></div>
+          <div class="faq-a">Un bot básico puede estar listo en 2–3 semanas. Proyectos con integraciones personalizadas toman 6–8 semanas. En nuestra consulta gratuita te damos un cronograma exacto.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>¿Necesito conocimientos técnicos para los overlays?</span><span class="faq-ico">+</span></div>
+          <div class="faq-a">No. Son plug-and-play con interfaz visual completa para personalización sin escribir código. En 30 minutos ya tienes todo listo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>¿Los cursos incluyen certificación?</span><span class="faq-ico">+</span></div>
+          <div class="faq-a">Sí. Al completar cada módulo recibes un certificado verificable digitalmente que puedes compartir en LinkedIn y tu portafolio.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>¿Ofrecen soporte post-implementación?</span><span class="faq-ico">+</span></div>
+          <div class="faq-a">Todos nuestros proyectos incluyen 3 meses de soporte técnico gratuito, actualizaciones y monitoreo. También ofrecemos planes de mantenimiento extendido.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>¿Trabajan con startups o solo empresas grandes?</span><span class="faq-ico">+</span></div>
+          <div class="faq-a">Con todos. Tenemos planes escalables desde startups hasta corporaciones, adaptados a cada presupuesto y necesidad específica.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PLANES / PRECIOS -->
+<section id="planes" class="bg-alt">
+  <div class="inner">
+    <div class="sec-hdr center reveal">
+      <div class="eyebrow">Planes y Precios</div>
+      <h2 class="sec-h2">Nunca vuelvas a perder un<br>cliente de <em>WhatsApp</em></h2>
+      <p class="sec-p">Tu negocio respondiendo clientes 24/7. Elige el plan que mejor se adapta a tus metas.</p>
+    </div>
+
+    <div class="planes-grid">
+
+      <!-- PLAN 3 -->
+      <div class="plan-card reveal">
+        <div class="plan-medal bronze">
+          <span class="medal-num">3</span>
+        </div>
+        <div class="plan-name">Plan Presencia<br>Inteligente</div>
+        <div class="plan-price">$199</div>
+        <ul class="plan-feats">
+          <li>Responde automáticamente los mensajes de WhatsApp</li>
+          <li>Atiende clientes las 24 horas</li>
+          <li>Guarda los datos de las personas interesadas</li>
+          <li>Envía información de tu negocio sin que tú intervengas</li>
+        </ul>
+        <a class="plan-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Presencia%20Inteligente" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero este plan
+        </a>
+      </div>
+
+      <!-- PLAN 2 — DESTACADO -->
+      <div class="plan-card plan-featured reveal" style="transition-delay:.1s">
+        <div class="plan-badge-top">Más elegido</div>
+        <div class="plan-medal silver">
+          <span class="medal-num">2</span>
+        </div>
+        <div class="plan-name">Plan Negocio<br>Digital</div>
+        <div class="plan-price">$300</div>
+        <ul class="plan-feats">
+          <li>Incluye Plan Presencia Inteligente</li>
+          <li>Página web profesional para tu empresa</li>
+          <li>Botón directo a tu WhatsApp en la web</li>
+          <li>Tu negocio mejor posicionado en Google Maps</li>
+        </ul>
+        <a class="plan-cta plan-cta-featured" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Negocio%20Digital" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero este plan
+        </a>
+      </div>
+
+      <!-- PLAN 1 -->
+      <div class="plan-card plan-gold reveal" style="transition-delay:.2s">
+        <div class="plan-medal gold">
+          <span class="medal-num">1</span>
+        </div>
+        <div class="plan-name">Plan Automatización<br>Total</div>
+        <div class="plan-price">$500</div>
+        <ul class="plan-feats">
+          <li>Incluye Plan Presencia Inteligente</li>
+          <li>Incluye Plan Negocio Digital</li>
+          <li>Publicaciones automáticas en Facebook e Instagram</li>
+          <li>Contenido automatizado para TikTok y Reels</li>
+          <li>Sistema completo para atraer nuevos clientes</li>
+        </ul>
+        <a class="plan-cta plan-cta-gold" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero este plan
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom tagline -->
+    <div class="planes-footer reveal">
+      <p>Tu negocio <strong>trabajando en internet</strong> incluso cuando estás cerrado.</p>
+      <a class="planes-wsp-btn" href="https://wa.me/51910006578" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp: +51 910 006 578
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-blob c1"></div>
+  <div class="cta-blob c2"></div>
+  <div class="cta-content reveal">
+    <div class="eyebrow light">¿Listo para empezar?</div>
+    <h2>Transforma tu empresa con<br><em>Inteligencia Artificial</em> hoy</h2>
+    <p>Primera consulta totalmente gratuita. Sin compromisos.</p>
+    <div class="cta-btns">
+      <a class="btn-white" href="#contacto" onclick="goto('contacto');return false;">Solicitar demo gratuita →</a>
+      <a class="btn-ghost-wh" href="https://wa.me/51910006578" target="_blank">💬 WhatsApp directo</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACTO -->
+<section id="contacto" class="bg-alt">
+  <div class="inner">
+    <div class="contacto-layout">
+      <div class="co-left reveal">
+        <div class="eyebrow">Contacto</div>
+        <h2 class="sec-h2">Hablemos sobre<br>tu <em>proyecto</em></h2>
+        <p class="sec-p">Cuéntanos qué necesitas y te preparamos una propuesta personalizada sin ningún costo.</p>
+        <div class="co-details">
+          <div class="co-item"><div class="co-ico">📧</div><div><div class="co-k">Email</div><a href="mailto:hola@psychesai.com">hola@psychesai.com</a></div></div>
+          <div class="co-item"><div class="co-ico">💬</div><div><div class="co-k">WhatsApp</div><a href="https://wa.me/51910006578" target="_blank">+51 910 006 578</a></div></div>
+          <div class="co-item"><div class="co-ico">📍</div><div><div class="co-k">Ubicación</div><span>Lima, Perú</span></div></div>
+          <div class="co-item"><div class="co-ico">🕐</div><div><div class="co-k">Horario</div><span>Lun – Vie, 9:00 – 18:00</span></div></div>
+        </div>
+      </div>
+
+      <div class="co-right reveal" style="transition-delay:.15s">
+        <form id="contactForm" class="cf">
+          <div class="cf-row">
+            <div class="fg"><label>Nombre completo</label><input type="text" name="nombre" required placeholder="Juan Pérez"></div>
+            <div class="fg"><label>Email</label><input type="email" name="email" required placeholder="juan@empresa.com"></div>
+          </div>
+          <div class="cf-row">
+            <div class="fg"><label>Empresa</label><input type="text" name="empresa" placeholder="Tu Empresa S.A."></div>
+            <div class="fg"><label>Teléfono (opcional)</label><input type="tel" name="telefono" placeholder="+51 910 006 578"></div>
+          </div>
+          <div class="fg">
+            <label>¿Qué servicio te interesa?</label>
+            <select name="servicio" required>
+              <option value="">Selecciona una opción</option>
+              <option value="bots">Bots Automatizados Inteligentes</option>
+              <option value="cursos">Cursos de IA</option>
+              <option value="overlays">Overlays para Streams</option>
+              <option value="consultoria">Consultoría Empresarial</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Cuéntanos sobre tu proyecto</label>
+            <textarea name="mensaje" rows="4" required placeholder="Describe brevemente qué necesitas..."></textarea>
+          </div>
+          <div class="fg">
+            <label class="chk-lbl">
+              <input type="checkbox" required>
+              <span class="chkbox"></span>
+              <span>Acepto la política de privacidad y el tratamiento de mis datos</span>
+            </label>
+          </div>
+          <button type="submit" class="btn-submit"><span class="bs-txt">Enviar mensaje</span><span>→</span></button>
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="ft-logo">Psyches<span>Ai</span></div>
+        <div class="ft-tag">El futuro de la IA está aquí</div>
+        <div class="ft-socials">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="ft-links">
+        <div class="ftl-col"><div class="ftl-h">Servicios</div><a onclick="goto('servicios')">Bots Inteligentes</a><a onclick="goto('cursos')">Cursos de IA</a><a onclick="goto('servicios')">Overlays</a><a onclick="goto('servicios')">Consultoría</a></div>
+        <div class="ftl-col"><div class="ftl-h">Empresa</div><a onclick="goto('casos')">Casos de éxito</a><a onclick="goto('testimonios')">Testimonios</a><a onclick="goto('proceso')">Proceso</a><a onclick="goto('faq')">FAQ</a></div>
+        <div class="ftl-col"><div class="ftl-h">Contacto</div><a href="mailto:hola@psychesai.com">hola@psychesai.com</a><a href="https://wa.me/51910006578" target="_blank">WhatsApp</a><a onclick="goto('contacto')">Solicitar demo</a></div>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div class="ft-copy">© 2025 PsychesAi. Todos los derechos reservados.</div>
+      <div class="ft-legal"><a href="#">Privacidad</a><a href="#">Términos</a></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- WHATSAPP WIDGET -->
+<div class="wsp-widget" id="wspWidget">
+  <div class="wsp-bubble" id="wspBubble">
+    <div class="wsp-bubble-close" onclick="closeBubble()">✕</div>
+    <div class="wsp-bubble-hdr">
+      <div class="wsp-av">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div>
+        <div class="wsp-name">PsychesAi</div>
+        <div class="wsp-online"><span class="wsp-dot"></span>En línea ahora</div>
+      </div>
+    </div>
+    <div class="wsp-bubble-body">
+      <div class="wsp-msg-wrap">
+        <div class="wsp-msg">
+          ¡Hola! 👋 ¿En qué podemos ayudarte hoy?<br>Escríbenos y te respondemos al instante.
+        </div>
+        <div class="wsp-msg-time">hace un momento</div>
+      </div>
+    </div>
+    <a class="wsp-bubble-cta" href="https://wa.me/51910006578?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios" target="_blank">
+      Iniciar conversación →
+    </a>
+  </div>
+
+<button class="wsp-btn" id="wspBtn" onclick="toggleBubble()" aria-label="WhatsApp">
+  <svg class="ico-wsp" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <line x1="18" y1="6" x2="6" y2="18"/>
+    <line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
