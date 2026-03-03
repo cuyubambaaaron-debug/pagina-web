@@ -283,10 +283,10 @@
       <h2 class="cursos-cta-h2">Aprende <em>Inteligencia<br>Artificial</em> desde cero</h2>
       <p class="cursos-cta-p">Cursos prácticos diseñados para empresarios, emprendedores y profesionales que quieren dominar la IA sin ser programadores.</p>
       <div class="cursos-cta-feats">
-        <div class="ccf-item"><span class="ccf-ico">▶</span><span>100% práctico y online</span></div>
-        <div class="ccf-item"><span class="ccf-ico">▶</span><span>Acceso de por vida</span></div>
-        <div class="ccf-item"><span class="ccf-ico">▶</span><span>Certificado oficial</span></div>
-        <div class="ccf-item"><span class="ccf-ico">▶</span><span>Soporte personalizado</span></div>
+        <div class="ccf-item"><span class="ccf-ico"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span><span>100% práctico y online</span></div>
+        <div class="ccf-item"><span class="ccf-ico"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span><span>Acceso de por vida</span></div>
+        <div class="ccf-item"><span class="ccf-ico"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span><span>Certificado oficial</span></div>
+        <div class="ccf-item"><span class="ccf-ico"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg></span><span>Soporte personalizado</span></div>
       </div>
       <a class="cursos-cta-btn reveal" href="cursos-ia.html" style="transition-delay:.2s">
         <span class="cursos-btn-glow"></span>
@@ -297,17 +297,17 @@
       <div class="cursos-mockup">
         <div class="cm-header"><span class="cm-dot r"></span><span class="cm-dot y"></span><span class="cm-dot g"></span><span class="cm-title">Cursos PsychesAi</span></div>
         <div class="cm-course cm-c1">
-          <div class="cm-course-icon">🤖</div>
+         <div class="cm-course-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg></div>
           <div class="cm-course-info"><div class="cm-course-name">IA para Negocios</div><div class="cm-course-sub">12 módulos · Intermedio</div></div>
           <div class="cm-course-badge">NUEVO</div>
         </div>
         <div class="cm-course cm-c2">
-          <div class="cm-course-icon">💬</div>
+          <div class="cm-course-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg></div>
           <div class="cm-course-info"><div class="cm-course-name">Chatbots con WhatsApp</div><div class="cm-course-sub">8 módulos · Básico</div></div>
           <div class="cm-prog"><div class="cm-prog-bar" style="width:78%"></div></div>
         </div>
         <div class="cm-course cm-c3">
-          <div class="cm-course-icon">📊</div>
+          <div class="cm-course-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21v-6"/><path d="M12 21V3"/><path d="M19 21V9"/></svg></div>
           <div class="cm-course-info"><div class="cm-course-name">Automatización Total</div><div class="cm-course-sub">15 módulos · Avanzado</div></div>
           <div class="cm-course-badge hot">🔥</div>
         </div>
@@ -402,6 +402,8 @@
   color: #00ff88;
   font-size: 0.6rem;
 }
+  .ccf-ico svg{stroke:#00ff88;display:block;}
+  
 .cursos-cta-btn {
   position: relative;
   display: inline-flex;
@@ -479,6 +481,7 @@
   color: #000;
 }
 .cm-course-badge.hot { background: linear-gradient(135deg, #ff6b35, #ffb347); }
+.cm-course-icon svg{stroke:rgba(255,255,255,0.7);}
 .cm-prog { flex-shrink: 0; width: 60px; }
 .cm-prog-bar { height: 4px; border-radius: 2px; background: linear-gradient(90deg, #00d4ff, #00ff88); box-shadow: 0 0 8px rgba(0,212,255,0.6); }
 .cm-stats {
