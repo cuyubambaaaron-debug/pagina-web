@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Presencia Inteligente $199 — Bot WhatsApp 24/7 · PsychesAi</title>
+  <meta name="description" content="Automatiza tu atención al cliente con un bot WhatsApp con IA. Responde, capta leads y vende las 24 horas sin intervención humana.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --blue: #4f8ef7;
+    --cyan: #00d4ff;
+    --bg: #06060f;
+    --card: rgba(255,255,255,0.03);
+    --border: rgba(255,255,255,0.08);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:#fff; overflow-x:hidden; }
+
+  /* ── NAV ── */
+  .nav {
+    position:fixed; top:0; left:0; right:0; z-index:200;
+    padding:16px 48px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(6,6,15,0.9); backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border);
+    transition:padding 0.3s;
+  }
+  .nav-logo { font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; color:#fff; text-decoration:none; }
+  .nav-logo span { color:var(--blue); }
+  .nav-back { display:flex; align-items:center; gap:6px; color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color 0.2s; }
+  .nav-back:hover { color:#fff; }
+  .nav-cta {
+    display:flex; align-items:center; gap:8px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#fff; font-weight:700; font-size:0.82rem;
+    padding:9px 20px; border-radius:100px; text-decoration:none;
+    box-shadow:0 4px 16px rgba(37,211,102,0.3);
+    transition:transform 0.2s, box-shadow 0.2s;
+  }
+  .nav-cta:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgba(37,211,102,0.45); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; display:flex; align-items:center;
+    padding:130px 48px 80px;
+    position:relative; overflow:hidden;
+  }
+  .hero-mesh {
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(ellipse 70% 50% at 70% 30%, rgba(79,142,247,0.15), transparent),
+      radial-gradient(ellipse 40% 60% at 0% 80%, rgba(0,212,255,0.08), transparent);
+  }
+  .hero-grid {
+    position:absolute; inset:0; z-index:0; opacity:0.03;
+    background-image: linear-gradient(var(--blue) 1px, transparent 1px), linear-gradient(90deg,var(--blue) 1px,transparent 1px);
+    background-size:56px 56px;
+  }
+  .hero-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .hero-tag {
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(79,142,247,0.1); border:1px solid rgba(79,142,247,0.25);
+    color:var(--blue); font-size:0.68rem; font-weight:700;
+    letter-spacing:0.16em; text-transform:uppercase;
+    padding:6px 14px; border-radius:100px; margin-bottom:24px;
+  }
+  .hero-tag-dot { width:5px; height:5px; border-radius:50%; background:var(--blue); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(1.6);} }
+  .hero-price-flag {
+    display:inline-flex; align-items:baseline; gap:4px;
+    background:linear-gradient(135deg,rgba(79,142,247,0.15),rgba(0,212,255,0.1));
+    border:1px solid rgba(79,142,247,0.3);
+    padding:8px 18px; border-radius:12px; margin-bottom:20px;
+  }
+  .hero-price-sym { font-size:1.2rem; color:rgba(255,255,255,0.6); font-family:'Syne',sans-serif; }
+  .hero-price-num { font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800; color:#fff; line-height:1; }
+  .hero-price-note { font-size:0.72rem; color:rgba(255,255,255,0.4); margin-left:4px; }
+  .hero-h1 { font-family:'Syne',sans-serif; font-size:clamp(2.2rem,4.5vw,3.8rem); font-weight:800; line-height:1.08; letter-spacing:-0.02em; margin-bottom:20px; }
+  .hero-h1 em { font-style:normal; background:linear-gradient(90deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-sub { font-size:1.05rem; color:rgba(255,255,255,0.5); line-height:1.7; margin-bottom:36px; max-width:500px; }
+  .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-wsp {
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#fff; font-weight:700; font-size:1rem;
+    padding:15px 28px; border-radius:14px; text-decoration:none;
+    box-shadow:0 8px 28px rgba(37,211,102,0.35);
+    transition:transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s;
+  }
+  .btn-wsp:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(37,211,102,0.5); }
+  .btn-outline {
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.7);
+    padding:15px 24px; border-radius:14px; text-decoration:none;
+    font-weight:600; font-size:1rem;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color:rgba(255,255,255,0.4); color:#fff; }
+
+  /* ── CHAT MOCKUP ── */
+  .chat-wrap { position:relative; }
+  .chat-glow { position:absolute; top:-40px; right:-40px; width:300px; height:300px; background:radial-gradient(circle, rgba(79,142,247,0.25), transparent 70%); pointer-events:none; z-index:0; }
+  .chat-box {
+    position:relative; z-index:1;
+    background:rgba(255,255,255,0.04); border:1px solid rgba(79,142,247,0.2);
+    border-radius:24px; overflow:hidden;
+    box-shadow:0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(79,142,247,0.05);
+    animation:floatCard 7s ease-in-out infinite;
+  }
+  @keyframes floatCard { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  .chat-header {
+    background:rgba(79,142,247,0.1); padding:14px 20px;
+    display:flex; align-items:center; gap:12px;
+    border-bottom:1px solid rgba(79,142,247,0.15);
+  }
+  .chat-av { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--cyan)); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .chat-name { font-weight:700; font-size:0.9rem; }
+  .chat-status { font-size:0.7rem; color:rgba(255,255,255,0.45); display:flex; align-items:center; gap:5px; margin-top:2px; }
+  .chat-status-dot { width:6px; height:6px; border-radius:50%; background:#00ff88; }
+  .chat-msgs { padding:20px; display:flex; flex-direction:column; gap:10px; }
+  .msg { display:flex; gap:8px; max-width:80%; }
+  .msg.user { align-self:flex-end; flex-direction:row-reverse; }
+  .bubble {
+    padding:10px 14px; border-radius:16px;
+    font-size:0.83rem; line-height:1.5;
+  }
+  .bubble.bot { background:rgba(79,142,247,0.12); border:1px solid rgba(79,142,247,0.2); color:rgba(255,255,255,0.9); border-radius:4px 16px 16px 16px; }
+  .bubble.user { background:linear-gradient(135deg,var(--blue),var(--cyan)); color:#fff; border-radius:16px 4px 16px 16px; }
+  .chat-typing { display:flex; align-items:center; gap:6px; padding:0 20px 16px; }
+  .typing-dot { width:7px; height:7px; border-radius:50%; background:var(--blue); animation:typingBounce 1.2s ease-in-out infinite; }
+  .typing-dot:nth-child(2){ animation-delay:.2s; }
+  .typing-dot:nth-child(3){ animation-delay:.4s; }
+  @keyframes typingBounce { 0%,80%,100%{transform:scale(0.6);opacity:0.4;} 40%{transform:scale(1);opacity:1;} }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    padding:48px; background:rgba(255,255,255,0.02);
+    border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+  }
+  .stats-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+  .stat-item { text-align:center; }
+  .stat-num { font-family:'Syne',sans-serif; font-size:2.8rem; font-weight:800; background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+  .stat-label { font-size:0.8rem; color:rgba(255,255,255,0.45); margin-top:6px; }
+
+  /* ── SECTION COMMON ── */
+  .section { padding:100px 48px; max-width:1200px; margin:0 auto; }
+  .section-full { padding:100px 48px; }
+  .eyebrow { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--blue); background:rgba(79,142,247,0.1); border:1px solid rgba(79,142,247,0.2); padding:5px 14px; border-radius:100px; margin-bottom:16px; }
+  .section-h2 { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; line-height:1.15; letter-spacing:-0.02em; margin-bottom:16px; }
+  .section-h2 em { font-style:normal; background:linear-gradient(90deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .section-sub { font-size:1.05rem; color:rgba(255,255,255,0.45); line-height:1.7; max-width:560px; }
+
+  /* ── HOW IT WORKS ── */
+  .how-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+  .how-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; padding:32px 28px;
+    position:relative; overflow:hidden;
+    transition:border-color 0.3s, transform 0.35s cubic-bezier(.22,1,.36,1);
+  }
+  .how-card::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%, rgba(79,142,247,0.08), transparent 60%); opacity:0; transition:opacity 0.3s; }
+  .how-card:hover { border-color:rgba(79,142,247,0.3); transform:translateY(-6px); }
+  .how-card:hover::before { opacity:1; }
+  .how-num { font-family:'Syne',sans-serif; font-size:3.5rem; font-weight:800; color:rgba(79,142,247,0.12); line-height:1; margin-bottom:16px; }
+  .how-ico { font-size:2rem; margin-bottom:12px; }
+  .how-card h3 { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:10px; }
+  .how-card p { font-size:0.88rem; color:rgba(255,255,255,0.45); line-height:1.6; }
+
+  /* ── USE CASES ── */
+  .cases-bg { background:rgba(255,255,255,0.015); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .cases-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:56px; }
+  .case-card {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:20px; overflow:hidden;
+    transition:border-color 0.3s, transform 0.3s;
+  }
+  .case-card:hover { border-color:rgba(79,142,247,0.25); transform:translateY(-4px); }
+  .case-visual {
+    height:160px; display:flex; align-items:center; justify-content:center;
+    font-size:3.5rem; position:relative; overflow:hidden;
+  }
+  .case-v1 { background:linear-gradient(135deg, rgba(79,142,247,0.15), rgba(0,212,255,0.08)); }
+  .case-v2 { background:linear-gradient(135deg, rgba(0,212,255,0.12), rgba(79,142,247,0.06)); }
+  .case-v3 { background:linear-gradient(135deg, rgba(0,255,136,0.08), rgba(79,142,247,0.1)); }
+  .case-v4 { background:linear-gradient(135deg, rgba(255,179,71,0.08), rgba(79,142,247,0.08)); }
+  .case-visual-label {
+    position:absolute; bottom:12px; right:12px;
+    font-size:0.62rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    background:rgba(0,0,0,0.5); color:rgba(255,255,255,0.6);
+    padding:4px 10px; border-radius:100px;
+  }
+  .case-body { padding:24px; }
+  .case-sector { font-size:0.65rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:8px; }
+  .case-card h3 { font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+  .case-card p { font-size:0.83rem; color:rgba(255,255,255,0.45); line-height:1.55; }
+  .case-result { display:flex; align-items:center; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); font-size:0.78rem; color:#00ff88; font-weight:600; }
+
+  /* ── INCLUDES ── */
+  .includes-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:48px; }
+  .inc-item {
+    display:flex; align-items:flex-start; gap:16px;
+    padding:20px; background:var(--card); border:1px solid var(--border);
+    border-radius:16px; transition:border-color 0.3s;
+  }
+  .inc-item:hover { border-color:rgba(79,142,247,0.25); }
+  .inc-ico { font-size:1.5rem; flex-shrink:0; }
+  .inc-item h4 { font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700; margin-bottom:5px; }
+  .inc-item p { font-size:0.82rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+
+  /* ── STATS PROOF ── */
+  .proof-section { background:rgba(79,142,247,0.04); border-top:1px solid rgba(79,142,247,0.12); border-bottom:1px solid rgba(79,142,247,0.12); }
+  .proof-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:56px; }
+  .proof-card {
+    text-align:center; padding:36px 24px;
+    background:rgba(79,142,247,0.06); border:1px solid rgba(79,142,247,0.15);
+    border-radius:20px;
+  }
+  .proof-big { font-family:'Syne',sans-serif; font-size:3.2rem; font-weight:800; background:linear-gradient(135deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+  .proof-label { font-size:0.85rem; color:rgba(255,255,255,0.45); margin-top:8px; line-height:1.5; }
+  .proof-source { font-size:0.65rem; color:rgba(255,255,255,0.2); margin-top:6px; }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    padding:100px 48px;
+    background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(79,142,247,0.1), transparent);
+    border-top:1px solid var(--border);
+    text-align:center;
+  }
+  .cta-final h2 { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:800; margin-bottom:16px; letter-spacing:-0.02em; }
+  .cta-final h2 em { font-style:normal; background:linear-gradient(90deg,var(--blue),var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .cta-final p { font-size:1.05rem; color:rgba(255,255,255,0.45); margin-bottom:40px; }
+  .cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn-wsp-lg {
+    display:inline-flex; align-items:center; gap:12px;
+    background:linear-gradient(135deg,#25d366,#128c7e);
+    color:#fff; font-weight:700; font-size:1.05rem;
+    padding:18px 36px; border-radius:16px; text-decoration:none;
+    box-shadow:0 10px 36px rgba(37,211,102,0.4);
+    transition:transform 0.25s cubic-bezier(.22,1,.36,1), box-shadow 0.25s;
+  }
+  .btn-wsp-lg:hover { transform:translateY(-4px); box-shadow:0 20px 50px rgba(37,211,102,0.55); }
+  .cta-guarantee { display:flex; align-items:center; justify-content:center; gap:24px; margin-top:28px; flex-wrap:wrap; }
+  .cta-g-item { display:flex; align-items:center; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.35); }
+
+  /* ── FOOTER ── */
+  .footer { padding:28px 48px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .footer-logo { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:800; color:#fff; text-decoration:none; }
+  .footer-logo span { color:var(--blue); }
+  .footer-copy { font-size:0.78rem; color:rgba(255,255,255,0.25); }
+  .footer-back { font-size:0.83rem; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s; }
+  .footer-back:hover { color:#fff; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+  .reveal.vis { opacity:1; transform:none; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    .hero-inner, .cases-grid, .proof-grid { grid-template-columns:1fr; }
+    .how-grid { grid-template-columns:1fr; }
+    .includes-grid { grid-template-columns:1fr; }
+    .stats-inner { grid-template-columns:repeat(2,1fr); }
+    .nav { padding:14px 20px; }
+    .hero { padding:100px 20px 60px; }
+    .section { padding:70px 20px; }
+    .section-full { padding:70px 20px; }
+    .cta-final { padding:70px 20px; }
+    .footer { padding:20px; flex-direction:column; text-align:center; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html">Psyches<span>Ai</span></a>
+  <a class="nav-back" href="index.html">← Volver al inicio</a>
+  <a class="nav-cta" href="https://wa.me/51910006578?text=Hola%2C%20quiero%20el%20Plan%20Presencia%20Inteligente%20por%20%24199" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Adquirir — $199
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag reveal"><span class="hero-tag-dot"></span>Plan Presencia Inteligente</div>
+      <div class="hero-price-flag reveal" style="transition-delay:.05s">
+        <span class="hero-price-sym">$</span>
+        <span class="hero-price-num">199</span>
+        <span class="hero-price-note">pago único · sin mensualidades</span>
+      </div>
+      <h1 class="hero-h1 reveal" style="transition-delay:.1s">Tu negocio responde solo,<br><em>las 24 horas del día</em></h1>
+      <p class="hero-sub reveal" style="transition-delay:.15s">Un bot con inteligencia artificial que atiende a tus clientes por WhatsApp, captura sus datos y cierra ventas — sin que tú estés pendiente del teléfono.</p>
+      <div class="hero-btns reveal" style="transition-delay:.2s">
+        <a class="btn-wsp" href="https://wa.me/51910006578?text=Hola%2C%20quiero%20adquirir%20el%20Plan%20Presencia%20Inteligente%20por%20%24199" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quiero este plan — $199
+        </a>
+        <a class="btn-outline" href="#incluye">Ver qué incluye ↓</a>
+      </div>
+    </div>
+    <div class="hero-right reveal" style="transition-delay:.25s">
+      <div class="chat-wrap">
+        <div class="chat-glow"></div>
+        <div class="chat-box">
+          <div class="chat-header">
+            <div class="chat-av">🤖</div>
+            <div>
+              <div class="chat-name">PsychesBot · Tu Negocio</div>
+              <div class="chat-status"><span class="chat-status-dot"></span>En línea ahora · responde en segundos</div>
+            </div>
+          </div>
+          <div class="chat-msgs">
+            <div class="msg"><div class="bubble user">Hola, ¿cuánto cuesta el servicio premium?</div></div>
+            <div class="msg"><div class="bubble bot">¡Hola! 👋 El servicio premium está en $89/mes e incluye acceso ilimitado, soporte 24/7 y reportes semanales. ¿Te gustaría que te enviara el catálogo completo?</div></div>
+            <div class="msg"><div class="bubble user">Sí por favor, y ¿tienen descuento para pago anual?</div></div>
+            <div class="msg"><div class="bubble bot">¡Claro! Con pago anual tienes un 20% de descuento 🎉 — quedaría en $854/año ($71/mes). ¿Quieres que un asesor te contacte hoy para agendar una demo gratuita?</div></div>
+          </div>
+          <div class="chat-typing">
+            <span style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-right:4px">Bot respondiendo</span>
+            <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num" data-target="98">0%</div>
+      <div class="stat-label">de mensajes respondidos en menos de 3 segundos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="67">0%</div>
+      <div class="stat-label">más leads capturados vs atención manual</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="24">0h</div>
+      <div class="stat-label">de atención al cliente sin interrupciones</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="500">0+</div>
+      <div class="stat-label">empresas en Perú y Latinoamérica ya lo usan</div>
+    </div>
+  </div>
+</div>
+
+<!-- CÓMO FUNCIONA -->
+<div class="section">
+  <div class="eyebrow reveal">Proceso</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.05s">¿Cómo funciona el <em>bot?</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.1s">En 3 pasos simples tu negocio empieza a responder solo, sin que configures nada técnico.</p>
+  <div class="how-grid">
+    <div class="how-card reveal" style="transition-delay:.1s">
+      <div class="how-num">01</div>
+      <div class="how-ico">🔧</div>
+      <h3>Lo configuramos por ti</h3>
+      <p>Le enseñamos al bot todo sobre tu negocio: productos, precios, horarios, políticas. Tú solo nos das la información, nosotros hacemos el resto.</p>
+    </div>
+    <div class="how-card reveal" style="transition-delay:.18s">
+      <div class="how-num">02</div>
+      <div class="how-ico">💬</div>
+      <h3>El bot atiende 24/7</h3>
+      <p>Cuando un cliente escribe a tu WhatsApp, el bot responde en segundos con lenguaje natural. Resuelve dudas, cotiza, agenda citas y filtra leads.</p>
+    </div>
+    <div class="how-card reveal" style="transition-delay:.26s">
+      <div class="how-num">03</div>
+      <div class="how-ico">📊</div>
+      <h3>Tú ves los resultados</h3>
+      <p>Recibes una base de datos de todos los interesados, historial de conversaciones y métricas de rendimiento semanales directo en tu email.</p>
+    </div>
+  </div>
+</div>
+
+<!-- QUÉ INCLUYE -->
+<div id="incluye" class="section-full" style="background:rgba(255,255,255,0.015); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div style="max-width:1200px; margin:0 auto; padding:0">
+    <div class="eyebrow reveal">Incluido</div>
+    <h2 class="section-h2 reveal" style="transition-delay:.05s">Todo lo que recibes por <em>$199</em></h2>
+    <p class="section-sub reveal" style="transition-delay:.1s">Un pago único, sin sorpresas ni mensualidades. Esto es exactamente lo que implementamos:</p>
+    <div class="includes-grid" style="margin-top:48px">
+      <div class="inc-item reveal" style="transition-delay:.1s"><div class="inc-ico">🤖</div><div><h4>Bot WhatsApp con IA conversacional</h4><p>Responde de forma natural, entiende el contexto y adapta sus respuestas según el cliente. No son respuestas pregrabadas.</p></div></div>
+      <div class="inc-item reveal" style="transition-delay:.15s"><div class="inc-ico">📋</div><div><h4>Captura automática de leads</h4><p>Guarda nombre, teléfono, email y la necesidad de cada persona interesada en una hoja de cálculo en tiempo real.</p></div></div>
+      <div class="inc-item reveal" style="transition-delay:.2s"><div class="inc-ico">🕐</div><div><h4>Atención 24/7 sin intervención</h4><p>Funciona de madrugada, fines de semana y feriados. Nunca más pierdas un cliente por no contestar a tiempo.</p></div></div>
+      <div class="inc-item reveal" style="transition-delay:.25s"><div class="inc-ico">📤</div><div><h4>Envío automático de catálogos y precios</h4><p>El bot detecta cuando un cliente quiere información y le envía PDFs, imágenes y listas de precios sin que tú hagas nada.</p></div></div>
+      <div class="inc-item reveal" style="transition-delay:.3s"><div class="inc-ico">🎯</div><div><h4>Filtrado y clasificación de clientes</h4><p>Separa automáticamente leads calientes (listos para comprar) de los que aún están investigando, para que optimices tu tiempo.</p></div></div>
+      <div class="inc-item reveal" style="transition-delay:.35s"><div class="inc-ico">⚙️</div><div><h4>Configuración personalizada incluida</h4><p>No pagas nada extra por la configuración. Nosotros nos encargamos de que el bot hable exactamente como tu negocio.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CASOS DE USO -->
+<div class="section">
+  <div class="eyebrow reveal">Ejemplos reales</div>
+  <h2 class="section-h2 reveal" style="transition-delay:.05s">Funciona para <em>cualquier negocio</em></h2>
+  <p class="section-sub reveal" style="transition-delay:.1s">Desde restaurantes hasta clínicas, el bot se adapta al lenguaje y proceso de venta de tu industria.</p>
+  <div class="cases-grid">
+    <div class="case-card reveal" style="transition-delay:.1s">
+      <div class="case-visual case-v1">🍕<div class="case-visual-label">Restaurantes</div></div>
+      <div class="case-body">
+        <div class="case-sector">Gastronomía</div>
+        <h3>Pedidos y reservas automáticas</h3>
+        <p>El bot toma pedidos por WhatsApp, confirma disponibilidad de mesas, envía el menú del día y recuerda reservas 1 hora antes.</p>
+        <div class="case-result">✓ Reducción del 80% en llamadas entrantes</div>
+      </div>
+    </div>
+    <div class="case-card reveal" style="transition-delay:.15s">
+      <div class="case-visual case-v2">🏥<div class="case-visual-label">Clínicas</div></div>
+      <div class="case-body">
+        <div class="case-sector">Salud</div>
+        <h3>Citas médicas sin secretaria</h3>
+        <p>Agenda citas, envía recordatorios, responde preguntas sobre especialidades y doctores disponibles, y capta pacientes nuevos 24/7.</p>
+        <div class="case-result">✓ +45% en citas agendadas fuera de horario</div>
+      </div>
+    </div>
+    <div class="case-card reveal" style="transition-delay:.2s">
+      <div class="case-visual case-v3">🏠<div class="case-visual-label">Inmobiliarias</div></div>
+      <div class="case-body">
+        <div class="case-sector">Inmobiliaria</div>
+        <h3>Leads calificados automáticamente</h3>
+        <p>Pregunta al cliente su presupuesto, zona de interés y tipo de propiedad. Solo te pasa los contactos que ya están listos para visitar.</p>
+        <div class="case-result">✓ 3x más visitas a propiedades</div>
+      </div>
+    </div>
+    <div class="case-card reveal" style="transition-delay:.25s">
+      <div class="case-visual case-v4">🛍️<div class="case-visual-label">Tiendas</div></div>
+      <div class="case-body">
+        <div class="case-sector">Retail / E-commerce</div>
+        <h3>Ventas y postventa automatizadas</h3>
+        <p>Responde sobre disponibilidad de stock, envía fotos y precios, gestiona cambios y devoluciones, y hace seguimiento de pedidos.</p>
+        <div class="case-result">✓ +60% en conversión de consultas a ventas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ESTADÍSTICAS / POR QUÉ CONVIENE -->
+<div class="section-full proof-section">
+  <div style="max-width:1200px; margin:0 auto; padding:0 48px">
+    <div class="eyebrow reveal">Datos reales</div>
+    <h2 class="section-h2 reveal" style="transition-delay:.05s">¿Por qué <em>vale la pena?</em></h2>
+    <p class="section-sub reveal" style="transition-delay:.1s">Los números hablan solos. Esto es lo que ocurre cuando un negocio implementa atención automatizada.</p>
+    <div class="proof-grid">
+      <div class="proof-card reveal" style="transition-delay:.1s">
+        <div class="proof-big">78%</div>
+        <div class="proof-label">de los clientes espera respuesta en menos de 5 minutos. Si no respondes, se van con la competencia.</div>
+        <div class="proof-source">Fuente: HubSpot 2024</div>
+      </div>
+      <div class="proof-card reveal" style="transition-delay:.18s">
+        <div class="proof-big">$0</div>
+        <div class="proof-label">de costo por mensaje respondido. Frente a $3-8/hora de un empleado de atención al cliente.</div>
+        <div class="proof-source">Cálculo por negocio mediano: 50 mensajes/día</div>
+      </div>
+      <div class="proof-card reveal" style="transition-delay:.26s">
+        <div class="proof-big">40%</div>
+        <div class="proof-label">de las consultas llegan fuera de horario laboral. Sin un bot, todos esos clientes potenciales se pierden.</div>
+        <div class="proof-source">Estudio de mercado LATAM 2023</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <div style="max-width:700px; margin:0 auto;">
+    <div class="eyebrow reveal" style="display:block;text-align:center;margin-bottom:16px">Paso final</div>
+    <h2 class="reveal" style="transition-delay:.05s">¿Listo para <em>nunca más perder</em><br>un cliente por no responder?</h2>
+    <p class="reveal" style="transition-delay:.1s">Escríbenos por WhatsApp ahora mismo. En menos de 48 horas tu bot está configurado y funcionando.</p>
+    <div class="cta-btns reveal" style="transition-delay:.15s">
+      <a class="btn-wsp-lg" href="https://wa.me/51910006578?text=Hola%2C%20quiero%20adquirir%20el%20Plan%20Presencia%20Inteligente%20por%20%24199.%20%C2%BFC%C3%B3mo%20empezamos%3F" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quiero el Plan Presencia — $199
+      </a>
+    </div>
+    <div class="cta-guarantee reveal" style="transition-delay:.2s">
+      <span class="cta-g-item">🔒 Pago único sin mensualidades</span>
+      <span class="cta-g-item">⚡ Bot listo en 48 horas</span>
+      <span class="cta-g-item">✅ Soporte incluido 3 meses</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <a class="footer-logo" href="index.html">Psyches<span>Ai</span></a>
+  <span class="footer-copy">© 2025 PsychesAi · Lima, Perú</span>
+  <a class="footer-back" href="index.html">← Ver todos los planes</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) { setTimeout(()=>e.target.classList.add('vis'), i*60); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('vis'),i*70)),100);
+
+// Counter animation
+function animCount(el, target, suffix) {
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / 1200, 1);
+    const val = Math.floor((1 - Math.pow(1-p, 3)) * target);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(step);
+}
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const raw = el.dataset.target;
+      const num = parseInt(raw);
+      const suffix = el.textContent.replace(/[0-9]/g,'');
+      animCount(el, num, suffix);
+      cObs.unobserve(el);
+    }
+  });
+}, {threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el => cObs.observe(el));
+
+// Scroll progress bar
+const bar = document.createElement('div');
+bar.style.cssText='position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#4f8ef7,#00d4ff);z-index:9999;transition:width 0.1s;pointer-events:none;';
+document.body.appendChild(bar);
+window.addEventListener('scroll',()=>{
+  bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+</script>
+</body>
+</html>
