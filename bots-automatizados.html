@@ -193,41 +193,72 @@
   .stat-n { font-size:2.8rem; font-weight:900; background:linear-gradient(135deg,var(--a),var(--b)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; letter-spacing:-0.02em; }
   .stat-l { font-size:0.8rem; color:rgba(255,255,255,0.4); margin-top:6px; }
 
-  /* ── PLANS ── */
-  .plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    /* ── PLANS ── */
+  @keyframes gradientShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
+  @keyframes shimmerPlan { 0%{transform:translateX(-100%) rotate(25deg);opacity:0;} 50%{opacity:1;} 100%{transform:translateX(300%) rotate(25deg);opacity:0;} }
+  @keyframes pricePop { 0%{transform:scale(0.85);opacity:0;} 70%{transform:scale(1.05);} 100%{transform:scale(1);opacity:1;} }
+  @keyframes badgePulse { 0%,100%{box-shadow:0 0 0 0 rgba(79,142,247,0.5);} 50%{box-shadow:0 0 0 8px rgba(79,142,247,0);} }
+
+  .plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; align-items:start; }
   .plan-card {
-    border-radius:20px; padding:36px 28px;
+    border-radius:24px; padding:40px 32px;
     background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.08);
     position:relative; overflow:hidden;
-    transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    transition:transform 0.35s cubic-bezier(.22,.68,0,1.2), border-color 0.3s, box-shadow 0.3s;
   }
-  .plan-card.featured { background:rgba(79,142,247,0.08); border-color:rgba(79,142,247,0.3); transform:scale(1.03); }
-  .plan-card:hover { transform:translateY(-6px); border-color:rgba(79,142,247,0.4); box-shadow:0 20px 60px rgba(79,142,247,0.15); }
-  .plan-card.featured:hover { transform:scale(1.03) translateY(-6px); }
-  .plan-badge { position:absolute; top:16px; right:16px; background:linear-gradient(135deg,var(--a),var(--b)); color:#fff; font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:4px 10px; border-radius:100px; }
-  .plan-name { font-size:0.7rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--a); margin-bottom:4px; }
-  .plan-title { font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:20px; }
-  .plan-price { font-size:3rem; font-weight:900; color:#fff; letter-spacing:-0.03em; line-height:1; margin-bottom:6px; }
-  .plan-price sup { font-size:1.2rem; vertical-align:top; margin-top:8px; color:rgba(255,255,255,0.6); }
+  .plan-card::after {
+    content:''; position:absolute; top:-60%; left:-60%;
+    width:50%; height:200%; background:rgba(255,255,255,0.05);
+    transform:rotate(25deg); pointer-events:none; opacity:0;
+  }
+  .plan-card:hover::after { animation:shimmerPlan 0.65s ease forwards; }
+  .plan-card:hover { transform:translateY(-10px); border-color:rgba(79,142,247,0.4); box-shadow:0 30px 70px rgba(79,142,247,0.18); }
+  .plan-card.featured {
+    background:linear-gradient(160deg,rgba(79,142,247,0.13),rgba(0,212,255,0.06));
+    border:1px solid transparent;
+    transform:scale(1.04);
+    box-shadow:0 20px 60px rgba(79,142,247,0.22);
+  }
+  .plan-card.featured > .plan-glow-border {
+    content:''; position:absolute; inset:-1px; border-radius:25px; z-index:-1;
+    background:linear-gradient(135deg,var(--a),var(--b),var(--a));
+    background-size:200% 200%;
+    animation:gradientShift 3s ease infinite;
+  }
+  .plan-card.featured:hover { transform:scale(1.04) translateY(-8px); box-shadow:0 36px 80px rgba(79,142,247,0.3); }
+  .plan-badge {
+    position:absolute; top:20px; right:20px;
+    background:linear-gradient(135deg,var(--a),var(--b)); color:#fff;
+    font-size:0.6rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase;
+    padding:5px 12px; border-radius:100px;
+    animation:badgePulse 2.5s ease-in-out infinite;
+  }
+  .plan-name { font-size:0.68rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--a); margin-bottom:4px; }
+  .plan-title { font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:20px; }
+  .plan-price { font-size:3.4rem; font-weight:900; color:#fff; letter-spacing:-0.03em; line-height:1; margin-bottom:6px; animation:pricePop 0.5s cubic-bezier(.22,.68,0,1.2) both 0.2s; }
+  .plan-card.featured .plan-price { background:linear-gradient(90deg,var(--a),var(--b)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .plan-price sup { font-size:1.2rem; vertical-align:top; margin-top:10px; color:rgba(255,255,255,0.55); -webkit-text-fill-color:rgba(255,255,255,0.55); }
   .plan-period { font-size:0.78rem; color:rgba(255,255,255,0.35); margin-bottom:28px; }
-  .plan-div { height:1px; background:rgba(255,255,255,0.07); margin-bottom:24px; }
-  .plan-feats { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:30px; }
-  .plan-feats li { display:flex; align-items:flex-start; gap:10px; font-size:0.84rem; color:rgba(255,255,255,0.7); }
-  .plan-feats li::before { content:'✦'; color:var(--a); font-size:0.65rem; margin-top:3px; flex-shrink:0; }
+  .plan-div { height:1px; background:linear-gradient(90deg,transparent,rgba(79,142,247,0.35),transparent); margin-bottom:24px; }
+  .plan-feats { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:32px; }
+  .plan-feats li { display:flex; align-items:center; gap:10px; font-size:0.84rem; color:rgba(255,255,255,0.65); padding:7px 10px; border-radius:10px; transition:background 0.2s, color 0.2s; }
+  .plan-feats li:hover { background:rgba(79,142,247,0.1); color:#fff; }
+  .plan-feats li svg { flex-shrink:0; }
   .plan-btn {
     display:flex; align-items:center; justify-content:center; gap:8px;
-    width:100%; padding:14px; border-radius:12px; border:none;
-    font-family:'Inter',sans-serif; font-size:0.88rem; font-weight:700;
-    cursor:pointer; text-decoration:none;
-    background:linear-gradient(135deg,var(--a),var(--b)); color:#fff;
-    box-shadow:0 6px 20px rgba(79,142,247,0.35);
-    transition:transform 0.2s, box-shadow 0.3s;
+    width:100%; padding:15px; border-radius:14px; border:1px solid rgba(79,142,247,0.3);
+    font-family:'Inter',sans-serif; font-size:0.9rem; font-weight:700;
+    cursor:pointer; text-decoration:none; color:rgba(255,255,255,0.8);
+    background:rgba(79,142,247,0.1);
+    transition:transform 0.2s, box-shadow 0.3s, background 0.3s, border-color 0.3s, color 0.2s;
     position:relative; overflow:hidden;
   }
-  .plan-btn::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0.12); transform:translateX(-100%); transition:transform 0.4s; }
+  .plan-btn::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0.12); transform:translateX(-100%); transition:transform 0.45s ease; }
   .plan-btn:hover::before { transform:translateX(100%); }
-  .plan-btn:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(79,142,247,0.5); }
+  .plan-btn:hover { transform:translateY(-2px); background:linear-gradient(135deg,var(--a),var(--b)); border-color:transparent; color:#fff; box-shadow:0 12px 36px rgba(79,142,247,0.5); }
+  .plan-card.featured .plan-btn { background:linear-gradient(135deg,var(--a),var(--b)); border-color:transparent; color:#fff; box-shadow:0 8px 28px rgba(79,142,247,0.4); }
+  .plan-card.featured .plan-btn:hover { box-shadow:0 16px 44px rgba(79,142,247,0.6); }
 
   /* ── CTA FINAL ── */
   .cta-final {
@@ -302,18 +333,18 @@
     <!-- Chat mockup -->
     <div class="chat-mockup reveal" style="transition-delay:.4s">
       <div class="cm-bar">
-        <div class="cm-av">🤖</div>
+        <div class="cm-av"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" x2="8" y1="16" y2="16"/><line x1="16" x2="16" y1="16" y2="16"/></svg></div>
         <div>
           <div class="cm-name">Bot PsychesAi</div>
           <div class="cm-status"><div class="cm-dot"></div>En línea ahora</div>
         </div>
       </div>
       <div class="cm-body">
-        <div class="cm-msg bot"><div class="cm-bubble">¡Hola María! 👋 Vi que preguntaste sobre nuestros servicios. ¿Quieres que te explique los planes o prefieres agendar una llamada?</div></div>
+        <div class="cm-msg bot"><div class="cm-bubble">¡Hola María! <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg> Vi que preguntaste sobre nuestros servicios. ¿Quieres que te explique los planes o prefieres agendar una llamada?</div></div>
         <div class="cm-msg user"><div class="cm-bubble">Quiero agendar para el martes</div></div>
-        <div class="cm-msg bot"><div class="cm-bubble">Perfecto, reviso tu calendario... 📅 Tengo disponible el martes 4 a las 10am o 3pm. ¿Cuál prefieres?</div></div>
+        <div class="cm-msg bot"><div class="cm-bubble">Perfecto, reviso tu calendario... <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg> Tengo disponible el martes 4 a las 10am o 3pm. ¿Cuál prefieres?</div></div>
         <div class="cm-msg user"><div class="cm-bubble">3pm está bien</div></div>
-        <div class="cm-msg bot"><div class="cm-bubble">✅ ¡Listo! Te agendé para el martes 4 a las 3pm. Te envié la confirmación a tu email y agregué el evento a Google Calendar. ¿Algo más en lo que te pueda ayudar?</div></div>
+        <div class="cm-msg bot"><div class="cm-bubble"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg> ¡Listo! Te agendé para el martes 4 a las 3pm. Te envié la confirmación a tu email y agregué el evento a Google Calendar. ¿Algo más en lo que te pueda ayudar?</div></div>
         <div class="cm-msg bot"><div class="cm-typing"><span></span><span></span><span></span></div></div>
       </div>
     </div>
@@ -336,17 +367,17 @@
 <section class="section integrations-bg">
   <div class="section-inner">
     <div class="section-hdr reveal">
-      <div class="section-badge">⚡ Integraciones</div>
+      <div class="section-badge"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Integraciones</div>
       <h2 class="section-title">Se conecta con todo<br><em>lo que ya usas</em></h2>
       <p class="section-sub">No tienes que cambiar cómo trabajas. El bot se integra con tus herramientas y las potencia.</p>
     </div>
     <div class="integ-grid">
-      <div class="integ-card reveal"><div class="integ-icon">📅</div><div class="integ-name">Google Calendar</div><div class="integ-desc">Agenda, cancela y reprograma citas automáticamente. El bot revisa disponibilidad en tiempo real y confirma al instante.</div></div>
-      <div class="integ-card reveal" style="transition-delay:.06s"><div class="integ-icon">📊</div><div class="integ-name">Google Sheets</div><div class="integ-desc">Registra leads, pedidos y consultas directo en tus hojas de cálculo. Sin copiar y pegar, todo automático.</div></div>
-      <div class="integ-card reveal" style="transition-delay:.12s"><div class="integ-icon">📧</div><div class="integ-name">Gmail</div><div class="integ-desc">Envía confirmaciones, cotizaciones y follow-ups por email automáticamente cuando el cliente lo solicita.</div></div>
-      <div class="integ-card reveal" style="transition-delay:.18s"><div class="integ-icon">🛒</div><div class="integ-name">E-commerce</div><div class="integ-desc">Consulta stock, procesa pedidos y hace seguimiento de envíos conectado a tu tienda online.</div></div>
-      <div class="integ-card reveal" style="transition-delay:.24s"><div class="integ-icon">💳</div><div class="integ-name">Pagos</div><div class="integ-desc">Genera links de pago, verifica transacciones y envía recibos sin intervención humana.</div></div>
-      <div class="integ-card reveal" style="transition-delay:.30s"><div class="integ-icon">📱</div><div class="integ-name">CRM / Notion</div><div class="integ-desc">Crea y actualiza fichas de clientes automáticamente. Tu base de datos siempre al día.</div></div>
+      <div class="integ-card reveal"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg></div><div class="integ-name">Google Calendar</div><div class="integ-desc">Agenda, cancela y reprograma citas automáticamente. El bot revisa disponibilidad en tiempo real y confirma al instante.</div></div>
+      <div class="integ-card reveal" style="transition-delay:.06s"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></div><div class="integ-name">Google Sheets</div><div class="integ-desc">Registra leads, pedidos y consultas directo en tus hojas de cálculo. Sin copiar y pegar, todo automático.</div></div>
+      <div class="integ-card reveal" style="transition-delay:.12s"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div><div class="integ-name">Gmail</div><div class="integ-desc">Envía confirmaciones, cotizaciones y follow-ups por email automáticamente cuando el cliente lo solicita.</div></div>
+      <div class="integ-card reveal" style="transition-delay:.18s"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div><div class="integ-name">E-commerce</div><div class="integ-desc">Consulta stock, procesa pedidos y hace seguimiento de envíos conectado a tu tienda online.</div></div>
+      <div class="integ-card reveal" style="transition-delay:.24s"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div><div class="integ-name">Pagos</div><div class="integ-desc">Genera links de pago, verifica transacciones y envía recibos sin intervención humana.</div></div>
+      <div class="integ-card reveal" style="transition-delay:.30s"><div class="integ-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg></div><div class="integ-name">CRM / Notion</div><div class="integ-desc">Crea y actualiza fichas de clientes automáticamente. Tu base de datos siempre al día.</div></div>
     </div>
   </div>
 </section>
@@ -355,7 +386,7 @@
 <section class="section">
   <div class="section-inner">
     <div class="section-hdr reveal" style="text-align:center;align-items:center;display:flex;flex-direction:column">
-      <div class="section-badge">🔄 Proceso</div>
+      <div class="section-badge"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg> Proceso</div>
       <h2 class="section-title" style="text-align:center">¿Cómo funciona<br><em>en la práctica?</em></h2>
     </div>
     <div class="steps-grid reveal">
@@ -388,15 +419,15 @@
   <div class="section-inner">
     <div class="feats-split">
       <div class="reveal">
-        <div class="section-badge">🤖 No es un bot viejo</div>
+        <div class="section-badge"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="10" x="3" y="11" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" x2="8" y1="16" y2="16"/><line x1="16" x2="16" y1="16" y2="16"/></svg> No es un bot viejo</div>
         <h2 class="section-title">Responde como<br><em>un humano experto</em></h2>
         <p class="section-sub" style="margin-bottom:32px">Los bots viejos solo dan menús de opciones. El nuestro entiende preguntas complejas, maneja objeciones y cierra ventas.</p>
       </div>
       <div class="feats-list reveal" style="transition-delay:.15s">
-        <div class="feat-item"><div class="feat-item-ico">🧠</div><div><div class="feat-item-title">Memoria de conversación</div><div class="feat-item-desc">Recuerda todo lo que el cliente dijo antes, aunque hayan pasado días. No pregunta lo mismo dos veces.</div></div></div>
-        <div class="feat-item"><div class="feat-item-ico">💬</div><div><div class="feat-item-title">Tono personalizado</div><div class="feat-item-desc">Lo entrenamos con la voz de tu marca. Habla formal, casual o como tú quieras.</div></div></div>
-        <div class="feat-item"><div class="feat-item-ico">🔄</div><div><div class="feat-item-title">Escalado inteligente</div><div class="feat-item-desc">Cuando detecta que el cliente necesita un humano, te notifica y transfiere la conversación sin fricciones.</div></div></div>
-        <div class="feat-item"><div class="feat-item-ico">📊</div><div><div class="feat-item-title">Analytics completo</div><div class="feat-item-desc">Dashboard con conversiones, volumen de mensajes, temas más consultados y oportunidades de mejora.</div></div></div>
+        <div class="feat-item"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></svg></div><div><div class="feat-item-title">Memoria de conversación</div><div class="feat-item-desc">Recuerda todo lo que el cliente dijo antes, aunque hayan pasado días. No pregunta lo mismo dos veces.</div></div></div>
+        <div class="feat-item"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></div><div><div class="feat-item-title">Tono personalizado</div><div class="feat-item-desc">Lo entrenamos con la voz de tu marca. Habla formal, casual o como tú quieras.</div></div></div>
+        <div class="feat-item"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div><div><div class="feat-item-title">Escalado inteligente</div><div class="feat-item-desc">Cuando detecta que el cliente necesita un humano, te notifica y transfiere la conversación sin fricciones.</div></div></div>
+        <div class="feat-item"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></div><div><div class="feat-item-title">Analytics completo</div><div class="feat-item-desc">Dashboard con conversiones, volumen de mensajes, temas más consultados y oportunidades de mejora.</div></div></div>
       </div>
     </div>
   </div>
@@ -407,12 +438,12 @@
   <div class="section-inner">
     <div class="feats-split reverse">
       <div class="reveal">
-        <div class="section-badge">💻 En acción</div>
+        <div class="section-badge"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="12" x="3" y="4" rx="2"/><line x1="2" x2="22" y1="20" y2="20"/></svg> En acción</div>
         <h2 class="section-title">Lo que pasa<br><em>detrás del chat</em></h2>
         <p class="section-sub" style="margin-bottom:32px">En menos de 2 segundos el bot conecta con tus sistemas, procesa la solicitud y responde. Todo invisible para el cliente.</p>
         <div class="feats-list">
-          <div class="feat-item reveal"><div class="feat-item-ico">⚡</div><div><div class="feat-item-title">Tiempo real</div><div class="feat-item-desc">Menos de 2 segundos de respuesta en el 99% de los casos.</div></div></div>
-          <div class="feat-item reveal" style="transition-delay:.1s"><div class="feat-item-ico">🔒</div><div><div class="feat-item-title">100% seguro</div><div class="feat-item-desc">Datos encriptados, sin acceso a información sensible sin permiso.</div></div></div>
+          <div class="feat-item reveal"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div><div class="feat-item-title">Tiempo real</div><div class="feat-item-desc">Menos de 2 segundos de respuesta en el 99% de los casos.</div></div></div>
+          <div class="feat-item reveal" style="transition-delay:.1s"><div class="feat-item-ico"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><div class="feat-item-title">100% seguro</div><div class="feat-item-desc">Datos encriptados, sin acceso a información sensible sin permiso.</div></div></div>
         </div>
       </div>
       <div class="terminal reveal" style="transition-delay:.2s">
@@ -420,14 +451,14 @@
         <div class="term-body">
           <div class="term-line"><span class="dim">[10:32:01]</span> <span class="cmd">MSG_IN</span> "Quiero agendar para mañana"</div>
           <div class="term-line"><span class="dim">[10:32:01]</span> <span class="cmd">AI_PARSE</span> intent=<span class="ok">SCHEDULE</span> confidence=<span class="ok">0.97</span></div>
-          <div class="term-line"><span class="dim">[10:32:01]</span> <span class="cmd">CALENDAR_FETCH</span> user=maria@... ✓</div>
+          <div class="term-line"><span class="dim">[10:32:01]</span> <span class="cmd">CALENDAR_FETCH</span> user=maria@... <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="term-line"><span class="dim">[10:32:02]</span> <span class="hi">SLOTS_FOUND</span> ["10:00", "15:00", "17:30"]</div>
-          <div class="term-line"><span class="dim">[10:32:02]</span> <span class="cmd">MSG_OUT</span> <span class="ok">→ WhatsApp enviado ✓</span></div>
+          <div class="term-line"><span class="dim">[10:32:02]</span> <span class="cmd">MSG_OUT</span> <span class="ok">→ WhatsApp enviado <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
           <div class="term-line" style="margin-top:8px"><span class="dim">[10:32:45]</span> <span class="cmd">MSG_IN</span> "15:00 perfecto"</div>
-          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">CALENDAR_CREATE</span> Martes 15:00 ✓</div>
-          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">GMAIL_SEND</span> confirmación → <span class="ok">✓</span></div>
-          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">SHEETS_LOG</span> lead registrado → <span class="ok">✓</span></div>
-          <div class="term-line"><span class="dim">[10:32:46]</span> <span class="cmd">MSG_OUT</span> <span class="ok">→ "¡Listo! Te esperamos el martes..." ✓</span></div>
+          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">CALENDAR_CREATE</span> Martes 15:00 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">GMAIL_SEND</span> confirmación → <span class="ok"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="term-line"><span class="dim">[10:32:45]</span> <span class="cmd">SHEETS_LOG</span> lead registrado → <span class="ok"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
+          <div class="term-line"><span class="dim">[10:32:46]</span> <span class="cmd">MSG_OUT</span> <span class="ok">→ "¡Listo! Te esperamos el martes..." <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span></div>
           <div class="term-line" style="margin-top:8px"><span class="dim">[10:32:46]</span> <span class="hi">TOTAL_TIME</span> <span class="ok">1.2s</span> — sin intervención humana <span class="term-cursor"></span></div>
         </div>
       </div>
@@ -439,7 +470,7 @@
 <section class="section integrations-bg">
   <div class="section-inner">
     <div class="section-hdr reveal" style="text-align:center;align-items:center;display:flex;flex-direction:column">
-      <div class="section-badge">💡 Precios</div>
+      <div class="section-badge"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Precios</div>
       <h2 class="section-title" style="text-align:center">Elige tu <em>plan</em></h2>
     </div>
     <div class="plans-grid">
@@ -450,30 +481,30 @@
         <div class="plan-period">pago único</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
-          <li>Bot WhatsApp 24/7</li>
-          <li>Respuestas con IA moderna</li>
-          <li>Captura automática de leads</li>
-          <li>Envía info de tu negocio solo</li>
-          <li>Panel de control básico</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Bot WhatsApp 24/7</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Respuestas con IA moderna</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Captura automática de leads</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Envía info de tu negocio solo</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Panel de control básico</li>
         </ul>
-        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Presencia%20Inteligente" target="_blank">🚀 Lo quiero</a>
+        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Presencia%20Inteligente" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Lo quiero</a>
       </div>
       <div class="plan-card featured reveal" style="transition-delay:.12s">
-        <div class="plan-badge">⭐ Popular</div>
+        <div class="plan-glow-border"></div><div class="plan-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Popular</div>
         <div class="plan-name">Negocio</div>
         <div class="plan-title">Digital</div>
         <div class="plan-price"><sup>$</sup>300</div>
         <div class="plan-period">pago único</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
-          <li>Todo el Plan Presencia</li>
-          <li>Integración Google Calendar</li>
-          <li>Registro en Google Sheets</li>
-          <li>Envío de emails automático</li>
-          <li>Página web profesional</li>
-          <li>Google Maps optimizado</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Todo el Plan Presencia</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Integración Google Calendar</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Registro en Google Sheets</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Envío de emails automático</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Página web profesional</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Google Maps optimizado</li>
         </ul>
-        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Negocio%20Digital" target="_blank">⚡ Lo quiero</a>
+        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Negocio%20Digital" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Lo quiero</a>
       </div>
       <div class="plan-card reveal" style="transition-delay:.24s">
         <div class="plan-name">Automatización</div>
@@ -482,13 +513,13 @@
         <div class="plan-period">pago único</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
-          <li>Todo el Plan Negocio Digital</li>
-          <li>Publicaciones auto en RRSS</li>
-          <li>TikTok, Reels, Facebook</li>
-          <li>Sistema de captación de clientes</li>
-          <li>Reportes semanales automáticos</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Todo el Plan Negocio Digital</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Publicaciones auto en RRSS</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>TikTok, Reels, Facebook</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Sistema de captación de clientes</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>Reportes semanales automáticos</li>
         </ul>
-        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank">👑 Lo quiero</a>
+        <a class="plan-btn" href="https://wa.me/51910006578?text=Quiero%20el%20Plan%20Automatizaci%C3%B3n%20Total" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="m4 20 2-8 6 4 6-4 2 8"/><path d="M12 4 4 8l8 4 8-4-8-4Z"/></svg> Lo quiero</a>
       </div>
     </div>
   </div>
