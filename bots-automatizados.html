@@ -61,7 +61,7 @@
   .hero-badge-dot { width:6px; height:6px; border-radius:50%; background:var(--a); animation:dotPulse 2s ease-in-out infinite; }
   @keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.5);} }
   .hero-title { font-size:clamp(2.4rem,5vw,4rem); font-weight:900; line-height:1.08; letter-spacing:-0.03em; margin-bottom:24px; }
-  .hero-title em { font-style:normal; background:linear-gradient(90deg,var(--a),var(--b)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .hero-title em { font-style:normal;  color:#fff; }
   .hero-sub { font-size:1.1rem; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:40px; max-width:520px; }
   .hero-cta {
     display:inline-flex; align-items:center; gap:10px;
@@ -119,7 +119,7 @@
     padding:5px 14px; border-radius:100px; margin-bottom:16px;
   }
   .section-title { font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.12; letter-spacing:-0.02em; margin-bottom:14px; }
-  .section-title em { font-style:normal; background:linear-gradient(90deg,var(--a),var(--b)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .section-title em { font-style:normal;  color:#fff; }
   .section-sub { color:rgba(255,255,255,0.45); font-size:1rem; line-height:1.7; max-width:560px; }
   .section-hdr { margin-bottom:64px; }
 
@@ -215,18 +215,18 @@
   .plan-card:hover::after { animation:shimmerPlan 0.65s ease forwards; }
   .plan-card:hover { transform:translateY(-10px); border-color:rgba(79,142,247,0.4); box-shadow:0 30px 70px rgba(79,142,247,0.18); }
   .plan-card.featured {
-    background:linear-gradient(160deg,rgba(79,142,247,0.13),rgba(0,212,255,0.06));
-    border:1px solid transparent;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(220,50,50,0.7);
     transform:scale(1.04);
-    box-shadow:0 20px 60px rgba(79,142,247,0.22);
+    box-shadow:0 0 28px rgba(220,50,50,0.12), 0 20px 60px rgba(0,0,0,0.3);
   }
   .plan-card.featured > .plan-glow-border {
     content:''; position:absolute; inset:-1px; border-radius:25px; z-index:-1;
     background:linear-gradient(135deg,var(--a),var(--b),var(--a));
     background-size:200% 200%;
-    animation:gradientShift 3s ease infinite;
+    display:none;
   }
-  .plan-card.featured:hover { transform:scale(1.04) translateY(-8px); box-shadow:0 36px 80px rgba(79,142,247,0.3); }
+  .plan-card.featured:hover { transform:scale(1.04) translateY(-8px); border-color:rgba(220,50,50,0.95); box-shadow:0 0 40px rgba(220,50,50,0.22); }
   .plan-badge {
     position:absolute; top:20px; right:20px;
     background:linear-gradient(135deg,var(--a),var(--b)); color:#fff;
@@ -237,7 +237,7 @@
   .plan-name { font-size:0.68rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--a); margin-bottom:4px; }
   .plan-title { font-size:1.3rem; font-weight:800; color:#fff; margin-bottom:20px; }
   .plan-price { font-size:3.4rem; font-weight:900; color:#fff; letter-spacing:-0.03em; line-height:1; margin-bottom:6px; animation:pricePop 0.5s cubic-bezier(.22,.68,0,1.2) both 0.2s; }
-  .plan-card.featured .plan-price { background:linear-gradient(90deg,var(--a),var(--b)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+  .plan-card.featured .plan-price {  color:#fff; }
   .plan-price sup { font-size:1.2rem; vertical-align:top; margin-top:10px; color:rgba(255,255,255,0.55); -webkit-text-fill-color:rgba(255,255,255,0.55); }
   .plan-period { font-size:0.78rem; color:rgba(255,255,255,0.35); margin-bottom:28px; }
   .plan-div { height:1px; background:linear-gradient(90deg,transparent,rgba(79,142,247,0.35),transparent); margin-bottom:24px; }
@@ -257,8 +257,8 @@
   .plan-btn::before { content:''; position:absolute; inset:0; background:rgba(255,255,255,0.12); transform:translateX(-100%); transition:transform 0.45s ease; }
   .plan-btn:hover::before { transform:translateX(100%); }
   .plan-btn:hover { transform:translateY(-2px); background:linear-gradient(135deg,var(--a),var(--b)); border-color:transparent; color:#fff; box-shadow:0 12px 36px rgba(79,142,247,0.5); }
-  .plan-card.featured .plan-btn { background:linear-gradient(135deg,var(--a),var(--b)); border-color:transparent; color:#fff; box-shadow:0 8px 28px rgba(79,142,247,0.4); }
-  .plan-card.featured .plan-btn:hover { box-shadow:0 16px 44px rgba(79,142,247,0.6); }
+  .plan-card.featured .plan-btn { background:rgba(220,50,50,0.12); border-color:rgba(220,50,50,0.5); color:rgba(255,255,255,0.85); }
+  .plan-card.featured .plan-btn:hover { background:rgba(220,50,50,0.75); border-color:transparent; color:#fff; box-shadow:0 12px 36px rgba(220,50,50,0.4); }
 
   /* ── CTA FINAL ── */
   .cta-final {
