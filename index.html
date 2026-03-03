@@ -6,7 +6,7 @@
   <title>PsychesAi – Inteligencia Artificial para Empresas</title>
   <meta name="description" content="Automatización con bots, cursos especializados y overlays para streaming. Soluciones de IA para empresas que quieren liderar.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
   /* ══ HERO INLINE PLANS ══ */
@@ -149,13 +149,9 @@
   <div class="hero-bg-grid"></div>
   <div class="hero-blob b1"></div>
   <div class="hero-blob b2"></div>
-  <div class="hero-plan-particles" id="heroPlanParticles"></div>
-
   <div class="hero-content">
-    <div class="hero-badge reveal"><span class="badge-dot"></span>Inteligencia Artificial · Lima, Perú</div>
-
     <h1 class="reveal" style="animation-delay:.1s">
-      Tu empresa al siguiente nivel.<br><em>La IA lo hace posible.</em>
+      Tu empresa crece sola.<br><em>La IA trabaja por ti.</em>
     </h1>
     <p class="hero-sub reveal" style="animation-delay:.2s">
       Bots inteligentes, cursos especializados y overlays en tiempo real.<br>
@@ -756,7 +752,6 @@
   <div class="planes-blob planes-blob-1"></div>
   <div class="planes-blob planes-blob-2"></div>
   <div class="planes-blob planes-blob-3"></div>
-  <div class="planes-particles" id="planesParticles"></div>
   <div class="inner">
     <div class="sec-hdr center reveal">
       <div class="eyebrow">💡 Elige tu poder</div>
@@ -962,28 +957,7 @@
 <script src="main.js"></script>
 <script>
 (function(){
-  // Partículas hero
-  const hc = document.getElementById('heroPlanParticles');
-  if(hc){
-    const cols=['#4f8ef7','#a259ff','#00ff88','#ffb347'];
-    for(let i=0;i<20;i++){
-      const p=document.createElement('div');p.className='hpp';
-      const s=Math.random()*3+1.5;
-      p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%4]};box-shadow:0 0 ${s*3}px ${cols[i%4]};animation-duration:${10+Math.random()*14}s;animation-delay:-${Math.random()*24}s;`;
-      hc.appendChild(p);
-    }
-  }
-  // Partículas planes
-  const pc=document.getElementById('planesParticles');
-  if(pc){
-    const cols=['#4f8ef7','#a259ff','#00ff88','#ffb347','#ff6b35'];
-    for(let i=0;i<32;i++){
-      const p=document.createElement('div');p.className='pp';
-      const s=Math.random()*4+2;
-      p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${cols[i%5]};box-shadow:0 0 ${s*3}px ${cols[i%5]};animation-duration:${9+Math.random()*13}s;animation-delay:-${Math.random()*22}s;`;
-      pc.appendChild(p);
-    }
-  }
+
   // 3D Tilt hero cards
   document.querySelectorAll('.hpi-card').forEach(card=>{
     card.addEventListener('mousemove',e=>{
