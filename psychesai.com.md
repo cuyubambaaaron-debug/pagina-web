@@ -24,7 +24,7 @@ Traducir avances técnicos a ideas claras para personas, equipos y negocios que 
 
 ## Voz
 
-Directa, curiosa y humana. Inteligente sin ser académica; técnica cuando suma, simple siempre que se pueda. El tono debe sentirse como una conversación con alguien que construye y piensa en voz alta.
+Directa, curiosa y humana. Inteligente sin sonar académica, defensiva ni autorreferencial. La voz sostiene una idea con claridad y nervio: no narra dudas del autor ni llena el cuerpo de citas. La técnica aparece cuando sostiene una afirmación; el lector recibe pensamiento, no una demostración de erudición.
 
 ## Formato de cada artículo
 
@@ -34,7 +34,8 @@ Directa, curiosa y humana. Inteligente sin ser académica; técnica cuando suma,
 4. Fecha y categoría.
 5. Imagen editorial de portada cuando ayude a contar la idea.
 6. Desarrollo con subtítulos, ejemplos y una conclusión propia.
-7. Fuentes oficiales o primarias cuando se mencionen productos, datos o capacidades técnicas.
+7. En ensayos o working papers, respetar el texto fuente completo: no resumir, recortar ni reescribir la tesis sin una indicación explícita.
+8. Las fuentes viven en una sección final de referencias; no interrumpir el cuerpo con citas constantes salvo que una atribución sea indispensable para entender la afirmación.
 
 ## Diseño
 
@@ -46,6 +47,8 @@ Journal editorial, oscuro y luminoso: negro profundo, violeta, cian y verde lima
 - Artículo destacado: IA agéntica, Hermes, OpenClaw, Playwright y Baileys.
 - Autor del artículo destacado: Fabian Molina.
 - Nuevo ensayo publicado: **“Nuestro fin a manos de la IA”**, por **Aarón de Jesús**. Explora tres familias de riesgo: mal uso amplificado, pérdida activa de control e inoperancia por desfase cognitivo.
+- Working paper publicado: **“El Macrómetro: la vía para evitar el colapso nihilista mientras aceptamos la inoperancia feliz”**, por **De Jesús**. Propone plasticidad intelectual, especialización reversible y aprendizaje con IA que construya autonomía durante la transición tecnológica.
+- El Macrómetro conserva el texto completo del paper; sus referencias están agrupadas al final y el cuerpo fue ajustado a la voz editorial del journal.
 - Portada original del ensayo: `assets/nuestro-fin-ia-cover.png`.
 - Sitemap, robots.txt, favicon, manifest y etiquetas canónicas publicados para facilitar indexación.
 - Propiedad de `https://psychesai.com/` verificada en Google Search Console.
