@@ -303,3 +303,12 @@ img{display:block;max-width:100%}
 .subs li>a:hover{padding-left:8px}
 .subs li>a em{background:var(--acc);color:#0a0a0f;border-color:var(--acc)}
 .subs li>a em::after{content:" →"}
+
+/* Móviles pequeños (320-380 px): nada ensancha la página */
+h1,h2,h3,p{overflow-wrap:break-word}
+@media (max-width:380px){
+  .news h2,.op-h h2{font-size:2rem}
+  .news form{flex-wrap:wrap;border-radius:20px}
+  .news input{flex-basis:100%}
+  .news button{flex:1;padding:12px}
+}

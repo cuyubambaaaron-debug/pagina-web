@@ -191,3 +191,6 @@ img{max-width:100%}
 @media (max-width:760px){.secs nav{background:#0a0a0f;border-bottom-color:#22222c}.secs nav a{border-top-color:#22222c}}
 .foot{background:#0a0a0f;color:#9b99a8;margin-top:40px}
 .foot .name{color:#f4f2ee}
+
+/* Que ningún texto largo (URLs, DOIs de las referencias) ensanche la página en el móvil */
+.art p,.art li,.art h1,.art h2,.art h3,.art td,.art figcaption{overflow-wrap:anywhere}
