@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Probador de prompts — PsychesAi</title>
+<meta name="description" content="Manda tus prompts a la API de OpenAI y guarda las respuestas reales en un documento. Es lo que usamos para decir «probados de verdad».">
+<link rel="canonical" href="https://psychesai.com/ia/codigo/probador-de-prompts">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" sizes="any">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="Probador de prompts — PsychesAi">
+<meta property="og:description" content="Manda tus prompts a la API de OpenAI y guarda las respuestas reales en un documento. Es lo que usamos para decir «probados de verdad».">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../inicio.css?v=4104fc5ff3">
+<link rel="stylesheet" href="../../ia/ia.css?v=76056e2d81">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../">Psyches<span>Ai</span></a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menú</button>
+  <nav id="nav">
+    <a href="../../#ia">IA</a><a href="../../#curiosidades">Curiosidades</a><a href="../../#historias">Historias</a><a href="../../#mapas">Mapas</a><a href="../../#poemas">Poemas</a><a href="../../#opinion">Opinión</a><a class="cta" href="../../#apps">Apps</a>
+  </nav>
+</header>
+<main>
+<section class="ia-hero">
+  <p class="mono"><a href="../../#ia">Contenido IA</a> · <a href="./">Códigos y proyectos</a></p>
+  <div class="repo-top"><span class="ruta">psychesai / <b>probador-de-prompts</b></span><span class="pill">Público</span><span class="pill">v1.0.0</span><span class="pill">MIT</span><span class="pill net">Internet: api.openai.com</span></div>
+  <p class="lede">Manda tus prompts a la API de OpenAI y guarda las respuestas reales en un documento. Es lo que usamos para decir «probados de verdad».</p>
+</section>
+<nav class="ia-tabs" aria-label="Secciones de IA"><a href="../../ia/prompts.html">Trucos y prompts<small>24</small></a><a href="../../ia/codigo/" aria-current="page">Códigos y proyectos<small>3</small></a><a href="../../ia/programas.html">Programas recomendados<small>6</small></a><a href="../../#tutoriales">Tutoriales<small>pronto</small></a></nav>
+<div class="ia-main">
+<div class="repo-lay">
+  <div>
+    <div class="caja"><div class="caja-h"><span>4 archivos · Python</span><span>actualizado el 2026-10-25</span></div>
+      <div class="lista"><a href="#f-readme-md"><span>README.md</span><span>1.0 KB</span></a><a href="#f-probar-py"><span>probar.py</span><span>3.1 KB</span></a><a href="#f-prompts-txt"><span>prompts.txt</span><span>299 B</span></a><a href="#f-license"><span>LICENSE</span><span>1.1 KB</span></a></div></div>
+    <div class="vistas"><section id="readme" class="caja"><div class="caja-h"><span>README.md</span></div><div class="md"><h1>Probador de prompts</h1>
+<p>Cuando en un vídeo decimos «probados de verdad», es esto: cada prompt se manda a la API de OpenAI y se guarda la respuesta real. Ahora puedes hacerlo tú con los tuyos.</p>
+<h2>Cómo se usa</h2>
+<ol start="1">
+<li>Necesitas Python 3.8 o más nuevo. No hay que instalar nada más.</li>
+<li>Escribe tus prompts en <code>prompts.txt</code>, separados por una línea con <code>---</code>.</li>
+<li>Define tu clave de OpenAI en la terminal. <b>Nunca la escribas dentro del código.</b></li>
+</ol>
+<pre><code>Windows:      set OPENAI_API_KEY=tu_clave
+Mac o Linux:  export OPENAI_API_KEY=tu_clave</code></pre>
+<ol start="4">
+<li>Ejecuta:</li>
+</ol>
+<pre><code>python probar.py</code></pre>
+<p>Las respuestas quedan en <code>respuestas.md</code>, cada una debajo de su prompt.</p>
+<h2>Opciones</h2>
+<ul>
+<li><code>--modelo gpt-6.1-sol</code> para elegir el modelo.</li>
+<li><code>--salida otro.md</code> para guardar en otro archivo.</li>
+<li><code>--simular</code> para comprobar que todo funciona sin gastar saldo.</li>
+</ul>
+<h2>Cuánto cuesta</h2>
+<p>Usa tu saldo de la API de OpenAI. Unos pocos prompts cuestan céntimos, pero revisa los precios del modelo que elijas antes de mandar cientos.</p>
+<h2>Licencia</h2>
+<p>MIT. Úsalo, cámbialo y compártelo.</p></div></section><section id="f-readme-md" class="caja">
+  <div class="caja-h"><span>README.md · 36 líneas · 1.0 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-readme-md">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-readme-md"><span class="l"># Probador de prompts</span>
+<span class="l"></span>
+<span class="l">Cuando en un vídeo decimos «probados de verdad», es esto: cada prompt se manda a la API de OpenAI y se guarda la respuesta real. Ahora puedes hacerlo tú con los tuyos.</span>
+<span class="l"></span>
+<span class="l">## Cómo se usa</span>
+<span class="l"></span>
+<span class="l"><span class="k">1.</span> Necesitas Python 3.8 o más nuevo. No hay que instalar nada más.</span>
+<span class="l"><span class="k">2.</span> Escribe tus prompts en <span class="s">`prompts.txt`</span>, separados por una línea con <span class="s">`---`</span>.</span>
+<span class="l"><span class="k">3.</span> Define tu clave de OpenAI en la terminal. **Nunca la escribas dentro del código.**</span>
+<span class="l"></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"><span class="s">Windows:      set OPENAI_API_KEY=tu_clave</span></span>
+<span class="l"><span class="s">Mac o Linux:  export OPENAI_API_KEY=tu_clave</span></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"></span>
+<span class="l"><span class="k">4.</span> Ejecuta:</span>
+<span class="l"></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"><span class="s">python probar.py</span></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"></span>
+<span class="l">Las respuestas quedan en <span class="s">`respuestas.md`</span>, cada una debajo de su prompt.</span>
+<span class="l"></span>
+<span class="l">## Opciones</span>
+<span class="l"></span>
+<span class="l"><span class="k">-</span> <span class="s">`--modelo gpt-6.1-sol`</span> para elegir el modelo.</span>
+<span class="l"><span class="k">-</span> <span class="s">`--salida otro.md`</span> para guardar en otro archivo.</span>
+<span class="l"><span class="k">-</span> <span class="s">`--simular`</span> para comprobar que todo funciona sin gastar saldo.</span>
+<span class="l"></span>
+<span class="l">## Cuánto cuesta</span>
+<span class="l"></span>
+<span class="l">Usa tu saldo de la API de OpenAI. Unos pocos prompts cuestan céntimos, pero revisa los precios del modelo que elijas antes de mandar cientos.</span>
+<span class="l"></span>
+<span class="l">## Licencia</span>
+<span class="l"></span>
+<span class="l">MIT. Úsalo, cámbialo y compártelo.</span></code></pre>
+  <div class="caja-h"><span>SHA-256 · a7992579bbe5e4a0f349d2047e4b9473e4513a3586dbe59d7baa62c5d5245157</span></div>
+</section><section id="f-probar-py" class="caja">
+  <div class="caja-h"><span>probar.py · 79 líneas · 3.1 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-probar-py">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-probar-py"><span class="l"><span class="c">#!/usr/bin/env python3</span></span>
+<span class="l"><span class="s">&quot;&quot;&quot;Probador de prompts: manda cada prompt de un archivo a la API de OpenAI</span></span>
+<span class="l"><span class="s">y guarda las respuestas en un documento, para comparar sin copiar y pegar.</span></span>
+<span class="l"></span>
+<span class="l"><span class="s">Uso:</span></span>
+<span class="l"><span class="s">  python probar.py                          # usa prompts.txt</span></span>
+<span class="l"><span class="s">  python probar.py mis_prompts.txt          # otro archivo</span></span>
+<span class="l"><span class="s">  python probar.py --modelo gpt-6.1-sol     # elige el modelo</span></span>
+<span class="l"><span class="s">  python probar.py --simular                # no llama a la API: prueba que todo esté bien</span></span>
+<span class="l"></span>
+<span class="l"><span class="s">En prompts.txt, separa un prompt de otro con una línea que solo tenga ---</span></span>
+<span class="l"></span>
+<span class="l"><span class="s">La clave se lee de la variable de entorno OPENAI_API_KEY. Este programa</span></span>
+<span class="l"><span class="s">nunca la guarda, nunca la imprime y solo la envía a api.openai.com.</span></span>
+<span class="l"><span class="s">&quot;&quot;&quot;</span></span>
+<span class="l"><span class="k">import</span> argparse</span>
+<span class="l"><span class="k">import</span> json</span>
+<span class="l"><span class="k">import</span> os</span>
+<span class="l"><span class="k">import</span> sys</span>
+<span class="l"><span class="k">import</span> urllib.error</span>
+<span class="l"><span class="k">import</span> urllib.request</span>
+<span class="l"><span class="k">from</span> pathlib <span class="k">import</span> Path</span>
+<span class="l"></span>
+<span class="l">API <span class="o">=</span> <span class="s">&quot;</span><span class="s">https://api.openai.com/v1/chat/completions</span><span class="s">&quot;</span></span>
+<span class="l"></span>
+<span class="l"></span>
+<span class="l"><span class="k">def</span> <span class="f">leer_prompts</span><span class="o">(</span>ruta<span class="o">)</span><span class="o">:</span></span>
+<span class="l">    texto <span class="o">=</span> Path<span class="o">(</span>ruta<span class="o">)</span><span class="o">.</span>read_text<span class="o">(</span>encoding<span class="o">=</span><span class="s">&quot;</span><span class="s">utf-8</span><span class="s">&quot;</span><span class="o">)</span><span class="o">.</span>replace<span class="o">(</span><span class="s">&quot;</span><span class="s">\r</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">,</span> <span class="s">&quot;</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    <span class="k">return</span> <span class="o">[</span>p<span class="o">.</span>strip<span class="o">(</span><span class="o">)</span> <span class="k">for</span> p <span class="o">in</span> texto<span class="o">.</span>split<span class="o">(</span><span class="s">&quot;</span><span class="s">\n</span><span class="s">---</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">)</span> <span class="k">if</span> p<span class="o">.</span>strip<span class="o">(</span><span class="o">)</span><span class="o">]</span></span>
+<span class="l"></span>
+<span class="l"></span>
+<span class="l"><span class="k">def</span> <span class="f">preguntar</span><span class="o">(</span>prompt<span class="o">,</span> modelo<span class="o">,</span> clave<span class="o">)</span><span class="o">:</span></span>
+<span class="l">    cuerpo <span class="o">=</span> json<span class="o">.</span>dumps<span class="o">(</span><span class="o">{</span><span class="s">&quot;</span><span class="s">model</span><span class="s">&quot;</span><span class="o">:</span> modelo<span class="o">,</span> <span class="s">&quot;</span><span class="s">messages</span><span class="s">&quot;</span><span class="o">:</span> <span class="o">[</span><span class="o">{</span><span class="s">&quot;</span><span class="s">role</span><span class="s">&quot;</span><span class="o">:</span> <span class="s">&quot;</span><span class="s">user</span><span class="s">&quot;</span><span class="o">,</span> <span class="s">&quot;</span><span class="s">content</span><span class="s">&quot;</span><span class="o">:</span> prompt<span class="o">}</span><span class="o">]</span><span class="o">}</span><span class="o">)</span><span class="o">.</span>encode<span class="o">(</span><span class="s">&quot;</span><span class="s">utf-8</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    peticion <span class="o">=</span> urllib<span class="o">.</span>request<span class="o">.</span>Request<span class="o">(</span>API<span class="o">,</span> data<span class="o">=</span>cuerpo<span class="o">,</span> method<span class="o">=</span><span class="s">&quot;</span><span class="s">POST</span><span class="s">&quot;</span><span class="o">,</span> headers<span class="o">=</span><span class="o">{</span></span>
+<span class="l">        <span class="s">&quot;</span><span class="s">Authorization</span><span class="s">&quot;</span><span class="o">:</span> <span class="s">&quot;</span><span class="s">Bearer </span><span class="s">&quot;</span> <span class="o">+</span> clave<span class="o">,</span></span>
+<span class="l">        <span class="s">&quot;</span><span class="s">Content-Type</span><span class="s">&quot;</span><span class="o">:</span> <span class="s">&quot;</span><span class="s">application/json</span><span class="s">&quot;</span><span class="o">,</span></span>
+<span class="l">    <span class="o">}</span><span class="o">)</span></span>
+<span class="l">    <span class="k">with</span> urllib<span class="o">.</span>request<span class="o">.</span>urlopen<span class="o">(</span>peticion<span class="o">,</span> timeout<span class="o">=</span><span class="m">120</span><span class="o">)</span> <span class="k">as</span> r<span class="o">:</span></span>
+<span class="l">        <span class="k">return</span> json<span class="o">.</span>load<span class="o">(</span>r<span class="o">)</span><span class="o">[</span><span class="s">&quot;</span><span class="s">choices</span><span class="s">&quot;</span><span class="o">]</span><span class="o">[</span><span class="m">0</span><span class="o">]</span><span class="o">[</span><span class="s">&quot;</span><span class="s">message</span><span class="s">&quot;</span><span class="o">]</span><span class="o">[</span><span class="s">&quot;</span><span class="s">content</span><span class="s">&quot;</span><span class="o">]</span><span class="o">.</span>strip<span class="o">(</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l"></span>
+<span class="l"><span class="k">def</span> <span class="f">main</span><span class="o">(</span><span class="o">)</span><span class="o">:</span></span>
+<span class="l">    ap <span class="o">=</span> argparse<span class="o">.</span>ArgumentParser<span class="o">(</span>description<span class="o">=</span><span class="s">&quot;</span><span class="s">Prueba tus prompts en la API de OpenAI.</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    ap<span class="o">.</span>add_argument<span class="o">(</span><span class="s">&quot;</span><span class="s">archivo</span><span class="s">&quot;</span><span class="o">,</span> nargs<span class="o">=</span><span class="s">&quot;</span><span class="s">?</span><span class="s">&quot;</span><span class="o">,</span> default<span class="o">=</span><span class="s">&quot;</span><span class="s">prompts.txt</span><span class="s">&quot;</span><span class="o">,</span> help<span class="o">=</span><span class="s">&quot;</span><span class="s">archivo con los prompts</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    ap<span class="o">.</span>add_argument<span class="o">(</span><span class="s">&quot;</span><span class="s">--modelo</span><span class="s">&quot;</span><span class="o">,</span> default<span class="o">=</span><span class="s">&quot;</span><span class="s">gpt-6.1-sol</span><span class="s">&quot;</span><span class="o">,</span> help<span class="o">=</span><span class="s">&quot;</span><span class="s">modelo de OpenAI que quieres probar</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    ap<span class="o">.</span>add_argument<span class="o">(</span><span class="s">&quot;</span><span class="s">--salida</span><span class="s">&quot;</span><span class="o">,</span> default<span class="o">=</span><span class="s">&quot;</span><span class="s">respuestas.md</span><span class="s">&quot;</span><span class="o">,</span> help<span class="o">=</span><span class="s">&quot;</span><span class="s">dónde guardar las respuestas</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    ap<span class="o">.</span>add_argument<span class="o">(</span><span class="s">&quot;</span><span class="s">--simular</span><span class="s">&quot;</span><span class="o">,</span> action<span class="o">=</span><span class="s">&quot;</span><span class="s">store_true</span><span class="s">&quot;</span><span class="o">,</span> help<span class="o">=</span><span class="s">&quot;</span><span class="s">no llama a la API</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    a <span class="o">=</span> ap<span class="o">.</span>parse_args<span class="o">(</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l">    prompts <span class="o">=</span> leer_prompts<span class="o">(</span>a<span class="o">.</span>archivo<span class="o">)</span></span>
+<span class="l">    <span class="k">if</span> <span class="o">not</span> prompts<span class="o">:</span></span>
+<span class="l">        sys<span class="o">.</span>exit<span class="o">(</span><span class="s">f</span><span class="s">&quot;</span><span class="s">No encontré prompts en </span><span class="s">{</span>a<span class="o">.</span>archivo<span class="s">}</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l">    clave <span class="o">=</span> os<span class="o">.</span>environ<span class="o">.</span>get<span class="o">(</span><span class="s">&quot;</span><span class="s">OPENAI_API_KEY</span><span class="s">&quot;</span><span class="o">,</span> <span class="s">&quot;</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    <span class="k">if</span> <span class="o">not</span> a<span class="o">.</span>simular <span class="o">and</span> <span class="o">not</span> clave<span class="o">:</span></span>
+<span class="l">        sys<span class="o">.</span>exit<span class="o">(</span><span class="s">&quot;</span><span class="s">Falta tu clave. Defínela así y vuelve a intentarlo:</span><span class="s">\n</span><span class="s">&quot;</span></span>
+<span class="l">                 <span class="s">&quot;</span><span class="s">  Windows:     set OPENAI_API_KEY=tu_clave</span><span class="s">\n</span><span class="s">&quot;</span></span>
+<span class="l">                 <span class="s">&quot;</span><span class="s">  Mac o Linux: export OPENAI_API_KEY=tu_clave</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l">    partes <span class="o">=</span> <span class="o">[</span><span class="s">f</span><span class="s">&quot;</span><span class="s"># Respuestas de </span><span class="s">{</span>a<span class="o">.</span>modelo<span class="s">}</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">]</span></span>
+<span class="l">    <span class="k">for</span> i<span class="o">,</span> prompt <span class="o">in</span> <span class="b">enumerate</span><span class="o">(</span>prompts<span class="o">,</span> <span class="m">1</span><span class="o">)</span><span class="o">:</span></span>
+<span class="l">        <span class="b">print</span><span class="o">(</span><span class="s">f</span><span class="s">&quot;</span><span class="s">[</span><span class="s">{</span>i<span class="s">}</span><span class="s">/</span><span class="s">{</span><span class="b">len</span><span class="o">(</span>prompts<span class="o">)</span><span class="s">}</span><span class="s">] Probando…</span><span class="s">&quot;</span><span class="o">,</span> flush<span class="o">=</span><span class="k">True</span><span class="o">)</span></span>
+<span class="l">        <span class="k">if</span> a<span class="o">.</span>simular<span class="o">:</span></span>
+<span class="l">            respuesta <span class="o">=</span> <span class="s">&quot;</span><span class="s">(Simulado: no se llamó a la API.)</span><span class="s">&quot;</span></span>
+<span class="l">        <span class="k">else</span><span class="o">:</span></span>
+<span class="l">            <span class="k">try</span><span class="o">:</span></span>
+<span class="l">                respuesta <span class="o">=</span> preguntar<span class="o">(</span>prompt<span class="o">,</span> a<span class="o">.</span>modelo<span class="o">,</span> clave<span class="o">)</span></span>
+<span class="l">            <span class="k">except</span> urllib<span class="o">.</span>error<span class="o">.</span>HTTPError <span class="k">as</span> e<span class="o">:</span></span>
+<span class="l">                respuesta <span class="o">=</span> <span class="s">f</span><span class="s">&quot;</span><span class="s">(La API respondió con el error </span><span class="s">{</span>e<span class="o">.</span>code<span class="s">}</span><span class="s">.)</span><span class="s">&quot;</span></span>
+<span class="l">            <span class="k">except</span> urllib<span class="o">.</span>error<span class="o">.</span>URLError <span class="k">as</span> e<span class="o">:</span></span>
+<span class="l">                respuesta <span class="o">=</span> <span class="s">f</span><span class="s">&quot;</span><span class="s">(No hubo conexión: </span><span class="s">{</span>e<span class="o">.</span>reason<span class="s">}</span><span class="s">.)</span><span class="s">&quot;</span></span>
+<span class="l">        partes<span class="o">.</span>append<span class="o">(</span><span class="s">f</span><span class="s">&quot;</span><span class="s">## Prompt </span><span class="s">{</span>i<span class="s">}</span><span class="s">\n</span><span class="s">\n</span><span class="s">```</span><span class="s">\n</span><span class="s">{</span>prompt<span class="s">}</span><span class="s">\n</span><span class="s">```</span><span class="s">\n</span><span class="s">\n</span><span class="s">{</span>respuesta<span class="s">}</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l">    Path<span class="o">(</span>a<span class="o">.</span>salida<span class="o">)</span><span class="o">.</span>write_text<span class="o">(</span><span class="s">&quot;</span><span class="s">\n</span><span class="s">&quot;</span><span class="o">.</span>join<span class="o">(</span>partes<span class="o">)</span><span class="o">,</span> encoding<span class="o">=</span><span class="s">&quot;</span><span class="s">utf-8</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l">    <span class="b">print</span><span class="o">(</span><span class="s">f</span><span class="s">&quot;</span><span class="s">Listo: </span><span class="s">{</span>a<span class="o">.</span>salida<span class="s">}</span><span class="s">&quot;</span><span class="o">)</span></span>
+<span class="l"></span>
+<span class="l"></span>
+<span class="l"><span class="k">if</span> <span class="p">__name__</span> <span class="o">==</span> <span class="s">&quot;</span><span class="s">__main__</span><span class="s">&quot;</span><span class="o">:</span></span>
+<span class="l">    main<span class="o">(</span><span class="o">)</span></span></code></pre>
+  <div class="caja-h"><span>SHA-256 · 50f8ceb45511d069c9ea43569896d855afc88d95988e878c7b2141aa01013358</span></div>
+</section><section id="f-prompts-txt" class="caja">
+  <div class="caja-h"><span>prompts.txt · 3 líneas · 299 B</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-prompts-txt">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-prompts-txt"><span class="l">Quiero organizar un viaje a Cusco de 4 días con 1500 soles. Antes de responder, hazme 3 preguntas para entender mi caso.</span>
+<span class="l">---</span>
+<span class="l">Analiza este argumento: «Todos los millonarios se levantan a las 5 am, si quieres ser rico tienes que madrugar». Encuentra la falacia lógica y explícamela en 2 líneas.</span></code></pre>
+  <div class="caja-h"><span>SHA-256 · c702ad500c2a31344b341c53521cec61e240ebb93d4b51a58f11378ae98f630b</span></div>
+</section><section id="f-license" class="caja">
+  <div class="caja-h"><span>LICENSE · 21 líneas · 1.1 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-license">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-license"><span class="l">MIT License</span>
+<span class="l"></span>
+<span class="l">Copyright (c) 2026 PsychesAi (psychesai.com)</span>
+<span class="l"></span>
+<span class="l">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="l">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="l">in the Software without restriction, including without limitation the rights</span>
+<span class="l">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="l">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="l">furnished to do so, subject to the following conditions:</span>
+<span class="l"></span>
+<span class="l">The above copyright notice and this permission notice shall be included in all</span>
+<span class="l">copies or substantial portions of the Software.</span>
+<span class="l"></span>
+<span class="l">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="l">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="l">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="l">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="l">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="l">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="l">SOFTWARE.</span></code></pre>
+  <div class="caja-h"><span>SHA-256 · 3cb5f87b69b1afdd44b427e8d2f003dd5d1baeb447c2930a9915fb5538b9980d</span></div>
+</section></div>
+  </div>
+  <div>
+    <aside class="etiqueta" aria-label="Etiqueta de seguridad">
+  <h2>Etiqueta de seguridad</h2>
+  <p class="sub">Calculada por el escáner, no escrita a mano</p>
+  <div class="et-f si grueso"><b>Se conecta a internet</b><em>Sí</em><small>Solo a: api.openai.com</small></div>
+  <div class="et-f si"><b>Necesita una clave</b><em>Sí</em><small>Tu OPENAI_API_KEY, leída de una variable de entorno. El código no la guarda ni la imprime.</small></div>
+  <div class="et-f si"><b>Lee archivos</b><em>Sí</em><small>El archivo de prompts que le indiques</small></div>
+  <div class="et-f si"><b>Escribe archivos</b><em>Sí</em><small>respuestas.md, o el nombre que elijas</small></div>
+  <div class="et-f no"><b>Dependencias externas</b><em>0</em><small>Nada que instalar: no hay paquetes de terceros.</small></div>
+  <div class="et-f no"><b>JavaScript</b><em>0</em><small>Ni una línea.</small></div>
+  <div class="et-f no"><b>Ejecuta comandos del sistema</b><em>No</em><small>Si lo hiciera, no se publicaría.</small></div>
+  <div class="et-f no"><b>Secretos o datos privados</b><em>0</em><small>Ni claves, ni tokens, ni IPs, ni correos personales.</small></div>
+  <div class="et-f no grueso"><b>Rastreo o telemetría</b><em>No</em><small>No envía nada sobre ti a nadie.</small></div>
+  <p class="pie">Escaneado el 2026-10-25. Huella del .zip:<br><code>649617b569d64a6176f2eacba1b591bbb75fc17fdce47c06898ff85766a0a41c</code></p>
+</aside>
+    <div class="descarga">
+      <a class="bajar" href="../descargas/probador-de-prompts-1.0.0.zip" download>Descargar .zip <small>3.4 KB</small></a>
+      <p>Huella SHA-256 del .zip. Si no coincide con la de tu descarga, no lo abras:</p>
+      <span class="hash" id="h-probador-de-prompts">649617b569d64a6176f2eacba1b591bbb75fc17fdce47c06898ff85766a0a41c</span>
+      <details><summary>Cómo comprobar la huella</summary>
+        <code>Windows: certutil -hashfile probador-de-prompts-1.0.0.zip SHA256</code>
+        <code>Mac: shasum -a 256 probador-de-prompts-1.0.0.zip</code>
+        <code>Linux: sha256sum probador-de-prompts-1.0.0.zip</code>
+      </details>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <a class="brand" href="../../">Psyches<span>Ai</span></a>
+  <nav><a href="../../#ia">IA</a><a href="../../#curiosidades">Curiosidades</a><a href="../../#historias">Historias</a><a href="../../#mapas">Mapas</a><a href="../../#poemas">Poemas</a><a href="../../#opinion">Opinión</a></nav>
+  <span>© 2026 · <a href="mailto:hola@psychesai.com">hola@psychesai.com</a></span>
+</footer>
+<script src="../../ia/ia.js?v=c3558012b9" defer></script>
+</body>
+</html>

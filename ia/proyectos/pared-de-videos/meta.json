@@ -1,0 +1,16 @@
+{
+  "titulo": "Pared de vídeos",
+  "tipo": "Código",
+  "version": "1.0.0",
+  "lenguaje": "HTML y CSS",
+  "licencia": "MIT",
+  "fecha": "2026-10-25",
+  "resumen": "La pared de móviles en movimiento de nuestra portada, para tu web. Solo HTML y CSS, sin una línea de JavaScript.",
+  "archivos": ["README.md", "index.html", "pared.css", "LICENSE"],
+  "declara": {
+    "internet": [],
+    "variables": [],
+    "lee": "Nada",
+    "escribe": "Nada"
+  }
+}

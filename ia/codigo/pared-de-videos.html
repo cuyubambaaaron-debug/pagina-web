@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Pared de vídeos — PsychesAi</title>
+<meta name="description" content="La pared de móviles en movimiento de nuestra portada, para tu web. Solo HTML y CSS, sin una línea de JavaScript.">
+<link rel="canonical" href="https://psychesai.com/ia/codigo/pared-de-videos">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml" sizes="any">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta property="og:title" content="Pared de vídeos — PsychesAi">
+<meta property="og:description" content="La pared de móviles en movimiento de nuestra portada, para tu web. Solo HTML y CSS, sin una línea de JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../inicio.css?v=4104fc5ff3">
+<link rel="stylesheet" href="../../ia/ia.css?v=76056e2d81">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="../../">Psyches<span>Ai</span></a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menú</button>
+  <nav id="nav">
+    <a href="../../#ia">IA</a><a href="../../#curiosidades">Curiosidades</a><a href="../../#historias">Historias</a><a href="../../#mapas">Mapas</a><a href="../../#poemas">Poemas</a><a href="../../#opinion">Opinión</a><a class="cta" href="../../#apps">Apps</a>
+  </nav>
+</header>
+<main>
+<section class="ia-hero">
+  <p class="mono"><a href="../../#ia">Contenido IA</a> · <a href="./">Códigos y proyectos</a></p>
+  <div class="repo-top"><span class="ruta">psychesai / <b>pared-de-videos</b></span><span class="pill">Público</span><span class="pill">v1.0.0</span><span class="pill">MIT</span><span class="pill ok">Sin internet</span></div>
+  <p class="lede">La pared de móviles en movimiento de nuestra portada, para tu web. Solo HTML y CSS, sin una línea de JavaScript.</p>
+</section>
+<nav class="ia-tabs" aria-label="Secciones de IA"><a href="../../ia/prompts.html">Trucos y prompts<small>24</small></a><a href="../../ia/codigo/" aria-current="page">Códigos y proyectos<small>3</small></a><a href="../../ia/programas.html">Programas recomendados<small>6</small></a><a href="../../#tutoriales">Tutoriales<small>pronto</small></a></nav>
+<div class="ia-main">
+<div class="repo-lay">
+  <div>
+    <div class="caja"><div class="caja-h"><span>4 archivos · HTML y CSS</span><span>actualizado el 2026-10-25</span></div>
+      <div class="lista"><a href="#f-readme-md"><span>README.md</span><span>890 B</span></a><a href="#f-index-html"><span>index.html</span><span>1.6 KB</span></a><a href="#f-pared-css"><span>pared.css</span><span>2.2 KB</span></a><a href="#f-license"><span>LICENSE</span><span>1.1 KB</span></a></div></div>
+    <div class="vistas"><section id="readme" class="caja"><div class="caja-h"><span>README.md</span></div><div class="md"><h1>Pared de vídeos</h1>
+<p>La pared de móviles que se mueve en la portada de psychesai.com, lista para tu web. Solo HTML y CSS: <b>cero JavaScript</b>, cero librerías.</p>
+<h2>Cómo se usa</h2>
+<ol start="1">
+<li>Abre <code>index.html</code> en el navegador para verla.</li>
+<li>Cambia cada recuadro por un fotograma de tus vídeos:</li>
+</ol>
+<pre><code>&lt;img class=&quot;v&quot; src=&quot;mi-video-1.webp&quot; alt=&quot;&quot;&gt;</code></pre>
+<ol start="3">
+<li>Cada columna lleva su lista <b>dos veces</b>. Si cambias un vídeo, cámbialo en las dos copias: así el bucle no se nota.</li>
+</ol>
+<h2>Cómo funciona</h2>
+<ul>
+<li>Cada columna sube hasta la mitad exacta de su altura (<code>translateY(-50%)</code>), que es donde empieza la copia. Por eso el salto no se ve.</li>
+<li>La columna del medio va al revés y más lenta, para que no parezca una cinta.</li>
+<li>En el móvil se convierte en una fila que corre de lado.</li>
+<li>Si la persona pidió menos movimiento en su sistema, la pared se queda quieta.</li>
+</ul>
+<h2>Licencia</h2>
+<p>MIT. Úsalo, cámbialo y compártelo.</p></div></section><section id="f-readme-md" class="caja">
+  <div class="caja-h"><span>README.md · 25 líneas · 890 B</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-readme-md">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-readme-md"><span class="l"># Pared de vídeos</span>
+<span class="l"></span>
+<span class="l">La pared de móviles que se mueve en la portada de psychesai.com, lista para tu web. Solo HTML y CSS: **cero JavaScript**, cero librerías.</span>
+<span class="l"></span>
+<span class="l">## Cómo se usa</span>
+<span class="l"></span>
+<span class="l"><span class="k">1.</span> Abre <span class="s">`index.html`</span> en el navegador para verla.</span>
+<span class="l"><span class="k">2.</span> Cambia cada recuadro por un fotograma de tus vídeos:</span>
+<span class="l"></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"><span class="s">&lt;img class=&quot;v&quot; src=&quot;mi-video-1.webp&quot; alt=&quot;&quot;&gt;</span></span>
+<span class="l"><span class="s">```</span></span>
+<span class="l"></span>
+<span class="l"><span class="k">3.</span> Cada columna lleva su lista **dos veces**. Si cambias un vídeo, cámbialo en las dos copias: así el bucle no se nota.</span>
+<span class="l"></span>
+<span class="l">## Cómo funciona</span>
+<span class="l"></span>
+<span class="l"><span class="k">-</span> Cada columna sube hasta la mitad exacta de su altura (<span class="s">`translateY(-50%)`</span>), que es donde empieza la copia. Por eso el salto no se ve.</span>
+<span class="l"><span class="k">-</span> La columna del medio va al revés y más lenta, para que no parezca una cinta.</span>
+<span class="l"><span class="k">-</span> En el móvil se convierte en una fila que corre de lado.</span>
+<span class="l"><span class="k">-</span> Si la persona pidió menos movimiento en su sistema, la pared se queda quieta.</span>
+<span class="l"></span>
+<span class="l">## Licencia</span>
+<span class="l"></span>
+<span class="l">MIT. Úsalo, cámbialo y compártelo.</span></code></pre>
+  <div class="caja-h"><span>SHA-256 · b78bceb717d2fd39f969ecc9ccaf85eac4b102ced29e4a56956f1e4ff46b6e09</span></div>
+</section><section id="f-index-html" class="caja">
+  <div class="caja-h"><span>index.html · 32 líneas · 1.6 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-index-html">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-index-html"><span class="l"><span class="c">&lt;!doctype html&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">html</span> <span class="a">lang</span><span class="o">=</span><span class="s">&quot;es&quot;</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">head</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">meta</span> <span class="a">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">meta</span> <span class="a">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="a">content</span><span class="o">=</span><span class="s">&quot;width=device-width,initial-scale=1&quot;</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">title</span><span class="o">&gt;</span>Pared de vídeos<span class="o">&lt;</span><span class="o">/</span><span class="t">title</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">link</span> <span class="a">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="a">href</span><span class="o">=</span><span class="s">&quot;pared.css&quot;</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="o">/</span><span class="t">head</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">body</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="t">section</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;portada&quot;</span><span class="o">&gt;</span></span>
+<span class="l">  <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;texto&quot;</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="t">h1</span><span class="o">&gt;</span>Lo viste en 50 segundos. <span class="o">&lt;</span><span class="t">span</span><span class="o">&gt;</span>Aquí está el resto.<span class="o">&lt;</span><span class="o">/</span><span class="t">span</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="o">/</span><span class="t">h1</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="t">p</span><span class="o">&gt;</span>Cambia cada recuadro por un fotograma de tus vídeos (formato 9:16) y listo.<span class="o">&lt;</span><span class="o">/</span><span class="t">p</span><span class="o">&gt;</span></span>
+<span class="l">  <span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">  <span class="c">&lt;!-- Cada columna repite su lista dos veces: así el bucle no se nota --&gt;</span></span>
+<span class="l">  <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;pared&quot;</span> <span class="a">aria-hidden</span><span class="o">=</span><span class="s">&quot;true&quot;</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:220&quot;</span><span class="o">&gt;</span>1<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:280&quot;</span><span class="o">&gt;</span>2<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:330&quot;</span><span class="o">&gt;</span>3<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:20&quot;</span><span class="o">&gt;</span>4<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:220&quot;</span><span class="o">&gt;</span>1<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:280&quot;</span><span class="o">&gt;</span>2<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:330&quot;</span><span class="o">&gt;</span>3<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:20&quot;</span><span class="o">&gt;</span>4<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;col sube&quot;</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:40&quot;</span><span class="o">&gt;</span>5<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:190&quot;</span><span class="o">&gt;</span>6<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:300&quot;</span><span class="o">&gt;</span>7<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:160&quot;</span><span class="o">&gt;</span>8<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:40&quot;</span><span class="o">&gt;</span>5<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:190&quot;</span><span class="o">&gt;</span>6<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:300&quot;</span><span class="o">&gt;</span>7<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:160&quot;</span><span class="o">&gt;</span>8<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;col&quot;</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:350&quot;</span><span class="o">&gt;</span>9<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:200&quot;</span><span class="o">&gt;</span>10<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:60&quot;</span><span class="o">&gt;</span>11<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:250&quot;</span><span class="o">&gt;</span>12<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">      <span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:350&quot;</span><span class="o">&gt;</span>9<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:200&quot;</span><span class="o">&gt;</span>10<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:60&quot;</span><span class="o">&gt;</span>11<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span><span class="o">&lt;</span><span class="t">div</span> <span class="a">class</span><span class="o">=</span><span class="s">&quot;v&quot;</span> <span class="a">style</span><span class="o">=</span><span class="s">&quot;--h:250&quot;</span><span class="o">&gt;</span>12<span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">    <span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l">  <span class="o">&lt;</span><span class="o">/</span><span class="t">div</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="o">/</span><span class="t">section</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="o">/</span><span class="t">body</span><span class="o">&gt;</span></span>
+<span class="l"><span class="o">&lt;</span><span class="o">/</span><span class="t">html</span><span class="o">&gt;</span></span></code></pre>
+  <div class="caja-h"><span>SHA-256 · d9557fb683e79f0973119df0716f654bd332cf7d55fb9a3c4066a32e267ae8f7</span></div>
+</section><section id="f-pared-css" class="caja">
+  <div class="caja-h"><span>pared.css · 34 líneas · 2.2 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-pared-css">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-pared-css"><span class="l"><span class="c">/* Pared de vídeos: columnas de móviles que se mueven solas, sin JavaScript */</span></span>
+<span class="l"><span class="o">*</span><span class="o">{</span><span class="k">box-sizing</span><span class="o">:</span><span class="k">border-box</span><span class="o">}</span></span>
+<span class="l"><span class="t">body</span><span class="o">{</span><span class="k">margin</span><span class="o">:</span><span class="m">0</span><span class="o">;</span><span class="k">background</span><span class="o">:</span><span class="m">#0a0a0f</span><span class="o">;</span><span class="k">color</span><span class="o">:</span><span class="m">#f4f2ee</span><span class="o">;</span><span class="k">font-family</span><span class="o">:</span>system-ui<span class="o">,</span><span class="k">sans-serif</span><span class="o">;</span><span class="k">overflow-x</span><span class="o">:</span><span class="k">hidden</span><span class="o">}</span></span>
+<span class="l"></span>
+<span class="l"><span class="o">.</span><span class="f">portada</span><span class="o">{</span><span class="k">min-height</span><span class="o">:</span><span class="m">100</span><span class="k">vh</span><span class="o">;</span><span class="k">display</span><span class="o">:</span><span class="k">grid</span><span class="o">;</span><span class="k">grid-template-columns</span><span class="o">:</span><span class="m">1</span>fr <span class="m">1</span>fr<span class="o">;</span><span class="k">align-items</span><span class="o">:</span><span class="k">center</span><span class="o">;</span><span class="k">gap</span><span class="o">:</span><span class="m">30</span><span class="k">px</span><span class="o">;</span><span class="k">padding</span><span class="o">:</span><span class="m">40</span><span class="k">px</span> <span class="f">clamp</span><span class="o">(</span><span class="m">16</span><span class="k">px</span><span class="o">,</span><span class="m">5</span><span class="k">vw</span><span class="o">,</span><span class="m">72</span><span class="k">px</span><span class="o">)</span><span class="o">;</span><span class="k">overflow</span><span class="o">:</span><span class="k">hidden</span><span class="o">}</span></span>
+<span class="l"><span class="o">.</span><span class="f">texto</span> <span class="t">h1</span><span class="o">{</span><span class="k">font-size</span><span class="o">:</span><span class="f">clamp</span><span class="o">(</span><span class="m">2.6</span><span class="k">rem</span><span class="o">,</span><span class="m">6</span><span class="k">vw</span><span class="o">,</span><span class="m">5.5</span><span class="k">rem</span><span class="o">)</span><span class="o">;</span><span class="k">line-height</span><span class="o">:</span><span class="m">.95</span><span class="o">;</span><span class="k">letter-spacing</span><span class="o">:</span><span class="m">-.04</span><span class="k">em</span><span class="o">;</span><span class="k">margin</span><span class="o">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">20</span><span class="k">px</span><span class="o">}</span></span>
+<span class="l"><span class="o">.</span><span class="f">texto</span> <span class="t">h1</span> <span class="t">span</span><span class="o">{</span><span class="k">color</span><span class="o">:</span><span class="m">#7aa2ff</span><span class="o">}</span></span>
+<span class="l"><span class="o">.</span><span class="f">texto</span> <span class="t">p</span><span class="o">{</span><span class="k">color</span><span class="o">:</span><span class="m">#c9c7d2</span><span class="o">;</span><span class="k">font-size</span><span class="o">:</span><span class="m">1.1</span><span class="k">rem</span><span class="o">;</span><span class="k">max-width</span><span class="o">:</span><span class="m">30</span><span class="k">em</span><span class="o">}</span></span>
+<span class="l"></span>
+<span class="l"><span class="c">/* La pared: inclinada y con los bordes difuminados */</span></span>
+<span class="l"><span class="o">.</span><span class="f">pared</span><span class="o">{</span><span class="k">height</span><span class="o">:</span><span class="m">120</span><span class="k">vh</span><span class="o">;</span><span class="k">margin</span><span class="o">:</span><span class="m">-10</span><span class="k">vh</span> <span class="m">0</span><span class="o">;</span><span class="k">display</span><span class="o">:</span><span class="k">grid</span><span class="o">;</span><span class="k">grid-template-columns</span><span class="o">:</span><span class="f">repeat</span><span class="o">(</span><span class="m">3</span><span class="o">,</span><span class="m">1</span>fr<span class="o">)</span><span class="o">;</span><span class="k">gap</span><span class="o">:</span><span class="m">16</span><span class="k">px</span><span class="o">;</span><span class="k">transform</span><span class="o">:</span><span class="b">rotate</span><span class="o">(</span><span class="m">-7</span><span class="k">deg</span><span class="o">)</span><span class="o">;</span></span>
+<span class="l">  <span class="k">-webkit-</span><span class="k">mask</span><span class="o">:</span><span class="b">linear-gradient</span><span class="o">(</span><span class="k">transparent</span><span class="o">,</span><span class="m">#000</span> <span class="m">18</span><span class="k">%</span><span class="o">,</span><span class="m">#000</span> <span class="m">82</span><span class="k">%</span><span class="o">,</span><span class="k">transparent</span><span class="o">)</span><span class="o">;</span><span class="k">mask</span><span class="o">:</span><span class="b">linear-gradient</span><span class="o">(</span><span class="k">transparent</span><span class="o">,</span><span class="m">#000</span> <span class="m">18</span><span class="k">%</span><span class="o">,</span><span class="m">#000</span> <span class="m">82</span><span class="k">%</span><span class="o">,</span><span class="k">transparent</span><span class="o">)</span><span class="o">}</span></span>
+<span class="l"><span class="o">.</span><span class="f">col</span><span class="o">{</span><span class="k">display</span><span class="o">:</span><span class="k">flex</span><span class="o">;</span><span class="k">flex-direction</span><span class="o">:</span><span class="k">column</span><span class="o">;</span><span class="k">gap</span><span class="o">:</span><span class="m">16</span><span class="k">px</span><span class="o">;</span><span class="k">animation</span><span class="o">:</span>subir <span class="m">60</span><span class="k">s</span> <span class="k">linear</span> <span class="k">infinite</span><span class="o">}</span></span>
+<span class="l"><span class="o">.</span><span class="f">col</span><span class="o">.</span><span class="f">sube</span><span class="o">{</span><span class="k">animation-direction</span><span class="o">:</span><span class="k">reverse</span><span class="o">;</span><span class="k">animation-duration</span><span class="o">:</span><span class="m">70</span><span class="k">s</span><span class="o">;</span><span class="k">margin-top</span><span class="o">:</span><span class="m">-30</span><span class="k">%</span><span class="o">}</span></span>
+<span class="l"><span class="o">@</span><span class="k">keyframes</span> <span class="t">subir</span><span class="o">{</span><span class="t">to</span><span class="o">{</span><span class="k">transform</span><span class="o">:</span><span class="b">translateY</span><span class="o">(</span><span class="m">-50</span><span class="k">%</span><span class="o">)</span><span class="o">}</span><span class="o">}</span> <span class="c">/* -50 %: justo la mitad, donde empieza la copia */</span></span>
+<span class="l"></span>
+<span class="l"><span class="c">/* Cada vídeo. Para usar tus fotogramas, cambia el div por &lt;img src=&quot;...&quot; alt=&quot;&quot;&gt; con la misma clase */</span></span>
+<span class="l"><span class="o">.</span><span class="f">v</span><span class="o">{</span><span class="k">aspect-ratio</span><span class="o">:</span><span class="m">9</span><span class="o">/</span><span class="m">16</span><span class="o">;</span><span class="k">border-radius</span><span class="o">:</span><span class="m">18</span><span class="k">px</span><span class="o">;</span><span class="k">border</span><span class="o">:</span><span class="m">1</span><span class="k">px</span> <span class="k">solid</span> <span class="b">rgba</span><span class="o">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">.12</span><span class="o">)</span><span class="o">;</span><span class="k">box-shadow</span><span class="o">:</span><span class="m">0</span> <span class="m">20</span><span class="k">px</span> <span class="m">50</span><span class="k">px</span> <span class="b">rgba</span><span class="o">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">.5</span><span class="o">)</span><span class="o">;</span></span>
+<span class="l">  <span class="k">display</span><span class="o">:</span><span class="k">grid</span><span class="o">;</span><span class="k">place-items</span><span class="o">:</span><span class="k">center</span><span class="o">;</span><span class="k">font</span><span class="o">:</span><span class="m">800</span> <span class="m">2</span><span class="k">rem</span> system-ui<span class="o">;</span><span class="k">color</span><span class="o">:</span><span class="b">rgba</span><span class="o">(</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">255</span><span class="o">,</span><span class="m">.7</span><span class="o">)</span><span class="o">;</span><span class="k">object-fit</span><span class="o">:</span><span class="k">cover</span><span class="o">;</span><span class="k">width</span><span class="o">:</span><span class="m">100</span><span class="k">%</span><span class="o">;</span></span>
+<span class="l">  <span class="k">background</span><span class="o">:</span><span class="b">linear-gradient</span><span class="o">(</span><span class="m">160</span><span class="k">deg</span><span class="o">,</span><span class="b">hsl</span><span class="o">(</span><span class="f">var</span><span class="o">(</span><span class="p">--h</span><span class="o">,</span><span class="m">220</span><span class="o">)</span> <span class="m">80</span><span class="k">%</span> <span class="m">55</span><span class="k">%</span><span class="o">)</span><span class="o">,</span><span class="b">hsl</span><span class="o">(</span><span class="b">calc</span><span class="o">(</span><span class="f">var</span><span class="o">(</span><span class="p">--h</span><span class="o">,</span><span class="m">220</span><span class="o">)</span> <span class="o">+</span> <span class="m">40</span><span class="o">)</span> <span class="m">70</span><span class="k">%</span> <span class="m">25</span><span class="k">%</span><span class="o">)</span><span class="o">)</span><span class="o">}</span></span>
+<span class="l"></span>
+<span class="l"><span class="c">/* Móvil: una sola fila que corre de lado */</span></span>
+<span class="l"><span class="o">@</span><span class="k">media</span> <span class="o">(</span><span class="t">max-width</span><span class="o">:</span>760px<span class="o">)</span><span class="o">{</span></span>
+<span class="l">  <span class="o">.</span><span class="f">portada</span><span class="o">{</span><span class="k">grid-template-columns</span><span class="o">:</span><span class="m">1</span>fr<span class="o">}</span></span>
+<span class="l">  <span class="o">.</span><span class="f">pared</span><span class="o">{</span><span class="k">height</span><span class="o">:</span><span class="k">auto</span><span class="o">;</span><span class="k">margin</span><span class="o">:</span><span class="m">0</span> <span class="m">-16</span><span class="k">px</span><span class="o">;</span><span class="k">transform</span><span class="o">:</span><span class="k">none</span><span class="o">;</span><span class="k">display</span><span class="o">:</span><span class="k">block</span><span class="o">;</span></span>
+<span class="l">    <span class="k">-webkit-</span><span class="k">mask</span><span class="o">:</span><span class="b">linear-gradient</span><span class="o">(</span><span class="m">90</span><span class="k">deg</span><span class="o">,</span><span class="k">transparent</span><span class="o">,</span><span class="m">#000</span> <span class="m">10</span><span class="k">%</span><span class="o">,</span><span class="m">#000</span> <span class="m">90</span><span class="k">%</span><span class="o">,</span><span class="k">transparent</span><span class="o">)</span><span class="o">;</span><span class="k">mask</span><span class="o">:</span><span class="b">linear-gradient</span><span class="o">(</span><span class="m">90</span><span class="k">deg</span><span class="o">,</span><span class="k">transparent</span><span class="o">,</span><span class="m">#000</span> <span class="m">10</span><span class="k">%</span><span class="o">,</span><span class="m">#000</span> <span class="m">90</span><span class="k">%</span><span class="o">,</span><span class="k">transparent</span><span class="o">)</span><span class="o">}</span></span>
+<span class="l">  <span class="o">.</span><span class="f">col</span><span class="o">{</span><span class="k">flex-direction</span><span class="o">:</span><span class="k">row</span><span class="o">;</span><span class="k">width</span><span class="o">:</span>max-content<span class="o">;</span><span class="k">gap</span><span class="o">:</span><span class="m">12</span><span class="k">px</span><span class="o">;</span><span class="k">animation</span><span class="o">:</span>lado <span class="m">40</span><span class="k">s</span> <span class="k">linear</span> <span class="k">infinite</span><span class="o">}</span></span>
+<span class="l">  <span class="o">.</span><span class="f">col</span><span class="o">+</span><span class="o">.</span><span class="f">col</span><span class="o">{</span><span class="k">display</span><span class="o">:</span><span class="k">none</span><span class="o">}</span></span>
+<span class="l">  <span class="o">.</span><span class="f">v</span><span class="o">{</span><span class="k">width</span><span class="o">:</span><span class="m">120</span><span class="k">px</span><span class="o">}</span></span>
+<span class="l">  <span class="o">@</span><span class="k">keyframes</span> <span class="t">lado</span><span class="o">{</span><span class="t">to</span><span class="o">{</span><span class="k">transform</span><span class="o">:</span><span class="b">translateX</span><span class="o">(</span><span class="m">-50</span><span class="k">%</span><span class="o">)</span><span class="o">}</span><span class="o">}</span></span>
+<span class="l"><span class="o">}</span></span>
+<span class="l"></span>
+<span class="l"><span class="c">/* Si la persona pidió menos movimiento, la pared se queda quieta */</span></span>
+<span class="l"><span class="o">@</span><span class="k">media</span> <span class="o">(</span><span class="t">prefers-reduced-motion</span><span class="o">:</span>reduce<span class="o">)</span><span class="o">{</span><span class="o">.</span><span class="f">col</span><span class="o">{</span><span class="k">animation</span><span class="o">:</span><span class="k">none</span><span class="o">}</span><span class="o">}</span></span></code></pre>
+  <div class="caja-h"><span>SHA-256 · ac136f07b5da965a9a25b61fc16ec525f75f8ce0fc30b80b33b4e268945e1cb7</span></div>
+</section><section id="f-license" class="caja">
+  <div class="caja-h"><span>LICENSE · 21 líneas · 1.1 KB</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-f-license">Copiar</button></span></div>
+  <pre class="cod"><code id="c-f-license"><span class="l">MIT License</span>
+<span class="l"></span>
+<span class="l">Copyright (c) 2026 PsychesAi (psychesai.com)</span>
+<span class="l"></span>
+<span class="l">Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="l">of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="l">in the Software without restriction, including without limitation the rights</span>
+<span class="l">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="l">copies of the Software, and to permit persons to whom the Software is</span>
+<span class="l">furnished to do so, subject to the following conditions:</span>
+<span class="l"></span>
+<span class="l">The above copyright notice and this permission notice shall be included in all</span>
+<span class="l">copies or substantial portions of the Software.</span>
+<span class="l"></span>
+<span class="l">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="l">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="l">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="l">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="l">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="l">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="l">SOFTWARE.</span></code></pre>
+  <div class="caja-h"><span>SHA-256 · 3cb5f87b69b1afdd44b427e8d2f003dd5d1baeb447c2930a9915fb5538b9980d</span></div>
+</section></div>
+  </div>
+  <div>
+    <aside class="etiqueta" aria-label="Etiqueta de seguridad">
+  <h2>Etiqueta de seguridad</h2>
+  <p class="sub">Calculada por el escáner, no escrita a mano</p>
+  <div class="et-f no grueso"><b>Se conecta a internet</b><em>No</em><small>No hace ninguna conexión.</small></div>
+  <div class="et-f no"><b>Necesita una clave</b><em>No</em><small>No pide claves ni cuentas.</small></div>
+  <div class="et-f no"><b>Lee archivos</b><em>No</em><small>Nada</small></div>
+  <div class="et-f no"><b>Escribe archivos</b><em>No</em><small>Nada</small></div>
+  <div class="et-f no"><b>Dependencias externas</b><em>0</em><small>Nada que instalar: no hay paquetes de terceros.</small></div>
+  <div class="et-f no"><b>JavaScript</b><em>0</em><small>Ni una línea.</small></div>
+  <div class="et-f no"><b>Ejecuta comandos del sistema</b><em>No</em><small>Si lo hiciera, no se publicaría.</small></div>
+  <div class="et-f no"><b>Secretos o datos privados</b><em>0</em><small>Ni claves, ni tokens, ni IPs, ni correos personales.</small></div>
+  <div class="et-f no grueso"><b>Rastreo o telemetría</b><em>No</em><small>No envía nada sobre ti a nadie.</small></div>
+  <p class="pie">Escaneado el 2026-10-25. Huella del .zip:<br><code>5e246d5d8b1b608eace7b3c41395bd60b2152059d6fe65260ad8a9b0f20e7c2b</code></p>
+</aside>
+    <div class="descarga">
+      <a class="bajar" href="../descargas/pared-de-videos-1.0.0.zip" download>Descargar .zip <small>3.2 KB</small></a>
+      <p>Huella SHA-256 del .zip. Si no coincide con la de tu descarga, no lo abras:</p>
+      <span class="hash" id="h-pared-de-videos">5e246d5d8b1b608eace7b3c41395bd60b2152059d6fe65260ad8a9b0f20e7c2b</span>
+      <details><summary>Cómo comprobar la huella</summary>
+        <code>Windows: certutil -hashfile pared-de-videos-1.0.0.zip SHA256</code>
+        <code>Mac: shasum -a 256 pared-de-videos-1.0.0.zip</code>
+        <code>Linux: sha256sum pared-de-videos-1.0.0.zip</code>
+      </details>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+<footer class="foot">
+  <a class="brand" href="../../">Psyches<span>Ai</span></a>
+  <nav><a href="../../#ia">IA</a><a href="../../#curiosidades">Curiosidades</a><a href="../../#historias">Historias</a><a href="../../#mapas">Mapas</a><a href="../../#poemas">Poemas</a><a href="../../#opinion">Opinión</a></nav>
+  <span>© 2026 · <a href="mailto:hola@psychesai.com">hola@psychesai.com</a></span>
+</footer>
+<script src="../../ia/ia.js?v=c3558012b9" defer></script>
+</body>
+</html>

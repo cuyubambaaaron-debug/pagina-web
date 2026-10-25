@@ -1,0 +1,114 @@
+{
+  "categorias": {
+    "trabajo": "Trabajo",
+    "dinero": "Dinero",
+    "tramites": "Trámites",
+    "aprender": "Aprender",
+    "decidir": "Decidir mejor",
+    "diversion": "Para reírte"
+  },
+  "grupos": [
+    {
+      "id": "estas-usandolo-mal",
+      "titulo": "Estás usando mal ChatGPT",
+      "sub": "3 formas de usarlo bien, en vez de como si fuera Google",
+      "imagen": "ia-v-formas.webp",
+      "prompts": [
+        {"t": "Que te entreviste primero", "c": "decidir",
+         "p": "Quiero organizar un viaje a Cusco de 4 días con 1500 soles. Antes de responder, hazme 3 preguntas para entender mi caso.",
+         "truco": "Cambia el viaje por lo que necesites. Con sus preguntas, la respuesta es para ti y no para cualquiera."},
+        {"t": "Que te lo explique como a un niño", "c": "tramites",
+         "p": "Explícame este texto como si tuviera 12 años y dime qué tengo que hacer: [pega aquí el contrato, la carta del banco…]"},
+        {"t": "Que te lleve la contraria", "c": "decidir",
+         "p": "Voy a [tu plan]. Hazme de abogado del diablo: dime los 3 riesgos que no estoy viendo.",
+         "truco": "Ejemplo del vídeo: «Voy a renunciar a mi trabajo para abrir una cafetería»."}
+      ]
+    },
+    {
+      "id": "parecen-trampa",
+      "titulo": "Prompts que parecen trampa",
+      "sub": "Respuestas de otro nivel con técnicas de verdad",
+      "imagen": "ia-v-fbi.webp",
+      "prompts": [
+        {"t": "Técnica Feynman: aprende cualquier tema", "c": "aprender",
+         "p": "Explícame cómo funciona [tema] usando la técnica Feynman: primero con una analogía cotidiana, segundo sin jerga técnica, y hazme 2 preguntas para ver si entendí.",
+         "truco": "En el vídeo lo probamos con la inflación."},
+        {"t": "Negociador del FBI: que te bajen el precio", "c": "dinero",
+         "p": "Un proveedor me quiere cobrar [cuánto más] por el mismo servicio. Actúa como negociador del FBI: dame 2 respuestas con preguntas calibradas para que baje el precio sin pelear.",
+         "truco": "Las «preguntas calibradas» son de Chris Voss: obligan al otro a pensar en tu problema."},
+        {"t": "Detector de falacias", "c": "decidir",
+         "p": "Analiza este argumento: «[pega aquí el argumento]». Encuentra la falacia lógica y explícamela en 2 líneas.",
+         "truco": "Pruébalo con el del vídeo: «Todos los millonarios se levantan a las 5 am, si quieres ser rico tienes que madrugar»."}
+      ]
+    },
+    {
+      "id": "lectura-de-mente",
+      "titulo": "Modo lectura de mente",
+      "sub": "Usa lo que ChatGPT ya sabe de ti. Si te atreves",
+      "imagen": "ia-v-mente.webp",
+      "prompts": [
+        {"t": "Dibújame con mi contexto", "c": "diversion",
+         "p": "Dibújame en una imagen con todo el contexto que tienes de mí.",
+         "truco": "Funciona mejor si tienes activada la memoria de ChatGPT."},
+        {"t": "Mi yo de dentro de 5 años si no cambio nada", "c": "diversion",
+         "p": "Según mis hábitos y dudas que ya conoces, descríbeme con frialdad cómo será un martes mío dentro de 5 años si sigo exactamente igual que hoy, en 4 líneas."},
+        {"t": "Rostéame sin piedad", "c": "diversion",
+         "p": "Usa las cosas que te he preguntado para burlarte de mí en 4 líneas sin tenerme compasión."}
+      ]
+    },
+    {
+      "id": "ahorran-horas",
+      "titulo": "Prompts que te ahorran horas",
+      "sub": "Probados con la API de OpenAI, con respuestas reales",
+      "prompts": [
+        {"t": "Resume cualquier texto largo", "c": "aprender",
+         "p": "Te voy a pegar un texto largo. Devuélveme:\n1) Un resumen en 5 líneas.\n2) Las fechas, cifras y decisiones importantes.\n3) Qué tengo que hacer yo, en una lista.\nSi algo no está claro, dímelo en vez de inventarlo.\n\nTexto: [pega aquí]",
+         "truco": "Lo probamos con el acta de una junta de propietarios: sacó la subida de cuota y avisó de que el acta no decía el año."},
+        {"t": "Contesta un correo sin perder la calma", "c": "trabajo",
+         "p": "Escribe una respuesta a este correo.\nTono: amable pero firme.\nLo que quiero conseguir: [tu objetivo].\nMáximo 100 palabras.\nDame 2 versiones: una formal y una más cercana.\n\nCorreo: [pega aquí]"},
+        {"t": "Aprende lo que quieras con un plan", "c": "aprender",
+         "p": "Quiero aprender [tema] en [n] semanas, con [minutos] al día.\nHazme un plan día por día con recursos gratis.\nAl final de cada semana, ponme un mini examen de 3 preguntas.\nEmpieza por lo que más se usa en la vida real."},
+        {"t": "Que un reclutador destroce tu CV", "c": "trabajo",
+         "p": "Actúa como un reclutador exigente de [sector].\nLee mi CV y dime:\n- 3 cosas por las que me descartarías.\n- 3 cosas que te gustan.\nDespués reescribe mi resumen profesional en 3 líneas.\n\nCV: [pega aquí]"},
+        {"t": "Antes de una decisión grande", "c": "decidir",
+         "p": "Voy a tomar esta decisión: [tu decisión].\nAntes de opinar, hazme las 5 preguntas más incómodas que debería responderme.\nDespués dame los riesgos que no estoy viendo y qué haría una persona prudente."}
+      ]
+    },
+    {
+      "id": "cosas-que-te-pasan",
+      "titulo": "Para cosas que sí te pasan",
+      "sub": "Contratos, reclamos, el súper y entrevistas",
+      "prompts": [
+        {"t": "¿Tu contrato tiene trampas?", "c": "tramites",
+         "p": "Actúa como un abogado que protege a la persona que va a firmar.\nLee este contrato y dime:\n1) Las 3 cláusulas que más me perjudican, con la frase exacta.\n2) Qué cambio debería pedir en cada una.\n3) Lo que falta o no queda claro.\nNo inventes leyes: si depende del país, avísame.\n\nContrato: [pega aquí]",
+         "truco": "No sustituye a un abogado: confírmalo con uno de tu país antes de firmar."},
+        {"t": "Reclama y que te hagan caso", "c": "tramites",
+         "p": "Escribe un reclamo a [empresa].\nHechos: [pega aquí].\nLo que exijo: [tu objetivo].\nIncluye los datos clave, un plazo de 5 días y qué haré si no responden.\nSin insultos y menos de 120 palabras.\nDame 2 versiones: una formal y una más directa."},
+        {"t": "El súper de la semana, resuelto", "c": "dinero",
+         "p": "Hazme un menú de 7 días para [n] personas con [presupuesto] a la semana, sin [excluir].\nDespués dame la lista de la compra agrupada por secciones, con el precio aproximado de cada cosa y el total.\nReutiliza ingredientes para que no sobre nada."},
+        {"t": "Ensaya la entrevista de trabajo", "c": "trabajo",
+         "p": "Hazme una entrevista de trabajo para [puesto].\nUna pregunta cada vez y espera mi respuesta.\nDespués de cada respuesta ponme una nota del 1 al 10, dime qué falló y dame una versión mejorada."},
+        {"t": "Una carta que no entiendes", "c": "tramites",
+         "p": "Te voy a pegar una carta que no entiendo.\nDime:\n1) Qué dice, en una frase.\n2) Cada palabra difícil, explicada como a un niño de 12 años.\n3) Qué me piden hacer y para cuándo.\nSi hay una cifra o un plazo que me puede costar dinero, márcalo.\n\nCarta: [pega aquí]"}
+      ]
+    },
+    {
+      "id": "cuidan-tu-bolsillo",
+      "titulo": "Prompts que cuidan tu bolsillo",
+      "sub": "Estafas, aumentos, gastos y saber decir que no",
+      "prompts": [
+        {"t": "¿Es una estafa?", "c": "tramites",
+         "p": "Me llegó este mensaje. Analízalo y dime:\n1) Las señales de estafa, citando las frases exactas.\n2) Qué quieren que haga.\n3) Qué haría una persona prudente.\nNo me digas que es seguro si no puedes comprobarlo.\n\nMensaje: [pega aquí]",
+         "truco": "Ante la duda, entra siempre por la app oficial de tu banco, nunca por el enlace del mensaje."},
+        {"t": "Pide el aumento", "c": "dinero",
+         "p": "Quiero pedir un aumento de [tu objetivo].\nEscríbeme:\n1) Un correo corto para pedir la reunión.\n2) Lo que diría en persona, en 30 segundos y con 3 argumentos.\n3) Qué responder si me dicen «ahora no se puede».\nUsa solo estos datos, no inventes ninguno: [pega aquí]"},
+        {"t": "¿Dónde se va tu plata?", "c": "dinero",
+         "p": "Estos son mis gastos del mes: [pega aquí].\nOrdénalos por categoría, dime las 3 fugas que más me cuestan y hazme un plan para ahorrar [tu objetivo] al mes sin dejar de vivir."},
+        {"t": "Aprende a decirle que no a tu jefe", "c": "trabajo",
+         "p": "Haz de mi jefe, que me pide [tu situación].\nYo voy a practicar decir que no sin quedar mal.\nHabla tú primero, con una sola frase.\nDespués de cada respuesta mía, ponme nota del 1 al 10 y dame una versión mejor."},
+        {"t": "Haz que tu anuncio venda", "c": "dinero",
+         "p": "Actúa como un comprador desconfiado de [plataforma].\nLee mi anuncio y dime:\n- 3 cosas que me harían no comprar.\n- 3 que sí me convencen.\nDespués reescríbelo para que venda.\n\nAnuncio: [pega aquí]"}
+      ]
+    }
+  ]
+}

@@ -296,3 +296,10 @@ img{display:block;max-width:100%}
   .a-rainy[data-estado="mini"]{top:auto;bottom:12px;right:auto}
 }
 @media (prefers-reduced-motion:reduce){.asomo,.asomo *{animation:none!important;transition:none!important}}
+
+/* Subsecciones que ya tienen página: toda la fila es el enlace */
+.subs li:has(>a){padding:0}
+.subs li>a{grid-column:1 / -1;display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:center;padding:16px 0;transition:padding .25s}
+.subs li>a:hover{padding-left:8px}
+.subs li>a em{background:var(--acc);color:#0a0a0f;border-color:var(--acc)}
+.subs li>a em::after{content:" →"}

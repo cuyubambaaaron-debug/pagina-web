@@ -1,0 +1,16 @@
+{
+  "titulo": "Auditor de secretos",
+  "tipo": "Proyecto",
+  "version": "1.0.0",
+  "lenguaje": "Python",
+  "licencia": "MIT",
+  "fecha": "2026-10-25",
+  "resumen": "Revisa tu proyecto antes de subirlo a GitHub y te avisa si dejaste una clave de API, un token o una contraseña dentro.",
+  "archivos": ["README.md", "revisar_secretos.py", "LICENSE"],
+  "declara": {
+    "internet": [],
+    "variables": [],
+    "lee": "Los archivos de la carpeta que le indiques",
+    "escribe": "Nada"
+  }
+}

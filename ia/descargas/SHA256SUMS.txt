@@ -1,0 +1,3 @@
+649617b569d64a6176f2eacba1b591bbb75fc17fdce47c06898ff85766a0a41c  probador-de-prompts-1.0.0.zip
+d518bf8f5a6abe760de11d313983a27f95751268830691b3ff199ec9f10eb645  auditor-de-secretos-1.0.0.zip
+5e246d5d8b1b608eace7b3c41395bd60b2152059d6fe65260ad8a9b0f20e7c2b  pared-de-videos-1.0.0.zip
