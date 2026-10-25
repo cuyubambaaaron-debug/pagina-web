@@ -6,11 +6,20 @@
   "licencia": "MIT",
   "fecha": "2026-10-25",
   "resumen": "Manda tus prompts a la API de OpenAI y guarda las respuestas reales en un documento. Es lo que usamos para decir «probados de verdad».",
-  "archivos": ["README.md", "probar.py", "prompts.txt", "LICENSE"],
+  "archivos": [
+    "README.md",
+    "probar.py",
+    "prompts.txt",
+    "LICENSE"
+  ],
   "declara": {
-    "internet": ["api.openai.com"],
-    "variables": ["OPENAI_API_KEY"],
-    "lee": "El archivo de prompts que le indiques",
-    "escribe": "respuestas.md, o el nombre que elijas"
+    "internet": [
+      "api.openai.com"
+    ],
+    "variables": [
+      "OPENAI_API_KEY"
+    ],
+    "lee": "prompts.txt",
+    "escribe": "respuestas.md"
   }
 }

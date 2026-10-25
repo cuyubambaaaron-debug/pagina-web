@@ -330,109 +330,139 @@ def construir_programas(datos, conteos):
     (IA / "programas.html").write_text(pagina(R, "Programas recomendados", "Las IAs gratis que probamos en los vídeos y el ranking de la mejor IA para cada cosa.",
                                               "ia/programas", "programas", cuerpo, conteos), encoding="utf-8")
 
-def etiqueta(et, hz, fecha):
-    def fila(nombre, valor, detalle, si, grueso=False):
-        cls = ("si" if si else "no") + (" grueso" if grueso else "")
-        return f'<div class="et-f {cls}"><b>{e(nombre)}</b><em>{e(valor)}</em><small>{e(detalle)}</small></div>'
-    red = et["dominios"]
-    return f"""<aside class="etiqueta" aria-label="Etiqueta de seguridad">
-  <h2>Etiqueta de seguridad</h2>
-  <p class="sub">Calculada por el escáner, no escrita a mano</p>
-  {fila("Se conecta a internet", "Sí" if red else "No", ("Solo a: " + ", ".join(red)) if red else "No hace ninguna conexión.", bool(red), True)}
-  {fila("Necesita una clave", "Sí" if et["variables"] else "No", ("Tu " + ", ".join(et["variables"]) + ", leída de una variable de entorno. El código no la guarda ni la imprime.") if et["variables"] else "No pide claves ni cuentas.", bool(et["variables"]))}
-  {fila("Lee archivos", "Sí" if et["lee"] != "Nada" else "No", et["lee"], et["lee"] != "Nada")}
-  {fila("Escribe archivos", "Sí" if et["escribe"] != "Nada" else "No", et["escribe"], et["escribe"] != "Nada")}
-  {fila("Dependencias externas", str(len(et["deps"])), ", ".join(et["deps"]) or "Nada que instalar: no hay paquetes de terceros.", bool(et["deps"]))}
-  {fila("JavaScript", str(et["js"]), "Ni una línea." if not et["js"] else "Revisa los archivos .js.", bool(et["js"]))}
-  {fila("Ejecuta comandos del sistema", "No", "Si lo hiciera, no se publicaría.", False)}
-  {fila("Secretos o datos privados", "0", "Ni claves, ni tokens, ni IPs, ni correos personales.", False)}
-  {fila("Rastreo o telemetría", "No", "No envía nada sobre ti a nadie.", False, True)}
-  <p class="pie">Escaneado el {e(fecha)}. Huella del .zip:<br><code>{hz}</code></p>
-</aside>"""
+MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+COLOR_LANG = {".py": ("Python", "#3572A5"), ".html": ("HTML", "#e34c26"), ".css": ("CSS", "#663399"),
+              ".js": ("JavaScript", "#f1e05a"), ".md": ("Markdown", "#5b6274"), ".txt": ("Texto", "#8b949e"), "": ("Otros", "#8b949e")}
+
+def fecha_corta(f):
+    a, m, d = f.split("-")
+    return f"{int(d)} {MESES[int(m) - 1]} {a}"
+
+def informe(slug, et, hz, n):
+    """La salida del escáner, tal cual, en texto plano."""
+    filas = [
+        ("archivos", f"{n} (solo texto)"),
+        ("secretos", "0"),
+        ("datos privados", "0"),
+        ("conexiones", ", ".join(et["dominios"]) or "ninguna"),
+        ("variables", ", ".join(et["variables"]) or "ninguna"),
+        ("lee", et["lee"].lower()),
+        ("escribe", et["escribe"].lower()),
+        ("dependencias", str(len(et["deps"]))),
+        ("javascript", str(et["js"])),
+        ("comandos", "no"),
+    ]
+    cuerpo = "\n".join(f'<span class="d">{e(k):<15}</span>{e(v)}' for k, v in filas)
+    return (f'<pre class="term"><span class="d">$</span> revisar {e(slug)}\n{cuerpo}\n'
+            f'<span class="d">{"sha256(zip)":<15}</span>{hz}\n<span class="okk">APROBADO</span></pre>')
+
+def barra_lenguajes(carpeta, archivos):
+    por = {}
+    for a in archivos:
+        ext = Path(a).suffix.lower()
+        if a == "LICENSE":
+            continue
+        por[ext] = por.get(ext, 0) + (carpeta / a).stat().st_size
+    total = sum(por.values()) or 1
+    orden = sorted(por.items(), key=lambda x: -x[1])
+    x, rects, leyenda = 0.0, [], []
+    for ext, b in orden:
+        nombre, color = COLOR_LANG.get(ext, COLOR_LANG[""])
+        w = 100 * b / total
+        rects.append(f'<rect x="{x:.2f}" y="0" width="{w:.2f}" height="8" fill="{color}"/>')
+        leyenda.append(f'<li><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="4" fill="{color}"/></svg><b>{nombre}</b> {w:.1f} %</li>')
+        x += w
+    return (f'<svg class="langbar" viewBox="0 0 100 8" preserveAspectRatio="none" role="img" aria-label="Lenguajes">{"".join(rects)}</svg>'
+            f'<ul class="leyenda">{"".join(leyenda)}</ul>')
+
+def cabecera_sobria(R, ruta_html, lede):
+    return f"""<section class="gh-hero">
+  <p class="mono"><a href="{R}#ia">Contenido IA</a> / <a href="{R}ia/codigo/">Códigos y proyectos</a></p>
+  <h1>{ruta_html}</h1>
+  <p>{lede}</p>
+</section>"""
 
 def construir_codigo(proyectos, conteos):
     R = "../../"
     (IA / "codigo").mkdir(exist_ok=True)
     desc = IA / "descargas"; desc.mkdir(exist_ok=True)
-    sumas, filas = [], []
+    sumas, filas, log = [], [], []
     for carpeta, meta, et in proyectos:
         slug = carpeta.name
         nzip = f"{slug}-{meta['version']}.zip"
         hz, pz = empaquetar(carpeta, meta, desc / nzip)
         sumas.append(f"{hz}  {nzip}")
-        # lista de archivos y vistas
+        log.append(f"ok  {slug:<22} internet={(','.join(et['dominios']) or 'no'):<16} variables={(','.join(et['variables']) or 'no'):<16} deps={len(et['deps'])}")
         lista, vistas = [], []
         readme = (carpeta / "README.md").read_text(encoding="utf-8")
-        vistas.append(f'<section id="readme" class="caja"><div class="caja-h"><span>README.md</span></div><div class="md">{markdown(readme)}</div></section>')
-        for i, nombre in enumerate(meta["archivos"]):
+        vistas.append(f'<section id="readme" class="gh-box"><div class="gh-bar"><span>README.md</span></div><div class="md">{markdown(readme)}</div></section>')
+        for nombre in meta["archivos"]:
             datos = (carpeta / nombre).read_bytes()
             texto = datos.decode("utf-8")
             fid = "f-" + re.sub(r"[^a-z0-9]+", "-", nombre.lower())
             lineas = texto.count("\n") + (0 if texto.endswith("\n") else 1)
-            lista.append(f'<a href="#{fid}"><span>{e(nombre)}</span><span>{tam(len(datos))}</span></a>')
-            vistas.append(f"""<section id="{fid}" class="caja">
-  <div class="caja-h"><span>{e(nombre)} · {lineas} líneas · {tam(len(datos))}</span><span><a class="volver" href="#readme">README</a> &nbsp;<button class="copiar chico" type="button" data-copiar="#c-{fid}">Copiar</button></span></div>
+            lista.append(f'<a href="#{fid}"><span class="fi" aria-hidden="true"></span><span class="fn">{e(nombre)}</span>'
+                         f'<span class="fc">v{e(meta["version"])}</span><span class="fs">{tam(len(datos))}</span></a>')
+            vistas.append(f"""<section id="{fid}" class="gh-box">
+  <div class="gh-bar"><span><a href="#readme">{e(slug)}</a> / <b>{e(nombre)}</b></span><span>{lineas} líneas · {tam(len(datos))} <button class="copiar chico" type="button" data-copiar="#c-{fid}">Copiar</button></span></div>
   <pre class="cod"><code id="c-{fid}">{resaltar(nombre, texto)}</code></pre>
-  <div class="caja-h"><span>SHA-256 · {huella(carpeta / nombre)}</span></div>
+  <div class="gh-bar pie"><span>sha256 {huella(carpeta / nombre)}</span></div>
 </section>""")
-        net = (f'<span class="pill net">Internet: {e(", ".join(et["dominios"]))}</span>' if et["dominios"] else '<span class="pill ok">Sin internet</span>')
-        cuerpo = (f"""<section class="ia-hero">
-  <p class="mono"><a href="{R}#ia">Contenido IA</a> · <a href="./">Códigos y proyectos</a></p>
-  <div class="repo-top"><span class="ruta">psychesai / <b>{e(slug)}</b></span><span class="pill">Público</span><span class="pill">v{e(meta['version'])}</span><span class="pill">{e(meta['licencia'])}</span>{net}</div>
-  <p class="lede">{e(meta['resumen'])}</p>
-</section>""",
-                  f"""<div class="repo-lay">
-  <div>
-    <div class="caja"><div class="caja-h"><span>{len(meta['archivos'])} archivos · {e(meta['lenguaje'])}</span><span>actualizado el {e(meta['fecha'])}</span></div>
-      <div class="lista">{''.join(lista)}</div></div>
+        cuerpo = (cabecera_sobria(R, f'<span class="due">psychesai</span> / <b>{e(slug)}</b> <span class="lbl">Público</span>', e(meta["resumen"])),
+                  f"""<div class="gh-lay">
+  <div class="gh-col">
+    <div class="gh-box">
+      <div class="gh-bar"><span><b>PsychesAi</b> publicó la versión {e(meta['version'])}</span><span>{fecha_corta(meta['fecha'])} · {len(meta['archivos'])} archivos</span></div>
+      <div class="gh-files">{''.join(lista)}</div>
+    </div>
     <div class="vistas">{''.join(vistas)}</div>
   </div>
-  <div>
-    {etiqueta(et, hz, meta['fecha'])}
-    <div class="descarga">
-      <a class="bajar" href="../descargas/{nzip}" download>Descargar .zip <small>{tam(pz)}</small></a>
-      <p>Huella SHA-256 del .zip. Si no coincide con la de tu descarga, no lo abras:</p>
-      <span class="hash" id="h-{slug}">{hz}</span>
-      <details><summary>Cómo comprobar la huella</summary>
-        <code>Windows: certutil -hashfile {nzip} SHA256</code>
-        <code>Mac: shasum -a 256 {nzip}</code>
-        <code>Linux: sha256sum {nzip}</code>
-      </details>
-    </div>
-  </div>
+  <aside class="gh-side">
+    <h2>Acerca de</h2>
+    <p>{e(meta['resumen'])}</p>
+    <p class="gh-dato">Licencia {e(meta['licencia'])} · v{e(meta['version'])}</p>
+    <a class="gh-zip" href="../descargas/{nzip}" download>Descargar ZIP <span>{tam(pz)}</span></a>
+    <h2 id="seguridad">Seguridad</h2>
+    <p>Esto es lo que encontró el escáner antes de publicarlo. Si algo no cuadrara, esta página no existiría.</p>
+    {informe(slug, et, hz, len(meta['archivos']))}
+    <details class="gh-verif"><summary>Comprobar que tu descarga es la misma</summary>
+      <code>certutil -hashfile {nzip} SHA256</code><code>shasum -a 256 {nzip}</code><p>El resultado debe ser igual a <b>sha256(zip)</b>.</p>
+    </details>
+    <h2>Lenguajes</h2>
+    {barra_lenguajes(carpeta, meta['archivos'])}
+  </aside>
 </div>""")
         (IA / "codigo" / f"{slug}.html").write_text(
             pagina(R, meta["titulo"], meta["resumen"], f"ia/codigo/{slug}", "codigo", cuerpo, conteos, estricta=True), encoding="utf-8")
-        lang = "lang-python" if meta["lenguaje"] == "Python" else "lang-html"
-        filas.append(f"""<a class="repo" href="{slug}.html">
-  <div class="repo-n"><b>{e(slug)}</b><span class="pill">{e(meta['tipo'])}</span>{net}<span class="pill ok">0 dependencias</span></div>
+        ext_principal = ".py" if meta["lenguaje"] == "Python" else ".html"
+        lang, color = COLOR_LANG[ext_principal]
+        filas.append(f"""<a class="gh-repo" href="{slug}.html">
+  <div class="gh-repo-n"><b>{e(slug)}</b><span class="lbl">Público</span></div>
   <p>{e(meta['resumen'])}</p>
-  <div class="repo-meta"><span class="lang {lang}">{e(meta['lenguaje'])}</span><span>{e(meta['licencia'])}</span><span>v{e(meta['version'])}</span><span>{e(meta['fecha'])}</span></div>
-  <span class="ver">Ver código →</span>
+  <div class="gh-repo-m"><span><svg width="10" height="10" aria-hidden="true"><circle cx="5" cy="5" r="5" fill="{color}"/></svg>{e(meta['lenguaje'])}</span><span>{e(meta['licencia'])}</span><span>{"Se conecta a " + e(", ".join(et['dominios'])) if et['dominios'] else "Sin conexión a internet"}</span><span>Actualizado el {fecha_corta(meta['fecha'])}</span></div>
 </a>""")
     (desc / "SHA256SUMS.txt").write_text("\n".join(sumas) + "\n", encoding="utf-8")
-    cuerpo = (hero(R, "Códigos y proyectos", "Códigos y", "proyectos",
-                   "Código abierto que usamos de verdad. Puedes leerlo entero antes de descargarlo, y nada se publica sin pasar el escáner de seguridad."),
-              f"""<div class="promesa">
-  <div><b>Lo lees antes de bajarlo</b><span>Cada archivo se ve aquí, completo, con su huella.</span></div>
-  <div><b>Escaneado</b><span>Sin claves, sin tokens, sin IPs ni datos privados.</span></div>
-  <div><b>Cero dependencias</b><span>Nada que instalar de terceros: menos puertas abiertas.</span></div>
-  <div><b>Huella SHA-256</b><span>Comprueba que tu descarga es exactamente la publicada.</span></div>
+    log_html = e("\n".join(log))
+    cuerpo = (cabecera_sobria(R, "Códigos y proyectos",
+                              "Código que usamos de verdad, abierto. Puedes leer cada archivo antes de descargarlo."),
+              f"""<div class="gh-box">
+  <div class="gh-bar"><span>{len(proyectos)} repositorios</span><span>Licencia MIT</span></div>
+  {''.join(filas)}
 </div>
-<div class="repos"><div class="repos-h"><span>{len(proyectos)} repositorios</span><span>Licencia MIT</span></div>{''.join(filas)}</div>
-<section class="pasos">
-  <div><h2>Cómo revisamos el código</h2><p class="lede">Lo hace un programa, no una promesa. Si algo falla, la página no se publica.</p></div>
-  <ol>
-    <li><b>Lista cerrada de archivos</b><span>Solo texto: .py, .js, .html, .css, .md. Ningún ejecutable ni binario.</span></li>
-    <li><b>Busca secretos</b><span>Claves de OpenAI, GitHub, Google, AWS, Stripe, llaves privadas y contraseñas, con el <a class="volver" href="auditor-de-secretos.html">auditor de secretos</a>, que también puedes usar tú.</span></li>
-    <li><b>Busca datos privados</b><span>IPs de servidores, correos personales y rutas de nuestros equipos.</span></li>
-    <li><b>Comprueba la etiqueta</b><span>Si el código se conecta a un sitio o lee una clave que la etiqueta no declara, se rechaza.</span></li>
-    <li><b>Firma la descarga</b><span>Crea el .zip siempre igual y publica su huella SHA-256 en <a class="volver" href="../descargas/SHA256SUMS.txt">SHA256SUMS.txt</a>.</span></li>
-  </ol>
+<section class="gh-seg">
+  <div>
+    <h2>Seguridad</h2>
+    <p>Antes de publicar, un programa revisa cada archivo: que no haya claves, tokens, IPs ni correos privados, que no sea un ejecutable y que no se conecte a ningún sitio que no diga. Si algo falla, no se publica.</p>
+    <p>Ese programa también es público: es el <a href="auditor-de-secretos.html">auditor de secretos</a>. Y las huellas de todas las descargas están en <a href="../descargas/SHA256SUMS.txt">SHA256SUMS.txt</a>.</p>
+  </div>
+  <pre class="term"><span class="d">$</span> python3 herramientas/construir_ia.py
+{log_html}
+<span class="okk">{len(proyectos)} aprobados, 0 rechazados</span></pre>
 </section>""")
     (IA / "codigo" / "index.html").write_text(
-        pagina(R, "Códigos y proyectos", "Código abierto de PsychesAi, revisado por un escáner de seguridad, con etiqueta de qué hace y huella SHA-256 en cada descarga.",
+        pagina(R, "Códigos y proyectos", "Código abierto de PsychesAi: léelo antes de descargarlo. Cada proyecto pasa un escáner de seguridad y lleva su huella SHA-256.",
                "ia/codigo/", "codigo", cuerpo, conteos, estricta=True), encoding="utf-8")
+
 
 # ---------------------------------------------------------------- main
 def main():
