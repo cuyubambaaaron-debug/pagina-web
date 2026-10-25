@@ -313,20 +313,17 @@ f.addEventListener('submit',function(e){e.preventDefault();f.nextElementSibling.
   if(!ads.length) return;
   var S=ads[0],R=ads[1],enApps=false,turno=0,tick=0;
   function libre(o){return o.A.dataset.estado==='oculto'||o.A.dataset.estado==='asoma';}
-  // Ordenador: los dos a la vez, cada uno en su esquina. Móvil: se turnan (Studio abajo, Rainy arriba)
+  // Los dos se quedan, cada uno en su sitio (móvil: Rainy arriba, Studio abajo). Rainy entra primero
   function colocar(){
-    if(enApps){ ads.forEach(function(o){ if(libre(o)) o.estado('oculto'); }); return; }
-    if(!movil.matches){ ads.forEach(function(o){ if(o.A.dataset.estado==='oculto'&&o.listo) o.estado('asoma'); }); return; }
-    var toca=turno%2?R:S, otro=toca===S?R:S;
-    if(otro.A.dataset.estado==='abierto') return;
-    if(libre(otro)&&otro.A.dataset.estado!=='oculto') otro.estado('oculto');
-    if(toca.listo&&toca.A.dataset.estado==='oculto') toca.estado('asoma');
+    ads.forEach(function(o){
+      if(enApps){ if(libre(o)) o.estado('oculto'); }
+      else if(o.listo&&o.A.dataset.estado==='oculto') o.estado('asoma');
+    });
   }
-  setTimeout(function(){S.listo=1;colocar();},2500);
-  setTimeout(function(){R.listo=1;colocar();},6500);
+  setTimeout(function(){R.listo=1;colocar();},1500);
+  setTimeout(function(){S.listo=1;colocar();},3500);
   setInterval(function(){
     tick++;
-    if(movil.matches&&tick%5===0){turno++;colocar();}          // cada 10 s cambia el turno en el móvil
     ads.forEach(function(o,k){
       if(tick%4===k*2){                                         // vibran por turnos, no a la vez
         if(o.A.dataset.estado==='asoma'&&!quieto) reinicia(o.A,'buzz');
