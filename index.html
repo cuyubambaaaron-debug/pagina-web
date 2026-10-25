@@ -107,14 +107,14 @@
       <li id="apps-ia"><b>Apps de IA probadas</b><span>Lo bueno, lo malo y el enlace</span><em>Pronto</em></li>
     </ul>
   </div>
-  <div class="fan"><img src="assets/canales/ia-prompts.webp" alt="Prompts de ChatGPT en uno de nuestros vídeos" loading="lazy"><img src="assets/canales/ia-gratis.webp" alt="Vídeo: 3 IAs gratis que destruyen a las de pago" loading="lazy"><a class="spon s-rainy" data-app href="https://rainy.goodcallia.com/" aria-label="Anuncio: Rainy">
+  <div class="fan"><img src="assets/canales/ia-prompts.webp" alt="Prompts de ChatGPT en uno de nuestros vídeos" loading="lazy"><a class="spon s-rainy" data-app href="https://rainy.goodcallia.com/" aria-label="Anuncio: Rainy">
   <span class="spon-tag">Patrocinado</span>
   <img class="spon-logo" src="assets/apps/rainy.webp" alt="Logo de Rainy">
   <b class="spon-h">Tus pendientes no se hacen solos. Rainy sí.</b>
   <span class="spon-ui"><i class="me">Llama al proveedor y confirma lo de mañana</i><i class="her">Listo. Llegan antes de las 10 ✓</i></span>
   <span class="spon-foot"><img src="assets/apps/rainy.webp" alt=""><span><b>Rainy</b><small>rainy.goodcallia.com</small></span></span>
   <span class="spon-cta">Conocer a Rainy <em>›</em></span>
-</a></div>
+</a><img src="assets/canales/ia-gratis.webp" alt="Vídeo: 3 IAs gratis que destruyen a las de pago" loading="lazy"></div>
 </section>
 
 <!-- 02 Curiosidades -->
@@ -142,14 +142,14 @@
       <li id="dilemas"><b>Dilemas</b><span>Vota qué harías tú y mira qué eligió el resto</span><em>Pronto</em></li>
     </ul>
   </div>
-  <div class="fan"><img src="assets/canales/his-pompeya.webp" alt="POV en Pompeya" loading="lazy"><img src="assets/canales/his-titanic.webp" alt="POV en el Titanic" loading="lazy"><a class="spon s-studio" data-app href="https://studio.goodcallia.com/" aria-label="Anuncio: GoodCall Studio">
+  <div class="fan"><img src="assets/canales/his-pompeya.webp" alt="POV en Pompeya" loading="lazy"><a class="spon s-studio" data-app href="https://studio.goodcallia.com/" aria-label="Anuncio: GoodCall Studio">
   <span class="spon-tag">Patrocinado</span>
   <img class="spon-logo" src="assets/apps/studio.webp" alt="Logo de GoodCall Studio">
   <b class="spon-h">Tu negocio contesta WhatsApp a las 3&nbsp;a.&nbsp;m. Tú no.</b>
   <span class="spon-ui wa"><i class="me">¿Tienen delivery? 🙏</i><i class="her">¡Sí! En 30 min. ¿Te paso la carta?</i></span>
   <span class="spon-foot"><img src="assets/apps/studio.webp" alt=""><span><b>GoodCall Studio</b><small>studio.goodcallia.com</small></span></span>
   <span class="spon-cta">Crear mi bot <em>›</em></span>
-</a></div>
+</a><img src="assets/canales/his-titanic.webp" alt="POV en el Titanic" loading="lazy"></div>
 </section>
 
 <!-- 04 Mapas -->
@@ -232,6 +232,21 @@
   <span>© 2026 · <a href="mailto:hola@psychesai.com">hola@psychesai.com</a></span>
 </footer>
 
+<!-- Anuncio que asoma: cambia según la sección que estás viendo -->
+<aside class="asomo" id="asomo" data-estado="oculto" data-app-id="studio" aria-label="Anuncio">
+  <a class="asomo-card" href="https://studio.goodcallia.com/">
+    <span class="asomo-notif">
+      <img class="asomo-logo" src="assets/apps/studio.webp" alt="">
+      <span class="asomo-txt"><small><span class="asomo-de">GoodCall Studio</span> · ahora</small><b class="asomo-q">¿Tienes un negocio???</b></span>
+      <i class="asomo-badge">1</i>
+    </span>
+    <span class="asomo-chat"><i class="me"></i><i class="typing"><s></s><s></s><s></s></i><i class="her"></i></span>
+    <span class="asomo-cta"><span class="asomo-cta-t">Crear mi bot</span> <em>›</em></span>
+  </a>
+  <button class="asomo-x" type="button" aria-label="Cerrar anuncio">×</button>
+  <button class="asomo-bur" type="button" aria-label="Abrir anuncio"><img src="assets/apps/studio.webp" alt=""><i>1</i></button>
+</aside>
+
 <script>
 var b=document.querySelector('.menu'),n=document.getElementById('nav');
 b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Cerrar':'Menú';});
@@ -246,6 +261,80 @@ document.querySelectorAll('.chan,.op,.apps').forEach(function(s){s.classList.add
 // Boletín: todavía no guarda el correo
 var f=document.getElementById('newsletter-form');
 f.addEventListener('submit',function(e){e.preventDefault();f.nextElementSibling.textContent='Gracias. Te avisamos cuando salga lo próximo.';f.reset();});
+
+// ===== Anuncio que asoma =====
+(function(){
+  var A=document.getElementById('asomo'); if(!A) return;
+  var card=A.querySelector('.asomo-card'), q=A.querySelector('.asomo-q'), bur=A.querySelector('.asomo-bur');
+  var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ADS={
+    studio:{logo:'assets/apps/studio.webp',de:'GoodCall Studio',href:'https://studio.goodcallia.com/',cta:'Crear mi bot',
+      me:'¿Tienen delivery? 🙏',her:'¡Sí! En 30 min. ¿Te paso la carta?',
+      qs:['¿Tienes un negocio???','¿Te escriben a las 3 a. m.?','¿Cuántos clientes no contestaste hoy?','Tu WhatsApp, contestando solo.']},
+    rainy:{logo:'assets/apps/rainy.webp',de:'Rainy',href:'https://rainy.goodcallia.com/',cta:'Conocer a Rainy',
+      me:'Llama al proveedor y confirma lo de mañana',her:'Listo. Llegan antes de las 10 ✓',
+      qs:['¿Se te acumulan los pendientes???','¿Y si alguien llamara por ti?','¿Quién confirma lo de mañana?','Tú lo pides. Rainy lo hace.']}
+  };
+  var actual=null,iq=0,tq=null,visto=false;
+  function conRef(u){u=new URL(u);u.searchParams.set('ref','psychesai'+(de?'-'+de:'')+'-asomo');return u.toString();}
+  function reinicia(el,c){el.classList.remove(c);void el.offsetWidth;el.classList.add(c);}
+  function vibrar(){ if(!quieto) reinicia(A,'buzz'); }
+  function poner(id){
+    if(id===actual) return; actual=id; var d=ADS[id];
+    A.dataset.appId=id; card.href=conRef(d.href);
+    A.querySelectorAll('.asomo-logo,.asomo-bur img').forEach(function(i){i.src=d.logo;});
+    A.querySelector('.asomo-de').textContent=d.de;
+    A.querySelector('.asomo-chat .me').textContent=d.me;
+    A.querySelector('.asomo-chat .her').textContent=d.her;
+    A.querySelector('.asomo-cta-t').textContent=d.cta;
+    iq=0; q.textContent=d.qs[0];
+    if(A.dataset.estado==='asoma') vibrar();
+    if(A.dataset.estado==='abierto') reinicia(A,'play');
+  }
+  function rotar(){
+    var d=ADS[actual]; iq=(iq+1)%d.qs.length;
+    q.textContent=d.qs[iq]; reinicia(q,'cambia');
+    if(iq===0) vibrar();
+  }
+  function estado(e){
+    A.dataset.estado=e;
+    clearInterval(tq); if(e==='asoma'&&!quieto) tq=setInterval(rotar,2600);
+    if(e==='abierto') reinicia(A,'play');
+    if(e==='asoma') vibrar();
+  }
+  poner(de==='ia'?'rainy':'studio');
+  // Aparece a los 2,5 s y vibra cada 7 s mientras asoma; la burbuja salta
+  setTimeout(function(){visto=true;if(!enApps)estado('asoma');},2500);
+  setInterval(function(){
+    if(A.dataset.estado==='asoma') vibrar();
+    if(A.dataset.estado==='mini'&&!quieto) reinicia(bur,'salta');
+  },7000);
+  // Ordenador: se abre al pasar el ratón. Móvil: el primer toque abre, el segundo entra
+  if(matchMedia('(hover:hover)').matches){
+    A.addEventListener('mouseenter',function(){if(A.dataset.estado==='asoma')estado('abierto');});
+    A.addEventListener('mouseleave',function(){if(A.dataset.estado==='abierto')estado('asoma');});
+  }
+  card.addEventListener('click',function(e){ if(A.dataset.estado!=='abierto'){e.preventDefault();estado('abierto');} });
+  A.querySelector('.asomo-x').addEventListener('click',function(){estado('mini');});
+  bur.addEventListener('click',function(){estado('abierto');});
+  // Móvil: si abres el anuncio y sigues bajando, vuelve a asomar para no tapar
+  var y0=0; addEventListener('scroll',function(){
+    if(A.dataset.estado!=='abierto'){y0=scrollY;return;}
+    if(Math.abs(scrollY-y0)>140&&!matchMedia('(hover:hover)').matches) estado('asoma');
+  },{passive:true});
+  if('IntersectionObserver' in window){
+    // Cambia según la sección: IA → Rainy; el resto → Studio
+    var ob=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) poner(e.target.id==='ia'?'rainy':'studio'); });},{rootMargin:'-45% 0px -45% 0px'});
+    document.querySelectorAll('.hero,.chan,.op').forEach(function(s){ob.observe(s);});
+    // En la sección Apps se retira, para no repetir lo mismo
+    var enApps=false;
+    new IntersectionObserver(function(es){
+      enApps=es[0].isIntersecting;
+      if(enApps&&A.dataset.estado!=='mini') estado('oculto');
+      else if(!enApps&&visto&&A.dataset.estado==='oculto') estado('asoma');
+    },{threshold:.25}).observe(document.getElementById('apps'));
+  }
+})();
 </script>
 </body>
 </html>
