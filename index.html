@@ -232,19 +232,38 @@
   <span>© 2026 · <a href="mailto:hola@psychesai.com">hola@psychesai.com</a></span>
 </footer>
 
-<!-- Anuncio que asoma: cambia según la sección que estás viendo -->
-<aside class="asomo" id="asomo" data-estado="oculto" data-app-id="studio" aria-label="Anuncio">
-  <a class="asomo-card" href="https://studio.goodcallia.com/">
+<!-- Anuncios que asoman: Studio abajo a la derecha, Rainy abajo a la izquierda (en el móvil, arriba) -->
+<aside class="asomo a-studio" data-estado="oculto" aria-label="Anuncio: GoodCall Studio">
+  <a class="asomo-card" data-app href="https://studio.goodcallia.com/">
     <span class="asomo-notif">
       <img class="asomo-logo" src="assets/apps/studio.webp" alt="">
-      <span class="asomo-txt"><small><span class="asomo-de">GoodCall Studio</span> · ahora</small><b class="asomo-q">¿Tienes un negocio???</b></span>
+      <span class="asomo-txt"><small>GoodCall Studio · ahora</small><b class="asomo-q">¿Tienes un negocio???</b></span>
       <i class="asomo-badge">1</i>
     </span>
-    <span class="asomo-chat"><i class="me"></i><i class="typing"><s></s><s></s><s></s></i><i class="her"></i></span>
-    <span class="asomo-cta"><span class="asomo-cta-t">Crear mi bot</span> <em>›</em></span>
+    <span class="asomo-cuerpo"><span>
+      <span class="asomo-chat"><i class="me">¿Tienen delivery? 🙏</i><i class="typing"><s></s><s></s><s></s></i><i class="her">¡Sí! En 30 min. ¿Te paso la carta?</i></span>
+      <span class="asomo-oferta"><small>Superdescuento</small><b>$15</b><span>el primer mes por un bot que contesta, vende y agenda en tu WhatsApp mientras duermes</span></span>
+      <span class="asomo-cta"><span>Quiero mi bot a $15</span> <em>›</em></span>
+    </span></span>
   </a>
   <button class="asomo-x" type="button" aria-label="Cerrar anuncio">×</button>
-  <button class="asomo-bur" type="button" aria-label="Abrir anuncio"><img src="assets/apps/studio.webp" alt=""><i>1</i></button>
+  <button class="asomo-bur" type="button" aria-label="Abrir anuncio de GoodCall Studio"><img src="assets/apps/studio.webp" alt=""><i>1</i></button>
+</aside>
+<aside class="asomo a-rainy" data-estado="oculto" aria-label="Anuncio: Rainy">
+  <a class="asomo-card" data-app href="https://rainy.goodcallia.com/">
+    <span class="asomo-notif">
+      <img class="asomo-logo" src="assets/apps/rainy.webp" alt="">
+      <span class="asomo-txt"><small>Rainy · ahora</small><b class="asomo-q">Te habla como GPT.</b></span>
+      <i class="asomo-badge">1</i>
+    </span>
+    <span class="asomo-cuerpo"><span>
+      <span class="asomo-trio"><i>Habla como <b>GPT</b></i><i>Aconseja como <b>Claude</b></i><i>Te hace reír como <b>Grok</b></i></span>
+      <span class="asomo-chat"><i class="me">Mi ex subió foto con otra 😭</i><i class="typing"><s></s><s></s><s></s></i><i class="her">Respira. Bloquéala, sal a caminar… y fíjate que la foto tiene filtro de 2019 😏</i></span>
+      <span class="asomo-cta"><span>Hablar con Rainy</span> <em>›</em></span>
+    </span></span>
+  </a>
+  <button class="asomo-x" type="button" aria-label="Cerrar anuncio">×</button>
+  <button class="asomo-bur" type="button" aria-label="Abrir anuncio de Rainy"><img src="assets/apps/rainy.webp" alt=""><i>1</i></button>
 </aside>
 
 <script>
@@ -262,78 +281,67 @@ document.querySelectorAll('.chan,.op,.apps').forEach(function(s){s.classList.add
 var f=document.getElementById('newsletter-form');
 f.addEventListener('submit',function(e){e.preventDefault();f.nextElementSibling.textContent='Gracias. Te avisamos cuando salga lo próximo.';f.reset();});
 
-// ===== Anuncio que asoma =====
+// ===== Anuncios que asoman =====
 (function(){
-  var A=document.getElementById('asomo'); if(!A) return;
-  var card=A.querySelector('.asomo-card'), q=A.querySelector('.asomo-q'), bur=A.querySelector('.asomo-bur');
   var quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ADS={
-    studio:{logo:'assets/apps/studio.webp',de:'GoodCall Studio',href:'https://studio.goodcallia.com/',cta:'Crear mi bot',
-      me:'¿Tienen delivery? 🙏',her:'¡Sí! En 30 min. ¿Te paso la carta?',
-      qs:['¿Tienes un negocio???','¿Te escriben a las 3 a. m.?','¿Cuántos clientes no contestaste hoy?','Tu WhatsApp, contestando solo.']},
-    rainy:{logo:'assets/apps/rainy.webp',de:'Rainy',href:'https://rainy.goodcallia.com/',cta:'Conocer a Rainy',
-      me:'Llama al proveedor y confirma lo de mañana',her:'Listo. Llegan antes de las 10 ✓',
-      qs:['¿Se te acumulan los pendientes???','¿Y si alguien llamara por ti?','¿Quién confirma lo de mañana?','Tú lo pides. Rainy lo hace.']}
-  };
-  var actual=null,iq=0,tq=null,visto=false;
-  function conRef(u){u=new URL(u);u.searchParams.set('ref','psychesai'+(de?'-'+de:'')+'-asomo');return u.toString();}
+  var movil=matchMedia('(max-width:760px)'), raton=matchMedia('(hover:hover)').matches;
   function reinicia(el,c){el.classList.remove(c);void el.offsetWidth;el.classList.add(c);}
-  function vibrar(){ if(!quieto) reinicia(A,'buzz'); }
-  function poner(id){
-    if(id===actual) return; actual=id; var d=ADS[id];
-    A.dataset.appId=id; card.href=conRef(d.href);
-    A.querySelectorAll('.asomo-logo,.asomo-bur img').forEach(function(i){i.src=d.logo;});
-    A.querySelector('.asomo-de').textContent=d.de;
-    A.querySelector('.asomo-chat .me').textContent=d.me;
-    A.querySelector('.asomo-chat .her').textContent=d.her;
-    A.querySelector('.asomo-cta-t').textContent=d.cta;
-    iq=0; q.textContent=d.qs[0];
-    if(A.dataset.estado==='asoma') vibrar();
-    if(A.dataset.estado==='abierto') reinicia(A,'play');
+  var FRASES={
+    'a-studio':['¿Tienes un negocio???','Automatízalo.','Superdescuento: $15 el primer mes','Un bot que vende por ti 24/7'],
+    'a-rainy':['Te habla como GPT.','Te aconseja como Claude.','Te hace reír como Grok.','Se llama Rainy. Pruébala.']
+  };
+  var ads=[].map.call(document.querySelectorAll('.asomo'),function(A){
+    var o={A:A,card:A.querySelector('.asomo-card'),q:A.querySelector('.asomo-q'),bur:A.querySelector('.asomo-bur'),
+           qs:FRASES[A.classList[1]],i:0,t:null,y0:0};
+    o.card.href=o.card.href.replace(/ref=([^&]*)/,function(m,r){return 'ref='+r+'-asomo';});
+    o.estado=function(e){
+      A.dataset.estado=e; clearInterval(o.t);
+      if(e==='asoma'){ if(!quieto) o.t=setInterval(o.rotar,2400); reinicia(A,'buzz'); }
+      if(e==='abierto'){ reinicia(A,'play'); o.y0=scrollY; }
+    };
+    o.rotar=function(){ o.i=(o.i+1)%o.qs.length; o.q.textContent=o.qs[o.i]; reinicia(o.q,'cambia'); if(o.i===0) reinicia(A,'buzz'); };
+    if(raton){
+      A.addEventListener('mouseenter',function(){if(A.dataset.estado==='asoma')o.estado('abierto');});
+      A.addEventListener('mouseleave',function(){if(A.dataset.estado==='abierto')o.estado('asoma');});
+    }
+    // Primer toque: abre. Segundo: entra a la app
+    o.card.addEventListener('click',function(e){ if(A.dataset.estado!=='abierto'){e.preventDefault();o.estado('abierto');} });
+    A.querySelector('.asomo-x').addEventListener('click',function(){o.estado('mini');});
+    o.bur.addEventListener('click',function(){o.estado('abierto');});
+    return o;
+  });
+  if(!ads.length) return;
+  var S=ads[0],R=ads[1],enApps=false,turno=0,tick=0;
+  function libre(o){return o.A.dataset.estado==='oculto'||o.A.dataset.estado==='asoma';}
+  // Ordenador: los dos a la vez, cada uno en su esquina. Móvil: se turnan (Studio abajo, Rainy arriba)
+  function colocar(){
+    if(enApps){ ads.forEach(function(o){ if(libre(o)) o.estado('oculto'); }); return; }
+    if(!movil.matches){ ads.forEach(function(o){ if(o.A.dataset.estado==='oculto'&&o.listo) o.estado('asoma'); }); return; }
+    var toca=turno%2?R:S, otro=toca===S?R:S;
+    if(otro.A.dataset.estado==='abierto') return;
+    if(libre(otro)&&otro.A.dataset.estado!=='oculto') otro.estado('oculto');
+    if(toca.listo&&toca.A.dataset.estado==='oculto') toca.estado('asoma');
   }
-  function rotar(){
-    var d=ADS[actual]; iq=(iq+1)%d.qs.length;
-    q.textContent=d.qs[iq]; reinicia(q,'cambia');
-    if(iq===0) vibrar();
-  }
-  function estado(e){
-    A.dataset.estado=e;
-    clearInterval(tq); if(e==='asoma'&&!quieto) tq=setInterval(rotar,2600);
-    if(e==='abierto') reinicia(A,'play');
-    if(e==='asoma') vibrar();
-  }
-  poner(de==='ia'?'rainy':'studio');
-  // Aparece a los 2,5 s y vibra cada 7 s mientras asoma; la burbuja salta
-  setTimeout(function(){visto=true;if(!enApps)estado('asoma');},2500);
+  setTimeout(function(){S.listo=1;colocar();},2500);
+  setTimeout(function(){R.listo=1;colocar();},6500);
   setInterval(function(){
-    if(A.dataset.estado==='asoma') vibrar();
-    if(A.dataset.estado==='mini'&&!quieto) reinicia(bur,'salta');
-  },7000);
-  // Ordenador: se abre al pasar el ratón. Móvil: el primer toque abre, el segundo entra
-  if(matchMedia('(hover:hover)').matches){
-    A.addEventListener('mouseenter',function(){if(A.dataset.estado==='asoma')estado('abierto');});
-    A.addEventListener('mouseleave',function(){if(A.dataset.estado==='abierto')estado('asoma');});
-  }
-  card.addEventListener('click',function(e){ if(A.dataset.estado!=='abierto'){e.preventDefault();estado('abierto');} });
-  A.querySelector('.asomo-x').addEventListener('click',function(){estado('mini');});
-  bur.addEventListener('click',function(){estado('abierto');});
-  // Móvil: si abres el anuncio y sigues bajando, vuelve a asomar para no tapar
-  var y0=0; addEventListener('scroll',function(){
-    if(A.dataset.estado!=='abierto'){y0=scrollY;return;}
-    if(Math.abs(scrollY-y0)>140&&!matchMedia('(hover:hover)').matches) estado('asoma');
+    tick++;
+    if(movil.matches&&tick%5===0){turno++;colocar();}          // cada 10 s cambia el turno en el móvil
+    ads.forEach(function(o,k){
+      if(tick%4===k*2){                                         // vibran por turnos, no a la vez
+        if(o.A.dataset.estado==='asoma'&&!quieto) reinicia(o.A,'buzz');
+        if(o.A.dataset.estado==='mini'&&!quieto) reinicia(o.bur,'salta');
+      }
+    });
+  },2000);
+  movil.addEventListener&&movil.addEventListener('change',colocar);
+  // Si abres uno en el móvil y sigues bajando, vuelve a asomar
+  addEventListener('scroll',function(){
+    ads.forEach(function(o){ if(o.A.dataset.estado==='abierto'&&!raton&&Math.abs(scrollY-o.y0)>140) o.estado('asoma'); });
   },{passive:true});
-  if('IntersectionObserver' in window){
-    // Cambia según la sección: IA → Rainy; el resto → Studio
-    var ob=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting) poner(e.target.id==='ia'?'rainy':'studio'); });},{rootMargin:'-45% 0px -45% 0px'});
-    document.querySelectorAll('.hero,.chan,.op').forEach(function(s){ob.observe(s);});
-    // En la sección Apps se retira, para no repetir lo mismo
-    var enApps=false;
-    new IntersectionObserver(function(es){
-      enApps=es[0].isIntersecting;
-      if(enApps&&A.dataset.estado!=='mini') estado('oculto');
-      else if(!enApps&&visto&&A.dataset.estado==='oculto') estado('asoma');
-    },{threshold:.25}).observe(document.getElementById('apps'));
-  }
+  // En la sección Apps se retiran, para no repetir
+  var apps=document.getElementById('apps');
+  if(apps&&'IntersectionObserver' in window) new IntersectionObserver(function(es){enApps=es[0].isIntersecting;colocar();},{threshold:.25}).observe(apps);
 })();
 </script>
 </body>
