@@ -183,3 +183,11 @@ img{max-width:100%}
   .app+.app{border-left:1px solid var(--rule);border-top:0}
 }
 @media (min-width:761px){.secs nav{display:contents}}
+
+/* Artículos: barra y pie oscuros, como la portada */
+.secs{background:#0a0a0f;color:#f4f2ee;border-top:0;border-bottom:1px solid #22222c}
+.secs a:after{background:#ff5a36}
+.menu{color:#f4f2ee}
+@media (max-width:760px){.secs nav{background:#0a0a0f;border-bottom-color:#22222c}.secs nav a{border-top-color:#22222c}}
+.foot{background:#0a0a0f;color:#9b99a8;margin-top:40px}
+.foot .name{color:#f4f2ee}
