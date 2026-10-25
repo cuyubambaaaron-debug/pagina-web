@@ -4,176 +4,194 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PsychesAi — lo que sigue después del vídeo</title>
-<meta name="description" content="Prompts, código, trucos para lives, curiosidades con sus fuentes, historias completas, mapas y poemas. Lo que no cupo en el vídeo, en PsychesAi.">
+<meta name="description" content="PsychesAi: opinión sobre inteligencia artificial y todo lo que no cupo en nuestros vídeos. Prompts, código, curiosidades con sus fuentes, historias completas, mapas y poemas.">
 <link rel="canonical" href="https://psychesai.com/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#101113">
+<meta name="theme-color" content="#ffffff">
 <meta name="google-site-verification" content="oKpOTwwQu_Ckek6xr2xeMCURYMbFDeuK2JUjktdqG5Q">
 <meta property="og:title" content="PsychesAi — lo que sigue después del vídeo">
-<meta property="og:description" content="Prompts, código, curiosidades, historias, mapas y poemas: lo que no cupo en el vídeo.">
+<meta property="og:description" content="Opinión sobre IA y todo lo que no cupo en nuestros vídeos.">
+<meta property="og:image" content="https://psychesai.com/assets/nuestro-fin-ia-cover.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="home.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,200;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 
-<header class="top">
-  <a class="brand" href="./">Psyches<span>Ai</span></a>
-  <button class="menu" aria-expanded="false" aria-controls="nav">Menú <b>+</b></button>
+<div class="util"><div class="wrap">
+  <span id="fecha">Lima</span>
+  <nav><a href="#opinion">Opinión</a><a href="#apps">Apps</a><a href="#boletin">Boletín</a></nav>
+</div></div>
+
+<header class="mast">
+  <a class="name r" href="./">Psyches<i>Ai</i></a>
+  <p class="r" style="--d:1">Lo que sigue después del vídeo</p>
+</header>
+
+<div class="secs"><div class="wrap">
+  <a class="mini" href="./">PsychesAi</a>
+  <button class="menu" aria-expanded="false" aria-controls="nav">Secciones +</button>
   <nav id="nav">
     <a href="#ia">Contenido IA</a>
     <a href="#curiosidades">Curiosidades</a>
     <a href="#historias">Historias</a>
     <a href="#mapas">Mapas</a>
     <a href="#poemas">Poemas</a>
+    <a href="#opinion">Opinión</a>
     <a href="#apps">Apps</a>
   </nav>
-</header>
+</div></div>
 
-<main>
+<!-- Cinta: lo último en los canales -->
+<div class="tick" aria-label="Lo último en nuestros canales"><div class="wrap">
+  <span class="now">LO ÚLTIMO</span>
+  <div class="rail"><ul>
+    <li><b>CURIOSIDADES</b>Un beso de 10 segundos pasa 80 millones de bacterias</li>
+    <li><b>MAPAS</b>Punto Nemo: el único lugar donde tu ex no te encuentra</li>
+    <li><b>HISTORIAS</b>El estafador que vendió la Torre Eiffel</li>
+    <li><b>POEMAS</b>Un poema para quien se queda</li>
+    <li><b>IA</b>Las 5 noticias de IA del día</li>
+    <li aria-hidden="true"><b>CURIOSIDADES</b>Un beso de 10 segundos pasa 80 millones de bacterias</li>
+    <li aria-hidden="true"><b>MAPAS</b>Punto Nemo: el único lugar donde tu ex no te encuentra</li>
+    <li aria-hidden="true"><b>HISTORIAS</b>El estafador que vendió la Torre Eiffel</li>
+    <li aria-hidden="true"><b>POEMAS</b>Un poema para quien se queda</li>
+    <li aria-hidden="true"><b>IA</b>Las 5 noticias de IA del día</li>
+  </ul></div>
+</div></div>
 
-<!-- PORTADA: el índice es la portada -->
-<section class="cover">
-  <p class="kicker r" style="--d:0">PSYCHESAI · LIMA / INTERNET</p>
-  <h1 class="r" style="--d:1">Viniste por un vídeo. <em>Aquí sigue.</em></h1>
-  <p class="lede r" style="--d:2">Lo que no cupo en 50 segundos: los prompts, el código, las fuentes, la historia completa. Elige de dónde vienes.</p>
+<main class="wrap">
 
-  <p class="kicker r" style="--d:3;margin-bottom:14px">¿DE QUÉ VÍDEO VIENES?</p>
-  <ol class="index">
-    <li class="r" style="--d:4"><a href="#ia"><span class="n">01</span><span class="t">Contenido IA</span><span class="s">Prompts, código y trucos para tus lives</span><span class="c">4 secciones</span></a></li>
-    <li class="r" style="--d:5"><a href="#curiosidades"><span class="n">02</span><span class="t">Curiosidades</span><span class="s">Tu cuerpo por dentro y el estudio detrás de cada dato</span><span class="c">2 secciones</span></a></li>
-    <li class="r" style="--d:6"><a href="#historias"><span class="n">03</span><span class="t">Historias</span><span class="s">Los POV completos y los dilemas</span><span class="c">2 secciones</span></a></li>
-    <li class="r" style="--d:7"><a href="#mapas"><span class="n">04</span><span class="t">Mapas</span><span class="s">Los mapas en grande y sus coordenadas</span><span class="c">2 secciones</span></a></li>
-    <li class="r" style="--d:8"><a href="#poemas"><span class="n">05</span><span class="t">Poemas</span><span class="s">Completos, para copiar y dedicar</span><span class="c">2 secciones</span></a></li>
-  </ol>
-  <p class="also r" style="--d:9">También: <a href="#apps">nuestras apps</a> · <a href="#journal">el journal</a></p>
+<!-- Portada -->
+<section class="front">
+  <aside class="doorcol r" style="--d:2">
+    <p class="colhead">¿De qué vídeo vienes?</p>
+    <ol class="door">
+      <li><a href="#ia"><b>Contenido IA</b><span>Prompts, código y trucos para lives</span></a></li>
+      <li><a href="#curiosidades"><b>Curiosidades</b><span>Tu cuerpo por dentro, con fuentes</span></a></li>
+      <li><a href="#historias"><b>Historias</b><span>Los POV completos y los dilemas</span></a></li>
+      <li><a href="#mapas"><b>Mapas</b><span>En grande y con coordenadas</span></a></li>
+      <li><a href="#poemas"><b>Poemas</b><span>Completos, para copiar y dedicar</span></a></li>
+    </ol>
+  </aside>
+
+  <article class="lead r" style="--d:3">
+    <p class="lbl kick red">Ensayo · Opinión</p>
+    <h1><a href="nuestro-fin-ia.html">Nuestro fin a manos de la IA</a></h1>
+    <p class="dek">Tres futuros plausibles para una humanidad que pierde el control de la inteligencia: el mal uso amplificado, la pérdida activa de control y la inoperancia feliz.</p>
+    <p class="by">Por <b>Aarón de Jesús</b> · 14 sep 2026</p>
+    <figure><a href="nuestro-fin-ia.html"><img src="assets/nuestro-fin-ia-cover.png" alt="Tres caminos luminosos conducen a una inteligencia artificial en un horizonte oscuro"></a></figure>
+  </article>
+
+  <aside class="ops-col r" style="--d:4">
+    <p class="colhead">Opinión</p>
+    <ul class="ops">
+      <li><a href="el-macrometro.html"><span class="lbl">Working paper</span><h3>El Macrómetro: la vía para evitar el colapso nihilista</h3><span class="by">Por <b>De Jesús</b></span></a></li>
+      <li><a href="ia-agentica-simplicidad.html"><span class="lbl">IA agéntica</span><h3>Los agentes ya saben hacer cosas. Ahora tienen que aprender a no estorbarnos</h3><span class="by">Por <b>Fabian Molina</b></span></a></li>
+      <li><a href="agentes-ia.html"><span class="lbl">Inteligencia artificial</span><h3>Los agentes de IA no reemplazan equipos. Rediseñan cómo trabajan</h3><span class="by">Redacción</span></a></li>
+      <li><a href="automatizacion-humana.html"><span class="lbl">Automatización</span><h3>Automatizar no es quitar lo humano: es devolverle tiempo</h3><span class="by">Redacción</span></a></li>
+    </ul>
+  </aside>
 </section>
 
-<!-- 01 CONTENIDO IA -->
-<section class="band ink world" id="ia" style="--acc:var(--acid)">
-  <div class="head">
-    <div><p class="kicker">01 / CONTENIDO IA</p><h2>Para los que <em>construyen.</em></h2></div>
-    <p class="from">Viene de <b>@rainy.ia</b></p>
-  </div>
-  <ol class="shelf">
-    <li id="prompts"><span class="sn">1.1</span><h3>Prompts</h3><p>Los de cada vídeo, listos para copiar y pegar.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="codigo"><span class="sn">1.2</span><h3>Código</h3><p>Proyectos abiertos, como en GitHub: míralos, cópialos, adáptalos.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="lives"><span class="sn">1.3</span><h3>Trucos para lives</h3><p>Overlays y una voz que lee en alto los comentarios de tu directo.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="apps-ia"><span class="sn">1.4</span><h3>Apps de IA probadas</h3><p>Las que probamos en los vídeos, con lo bueno, lo malo y el enlace.</p><span class="st">EN PREPARACIÓN</span></li>
-  </ol>
-</section>
-
-<!-- 02 CURIOSIDADES -->
-<section class="band world" id="curiosidades" style="--acc:var(--cyan);background:var(--cyan)">
-  <div class="head">
-    <div><p class="kicker">02 / CURIOSIDADES</p><h2>Lo que pasa <em>sin que lo veas.</em></h2></div>
-    <p class="from">Viene de <b>@lifeofcuriosities</b></p>
-  </div>
-  <ol class="shelf">
-    <li id="cuerpo"><span class="sn">2.1</span><h3>Tu cuerpo por dentro</h3><p>La serie completa, ordenada: del beso al cerebro borracho.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="fuentes"><span class="sn">2.2</span><h3>Las fuentes</h3><p>El estudio detrás de cada dato, para el que no se lo cree.</p><span class="st">EN PREPARACIÓN</span></li>
-  </ol>
-</section>
-
-<!-- 03 HISTORIAS -->
-<section class="band world" id="historias" style="--acc:var(--mark)">
-  <div class="head">
-    <div><p class="kicker">03 / HISTORIAS</p><h2>Lo que no cupo <em>en el POV.</em></h2></div>
-    <p class="from">Viene de <b>El Testigo Directo</b></p>
-  </div>
-  <ol class="shelf">
-    <li id="completas"><span class="sn">3.1</span><h3>Historias completas</h3><p>El antes, el después y lo que se quedó fuera del vídeo.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="dilemas"><span class="sn">3.2</span><h3>Dilemas</h3><p>Vota qué harías tú y mira qué eligió el resto.</p><span class="st">EN PREPARACIÓN</span></li>
-  </ol>
-</section>
-
-<!-- 04 MAPAS -->
-<section class="band ink world" id="mapas" style="--acc:var(--cyan)">
-  <div class="head">
-    <div><p class="kicker">04 / MAPAS</p><h2>El mundo, <em>con calma.</em></h2></div>
-    <p class="from">Viene de <b>@mapeandoelconocimiento</b></p>
-  </div>
-  <ol class="shelf">
-    <li id="mapas-grandes"><span class="sn">4.1</span><h3>Los mapas en grande</h3><p>Para verlos sin prisa y descargarlos.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="coordenadas"><span class="sn">4.2</span><h3>Coordenadas</h3><p>Cada lugar del vídeo, para abrirlo en Google Maps.</p><span class="st">EN PREPARACIÓN</span></li>
-  </ol>
-</section>
-
-<!-- 05 POEMAS -->
-<section class="band world" id="poemas" style="--acc:var(--ink);background:var(--violet)">
-  <div class="head">
-    <div><p class="kicker">05 / POEMAS</p><h2>Para decirlo <em>mejor.</em></h2></div>
-    <p class="from">Viene de <b>@poetryparaqueredores</b></p>
-  </div>
-  <ol class="shelf">
-    <li id="poemas-completos"><span class="sn">5.1</span><h3>Los poemas completos</h3><p>Todos los de los vídeos, para leer y copiar.</p><span class="st">EN PREPARACIÓN</span></li>
-    <li id="dedicar"><span class="sn">5.2</span><h3>Dedícalo</h3><p>Conviértelo en tarjeta y mándaselo a esa persona.</p><span class="st">EN PREPARACIÓN</span></li>
-  </ol>
-</section>
-
-<!-- APPS -->
-<section class="band acid" id="apps">
-  <div class="head">
-    <div><p class="kicker">NUESTRAS APPS</p><h2>Lo que usamos <em>todos los días.</em></h2></div>
-  </div>
-  <div class="apps">
-    <a class="app" data-app href="https://rainy.goodcallia.com/">
-      <span class="app-n">A</span>
-      <h3>Rainy</h3>
-      <p>Una asistente con voz. Le encargas tareas como a una persona: llama, investiga, ordena tus documentos y te reporta.</p>
-      <span class="app-go">rainy.goodcallia.com →</span>
-    </a>
-    <a class="app" data-app href="https://studio.goodcallia.com/">
-      <span class="app-n">B</span>
-      <h3>GoodCall Studio</h3>
-      <p>El panel de tu negocio: tu bot de WhatsApp, tus redes y tus clientes en un solo lugar.</p>
-      <span class="app-go">studio.goodcallia.com →</span>
-    </a>
+<!-- 01 Contenido IA -->
+<section class="sec" id="ia">
+  <div class="sec-h"><h2>Contenido <i>IA</i></h2><span class="src">Viene de <b>@rainy.ia</b></span></div>
+  <div class="cols">
+    <article class="item big" id="prompts"><span class="lbl">Prompts</span><h3>Los prompts de cada vídeo, listos para copiar</h3><p>Lo que escribimos en pantalla, completo y probado.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="codigo"><span class="lbl">Código</span><h3>Proyectos abiertos, como en GitHub</h3><p>Míralos, cópialos y adáptalos a lo tuyo.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="lives"><span class="lbl">Trucos para lives</span><h3>Overlays y una voz que lee tus comentarios</h3><p>Para que tu directo se vea y suene distinto.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="apps-ia"><span class="lbl">Apps probadas</span><h3>Las apps de IA que probamos en los vídeos</h3><p>Lo bueno, lo malo y el enlace.</p><span class="pronto">Próximamente</span></article>
   </div>
 </section>
 
-<!-- JOURNAL -->
-<section class="band" id="journal">
-  <div class="head">
-    <div><p class="kicker">JOURNAL</p><h2>Para leer <em>despacio.</em></h2></div>
+<!-- 02 Curiosidades -->
+<section class="sec" id="curiosidades">
+  <div class="sec-h"><h2>Curiosidades</h2><span class="src">Viene de <b>@lifeofcuriosities</b></span></div>
+  <div class="cols">
+    <article class="item big" id="cuerpo"><span class="lbl">Serie</span><h3>Tu cuerpo por dentro, de principio a fin</h3><p>La serie completa y ordenada: del beso al cerebro borracho.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="fuentes"><span class="lbl">Las fuentes</span><h3>El estudio detrás de cada dato</h3><p>Para el que no se lo cree: cada vídeo con su referencia.</p><span class="pronto">Próximamente</span></article>
   </div>
-  <ul class="toc">
-    <li><a href="ia-agentica-simplicidad.html"><span class="cat">IA AGÉNTICA</span><span class="ti">El reto de los agentes no es pensar: es no complicarnos la vida.</span><span class="dt">15 SEP</span></a></li>
-    <li><a href="agentes-ia.html"><span class="cat">INTELIGENCIA ARTIFICIAL</span><span class="ti">Los agentes de IA no reemplazan equipos. Rediseñan cómo trabajan.</span><span class="dt">15 SEP</span></a></li>
-    <li><a href="automatizacion-humana.html"><span class="cat">AUTOMATIZACIÓN</span><span class="ti">Automatizar no es quitar lo humano: es devolverle tiempo.</span><span class="dt">15 SEP</span></a></li>
-    <li><a href="web-memorable.html"><span class="cat">PRODUCTO WEB</span><span class="ti">Una web memorable no necesita gritar.</span><span class="dt">15 SEP</span></a></li>
-    <li><a href="nuestro-fin-ia.html"><span class="cat">ENSAYO</span><span class="ti">Nuestro fin a manos de la IA.</span><span class="dt">15 SEP</span></a></li>
-    <li><a href="el-macrometro.html"><span class="cat">WORKING PAPER</span><span class="ti">El Macrómetro: la vía para evitar el colapso nihilista.</span><span class="dt">15 SEP</span></a></li>
+</section>
+
+<!-- 03 Historias -->
+<section class="sec" id="historias">
+  <div class="sec-h"><h2>Historias</h2><span class="src">Viene de <b>El Testigo Directo</b></span></div>
+  <div class="cols">
+    <article class="item big" id="completas"><span class="lbl">Completas</span><h3>Lo que no cupo en el POV</h3><p>El antes, el después y lo que se quedó fuera del vídeo.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="dilemas"><span class="lbl">Dilemas</span><h3>¿Tú qué harías?</h3><p>Vota y mira qué eligió el resto.</p><span class="pronto">Próximamente</span></article>
+  </div>
+</section>
+
+<!-- 04 Mapas -->
+<section class="sec" id="mapas">
+  <div class="sec-h"><h2>Mapas</h2><span class="src">Viene de <b>@mapeandoelconocimiento</b></span></div>
+  <div class="cols">
+    <article class="item big" id="mapas-grandes"><span class="lbl">En grande</span><h3>Los mapas de los vídeos, para verlos con calma</h3><p>En alta resolución y para descargar.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="coordenadas"><span class="lbl">Coordenadas</span><h3>Cada lugar, en Google Maps</h3><p>Ábrelo y míralo tú mismo.</p><span class="pronto">Próximamente</span></article>
+  </div>
+</section>
+
+<!-- 05 Poemas -->
+<section class="sec" id="poemas">
+  <div class="sec-h"><h2>Poemas</h2><span class="src">Viene de <b>@poetryparaqueredores</b></span></div>
+  <div class="cols">
+    <article class="item big" id="poemas-completos"><span class="lbl">Completos</span><h3>Todos los poemas de los vídeos</h3><p>Para leerlos enteros y copiarlos.</p><span class="pronto">Próximamente</span></article>
+    <article class="item" id="dedicar"><span class="lbl">Dedícalo</span><h3>Conviértelo en tarjeta y mándaselo</h3><p>A esa persona. Ya sabes cuál.</p><span class="pronto">Próximamente</span></article>
+  </div>
+</section>
+
+<!-- Opinión -->
+<section class="sec" id="opinion">
+  <div class="sec-h"><h2>Opinión</h2><span class="src">Ensayos y columnas</span></div>
+  <ul class="oplist">
+    <li><a href="nuestro-fin-ia.html"><span class="lbl">Ensayo</span><h3>Nuestro fin a manos de la IA</h3><span class="by">Por <b>Aarón de Jesús</b></span><time>14 SEP</time></a></li>
+    <li><a href="el-macrometro.html"><span class="lbl">Working paper</span><h3>El Macrómetro: la vía para evitar el colapso nihilista</h3><span class="by">Por <b>De Jesús</b></span><time>14 SEP</time></a></li>
+    <li><a href="ia-agentica-simplicidad.html"><span class="lbl">IA agéntica</span><h3>Los agentes ya saben hacer cosas. Ahora tienen que aprender a no estorbarnos</h3><span class="by">Por <b>Fabian Molina</b></span><time>15 SEP</time></a></li>
+    <li><a href="agentes-ia.html"><span class="lbl">Inteligencia artificial</span><h3>Los agentes de IA no reemplazan equipos. Rediseñan cómo trabajan</h3><span class="by">Redacción</span><time>15 SEP</time></a></li>
+    <li><a href="automatizacion-humana.html"><span class="lbl">Automatización</span><h3>Automatizar no es quitar lo humano: es devolverle tiempo</h3><span class="by">Redacción</span><time>15 SEP</time></a></li>
+    <li><a href="web-memorable.html"><span class="lbl">Producto web</span><h3>Una web memorable no necesita gritar</h3><span class="by">Redacción</span><time>15 SEP</time></a></li>
   </ul>
 </section>
 
-<section class="band ink letter" id="newsletter">
-  <p class="kicker">UNA CARTA CUANDO HAYA ALGO NUEVO</p>
-  <h2>Lo nuevo, <em>primero a ti.</em></h2>
-  <form id="newsletter-form"><label class="sr" for="email">Tu correo</label><input id="email" type="email" placeholder="tu@correo.com" required><button type="submit">Avisarme →</button></form>
-  <p class="form-message" aria-live="polite"></p>
+<!-- Apps -->
+<section class="sec" id="apps">
+  <div class="sec-h"><h2>Nuestras <i>apps</i></h2><span class="src">Hechas por el equipo de PsychesAi</span></div>
+  <div class="apps">
+    <a class="app" data-app href="https://rainy.goodcallia.com/"><span class="ic">R</span><h3>Rainy</h3><p>Una asistente con voz. Le encargas tareas como a una persona: llama, investiga, ordena tus documentos y te reporta.</p><span class="go">rainy.goodcallia.com →</span></a>
+    <a class="app" data-app href="https://studio.goodcallia.com/"><span class="ic">S</span><h3>GoodCall Studio</h3><p>El panel de tu negocio: tu bot de WhatsApp, tus redes y tus clientes en un solo lugar.</p><span class="go">studio.goodcallia.com →</span></a>
+  </div>
 </section>
 
 </main>
 
-<footer>
-  <a class="brand" href="./">Psyches<span>Ai</span></a>
-  <p>© 2026 PsychesAi</p>
-  <a href="mailto:hola@psychesai.com">hola@psychesai.com</a>
-</footer>
+<section class="news" id="boletin"><div class="wrap">
+  <div><p class="lbl" style="color:#ffb3a6">Boletín</p><h2>Lo nuevo, <i>primero a ti.</i></h2></div>
+  <div>
+    <form id="newsletter-form"><label class="sr" for="email">Tu correo</label><input id="email" type="email" placeholder="tu@correo.com" required><button type="submit">Suscribirme</button></form>
+    <p class="form-message" aria-live="polite"></p>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <a class="name" href="./">PsychesAi</a>
+  <nav><a href="#ia">Contenido IA</a><a href="#curiosidades">Curiosidades</a><a href="#historias">Historias</a><a href="#mapas">Mapas</a><a href="#poemas">Poemas</a><a href="#opinion">Opinión</a></nav>
+  <span>© 2026 PsychesAi · <a href="mailto:hola@psychesai.com">hola@psychesai.com</a></span>
+</div></footer>
 
 <script>
+// Fecha del día, como un diario
+try{var t=new Date().toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'America/Lima'});document.getElementById('fecha').textContent=t+' · Lima';}catch(e){}
 // Menú en móvil
 var b=document.querySelector('.menu'),n=document.getElementById('nav');
-b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.querySelector('b').textContent=o?'−':'+';});
-n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.querySelector('b').textContent='+';}});
+b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Secciones −':'Secciones +';});
+n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='Secciones +';}});
 // De qué canal viene la visita (?de=poemas): se guarda y viaja a las apps
 var de=new URLSearchParams(location.search).get('de');
 try{if(de)localStorage.setItem('psy_de',de);else de=localStorage.getItem('psy_de');}catch(e){}
 document.querySelectorAll('[data-app]').forEach(function(a){var u=new URL(a.href);u.searchParams.set('ref','psychesai'+(de?'-'+de:''));a.href=u.toString();});
-// Formulario (igual que antes: todavía no guarda el correo)
+// Boletín: todavía no guarda el correo
 var f=document.getElementById('newsletter-form');
 f.addEventListener('submit',function(e){e.preventDefault();f.nextElementSibling.textContent='Gracias. Te avisamos cuando salga lo próximo.';f.reset();});
 </script>
