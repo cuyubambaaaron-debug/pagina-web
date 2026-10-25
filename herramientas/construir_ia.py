@@ -307,28 +307,43 @@ def construir_prompts(datos, conteos):
 
 def construir_programas(datos, conteos):
     R = "../"
-    cartas = []
-    for p in datos["gratis"]:
-        cartas.append(f"""<article class="prog">
-  <div class="prog-h"><span class="mono-logo" style="--h:{int(p['h'])}" aria-hidden="true">{e(p['n'][0])}</span><div><h3>{e(p['n'])}</h3><span>Gratis · {e(p['para'])}</span></div></div>
-  <p>{e(p['d'])}</p>
-  <p class="ojo">{e(p['ojo'])}</p>
-  <div class="prog-pie"><a class="ir" href="{e(p['u'])}" target="_blank" rel="noopener noreferrer nofollow">Abrir {e(p['n'].split()[0])} ↗</a>
-  <small><img src="{R}assets/canales/{p['video']}" alt="" loading="lazy">Salió en un vídeo</small></div>
-</article>""")
-    rk = datos["ranking"]
-    filas = "".join(f'<div class="rank-f"><span>{e(a)}</span><b>{e(b)}</b><em>{e(c)}</em></div>' for a, b, c in rk["filas"])
-    cuerpo = (hero(R, "Programas recomendados", "Programas", "recomendados",
-                   "Las IAs gratis que probamos en los vídeos, con lo bueno y lo que hay que saber. Y el ranking del mes, con su fuente."),
-              f"""<div class="titulo-bloque"><h2>Gratis y probadas</h2><span class="mono">{len(datos['gratis'])} programas</span></div>
-<div class="progs">{''.join(cartas)}</div>
-<section class="ranking">
-  <div class="titulo-bloque"><h2>{e(rk['titulo'])}</h2><span class="mono">{e(rk['fecha'])}</span></div>
-  <div class="rank">{filas}</div>
-  <p class="fuente">Fuente: <a href="{e(rk['fuente_url'])}" target="_blank" rel="noopener noreferrer nofollow">{e(rk['fuente'])}</a>. Cambia cada mes: lo actualizamos con cada vídeo.</p>
+    bloques = []
+    for v in datos["videos"]:
+        filas = []
+        for i, h in enumerate(v["herramientas"], 1):
+            filas.append(f"""<li class="herr">
+  <span class="herr-n">{i}</span>
+  <img class="herr-logo" src="{R}assets/logos/{h['logo']}" alt="Logo de {e(h['n'])}" width="64" height="64" loading="lazy">
+  <div class="herr-t">
+    <h3>{e(h['n'])} <span>{e(h['para'])} · gratis</span></h3>
+    <p>{e(h['d'])}</p>
+    <p class="ojo">{e(h['ojo'])}</p>
+  </div>
+  <a class="herr-ir" href="{e(h['u'])}" target="_blank" rel="noopener noreferrer nofollow">Abrir ↗</a>
+</li>""")
+        bloques.append(f"""<section class="vid vid-{v['tema']}" id="{v['id']}">
+  <div class="vid-h">
+    <img src="{R}assets/canales/{v['imagen']}" alt="Fotograma del vídeo «{e(v['titulo'])}»" loading="lazy">
+    <div><p class="vid-de">Del vídeo</p><h2>{e(v['titulo'])}</h2><p class="vid-sub">{e(v['sub'])}</p></div>
+  </div>
+  <ol class="herrs">{''.join(filas)}</ol>
 </section>""")
-    (IA / "programas.html").write_text(pagina(R, "Programas recomendados", "Las IAs gratis que probamos en los vídeos y el ranking de la mejor IA para cada cosa.",
+    rk = datos["ranking"]
+    rfilas = []
+    for cat, modelo, empresa, logos in rk["filas"]:
+        imgs = "".join(f'<img src="{R}assets/logos/{l}" alt="" width="36" height="36" loading="lazy">' for l in logos)
+        rfilas.append(f'<div class="rank-f"><span>{e(cat)}</span><div class="rank-m"><span class="rank-logos">{imgs}</span><b>{e(modelo)}</b></div><em>{e(empresa)}</em></div>')
+    cuerpo = (hero(R, "Programas recomendados", "Programas", "recomendados",
+                   "Lo que recomendamos en cada vídeo, agrupado por el vídeo del que vienes. Con lo bueno y lo que hay que saber."),
+              f"""{''.join(bloques)}
+<section class="vid vid-arena" id="ranking">
+  <div class="vid-h solo"><div><p class="vid-de">{e(rk['fecha'])}</p><h2>{e(rk['titulo'])}</h2><p class="vid-sub">{e(rk['sub'])}</p></div></div>
+  <div class="rank">{''.join(rfilas)}</div>
+  <p class="fuente">Fuente: <a href="{e(rk['fuente_url'])}" target="_blank" rel="noopener noreferrer nofollow">{e(rk['fuente'])}</a>. Cambia cada mes.</p>
+</section>""")
+    (IA / "programas.html").write_text(pagina(R, "Programas recomendados", "Las IAs que recomendamos en cada vídeo de @rainy.ia, agrupadas por vídeo, y el ranking de la mejor IA para cada cosa.",
                                               "ia/programas", "programas", cuerpo, conteos), encoding="utf-8")
+
 
 MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
 COLOR_LANG = {".py": ("Python", "#3572A5"), ".html": ("HTML", "#e34c26"), ".css": ("CSS", "#663399"),
@@ -484,7 +499,7 @@ def main():
     proyectos.sort(key=lambda x: orden.get(x[0].name, 9))
     prompts = json.loads((IA / "datos" / "prompts.json").read_text(encoding="utf-8"))
     programas = json.loads((IA / "datos" / "programas.json").read_text(encoding="utf-8"))
-    conteos = {"prompts": sum(len(g["prompts"]) for g in prompts["grupos"]), "codigo": len(proyectos), "programas": len(programas["gratis"])}
+    conteos = {"prompts": sum(len(g["prompts"]) for g in prompts["grupos"]), "codigo": len(proyectos), "programas": sum(len(v["herramientas"]) for v in programas["videos"])}
     construir_prompts(prompts, conteos)
     construir_programas(programas, conteos)
     construir_codigo(proyectos, conteos)

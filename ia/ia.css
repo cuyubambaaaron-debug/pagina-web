@@ -55,23 +55,6 @@
 .aviso-ia b{color:#fff}
 
 /* ===== Programas recomendados ===== */
-.titulo-bloque{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 22px}
-.titulo-bloque h2{font:800 clamp(1.8rem,4vw,3rem)/1 var(--disp);letter-spacing:-.04em;margin:0}
-.progs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:18px}
-.prog{display:flex;flex-direction:column;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
-.prog-h{display:flex;align-items:center;gap:14px}
-.mono-logo{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font:800 1.5rem var(--disp);color:#fff;flex:none;
-  background:linear-gradient(150deg,hsl(var(--h) 85% 58%),hsl(calc(var(--h) + 40) 75% 32%))}
-.prog-h h3{font:800 1.3rem/1.05 var(--disp);letter-spacing:-.02em;margin:0 0 4px}
-.prog-h div span{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ok)}
-.prog p{margin:0;color:#d9d8e2;line-height:1.5}
-.prog .ojo{color:var(--mute);font-size:.9rem}
-.prog .ojo::before{content:"Ojo · ";font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--warn)}
-.prog-pie{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:6px}
-.prog-pie a.ir{font:700 .95rem var(--disp);background:#fff;color:#0a0a0f;padding:11px 16px;border-radius:99px}
-.prog-pie img{width:34px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;border:1px solid rgba(255,255,255,.2)}
-.prog-pie small{display:flex;align-items:center;gap:8px;color:var(--mute);font-size:.78rem}
-.ranking{margin-top:70px}
 .rank{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--panel)}
 .rank-f{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) minmax(0,.8fr);gap:14px;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
 .rank-f:last-child{border-bottom:0}
@@ -190,3 +173,61 @@
 .k{color:#ff7b72}.s{color:#a5d6ff}.c{color:#8b949e;font-style:italic}.f{color:#d2a8ff}.b{color:#79c0ff}.m{color:#79c0ff}.o{color:#e6edf3}.t{color:#7ee787}.a{color:#79c0ff}.p{color:#ffa657}
 .gh-files .fi{border-radius:1px 5px 1px 1px;background:linear-gradient(#8b949e,#8b949e) 2px 4.5px/6px 1.3px no-repeat,linear-gradient(#8b949e,#8b949e) 2px 8px/6px 1.3px no-repeat,linear-gradient(#8b949e,#8b949e) 2px 11.5px/4px 1.3px no-repeat}
 @media (max-width:760px){.md{padding:4px 16px 18px}.cod{font-size:12px!important}}
+
+/* ===== Programas recomendados: un bloque por vídeo, con el estilo de ese vídeo ===== */
+.vid{margin:0 calc(var(--pad) * -1);padding:clamp(40px,6vw,72px) var(--pad);border-top:1px solid var(--line)}
+.vid:first-child{margin-top:-34px}
+.vid-h{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,3vw,36px);align-items:center;margin-bottom:34px}
+.vid-h.solo{grid-template-columns:minmax(0,1fr)}
+.vid-h img{width:clamp(96px,12vw,150px);aspect-ratio:9/16;object-fit:cover;border-radius:14px;transform:rotate(-3deg);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.vid-de{margin:0 0 8px;font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.vid h2{font:800 clamp(1.9rem,4.6vw,3.6rem)/.98 var(--disp);letter-spacing:-.04em;margin:0 0 10px}
+.vid-sub{margin:0;font-size:1.05rem}
+.herrs{list-style:none;margin:0;padding:0}
+.herr{display:grid;grid-template-columns:auto 64px minmax(0,1fr) auto;gap:6px 22px;align-items:start;padding:24px 0;border-top:1px solid var(--vline)}
+.herr-n{font:800 3rem/.9 var(--disp);letter-spacing:-.05em;min-width:1.2em}
+.herr-logo{width:64px;height:64px;border-radius:16px;object-fit:contain;background:#fff;padding:6px;box-sizing:border-box;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.herr-t h3{font:800 1.35rem/1.1 var(--disp);letter-spacing:-.02em;margin:2px 0 8px}
+.herr-t h3 span{display:inline-block;font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;margin-left:6px;vertical-align:3px}
+.herr-t p{margin:0 0 8px;line-height:1.5;max-width:44em}
+.herr-t .ojo{font-size:.9rem}
+.herr-t .ojo::before{content:"Ojo · ";font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.herr-ir{align-self:center;font:700 .95rem var(--disp);padding:11px 18px;border-radius:99px;white-space:nowrap}
+
+/* Vídeo oscuro con azul: «destruyen a las de pago» */
+.vid-oscuro{--vline:rgba(255,255,255,.1);background:radial-gradient(60% 80% at 0% 0%,rgba(59,108,255,.2),transparent 70%),#0b0c14}
+.vid-oscuro .vid-de,.vid-oscuro .herr-t h3 span{color:#6f93ff}
+.vid-oscuro h2{color:#fff}.vid-oscuro .vid-sub{color:#6f93ff;font-style:italic}
+.vid-oscuro .herr-n{color:#3b6cff}
+.vid-oscuro .herr-t p{color:#c9c7d2}.vid-oscuro .herr-t .ojo{color:var(--mute)}.vid-oscuro .ojo::before{color:#ffb020}
+.vid-oscuro .herr-ir{background:#3b6cff;color:#fff}
+
+/* Vídeo crema con naranja: «te ahorran plata» */
+.vid-crema{--vline:rgba(30,20,10,.12);background:#f3eee6;color:#1b1714}
+.vid-crema .vid-de,.vid-crema .herr-t h3 span{color:#c2410c}
+.vid-crema h2{color:#1b1714}.vid-crema .vid-sub{color:#e8553d;font-style:italic}
+.vid-crema .herr-n{color:#e8553d}
+.vid-crema .herr-t p{color:#3d3630}.vid-crema .herr-t .ojo{color:#6b6157}.vid-crema .ojo::before{color:#c2410c}
+.vid-crema .herr-ir{background:#1b1714;color:#f3eee6}
+.vid-crema .herr-logo{box-shadow:0 0 0 1px rgba(0,0,0,.12),0 6px 16px rgba(0,0,0,.08)}
+
+/* Ranking de Arena */
+.vid-arena{--vline:var(--line);background:#0a0a0f}
+.vid-arena .vid-de{color:var(--ama)}
+.vid-arena .vid-sub{color:var(--mute)}
+.rank-m{display:flex;align-items:center;gap:12px;min-width:0}
+.rank-logos{display:flex;flex:none}
+.rank-logos img{width:36px;height:36px;border-radius:10px;background:#fff;object-fit:contain;padding:3px;box-sizing:border-box}
+.rank-logos img+img{margin-left:-8px;box-shadow:0 0 0 2px var(--panel)}
+
+@media (max-width:760px){
+  .vid:first-child{margin-top:-34px}
+  .vid-h{grid-template-columns:84px minmax(0,1fr);gap:16px}
+  .vid-h img{width:84px;border-radius:10px}
+  .vid h2{font-size:1.65rem}
+  .herr{grid-template-columns:auto 48px minmax(0,1fr);gap:6px 14px}
+  .herr-n{font-size:2.2rem}
+  .herr-logo{width:48px;height:48px;border-radius:12px;padding:4px}
+  .herr-ir{grid-column:3;justify-self:start;align-self:start;margin-top:4px}
+  .rank-logos img{width:30px;height:30px}
+}

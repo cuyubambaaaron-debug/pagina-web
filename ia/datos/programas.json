@@ -1,36 +1,55 @@
 {
-  "gratis": [
-    {"n": "Adobe Podcast Enhance", "u": "https://podcast.adobe.com/enhance", "para": "Arreglar audios", "h": 0,
-     "d": "Subes una nota de voz con viento o ruido y te la devuelve como si la hubieras grabado con micrófono de estudio.",
-     "ojo": "Funciona en el navegador. La versión gratis tiene límite de duración por archivo.", "video": "ia-v-gratis2.webp"},
-    {"n": "Napkin AI", "u": "https://www.napkin.ai", "para": "Diagramas", "h": 200,
-     "d": "Pegas cualquier apunte o texto y te genera diagramas e infografías profesionales en segundos.",
-     "ojo": "Ideal para presentaciones y para estudiar.", "video": "ia-v-gratis2.webp"},
-    {"n": "Recraft", "u": "https://www.recraft.ai", "para": "Logos y vectores", "h": 330,
-     "d": "Crea logos, vectores en SVG e ilustraciones 3D sin pagar Midjourney ni Illustrator.",
-     "ojo": "El SVG se puede ampliar sin perder calidad: perfecto para logos.", "video": "ia-v-gratis2.webp"},
-    {"n": "Upscayl", "u": "https://upscayl.org", "para": "Mejorar fotos", "h": 270,
-     "d": "Mejora fotos viejas o pequeñas hasta 4 veces su tamaño, en tu propio ordenador.",
-     "ojo": "Es de código abierto y funciona sin internet: tus fotos no salen de tu equipo.", "video": "ia-v-gratis1.webp"},
-    {"n": "NotebookLM", "u": "https://notebooklm.google.com", "para": "Estudiar", "h": 140,
-     "d": "Le subes tus apuntes o PDFs, te los explica, responde solo con lo que hay en ellos y te hace examen.",
-     "ojo": "De Google. Necesitas una cuenta de Gmail.", "video": "ia-v-gratis1.webp"},
-    {"n": "DeepSeek", "u": "https://chat.deepseek.com", "para": "Escribir y razonar", "h": 220,
-     "d": "Un chat gratuito muy bueno razonando. En el vídeo le pedimos el reclamo al banco.",
-     "ojo": "No le pegues datos sensibles (DNI, cuentas, contraseñas): como en cualquier chat, quedan en sus servidores.", "video": "ia-v-gratis1.webp"}
+  "videos": [
+    {
+      "id": "destruyen-a-las-de-pago",
+      "titulo": "3 IAs gratis que destruyen a las de pago",
+      "sub": "Y te ahorran más de $60 al mes",
+      "imagen": "ia-v-gratis2.webp",
+      "tema": "oscuro",
+      "herramientas": [
+        {"n": "Adobe Podcast Enhance", "logo": "adobe-podcast.svg", "u": "https://podcast.adobe.com/enhance", "para": "Arreglar audios",
+         "d": "Subes una nota de voz con viento o ruido y te la devuelve como si la hubieras grabado con micrófono de estudio.",
+         "ojo": "Funciona en el navegador. La versión gratis tiene límite de duración por archivo."},
+        {"n": "Napkin AI", "logo": "napkin.webp", "u": "https://www.napkin.ai", "para": "Diagramas",
+         "d": "Pegas cualquier apunte o texto y te genera diagramas e infografías profesionales en segundos.",
+         "ojo": "Ideal para presentaciones y para estudiar."},
+        {"n": "Recraft", "logo": "recraft.webp", "u": "https://www.recraft.ai", "para": "Logos y vectores",
+         "d": "Crea logos, vectores en SVG e ilustraciones 3D sin pagar Midjourney ni Illustrator.",
+         "ojo": "El SVG se puede ampliar sin perder calidad: perfecto para logos."}
+      ]
+    },
+    {
+      "id": "te-ahorran-plata",
+      "titulo": "3 IAs gratis que te ahorran plata",
+      "sub": "Probadas de verdad",
+      "imagen": "ia-v-gratis1.webp",
+      "tema": "crema",
+      "herramientas": [
+        {"n": "Upscayl", "logo": "upscayl.webp", "u": "https://upscayl.org", "para": "Mejorar fotos",
+         "d": "Mejora fotos viejas o pequeñas hasta 4 veces su tamaño, en tu propio ordenador.",
+         "ojo": "Es de código abierto y funciona sin internet: tus fotos no salen de tu equipo."},
+        {"n": "NotebookLM", "logo": "notebooklm.svg", "u": "https://notebooklm.google.com", "para": "Estudiar",
+         "d": "Le subes tus apuntes o PDFs, te los explica, responde solo con lo que hay en ellos y te hace examen.",
+         "ojo": "Es de Google. Necesitas una cuenta de Gmail."},
+        {"n": "DeepSeek", "logo": "deepseek.webp", "u": "https://chat.deepseek.com", "para": "Escribir y razonar",
+         "d": "Un chat gratuito muy bueno razonando. En el vídeo le pedimos el reclamo al banco.",
+         "ojo": "No le pegues datos sensibles (DNI, cuentas, contraseñas): como en cualquier chat, quedan en sus servidores."}
+      ]
+    }
   ],
   "ranking": {
     "titulo": "La mejor IA para cada cosa",
+    "sub": "Del vídeo «Las mejores IA de octubre», con el ranking de votos de Arena",
     "fecha": "Octubre de 2026",
     "fuente": "Ranking de votos de Arena (arena.ai), del 7 al 20 de octubre de 2026",
     "fuente_url": "https://arena.ai/leaderboard",
     "filas": [
-      ["Conversar", "Gemini 4 Argon", "Google"],
-      ["Programar", "Claude Opus 5.5", "Anthropic"],
-      ["Imágenes", "GPT-Image-2.5", "OpenAI"],
-      ["Vídeo", "Gemini Omni", "Google"],
-      ["Buscar en internet", "Empate", "OpenAI y Alibaba"],
-      ["La más barata para tareas", "GPT-6 Luna", "OpenAI"]
+      ["Conversar", "Gemini 4 Argon", "Google", ["gemini.webp"]],
+      ["Programar", "Claude Opus 5.5", "Anthropic", ["claude.webp"]],
+      ["Imágenes", "GPT-Image-2.5", "OpenAI", ["openai.webp"]],
+      ["Vídeo", "Gemini Omni", "Google", ["gemini.webp"]],
+      ["Buscar en internet", "Empate", "OpenAI y Alibaba", ["openai.webp", "qwen.webp"]],
+      ["La más barata para tareas", "GPT-6 Luna", "OpenAI", ["openai.webp"]]
     ]
   }
 }
