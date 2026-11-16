@@ -334,3 +334,8 @@ main { padding: 0 var(--pad) 80px; }
 
 .gbtn{min-height:48px;display:flex;justify-content:center;align-items:center;margin:18px 0 6px}
 .gbtn iframe{margin:0 auto!important}
+
+.btn-google{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:50px;padding:10px 20px;border:1px solid #dadce0;border-radius:999px;background:#fff;color:#1f1f1f;font:600 16px/1.2 Figtree,sans-serif;cursor:pointer;transition:background .15s,box-shadow .15s,transform .15s;margin:6px 0 4px}
+.btn-google:hover{background:#f8faff;box-shadow:0 4px 14px rgba(66,133,244,.18);transform:translateY(-1px)}
+.btn-google:focus-visible{outline:3px solid #4285f4;outline-offset:2px}
+.btn-google .g{width:22px;height:22px;flex:none}
