@@ -502,3 +502,12 @@ button.mod:not(.on) { background: #f5f6f8; color: var(--gris); text-decoration: 
 .paradas .cerrada .ck svg { width: 13px; height: 13px; stroke-width: 2.4; }
 .obj > span { display: block; }
 .obj > span svg.i { vertical-align: -3px; margin-right: 6px; }
+.material { border: 1px solid var(--borde-2); border-radius: 14px; margin: 0 0 22px; background: #fff; }
+.material > summary { cursor: pointer; padding: 16px 18px; font-weight: 700; display: flex; gap: 10px; align-items: center; list-style: none; }
+.material > summary::-webkit-details-marker { display: none; }
+.material > summary small { margin-left: auto; font-weight: 500; color: #6b6f80; font-size: .85em; }
+.material[open] > summary { border-bottom: 1px solid var(--borde-2); }
+.material > .cuerpo { padding: 18px; }
+.b-h { font-size: 1.15rem; margin: 26px 0 10px; padding-top: 18px; border-top: 1px dashed var(--borde-2); }
+.material .cuerpo > .b-h:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+.material .guion { margin: 22px 0 0; }

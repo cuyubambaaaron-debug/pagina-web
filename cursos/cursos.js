@@ -320,6 +320,7 @@
   }
   function bloque(b, i, lid) {
     if (b.t === 'p') return '<div class="b-p">' + b.h + '</div>';
+    if (b.t === 'h') return '<h3 class="b-h">' + esc(b.h) + '</h3>';
     if (b.t === 'ojo') return '<div class="ojo">' + b.h + '</div>';
     if (b.t === 'tabla') return '<div class="b-tabla">' + b.h + '</div>';
     if (b.t === 'demo') return htmlDemo();
@@ -375,23 +376,28 @@
     riel += '</ul>';
     var base = API + '/curso/' + k.slug, sig = ids[i + 1], ant = ids[i - 1];
     var video = l.video ? '<video class="video" controls preload="metadata" playsinline src="' + API + '/video/' + esc(k.slug) + '/' + esc(l.id) + '?t=' + encodeURIComponent(d.rec) + '"></video>'
-      : '<div class="video vacio"><div class="vv-in"><span class="vv-ico">' + ic('libro') + '</span><b>El vídeo de esta sección se está grabando</b><span>Mientras tanto tienes el guion completo abajo y todos los pasos.</span></div></div>';
+      : '<div class="video vacio"><div class="vv-in"><span class="vv-ico">' + ic('libro') + '</span><b>El vídeo de esta lección se está grabando</b><span>Mientras tanto, abajo tienes los pasos y el texto del vídeo.</span></div></div>';
     var esMovil = window.matchMedia('(max-width: 860px)').matches;
+    var tieneDemo = l.bloques.some(function (b) { return b.t === 'demo'; });
+    var nPasos = l.bloques.reduce(function (a, b) { return a + (b.t === 'pasos' ? b.items.length : 0); }, 0);
+    var nCod = l.bloques.filter(function (b) { return b.t === 'codigo'; }).length;
     app.innerHTML =
       '<div class="curso-top"><p class="migas"><a href="#/">Cursos</a>' + ic('flecha') + esc(k.titulo) + '</p>' +
       '<div class="ct-der"><label class="sel-ia">Trabajo con <select id="selIA">' + IAS.map(function (x) { return '<option value="' + x[0] + '"' + (x[0] === miIA() ? ' selected' : '') + '>' + x[1] + '</option>'; }).join('') + '</select></label>' +
       '<a class="btn sec chico" href="' + base + '/proyecto?t=' + encodeURIComponent(d.rec) + '">' + ic('bajar') + 'Proyecto (.zip)</a>' +
       '<a class="btn sec chico" href="' + base + '/texto?t=' + encodeURIComponent(d.rec) + '">' + ic('bajar') + 'Todo el curso para mi IA</a></div></div>' +
-      '<div class="lector v2"><aside class="riel"><p class="avance">' + n + ' de ' + ids.length + ' secciones aprobadas · ' + pct + ' %<span class="bateria"><span id="barra"></span></span></p>' +
+      '<div class="lector v2"><aside class="riel"><p class="avance">' + n + ' de ' + ids.length + ' lecciones aprobadas · ' + pct + ' %<span class="bateria"><span id="barra"></span></span></p>' +
       (esMovil ? '<details><summary>Ver todas las secciones</summary>' + riel + '</details>' : riel) + '</aside>' +
       '<article class="leccion"><span class="etq v' + l.via + '">' + esc(d.vias[l.via] || VIAS[l.via]) + '</span><h2>' + esc(l.titulo) + '</h2>' + video +
       '<div class="obj"><span>' + ic('chispa') + '<b>Al terminar:</b> ' + esc(l.objetivo) + '</span>' +
-      '<a class="btn sec chico" href="' + base + '/texto?t=' + encodeURIComponent(d.rec) + '&amp;l=' + esc(l.id) + '">' + ic('bajar') + 'Esta sección para mi IA</a></div>' +
-      '<details class="guion"><summary>' + ic('libro') + 'Leer lo que dice el vídeo</summary><p>' + esc(l.guion) + '</p></details>' +
-      '<div class="cuerpo">' + l.bloques.map(function (b, j) { return bloque(b, j, l.id); }).join('') + '</div>' +
+      '<a class="btn sec chico" href="' + base + '/texto?t=' + encodeURIComponent(d.rec) + '&amp;l=' + esc(l.id) + '">' + ic('bajar') + 'Esta lección para mi IA</a></div>' +
+      (tieneDemo ? '<div class="cuerpo">' + htmlDemo() + '</div>' : '') +
+      '<details class="material"' + (l.video ? '' : ' open') + '><summary>' + ic('codigo') + 'Pasos, código y texto del vídeo<small>' + nPasos + ' pasos · ' + nCod + ' archivos</small></summary>' +
+      '<div class="cuerpo">' + l.bloques.map(function (b, j) { return b.t === 'demo' ? '' : bloque(b, j, l.id); }).join('') +
+      '<details class="guion"><summary>' + ic('libro') + 'Leer lo que dice el vídeo</summary><p>' + esc(l.guion) + '</p></details></div></details>' +
       verificacion(k, l, d, hecha) +
       '<nav class="navl">' + (ant ? '<a class="btn sec" href="#/curso/' + esc(k.slug) + '/' + esc(ant) + '">' + ic('atras') + 'Anterior</a>' : '<span></span>') +
-      (sig ? (hecha || d.admin ? '<a class="btn" href="#/curso/' + esc(k.slug) + '/' + esc(sig) + '">Siguiente' + ic('flecha') + '</a>' : '<span class="btn bloq">' + ic('candado') + 'Aprueba esta sección para seguir</span>')
+      (sig ? (hecha || d.admin ? '<a class="btn" href="#/curso/' + esc(k.slug) + '/' + esc(sig) + '">Siguiente' + ic('flecha') + '</a>' : '<span class="btn bloq">' + ic('candado') + 'Aprueba esta lección para seguir</span>')
         : (hecha ? '<span class="btn verde">' + ic('check') + 'Terminaste el curso</span>' : '<span></span>')) + '</nav></article></div>';
 
     requestAnimationFrame(function () { requestAnimationFrame(function () { var b = document.getElementById('barra'); if (b) b.style.width = pct + '%'; }); });
