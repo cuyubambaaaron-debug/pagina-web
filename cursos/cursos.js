@@ -58,7 +58,7 @@
   }
   btnCuenta.addEventListener('click', function () {
     if (estado.yo) { guardarTok(null); estado.yo = null; estado.curso = {}; pintarCuenta(); ruta(); }
-    else abrirCuenta('google');
+    else { compraPendiente = null; abrirCuenta('google'); }
   });
 
   function viaTxt(v) { var p = v.split(':'); return (p[1] || p[0]).trim(); }
@@ -313,7 +313,7 @@
     });
   }
   function comprar(producto, btn) {
-    if (!estado.yo) return abrirCuenta('google', function () { comprar(producto, btn); });
+    if (!estado.yo) { compraPendiente = producto; return abrirCuenta('google', function () { comprar(producto, btn); }); }
     if (producto !== 'pack' && tiene(producto)) { location.hash = '#/curso/' + producto + '/0-1'; return; }
     if (!estado.cat.tarjeta) return mensajeModal('Pago con tarjeta', 'El pago con tarjeta se está activando. Escríbenos a hola@psychesai.com y te damos acceso al toque.');
     var txt = btn.innerHTML; btn.disabled = true; btn.textContent = 'Abriendo el pago…';
@@ -350,39 +350,33 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !velo.hidden) cerrarModal(); });
   function mensajeModal(t, p) { abrirModal('<h2 id="modalTitulo">' + esc(t) + '</h2><p class="mini">' + esc(p) + '</p><button class="btn" type="button" id="okM">Entendido</button>'); document.getElementById('okM').addEventListener('click', cerrarModal); }
 
-  var GOOGLE_ID = '164526836089-r0qe14tucqoglegk0cvq2gre3s60tq0m.apps.googleusercontent.com', gsi = null;
-  function cargarGoogle() {
-    if (gsi) return gsi;
-    gsi = new Promise(function (ok, mal) {
-      if (window.google && google.accounts && google.accounts.id) return ok();
-      var sc = document.createElement('script'); sc.src = 'https://accounts.google.com/gsi/client'; sc.async = true;
-      sc.onload = function () { ok(); }; sc.onerror = function () { gsi = null; mal(); };
-      document.head.appendChild(sc);
-    });
-    return gsi;
+  var PUENTE = 'https://canvas.psychesai.com/entrar-cursos/';
+  var compraPendiente = null;
+  function irAGoogle() {
+    var r = (location.hash.replace(/^#/, '') || '/');
+    if (!/^\/[a-z0-9\/-]*$/.test(r)) r = '/';
+    location.href = PUENTE + '?volver=' + encodeURIComponent(r) + (compraPendiente ? '&compra=' + encodeURIComponent(compraPendiente) : '');
   }
-  function entrarGoogle(resp) {
-    var msg = document.getElementById('msg');
-    if (msg) { msg.textContent = 'Entrando…'; msg.className = 'msg bien'; }
-    api('/google', { metodo: 'POST', cuerpo: { credencial: resp.credential } }).then(function (d) {
-      guardarTok(d.token); delete d.token; estado.yo = d; pintarCuenta();
-      var fn = despues; cerrarModal(); if (fn) fn(); else ruta();
-    }).catch(function (d) { if (msg) { msg.textContent = (d && d.error) || 'No se pudo entrar. Prueba otra vez.'; msg.className = 'msg mal'; } });
+  /* Vuelta del puente de Gmail: #g=<id_token>&r=<ruta>&c=<compra> */
+  function vueltaGoogle() {
+    var h = location.hash.replace(/^#/, '');
+    if (h.indexOf('g=') !== 0) return null;
+    var q = new URLSearchParams(h), cred = q.get('g'), r = q.get('r') || '/', c = q.get('c') || '';
+    if (!/^\/[a-z0-9\/-]*$/.test(r)) r = '/';
+    history.replaceState(null, '', location.pathname + location.search + '#' + r);
+    return api('/google', { metodo: 'POST', cuerpo: { credencial: cred } }).then(function (d) {
+      guardarTok(d.token); delete d.token; return { yo: d, compra: /^[a-z0-9-]{1,30}$/.test(c) ? c : '' };
+    }).catch(function (d) { return { error: (d && d.error) || 'No se pudo entrar con Gmail' }; });
   }
   function abrirCuenta(modo, cb) {
     if (cb) despues = cb;
     if (modo === 'crear') modo = 'google';
     if (modo === 'google') {
       abrirModal('<h2 id="modalTitulo">Entra con tu Gmail</h2><p class="mini">Un clic y listo: tu cuenta se crea sola y ahí quedan tus cursos. Sin contraseñas ni códigos.</p>' +
-        '<div class="gbtn" id="gbtn"><p class="mini">Cargando Google…</p></div><p class="msg" id="msg"></p>' +
+        '<button class="btn" type="button" id="irGoogle">Continuar con Gmail ' + ic('flecha') + '</button><p class="msg" id="msg"></p>' +
         '<button class="enlace" type="button" data-m="entrar">Tengo usuario y contraseña</button>');
       modal.querySelector('[data-m]').addEventListener('click', function () { abrirCuenta('entrar'); });
-      cargarGoogle().then(function () {
-        var caja = document.getElementById('gbtn'); if (!caja) return;
-        google.accounts.id.initialize({ client_id: GOOGLE_ID, callback: entrarGoogle, ux_mode: 'popup', context: 'signin' });
-        caja.innerHTML = '';
-        google.accounts.id.renderButton(caja, { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'continue_with', locale: 'es', width: Math.min(320, caja.clientWidth || 320) });
-      }).catch(function () { var c = document.getElementById('gbtn'); if (c) c.innerHTML = '<p class="mini">No cargó Google. Revisa tu conexión o desactiva el bloqueador y recarga.</p>'; });
+      document.getElementById('irGoogle').addEventListener('click', irAGoogle);
       return;
     }
     var pest = '<div class="pest"><button type="button" data-m="entrar" class="' + (modo === 'entrar' ? 'on' : '') + '">Entrar</button><button type="button" data-m="google">Con Gmail</button></div>';
@@ -454,9 +448,17 @@
   window.addEventListener('hashchange', ruta);
 
   app.innerHTML = '<p class="cargando">Cargando cursos…</p>';
+  var vuelta = vueltaGoogle();
   Promise.all([
     api('/catalogo'),
-    tok() ? api('/yo').catch(function () { return null; }) : Promise.resolve(null)
-  ]).then(function (r) { estado.cat = r[0]; estado.yo = r[1]; pintarCuenta(); ruta(); })
+    vuelta || (tok() ? api('/yo').catch(function () { return null; }) : Promise.resolve(null))
+  ]).then(function (r) {
+    estado.cat = r[0];
+    var v = vuelta ? r[1] : null;
+    estado.yo = vuelta ? (v && v.yo) || null : r[1];
+    pintarCuenta(); ruta();
+    if (v && v.error) mensajeModal('No se pudo entrar', v.error);
+    else if (v && v.compra) { var b = app.querySelector('[data-comprar="' + v.compra + '"]') || document.createElement('button'); comprar(v.compra, b); }
+  })
     .catch(function () { app.innerHTML = '<p class="cargando">No pudimos cargar los cursos. Recarga la página.</p>'; });
 })();
