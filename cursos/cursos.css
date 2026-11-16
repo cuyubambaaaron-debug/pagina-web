@@ -22,7 +22,7 @@ body {
 }
 a { color: inherit; }
 button { font: inherit; color: inherit; cursor: pointer; }
-code, pre { font-family: var(--f-mono); }
+code, pre { font-family: var(--f-mono); font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
 
 /* ---------- barra ---------- */
 .barra { display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px, 4vw, 48px); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 20; background: rgba(251,248,241,.92); backdrop-filter: blur(6px); }
