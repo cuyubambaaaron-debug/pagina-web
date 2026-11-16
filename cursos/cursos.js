@@ -29,65 +29,82 @@
   }
 
   function tiene(slug) { var c = estado.yo && estado.yo.cursos || []; return c.indexOf('*') >= 0 || c.indexOf(slug) >= 0; }
-  function pintarCuenta() { btnCuenta.textContent = estado.yo ? estado.yo.cuenta.usuario + ' · salir' : 'Entrar'; }
+  function pintarCuenta() {
+    if (estado.yo) { var u = estado.yo.cuenta.usuario; btnCuenta.className = 'btn-cuenta dentro'; btnCuenta.innerHTML = '<span class="av">' + esc(u.charAt(0).toUpperCase()) + '</span><span class="nom">' + esc(u) + ' · salir</span>'; }
+    else { btnCuenta.className = 'btn-cuenta'; btnCuenta.textContent = 'Entrar'; }
+  }
   btnCuenta.addEventListener('click', function () {
     if (estado.yo) { guardarTok(null); estado.yo = null; estado.curso = {}; pintarCuenta(); ruta(); }
     else abrirCuenta('entrar');
   });
 
-  /* ---------- portada ---------- */
+  /* ---------- portada: tablero ---------- */
+  function viaTxt(v) { var p = v.split(':'); return (p[1] || p[0]).trim(); }
+  function filaCurso(k, c) {
+    var st = !k.listo ? '<span class="st-pronto">Pronto</span>' : (tiene(k.slug) ? '<span class="st-tuyo">Tuyo · abrir</span>' : '<span class="st-ok">Disponible</span>');
+    return '<div class="fila curso ' + (k.listo ? 'listo' : 'pronto') + '" data-slug="' + esc(k.slug) + '"' + (k.listo ? ' tabindex="0" role="link"' : '') + '>' +
+      '<div class="nombre"><b>' + esc(k.titulo) + '</b><span>' + esc(k.bajada) + '</span></div>' +
+      k.vias.map(function (v, i) { return '<div class="celda-via c-v' + (i + 1) + '"><span class="pv v' + (i + 1) + '">' + esc(viaTxt(v)) + '</span></div>'; }).join('') +
+      '<div class="centro c-lec">' + (k.temario ? k.temario.length : '—') + '</div>' +
+      '<div class="centro precio c-precio">S/ ' + c.precio + '</div>' +
+      '<div class="estado">' + st + '</div></div>';
+  }
+  function cabTabla() {
+    return '<div class="fila cab"><div>Curso</div><div>Personal</div><div>Negocio</div><div>Pro</div><div>Lecciones</div><div>Precio</div><div>Estado</div></div>';
+  }
   function portada() {
     var c = estado.cat;
-    var filas = c.cursos.map(function (k, i) {
-      var vias = k.vias.map(function (v) { var p = v.split(':'); return '<li><b>' + esc(p[0]) + '</b>' + esc((p[1] || '').trim()) + '</li>'; }).join('');
-      var lado = k.listo
-        ? (tiene(k.slug) ? '<span class="pastilla ok">Tuyo</span><br><span class="ir">Abrir →</span>' : '<span class="pastilla ok">Disponible</span><br><span class="ir">S/ ' + c.precio + ' →</span>')
-        : '<span class="pastilla pr">Pronto</span>';
-      return '<li class="fila ' + (k.listo ? 'listo' : 'pronto') + '" data-slug="' + esc(k.slug) + '"' + (k.listo ? ' tabindex="0" role="link"' : '') + '>' +
-        '<span class="num">' + String(i + 1).padStart(2, '0') + '</span>' +
-        '<div><h2>' + esc(k.titulo) + '</h2><p class="bajada">' + esc(k.bajada) + '</p><ol class="metro">' + vias + '</ol></div>' +
-        '<div class="lado">' + lado + '</div></li>';
-    }).join('');
+    var listos = c.cursos.filter(function (k) { return k.listo; }), pronto = c.cursos.filter(function (k) { return !k.listo; });
+    var filas = function (l) { return l.map(function (k) { return filaCurso(k, c); }).join(''); };
     app.innerHTML =
-      '<section class="heroe"><div><h1>Cursos que <em>sí</em> terminas.</h1>' +
-      '<p class="sub">Lo que construimos de verdad, enseñado en tres vías: personal, negocio y pro. Cada vía termina con algo funcionando, sin depender de la siguiente.</p></div>' +
-      '<div class="precio-gigante"><span class="cifra"><small>S/</small>' + c.precio + '</span><span class="nota">por curso · pago único</span></div></section>' +
-      '<div class="franja"><span>Los 8 cursos: <b>S/ ' + c.pack.precio + '</b></span><span class="ia">Cada curso trae su archivo «modo IA»: tu IA lo lee y te guía paso a paso.</span></div>' +
-      '<ol class="lista">' + filas + '</ol>' +
-      '<section class="paquete"><div><h3>Los 8 cursos, <em>S/ ' + c.pack.precio + '</em></h3><p>Incluye los que todavía no salen: te llegan a tu cuenta apenas estén listos.</p></div>' +
+      '<section class="cabecera"><div><h1>Cursos de automatización con IA</h1>' +
+      '<p>Lo que construimos de verdad, en tres vías: personal, negocio y pro. Cada vía termina con algo funcionando.</p></div>' +
+      '<div class="datos"><div class="dato"><b>S/ ' + c.precio + '</b><span>por curso</span></div><div class="dato"><b>S/ ' + c.pack.precio + '</b><span>los 8 cursos</span></div><div class="dato"><b>1 pago</b><span>para siempre</span></div></div></section>' +
+      '<p class="ia-tip"><span>💡</span><span><b>Cada curso trae su archivo «modo IA».</b> Se lo pasas a tu Antigravity, ChatGPT o Claude y te guía paso a paso con tu propio negocio.</span></p>' +
+      '<div class="tablero">' +
+      '<section class="grupo g-verde"><h2>Disponibles <small>' + listos.length + (listos.length === 1 ? ' curso' : ' cursos') + '</small></h2><div class="tabla">' + cabTabla() + filas(listos) + '</div><div class="pie-tabla">Toca un curso para ver sus lecciones</div></section>' +
+      '<section class="grupo g-gris"><h2>Próximamente <small>' + pronto.length + ' cursos</small></h2><div class="tabla">' + cabTabla() + filas(pronto) + '</div><div class="pie-tabla">Vienen incluidos en el paquete de los 8</div></section>' +
+      '</div>' +
+      '<section class="paquete"><div class="icono">8</div><div><h3>Los 8 cursos por S/ ' + c.pack.precio + '</h3><p>Incluye los que todavía no salen: te llegan a tu cuenta apenas estén listos.</p></div>' +
       '<button class="btn" type="button" data-comprar="pack">Quiero los 8</button></section>';
-    Array.prototype.forEach.call(app.querySelectorAll('.fila'), function (el, i) {
-      el.style.animationDelay = (0.08 * i + 0.1) + 's';
-      if (el.classList.contains('listo')) {
-        var ir = function () { location.hash = '#/curso/' + el.getAttribute('data-slug'); };
-        el.addEventListener('click', ir);
-        el.addEventListener('keydown', function (e) { if (e.key === 'Enter') ir(); });
-      }
+    Array.prototype.forEach.call(app.querySelectorAll('.grupo'), function (el, i) { el.style.animationDelay = (0.06 + 0.08 * i) + 's'; });
+    Array.prototype.forEach.call(app.querySelectorAll('.fila.curso.listo'), function (el) {
+      var ir = function () { location.hash = '#/curso/' + el.getAttribute('data-slug'); };
+      el.addEventListener('click', ir);
+      el.addEventListener('keydown', function (e) { if (e.key === 'Enter') ir(); });
     });
     enlazarCompras();
   }
 
   /* ---------- página pública del curso ---------- */
+  var COLOR = ['g-gris', 'g-verde', 'g-azul', 'g-morado'];
+  function gruposLecciones(temario, fila) {
+    var html = '', n = 0;
+    [0, 1, 2, 3].forEach(function (v) {
+      var ls = temario.filter(function (t) { return t.via === v; });
+      if (!ls.length) return;
+      html += '<section class="grupo ' + COLOR[v] + '"><h2>' + esc(VIAS[v]) + ' <small>' + ls.length + (ls.length === 1 ? ' lección' : ' lecciones') + '</small></h2><div class="tabla">' +
+        ls.map(function (t) { n++; return fila(t, n); }).join('') + '</div></section>';
+    });
+    return html;
+  }
   function paginaCurso(k) {
-    var c = estado.cat, porVia = { 1: [], 2: [], 3: [] };
-    (k.temario || []).forEach(function (t) { if (porVia[t.via]) porVia[t.via].push(t.titulo); });
-    var vias = k.vias.map(function (v, i) {
-      var p = v.split(':');
-      return '<div class="via"><h3>' + esc(p[0]) + '</h3><p class="lema">' + esc((p[1] || '').trim()) + '</p><ol>' +
-        porVia[i + 1].map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ol></div>';
-    }).join('');
-    var pagoVolvio = /[?&]pago=listo/.test(location.search);
+    var c = estado.cat, pagoVolvio = /[?&]pago=listo/.test(location.search);
+    var lecs = gruposLecciones(k.temario || [], function (t, n) {
+      return '<div class="fila lec"><div class="num">' + n + '</div><div>' + esc(t.titulo) + '</div><div class="estado"><span class="st-pend">Incluida</span></div></div>';
+    });
     app.innerHTML =
-      '<p class="migas"><a href="#/">← todos los cursos</a></p>' +
-      '<section class="cabeza-curso"><div><h1>' + esc(k.titulo) + '</h1><p class="bajada">' + esc(k.bajada) + '</p></div>' +
-      '<aside class="compra"><div class="cifra"><small>S/</small>' + c.precio + '</div>' +
-      '<p class="det">pago único · con tarjeta: US$ ' + c.usd + '</p>' +
-      '<button class="btn naranja" type="button" data-comprar="' + esc(k.slug) + '">Comprar el curso</button>' +
-      '<button class="btn sec" type="button" data-ya="1">Ya lo compré: entrar</button>' +
-      '<ul class="incl"><li>' + (k.temario || []).length + ' lecciones en 3 vías</li><li>Archivo «modo IA» para tu Antigravity, ChatGPT o Claude</li><li>Código completo, listo para copiar</li><li>Para siempre, con actualizaciones</li></ul></aside></section>' +
+      '<p class="migas"><a href="#/">Cursos</a> › ' + esc(k.titulo) + '</p>' +
       (pagoVolvio ? '<div class="aviso" id="avisoPago">Revisando tu pago…</div>' : '') +
-      '<div class="temario">' + vias + '</div>' +
-      '<p class="antes"><b>Antes de empezar:</b> todo el curso se hace con Google Antigravity, que es gratis (y con su promo ronda los S/ 18). No necesitas saber programar: tu IA escribe el código, tú entiendes qué hace.</p>';
+      '<div class="cabeza-curso"><div>' +
+      '<section class="panel"><h1>' + esc(k.titulo) + '</h1><p class="bajada">' + esc(k.bajada) + '</p>' +
+      '<div class="chips"><span class="chip">' + (k.temario || []).length + ' lecciones</span><span class="chip">Código completo</span><span class="chip">Archivo modo IA</span><span class="chip">Con Antigravity (gratis)</span></div></section>' +
+      '<div class="temario">' + lecs + '</div></div>' +
+      '<aside class="panel compra"><div class="cifra"><small>S/</small>' + c.precio + '</div>' +
+      '<p class="det">Pago único · con tarjeta: US$ ' + c.usd + '</p>' +
+      '<button class="btn verde" type="button" data-comprar="' + esc(k.slug) + '">Comprar el curso</button>' +
+      '<button class="btn sec" type="button" data-ya="1">Ya lo compré: entrar</button>' +
+      '<ul><li>3 vías: personal, negocio y pro</li><li>Modo IA para tu Antigravity, ChatGPT o Claude</li><li>Sin mensualidades</li><li>Actualizaciones incluidas</li></ul></aside></div>';
     var ya = app.querySelector('[data-ya]');
     if (ya) ya.addEventListener('click', function () { abrirCuenta('entrar'); });
     enlazarCompras();
@@ -107,21 +124,21 @@
     var riel = '', viaAnt = -1;
     secs.forEach(function (s) {
       var v = Number(s.getAttribute('data-via')), id = s.getAttribute('data-id');
-      if (v !== viaAnt) { if (viaAnt >= 0) riel += '</ol>'; riel += '<p class="estacion v' + v + '">' + esc(VIAS[v]) + '</p><ol class="paradas">'; viaAnt = v; }
-      riel += '<li><a href="#/curso/' + esc(k.slug) + '/' + esc(id) + '" class="' + (id === actual ? 'activa ' : '') + (hechas[id] ? 'hecha' : '') + '">' + esc(s.getAttribute('data-titulo')) + '</a></li>';
+      if (v !== viaAnt) { if (viaAnt >= 0) riel += '</ul>'; riel += '<p class="estacion v' + v + '">' + esc(VIAS[v]) + '</p><ul class="paradas">'; viaAnt = v; }
+      riel += '<li><a href="#/curso/' + esc(k.slug) + '/' + esc(id) + '" class="' + (id === actual ? 'activa ' : '') + (hechas[id] ? 'hecha' : '') + '"><span class="ck">' + (hechas[id] ? '✓' : '') + '</span><span>' + esc(s.getAttribute('data-titulo')) + '</span></a></li>';
     });
-    riel += '</ol>';
+    riel += '</ul>';
     var n = Object.keys(hechas).filter(function (x) { return ids.indexOf(x) >= 0; }).length, pct = Math.round(100 * n / ids.length);
     var i = ids.indexOf(actual), ant = ids[i - 1], sig = ids[i + 1];
-    var esMovil = window.matchMedia('(max-width: 860px)').matches;
+    var esMovil = window.matchMedia('(max-width: 960px)').matches;
 
     app.innerHTML =
-      '<p class="migas"><a href="#/">← todos los cursos</a> · ' + esc(k.titulo) + '</p>' +
+      '<p class="migas"><a href="#/">Cursos</a> › ' + esc(k.titulo) + '</p>' +
       '<div class="lector"><aside class="riel">' +
-      '<div class="acc"><button class="btn naranja" type="button" id="bajarIA">Descargar modo IA</button></div>' +
-      '<p class="avance">' + n + ' de ' + ids.length + ' lecciones vistas<i><span id="barra"></span></i></p>' +
+      '<div class="acc"><button class="btn" type="button" id="bajarIA">⬇ Descargar modo IA</button></div>' +
+      '<p class="avance">' + n + ' de ' + ids.length + ' lecciones vistas · ' + pct + ' %<span class="bateria"><span id="barra"></span></span></p>' +
       (esMovil ? '<details><summary>Ver todas las lecciones</summary>' + riel + '</details>' : riel) +
-      '</aside><article class="leccion"><span class="etq">' + esc(VIAS[via]) + '</span><h2>' + esc(sec.getAttribute('data-titulo')) + '</h2>' +
+      '</aside><article class="leccion"><span class="etq v' + via + '">' + esc(VIAS[via]) + '</span><h2>' + esc(sec.getAttribute('data-titulo')) + '</h2>' +
       '<div class="cuerpo">' + sec.innerHTML + '</div>' +
       '<nav class="navl">' + (ant ? '<a class="btn sec" href="#/curso/' + esc(k.slug) + '/' + esc(ant) + '">← Anterior</a>' : '<span></span>') +
       (sig ? '<a class="btn" href="#/curso/' + esc(k.slug) + '/' + esc(sig) + '">Siguiente →</a>' : '<a class="btn" href="#/">Ver los otros cursos</a>') + '</nav></article></div>';
@@ -137,7 +154,7 @@
       var url = URL.createObjectURL(new Blob([md], { type: 'text/markdown' })), a = document.createElement('a');
       a.href = url; a.download = 'curso-' + slug + '-modo-ia.md'; document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
-      btn.textContent = 'Descargado ✓';
+      btn.textContent = '✓ Descargado';
     }).catch(function () { btn.textContent = 'No se pudo, prueba otra vez'; }).then(function () { btn.disabled = false; });
   }
 
