@@ -331,3 +331,6 @@ main { padding: 0 var(--pad) 80px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .tarjeta, .via-c, .aparece { opacity: 1 !important; translate: none !important; transform: none !important; } }
 @media (min-width: 861px) { .barra-compra { display: none; } }
+
+.gbtn{min-height:48px;display:flex;justify-content:center;align-items:center;margin:18px 0 6px}
+.gbtn iframe{margin:0 auto!important}

@@ -58,7 +58,7 @@
   }
   btnCuenta.addEventListener('click', function () {
     if (estado.yo) { guardarTok(null); estado.yo = null; estado.curso = {}; pintarCuenta(); ruta(); }
-    else abrirCuenta('entrar');
+    else abrirCuenta('google');
   });
 
   function viaTxt(v) { var p = v.split(':'); return (p[1] || p[0]).trim(); }
@@ -253,7 +253,7 @@
     cada('.aparece', function (el, i) { el.style.animationDelay = (0.05 + i * 0.08) + 's'; });
     alVer('.via-c');
     var ya = app.querySelector('[data-ya]');
-    if (ya) ya.addEventListener('click', function () { abrirCuenta('entrar'); });
+    if (ya) ya.addEventListener('click', function () { abrirCuenta('google'); });
     var barra = document.getElementById('barraCompra'), linea = document.getElementById('compraLinea');
     if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { barra.classList.toggle('ver', !e[0].isIntersecting && e[0].boundingClientRect.top < 0); }).observe(linea);
     enlazarCompras();
@@ -313,7 +313,7 @@
     });
   }
   function comprar(producto, btn) {
-    if (!estado.yo) return abrirCuenta('crear', function () { comprar(producto, btn); });
+    if (!estado.yo) return abrirCuenta('google', function () { comprar(producto, btn); });
     if (producto !== 'pack' && tiene(producto)) { location.hash = '#/curso/' + producto + '/0-1'; return; }
     if (!estado.cat.tarjeta) return mensajeModal('Pago con tarjeta', 'El pago con tarjeta se está activando. Escríbenos a hola@psychesai.com y te damos acceso al toque.');
     var txt = btn.innerHTML; btn.disabled = true; btn.textContent = 'Abriendo el pago…';
@@ -325,7 +325,7 @@
   function revisarPago() {
     var id; try { id = localStorage.getItem(LS_PAGO); } catch (e) {}
     var av = document.getElementById('avisoPago');
-    if (!id || !estado.yo) { if (av) av.textContent = 'Entra con tu cuenta para ver tu compra.'; return; }
+    if (!id || !estado.yo) { if (av) av.textContent = 'Entra con tu Gmail para ver tu compra.'; return; }
     var intentos = 0;
     (function mirar() {
       api('/link/verificar', { metodo: 'POST', cuerpo: { pago: Number(id) } }).then(function (d) {
@@ -350,12 +350,45 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !velo.hidden) cerrarModal(); });
   function mensajeModal(t, p) { abrirModal('<h2 id="modalTitulo">' + esc(t) + '</h2><p class="mini">' + esc(p) + '</p><button class="btn" type="button" id="okM">Entendido</button>'); document.getElementById('okM').addEventListener('click', cerrarModal); }
 
+  var GOOGLE_ID = '164526836089-r0qe14tucqoglegk0cvq2gre3s60tq0m.apps.googleusercontent.com', gsi = null;
+  function cargarGoogle() {
+    if (gsi) return gsi;
+    gsi = new Promise(function (ok, mal) {
+      if (window.google && google.accounts && google.accounts.id) return ok();
+      var sc = document.createElement('script'); sc.src = 'https://accounts.google.com/gsi/client'; sc.async = true;
+      sc.onload = function () { ok(); }; sc.onerror = function () { gsi = null; mal(); };
+      document.head.appendChild(sc);
+    });
+    return gsi;
+  }
+  function entrarGoogle(resp) {
+    var msg = document.getElementById('msg');
+    if (msg) { msg.textContent = 'Entrando…'; msg.className = 'msg bien'; }
+    api('/google', { metodo: 'POST', cuerpo: { credencial: resp.credential } }).then(function (d) {
+      guardarTok(d.token); delete d.token; estado.yo = d; pintarCuenta();
+      var fn = despues; cerrarModal(); if (fn) fn(); else ruta();
+    }).catch(function (d) { if (msg) { msg.textContent = (d && d.error) || 'No se pudo entrar. Prueba otra vez.'; msg.className = 'msg mal'; } });
+  }
   function abrirCuenta(modo, cb) {
     if (cb) despues = cb;
-    var pest = '<div class="pest"><button type="button" data-m="entrar" class="' + (modo === 'entrar' ? 'on' : '') + '">Entrar</button><button type="button" data-m="crear" class="' + (modo === 'crear' ? 'on' : '') + '">Crear cuenta</button></div>';
+    if (modo === 'crear') modo = 'google';
+    if (modo === 'google') {
+      abrirModal('<h2 id="modalTitulo">Entra con tu Gmail</h2><p class="mini">Un clic y listo: tu cuenta se crea sola y ahí quedan tus cursos. Sin contraseñas ni códigos.</p>' +
+        '<div class="gbtn" id="gbtn"><p class="mini">Cargando Google…</p></div><p class="msg" id="msg"></p>' +
+        '<button class="enlace" type="button" data-m="entrar">Tengo usuario y contraseña</button>');
+      modal.querySelector('[data-m]').addEventListener('click', function () { abrirCuenta('entrar'); });
+      cargarGoogle().then(function () {
+        var caja = document.getElementById('gbtn'); if (!caja) return;
+        google.accounts.id.initialize({ client_id: GOOGLE_ID, callback: entrarGoogle, ux_mode: 'popup', context: 'signin' });
+        caja.innerHTML = '';
+        google.accounts.id.renderButton(caja, { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'continue_with', locale: 'es', width: Math.min(320, caja.clientWidth || 320) });
+      }).catch(function () { var c = document.getElementById('gbtn'); if (c) c.innerHTML = '<p class="mini">No cargó Google. Revisa tu conexión o desactiva el bloqueador y recarga.</p>'; });
+      return;
+    }
+    var pest = '<div class="pest"><button type="button" data-m="entrar" class="' + (modo === 'entrar' ? 'on' : '') + '">Entrar</button><button type="button" data-m="google">Con Gmail</button></div>';
     var cuerpo;
     if (modo === 'entrar') {
-      cuerpo = '<h2 id="modalTitulo">Entra</h2><p class="mini">Con tu usuario o correo.</p>' + pest +
+      cuerpo = '<h2 id="modalTitulo">Entra</h2><p class="mini">Si te dimos usuario y contraseña. Lo normal es entrar con Gmail.</p>' + pest +
         '<form id="f"><label class="campo"><span>Usuario o correo</span><input name="usuario" autocomplete="username" required></label>' +
         '<label class="campo"><span>Contraseña</span><input name="clave" type="password" autocomplete="current-password" required></label>' +
         '<button class="btn" type="submit">Entrar</button></form><button class="enlace" type="button" data-m="olvide">Olvidé mi contraseña</button>';
