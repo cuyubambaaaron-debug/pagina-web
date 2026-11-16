@@ -344,7 +344,7 @@
 
   function verificacion(k, l, d, hecha) {
     var v = l.verificacion || {};
-    if (hecha) return '<section class="verif hecha"><div class="sello">' + ic('check') + '</div><div><h3>Sección aprobada</h3><p>' + (v.tipo === 'mision' ? 'Tu bot cumplió la misión.' : v.tipo === 'url' ? 'Tu servidor respondió con tu código.' : 'Respondiste bien.') + ' Ya puedes seguir.</p></div></section>';
+    if (hecha) return '<section class="verif hecha"><div class="sello">' + ic('check') + '</div><div><h3>Lección aprobada</h3><p>' + (v.tipo === 'mision' ? 'Tu bot cumplió la misión.' : v.tipo === 'url' ? 'Tu servidor respondió con tu código.' : 'Respondiste bien.') + ' Ya puedes seguir.</p></div></section>';
     if (v.tipo === 'quiz') return '<section class="verif"><h3>' + ic('check') + 'Comprueba lo que aprendiste</h3><p class="mini">Necesitas todas bien para pasar. Si fallas, te explicamos por qué.</p><form id="quiz">' +
       v.preguntas.map(function (q, i) { return '<fieldset class="preg" data-i="' + i + '"><legend>' + (i + 1) + '. ' + q.p + '</legend>' + q.ops.map(function (o, j) { return '<label class="op"><input type="radio" name="q' + i + '" value="' + j + '" required><span>' + o + '</span></label>'; }).join('') + '<p class="por" hidden></p></fieldset>'; }).join('') +
       '<button class="btn" type="submit">Revisar mis respuestas</button><p class="msg" id="quizMsg"></p></form></section>';
@@ -392,7 +392,7 @@
       '<div class="obj"><span>' + ic('chispa') + '<b>Al terminar:</b> ' + esc(l.objetivo) + '</span>' +
       '<a class="btn sec chico" href="' + base + '/texto?t=' + encodeURIComponent(d.rec) + '&amp;l=' + esc(l.id) + '">' + ic('bajar') + 'Esta lección para mi IA</a></div>' +
       (tieneDemo ? '<div class="cuerpo">' + htmlDemo() + '</div>' : '') +
-      '<details class="material"' + (l.video ? '' : ' open') + '><summary>' + ic('codigo') + 'Pasos, código y texto del vídeo<small>' + nPasos + ' pasos · ' + nCod + ' archivos</small></summary>' +
+      '<details class="material"><summary>' + ic('codigo') + 'Pasos, código y texto del vídeo<small>' + nPasos + ' pasos · ' + nCod + ' archivos</small></summary>' +
       '<div class="cuerpo">' + l.bloques.map(function (b, j) { return b.t === 'demo' ? '' : bloque(b, j, l.id); }).join('') +
       '<details class="guion"><summary>' + ic('libro') + 'Leer lo que dice el vídeo</summary><p>' + esc(l.guion) + '</p></details></div></details>' +
       verificacion(k, l, d, hecha) +
@@ -424,7 +424,7 @@
           por.hidden = x.bien; if (!x.bien) por.textContent = x.por;
         });
         var m = document.getElementById('quizMsg');
-        if (r.aprobado) { d.avance[l.id] = 'aprobado'; m.textContent = 'Todo bien. Sección aprobada.'; m.className = 'msg bien'; luego(function () { curso2(k, d, l.id); }, 900); }
+        if (r.aprobado) { d.avance[l.id] = 'aprobado'; m.textContent = 'Todo bien. Lección aprobada.'; m.className = 'msg bien'; luego(function () { curso2(k, d, l.id); }, 900); }
         else { m.textContent = 'Revisa las marcadas en rojo: te dejamos la explicación. Corrige y vuelve a enviar.'; m.className = 'msg mal'; }
       }).catch(function (x) { var m = document.getElementById('quizMsg'); m.textContent = (x && x.error) || 'No se pudo revisar. Prueba otra vez.'; m.className = 'msg mal'; })
         .then(function () { btn.disabled = false; });
